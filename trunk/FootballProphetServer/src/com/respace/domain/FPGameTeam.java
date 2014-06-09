@@ -3,9 +3,18 @@ package com.respace.domain;
 public class FPGameTeam {
 	int id;
 	String team_name;
+	String team_name_kor;
 	String game_group;
 	private int query_start = 0;
 	private int query_number = 0;
+
+	public String getTeam_name_kor() {
+		return team_name_kor;
+	}
+
+	public void setTeam_name_kor(String team_name_kor) {
+		this.team_name_kor = team_name_kor;
+	}
 
 	public int getQuery_start() {
 		return query_start;
@@ -49,10 +58,11 @@ public class FPGameTeam {
 
 	@Override
 	public String toString() {
-		return "{\"FPGameTeam\":[\"id\":\"" + id + "\", team_name\":\""
-				+ team_name + "\", game_group\":\"" + game_group
-				+ "\", query_start\":\"" + query_start
-				+ "\", query_number\":\"" + query_number + "]}";
+		return "{\"id\":\"" + id + "\", \"team_name\":\"" + team_name
+				+ "\", \"team_name_kor\":\"" + team_name_kor
+				+ "\", \"game_group\":\"" + game_group
+				+ "\", \"query_start\":\"" + query_start
+				+ "\", \"query_number\":\"" + query_number + "\"}";
 	}
 
 }
