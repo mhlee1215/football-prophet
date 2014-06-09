@@ -29,10 +29,7 @@
         </dataSource>
     </transactionManager>
   
-  
-  <sqlMap resource="query/EventSql.xml"/>
-  
-  
+   
   <sqlMap resource="query/FPGameMatchScheduleSql.xml"/>
   <sqlMap resource="query/FPGameProphetSql.xml"/>
   <sqlMap resource="query/FPGameResultSql.xml"/>
