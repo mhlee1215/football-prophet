@@ -29,12 +29,15 @@
         </dataSource>
     </transactionManager>
   
-  <sqlMap resource="query/UserSql.xml"/>
-  <sqlMap resource="query/CodeSql.xml"/>
-  <sqlMap resource="query/ProjectSql.xml"/>
-  <sqlMap resource="query/SpaceSql.xml"/>
+  
   <sqlMap resource="query/EventSql.xml"/>
-  <sqlMap resource="query/AssetSql.xml"/>
-  <sqlMap resource="query/ArticleSql.xml"/>
+  
+  
+  <sqlMap resource="query/FPGameMatchScheduleSql.xml"/>
+  <sqlMap resource="query/FPGameProphetSql.xml"/>
+  <sqlMap resource="query/FPGameResultSql.xml"/>
+  <sqlMap resource="query/FPUserGroupSql.xml"/>
+  <sqlMap resource="query/FPUserSql.xml"/>
+  <sqlMap resource="query/FPGameTeamSql.xml"/>
   
 </sqlMapConfig>
