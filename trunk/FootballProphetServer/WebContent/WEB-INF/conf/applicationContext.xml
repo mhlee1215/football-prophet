@@ -21,9 +21,9 @@
     	<property name="driverClassName" value="core.log.jdbc.driver.MysqlDriver" />
     	 
  
-    	<property name="url" value="jdbc:mysql://localhost:3306/respacee" />
-    	<property name="username" value="respacee" />
-    	<property name="password" value="respace20133" />
+    	<property name="url" value="jdbc:mysql://localhost:3306/fp_scheme" />
+    	<property name="username" value="root" />
+    	<property name="password" value="12345" />
 
     	
     	  <!-- 
