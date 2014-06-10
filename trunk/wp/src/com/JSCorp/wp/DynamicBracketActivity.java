@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.JSCorp.wp.adapter.PredictionListAdapter;
 
+import android.app.ActionBar;
 import android.app.ListActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,10 +16,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-/**
- * @author Prabu
- *
- */
+
 public class DynamicBracketActivity extends ListActivity {
 
 	/*
@@ -48,6 +46,11 @@ public class DynamicBracketActivity extends ListActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_dynamic_bracket);
+		
+		// get action bar   
+        ActionBar actionBar = getActionBar();
+        // Enabling Up / Back navigation
+        actionBar.setDisplayHomeAsUpEnabled(true);
 		
 		String[] lista = getResources().getStringArray(R.array.nation);
 		
