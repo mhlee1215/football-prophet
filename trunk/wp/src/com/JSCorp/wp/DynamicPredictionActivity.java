@@ -1,10 +1,13 @@
 package com.JSCorp.wp;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class DynamicPredictionActivity extends Activity {
 
@@ -12,6 +15,10 @@ public class DynamicPredictionActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_dynamic_prediction);
+		
+        // Enabling Up / Back navigation
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+		
 	}
 	
 	@Override
@@ -26,9 +33,15 @@ public class DynamicPredictionActivity extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
         // Take appropriate action for each action item click
         switch (item.getItemId()) {
+        case android.R.id.home:
+            NavUtils.navigateUpFromSameTask(this);
+            return true;
         case R.id.action_accept:
             //save user decisions to DB.
         	//go back to game list view.
+        	Toast.makeText(getApplicationContext(),
+        		      "Need to Implement Data Save", Toast.LENGTH_SHORT).show();
+        	NavUtils.navigateUpFromSameTask(this);
             return true;
         default:
             return super.onOptionsItemSelected(item);

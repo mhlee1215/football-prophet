@@ -8,6 +8,8 @@ import com.JSCorp.wp.adapter.PredictionListAdapter;
 import android.app.ActionBar;
 import android.app.ListActivity;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -47,10 +49,8 @@ public class DynamicBracketActivity extends ListActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_dynamic_bracket);
 		
-		// get action bar   
-        ActionBar actionBar = getActionBar();
         // Enabling Up / Back navigation
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
 		
 		String[] lista = getResources().getStringArray(R.array.nation);
 		
@@ -58,4 +58,16 @@ public class DynamicBracketActivity extends ListActivity {
 		ListView listView = (ListView) findViewById(android.R.id.list);
 		listView.setAdapter(listAdapter);
 	}
+	
+	@Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Take appropriate action for each action item click
+        switch (item.getItemId()) {
+        case android.R.id.home:
+            NavUtils.navigateUpFromSameTask(this);
+            return true;
+        default:
+            return super.onOptionsItemSelected(item);
+        }
+    }
 }
