@@ -21,4 +21,17 @@ public class DynamicPredictionActivity extends Activity {
  
         return super.onCreateOptionsMenu(menu);
     }
+	
+	@Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Take appropriate action for each action item click
+        switch (item.getItemId()) {
+        case R.id.action_accept:
+            //save user decisions to DB.
+        	//go back to game list view.
+            return true;
+        default:
+            return super.onOptionsItemSelected(item);
+        }
+    }
 }
