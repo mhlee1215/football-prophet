@@ -1,0 +1,84 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="fill_parent"
+android:layout_height="fill_parent"
+android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"/>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:layout_alignParentBottom="true"
+        android:background="#A9E2F3"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/txtDiaMsg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:padding="5dp" />
+
+        <ImageButton
+            android:id="@+id/imageButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/abc_ic_clear_search_api_disabled_holo_light" />
+
+        <TextView
+            android:id="@+id/txtDiaTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/txtDiaMsg"
+            android:layout_alignParentLeft="true"
+            android:gravity="center"
+            android:padding="5dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/txtDiaMsg"
+            android:layout_marginTop="20dp"
+            android:background="#2E9AFE" />
+
+        <Button
+            android:id="@+id/btnPredict"
+            android:layout_width="149dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_margin="5dp"
+            android:layout_marginBottom="16dp"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="Predict"
+            android:textStyle="bold" />
+       <!--    
+        <Button
+            android:id="@+id/btnOk"
+            android:layout_width="152dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/btnPredict"
+            android:layout_alignBottom="@+id/btnPredict"
+            android:layout_alignParentRight="true"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="OK"
+            android:textStyle="bold" />
+   -->
+
+    </LinearLayout>
+
+</RelativeLayout>

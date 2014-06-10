@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fa6a6a"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:text="Design Bracket Prediction"
+        android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/dynamicBracketButton"
+        android:layout_width="match_parent"
+        android:layout_height="166dp"
+        android:layout_above="@+id/textView1"
+        android:layout_centerHorizontal="true"
+        android:layout_weight="0.64"
+        android:text="Dynamic Bracket" />
+
+    <Button
+        android:id="@+id/staticBracketButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.93"
+        android:text="Static Bracket" />
+
+</LinearLayout>
