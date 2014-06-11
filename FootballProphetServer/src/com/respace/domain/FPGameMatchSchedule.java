@@ -86,11 +86,11 @@ public class FPGameMatchSchedule {
 
 	@Override
 	public String toString() {
-		return "{\"FPGameMatchSchedule\":[\"id\":\"" + id + "\", type\":\""
-				+ type + "\", home_team_id\":\"" + home_team_id
-				+ "\", away_team_id\":\"" + away_team_id + "\", city\":\""
-				+ city + "\", time\":\"" + time + "\", reference_time\":\""
-				+ reference_time + "\", query_start\":\"" + query_start
-				+ "\", query_number\":\"" + query_number + "]}";
+		return "{\"id\":\"" + id + "\",\"type\":\"" + type
+				+ "\",\"home_team_id\":\"" + home_team_id
+				+ "\",\"away_team_id\":\"" + away_team_id + "\",\"city\":\""
+				+ city + "\",\"time\":\"" + time + "\",\"reference_time\":\""
+				+ reference_time + "\",\"query_start\":\"" + query_start
+				+ "\",\"query_number\":\"" + query_number + "\"}";
 	}
 }
