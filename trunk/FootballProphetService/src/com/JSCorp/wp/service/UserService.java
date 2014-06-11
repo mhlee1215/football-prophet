@@ -114,7 +114,7 @@ public class UserService {
 		if(isUserExistByDeviceId(user.getDevice_id()))
 			return false;
 		
-		if(user.getNickname().isEmpty()){
+		if(user.getNickname() == null || "".equals(user.getNickname())){
 			//Generate pseudo-random string
 			String str = new java.rmi.dgc.VMID().toString();
 			str = str.replace(":", "").replace("-", "").toUpperCase();
