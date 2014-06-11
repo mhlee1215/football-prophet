@@ -4,9 +4,13 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.JSCorp.wp.adapter.PredictionListAdapter;
+import com.JSCorp.wp.domain.FPGameMatchSchedule;
+import com.JSCorp.wp.service.GameService;
 
 import android.app.ActionBar;
 import android.app.ListActivity;
+import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.MenuItem;
@@ -52,11 +56,15 @@ public class DynamicBracketActivity extends ListActivity {
         // Enabling Up / Back navigation
         getActionBar().setDisplayHomeAsUpEnabled(true);
 		
-		String[] lista = getResources().getStringArray(R.array.nation);
-		
-		PredictionListAdapter listAdapter = new PredictionListAdapter(this, R.layout.fragment_dynamic_bracket, lista);
-		ListView listView = (ListView) findViewById(android.R.id.list);
-		listView.setAdapter(listAdapter);
+        
+        
+//		String[] lista = getResources().getStringArray(R.array.nation);
+//		
+//		PredictionListAdapter listAdapter = new PredictionListAdapter(this, R.layout.fragment_dynamic_bracket, lista);
+//		ListView listView = (ListView) findViewById(android.R.id.list);
+//		listView.setAdapter(listAdapter);
+        
+        new GetGameTeamMap().execute(this);
 	}
 	
 	@Override
@@ -70,4 +78,41 @@ public class DynamicBracketActivity extends ListActivity {
             return super.onOptionsItemSelected(item);
         }
     }
+	
+	public void doPrint(List<FPGameMatchSchedule> matches){
+		System.out.println("on post!");
+		PredictionListAdapter listAdapter = new PredictionListAdapter(this, R.layout.fragment_dynamic_bracket, matches);
+		ListView listView = (ListView) findViewById(android.R.id.list);
+		listView.setAdapter(listAdapter);
+		System.out.println(matches);
+//		String[] lista = getResources().getStringArray(R.array.nation);
+////		
+//		PredictionListAdapter listAdapter = new PredictionListAdapter(this, R.layout.fragment_dynamic_bracket, lista);
+//		ListView listView = (ListView) findViewById(android.R.id.list);
+//		listView.setAdapter(listAdapter);
+	}
+	
+	
+	public class GetGameTeamMap extends AsyncTask {
+
+		DynamicBracketActivity tContext;
+		List<FPGameMatchSchedule> matches;
+		@Override
+		protected Object doInBackground(Object... arg0) {
+			tContext = (DynamicBracketActivity) arg0[0];
+			// TODO Auto-generated method stub
+			matches = GameService.getGameMatchSchedules();
+			System.out.println("MATCH SIZE:"+matches.size());
+			
+			return null;
+		}
+		
+		@Override
+		protected void onPostExecute(Object result) {
+			// TODO Auto-generated method stub
+			super.onPostExecute(result);
+			tContext.doPrint(matches);
+		}
+		
+	}
 }

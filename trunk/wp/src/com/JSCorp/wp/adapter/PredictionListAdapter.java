@@ -1,8 +1,11 @@
 package com.JSCorp.wp.adapter;
 
+import java.util.List;
+
 import com.JSCorp.wp.DynamicBracketActivity;
 import com.JSCorp.wp.DynamicPredictionActivity;
 import com.JSCorp.wp.R;
+import com.JSCorp.wp.domain.FPGameMatchSchedule;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -25,6 +28,7 @@ public class PredictionListAdapter extends BaseAdapter {
 	
 	LayoutInflater inflater;
 	String[] categorya;
+	List<FPGameMatchSchedule> matches;
 	Context mContext;
 	int mListLayout;
 	public String TAG = "listAdapter";
@@ -38,6 +42,17 @@ public class PredictionListAdapter extends BaseAdapter {
 		
 		if(categorya != null) {
 			listCount = categorya.length;
+		}
+	}
+	
+	public PredictionListAdapter(Context tContext, int listLayout, List<FPGameMatchSchedule> tmpa) {
+		mContext = tContext;
+		mListLayout = listLayout;
+		matches = tmpa;
+		inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		
+		if(matches != null) {
+			listCount = matches.size();
 		}
 	}
 	
@@ -71,7 +86,13 @@ public class PredictionListAdapter extends BaseAdapter {
 		
 		//Visibility Setting Cases
 		//Default (nations, nextGameTimer/Timer)
-		((TextView) convertView.findViewById(R.id.nations)).setText(categorya[position]);
+		//System.out.println("Pos:"+position+", "+matches.get(position));
+		((TextView) convertView.findViewById(R.id.nations_home)).setText(matches.get(position).getHome_team_name());
+		((TextView) convertView.findViewById(R.id.nations_away)).setText(matches.get(position).getAway_team_name());
+		((TextView) convertView.findViewById(R.id.matchTime)).setText(matches.get(position).getReference_time());
+		
+		//((TextView) convertView.findViewById(R.id.nations_home)).setText(categorya[position]);
+		//((TextView) convertView.findViewById(R.id.nations_away)).setText(categorya[position]);
 		((TextView) convertView.findViewById(R.id.matchResult)).setVisibility(View.INVISIBLE);
 		((TextView) convertView.findViewById(R.id.myPrediction)).setVisibility(View.INVISIBLE);
 		(convertView.findViewById(R.id.predictionResult)).setVisibility(View.INVISIBLE);
