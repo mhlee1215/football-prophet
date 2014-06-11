@@ -143,6 +143,8 @@ public class UserService {
 		}
 		return false;
 	}
+	
+	
 
 	public static FPUser getUserByDeviceId(String device_id) {
 		FPUser user = new FPUser();
@@ -210,12 +212,81 @@ public class UserService {
 		
 		return user;
 	}
+	
+	public static boolean updateUser(FPUser user) {
+		//FPUser user = new FPUser();
+		
+		HttpClient httpclient = new DefaultHttpClient();
+		
+		try {
+			// HttpGet??
+			HttpGet httpget = new HttpGet(Env.url + "api.updateUser.do"+user.toStringSealize());
+
+			System.out.println("executing request " + httpget.getURI());
+			HttpResponse response = httpclient.execute(httpget);
+			HttpEntity entity = response.getEntity();
+
+			System.out.println("----------------------------------------");
+			// ?? ??
+			System.out.println(response.getStatusLine());
+			if (entity != null) {
+				System.out.println("Response content length: "
+						+ entity.getContentLength());
+				BufferedReader rd = new BufferedReader(new InputStreamReader(
+						response.getEntity().getContent()));
+
+				String line = "";
+				while ((line = rd.readLine()) != null) {
+					if (line.startsWith("fail")) {
+						// Error handling
+						return false;
+					} else if (line.equals("success")) {
+						return true;
+					} else {
+						return false;
+					}
+				}
+			}
+			httpget.abort();
+			System.out.println("----------------------------------------");
+			httpclient.getConnectionManager().shutdown();
+
+		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			httpclient.getConnectionManager().shutdown();
+		}
+		
+		return false;
+	}
+	
+	
 
 	public static void main(String[] args) throws ParseException {
 
-		System.out.println(UserService.isUserExistByNickname("abcde"));
-		System.out.println(UserService.isUserExistByDeviceId("qwert"));
-		System.out.println(UserService.getUserByDeviceId("qwert"));
+		//System.out.println(UserService.isUserExistByNickname("abcde"));
+		//System.out.println(UserService.isUserExistByDeviceId("qwert"));
+		//System.out.println(UserService.getUserByDeviceId("qwert"));
+//		
+		FPUser user = new FPUser();
+		user.setNickname("abcdeee4");
+		user.setDevice_id("000000006");
+		user.setIs_nickname_initialized("N");
+		
+//		
+		UserService.addUser(user);
+		
+		//if(1==1) return;
+		FPUser userUpdate = new FPUser();
+		userUpdate.setNickname("aaaabc345345de");
+		userUpdate.setDevice_id("000000005");
+		userUpdate.setScore_dynamic(100);
+		userUpdate.setScore_static(1000);
+		
+		UserService.updateUser(userUpdate);
+		
 
 		// // HttpClient ??
 		// HttpClient httpclient = new DefaultHttpClient();

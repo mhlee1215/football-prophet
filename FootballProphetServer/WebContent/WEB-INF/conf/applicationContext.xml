@@ -20,17 +20,17 @@
 	<bean id="dataSource"  class="org.apache.commons.dbcp.BasicDataSource">
     	<property name="driverClassName" value="core.log.jdbc.driver.MysqlDriver" />
     	 
- 
+  <!-- 
     	<property name="url" value="jdbc:mysql://localhost:3306/fp_scheme" />
     	<property name="username" value="root" />
     	<property name="password" value="123456" />
-
+ -->
     	
-    	  <!-- 
-    	<property name="url" value="jdbc:mysql://respace.co.kr:3306/respacee" />
-    	<property name="username" value="respacee" />
-    	<property name="password" value="respace20133" />
-    	 -->
+    	 
+    	<property name="url" value="jdbc:mysql://mineng2.cafe24.com:3306/mineng2" />
+    	<property name="username" value="mineng2" />
+    	<property name="password" value="ckaist20144" />
+    	
     	
     	
     	<!-- <property name="url" value="jdbc:mysql://localhost:3306/respacee" />

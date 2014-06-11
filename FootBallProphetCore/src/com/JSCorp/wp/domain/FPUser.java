@@ -2,15 +2,15 @@ package com.JSCorp.wp.domain;
 
 public class FPUser {
 	int id;
-	String device_id;
+	String device_id = "";
 	int group_id;
-	String nickname;
-	String is_nickname_initialized;
-	String tag;
-	String twitter;
-	String is_twitter_visible;
-	String facebook;
-	String is_facebook_visible;
+	String nickname = "";
+	String is_nickname_initialized = "";
+	String tag = "";
+	String twitter = "";
+	String is_twitter_visible = "";
+	String facebook = "";
+	String is_facebook_visible = "";
 	
 	int score_dynamic;
 	int score_static;
