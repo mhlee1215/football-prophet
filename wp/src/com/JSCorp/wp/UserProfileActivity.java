@@ -3,9 +3,11 @@ package com.JSCorp.wp;
 import com.JSCorp.wp.adapter.RankListAdapter;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -22,6 +24,11 @@ public class UserProfileActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_user_profile);
+		
+		
+		TelephonyManager tManager = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
+		String deviceId = tManager.getDeviceId();
+		System.out.println("device Id :"+deviceId);
 		
         // Enabling Up / Back navigation
         getActionBar().setDisplayHomeAsUpEnabled(true);
