@@ -14,8 +14,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.respace.domain.FPGameMatchSchedule;
-import com.respace.domain.FPGameTeam;
+import com.JSCorp.wp.domain.FPGameMatchSchedule;
+import com.JSCorp.wp.domain.FPGameTeam;
 import com.respace.service.FPGameMatchScheduleServiceImpl;
 import com.respace.service.FPGameTeamServiceImpl;
 import com.respace.util.MyJsonUtil;

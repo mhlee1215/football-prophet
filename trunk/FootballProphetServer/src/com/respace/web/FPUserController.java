@@ -15,10 +15,11 @@ import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.respace.domain.FPGameMatchSchedule;
-import com.respace.domain.FPGameTeam;
-import com.respace.domain.FPUser;
-import com.respace.domain.FPUserGroup;
+
+
+
+import com.JSCorp.wp.domain.FPUser;
+import com.JSCorp.wp.domain.FPUserGroup;
 import com.respace.service.FPGameMatchScheduleServiceImpl;
 import com.respace.service.FPGameTeamServiceImpl;
 import com.respace.service.FPUserGroupServiceImpl;
