@@ -129,6 +129,19 @@ public class FPUser {
 		this.score_static = score_static;
 	}
 
+
+	public String toStringSealize() {
+		return "?id=" + id + "&device_id=" + device_id + "&group_id="
+				+ group_id + "&nickname=" + nickname
+				+ "&is_nickname_initialized=" + is_nickname_initialized
+				+ "&tag=" + tag + "&twitter=" + twitter
+				+ "&is_twitter_visible=" + is_twitter_visible + "&facebook="
+				+ facebook + "&is_facebook_visible=" + is_facebook_visible
+				+ "&score_dynamic=" + score_dynamic + "&score_static="
+				+ score_static + "&query_start=" + query_start
+				+ "&query_number=" + query_number;
+	}
+
 	@Override
 	public String toString() {
 		return "{\"id\":\"" + id + "\",\"device_id\":\"" + device_id
@@ -144,4 +157,6 @@ public class FPUser {
 				+ "\",\"query_start\":\"" + query_start
 				+ "\",\"query_number\":\"" + query_number + "\"}";
 	}
+	
+	
 }
