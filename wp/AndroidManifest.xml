@@ -26,28 +26,37 @@
         <activity
             android:name="com.JSCorp.wp.DynamicBracketActivity"
             android:label="@string/title_activity_dynamic_bracket"
-            android:screenOrientation="portrait"
-            android:parentActivityName="com.JSCorp.wp.MainActivity" >
+            android:parentActivityName="com.JSCorp.wp.MainActivity"
+            android:screenOrientation="portrait" >
             <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.JSCorp.wp.MainActivity" />
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.JSCorp.wp.MainActivity" />
         </activity>
         <activity
             android:name="com.JSCorp.wp.StaticBracketActivity"
             android:label="@string/title_activity_static_bracket"
-            android:screenOrientation="portrait"
-            android:parentActivityName="com.JSCorp.wp.MainActivity" >
+            android:parentActivityName="com.JSCorp.wp.MainActivity"
+            android:screenOrientation="portrait" >
             <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.JSCorp.wp.MainActivity" />
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.JSCorp.wp.MainActivity" />
         </activity>
         <activity
             android:name="com.JSCorp.wp.DynamicPredictionActivity"
             android:label="@string/title_activity_dynamic_prediction"
             android:parentActivityName="com.JSCorp.wp.DynamicBracketActivity" >
             <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.JSCorp.wp.DynamicBracketActivity" />
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.JSCorp.wp.DynamicBracketActivity" />
+        </activity>
+        <activity
+            android:name="com.JSCorp.wp.DynamicRankActivity"
+            android:label="@string/title_activity_dynamic_rank"
+            android:parentActivityName="com.JSCorp.wp.MainActivity"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.JSCorp.wp.MainActivity" />
         </activity>
     </application>
 

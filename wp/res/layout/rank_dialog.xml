@@ -1,0 +1,51 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="fill_parent"
+android:layout_height="fill_parent"
+android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="0.4"
+        android:orientation="vertical"/>
+
+    <TableLayout
+    	android:layout_width="fill_parent"
+    	android:layout_height="fill_parent"
+    	android:layout_weight="0.6"
+    	android:shrinkColumns="*" 
+    	android:stretchColumns="*" 
+    	android:background="#A9E2F3"
+    	android:orientation="vertical"> 
+    	<TableRow 
+        	android:layout_height="wrap_content" 
+        	android:layout_width="fill_parent" 
+        	android:gravity="center_horizontal">
+        	<ImageButton
+            	android:id="@+id/imageButton1"
+            	android:layout_width="wrap_content"
+            	android:layout_height="wrap_content"
+            	android:src="@drawable/abc_ic_clear_search_api_disabled_holo_light" />
+   		</TableRow>  
+		<TableRow 
+        	android:layout_height="wrap_content" 
+        	android:layout_width="fill_parent"
+        	android:gravity="center_horizontal">
+        	<Button
+            	android:id="@+id/btnFacebook"
+            	android:layout_weight="1" 
+            	android:padding="20dip"
+            	android:gravity="center"
+            	android:text="Facebook"
+            	android:textStyle="bold" />
+        	<Button
+            	android:id="@+id/btnTwitter"
+            	android:layout_weight="1" 
+            	android:padding="20dip"
+            	android:gravity="center"
+            	android:text="Twitter"
+            	android:textStyle="bold" />
+		</TableRow>  
+    </TableLayout>
+
+</LinearLayout>

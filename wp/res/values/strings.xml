@@ -11,5 +11,6 @@
     <string name="title_activity_static_bracket">StaticBracketActivity</string>
     <string name="title_activity_example">ExampleActivity</string>
     <string name="title_activity_dynamic_prediction">DynamicPredictionActivity</string>
+    <string name="title_activity_dynamic_rank">DynamicRankActivity</string>
 
 </resources>
