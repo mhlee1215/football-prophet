@@ -1,16 +1,9 @@
 package com.JSCorp.wp.adapter;
 
-import com.JSCorp.wp.DynamicBracketActivity;
-import com.JSCorp.wp.DynamicPredictionActivity;
 import com.JSCorp.wp.R;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.view.ContextThemeWrapper;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +12,6 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class RankListAdapter extends BaseAdapter {
 	
@@ -63,7 +55,7 @@ public class RankListAdapter extends BaseAdapter {
 		}
 		final int positionInt  = position;
 		
-		((TextView) convertView.findViewById(R.id.textView1)).setText(categorya[position]);
+		((TextView) convertView.findViewById(R.id.dynamicRankView1)).setText(categorya[position]);
 		
 		convertView.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
@@ -75,30 +67,11 @@ public class RankListAdapter extends BaseAdapter {
 	}
 	
 	public void detailInfo(int position) {
-		/*
-		//ContextThemeWrapper ctw = new ContextThemeWrapper(mContext, R.style.DialogSlideAnim);
-		AlertDialog.Builder detailPop = new AlertDialog.Builder(mContext);
-		detailPop.setMessage(categorya[position]).setCancelable(false).setPositiveButton("확인", new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int id) {
-				Toast.makeText(mContext,  "확인을 클릭 했습니다.", Toast.LENGTH_LONG).show();
-			}
-		}).setNegativeButton("닫기", new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int id) {
-				dialog.cancel();
-			}
-		});
-		
-		AlertDialog alert = detailPop.create();
-		//alert.setTitle("상세정보");
-		//alert.setIcon(android.R.drawable.ic_search_category_default);
-		
-		alert.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
-		alert.show();
-		*/
+
 		
 		final Dialog dialog = new Dialog(mContext);
 	    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); 
-	    dialog.setContentView(R.layout.prediction_dialog);
+	    dialog.setContentView(R.layout.rank_dialog);
 
 	    // set the custom dialog components - text and button
 	    //TextView text = (TextView) dialog.findViewById(R.id.txtDiaTitle);
@@ -112,18 +85,6 @@ public class RankListAdapter extends BaseAdapter {
 	        public void onClick(View v) {
 	            dialog.dismiss();
 
-	        }
-	    }); 
-	    
-	    Button predictionButton = (Button) dialog.findViewById(R.id.btnPredict);
-	    // if button is clicked, close the custom dialog
-	    predictionButton.setOnClickListener(new View.OnClickListener() {
-
-	        @Override
-	        public void onClick(View v) {
-	            dialog.dismiss();
-	            Intent dynamicPredictionActivity = new Intent(mContext, DynamicPredictionActivity.class);
-	        	mContext.startActivity(dynamicPredictionActivity); 
 	        }
 	    }); 
 	    

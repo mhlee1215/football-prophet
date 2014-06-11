@@ -43,15 +43,6 @@ android:orientation="vertical">
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textStyle="bold" />
 
-        <View
-            android:id="@+id/view1"
-            android:layout_width="match_parent"
-            android:layout_height="1dip"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/txtDiaMsg"
-            android:layout_marginTop="20dp"
-            android:background="#2E9AFE" />
-
         <Button
             android:id="@+id/btnPredict"
             android:layout_width="149dp"
@@ -64,20 +55,6 @@ android:orientation="vertical">
             android:padding="5dp"
             android:text="Predict"
             android:textStyle="bold" />
-       <!--    
-        <Button
-            android:id="@+id/btnOk"
-            android:layout_width="152dp"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/btnPredict"
-            android:layout_alignBottom="@+id/btnPredict"
-            android:layout_alignParentRight="true"
-            android:layout_margin="5dp"
-            android:gravity="center"
-            android:padding="5dp"
-            android:text="OK"
-            android:textStyle="bold" />
-   -->
 
     </LinearLayout>
 
