@@ -1,5 +1,8 @@
 package com.respace.web;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +17,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+
+
 
 
 
@@ -109,7 +115,7 @@ private Logger logger = Logger.getLogger(getClass());
 		if(nickname.isEmpty())
 			return "fail-param-nickname-empty";
 		else if(device_id.isEmpty())
-			return "fail-param-device_id-empty";
+			return "fail-param-device_id-empty"+"한글나옴?";
 		else if(userList.size() > 0)
 			return "fail-user-exist";
 		else{

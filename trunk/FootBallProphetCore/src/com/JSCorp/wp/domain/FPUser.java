@@ -6,10 +6,29 @@ public class FPUser {
 	int group_id;
 	String nickname;
 	String tag;
+	String twitter;
+	String facebook;
+	
 	int score_dynamic;
 	int score_static;
 	private int query_start = 0;
 	private int query_number = 0;
+
+	public String getTwitter() {
+		return twitter;
+	}
+
+	public void setTwitter(String twitter) {
+		this.twitter = twitter;
+	}
+
+	public String getFacebook() {
+		return facebook;
+	}
+
+	public void setFacebook(String facebook) {
+		this.facebook = facebook;
+	}
 
 	public int getQuery_start() {
 		return query_start;
@@ -87,8 +106,10 @@ public class FPUser {
 	public String toString() {
 		return "{\"id\":\"" + id + "\",\"device_id\":\"" + device_id
 				+ "\",\"group_id\":\"" + group_id + "\",\"nickname\":\""
-				+ nickname + "\",\"tag\":\"" + tag + "\",\"score_dynamic\":\""
-				+ score_dynamic + "\",\"score_static\":\"" + score_static
+				+ nickname + "\",\"tag\":\"" + tag + "\",\"twitter\":\""
+				+ twitter + "\",\"facebook\":\"" + facebook
+				+ "\",\"score_dynamic\":\"" + score_dynamic
+				+ "\",\"score_static\":\"" + score_static
 				+ "\",\"query_start\":\"" + query_start
 				+ "\",\"query_number\":\"" + query_number + "\"}";
 	}
