@@ -5,7 +5,7 @@ public class FPUser {
 	String device_id;
 	int group_id;
 	String nickname;
-	String is_initialized;
+	String is_nickname_initialized;
 	String tag;
 	String twitter;
 	String is_twitter_visible;
@@ -17,13 +17,12 @@ public class FPUser {
 	private int query_start = 0;
 	private int query_number = 0;
 
-	
-	public String getIs_initialized() {
-		return is_initialized;
+	public String getIs_nickname_initialized() {
+		return is_nickname_initialized;
 	}
 
-	public void setIs_initialized(String is_initialized) {
-		this.is_initialized = is_initialized;
+	public void setIs_nickname_initialized(String is_nickname_initialized) {
+		this.is_nickname_initialized = is_nickname_initialized;
 	}
 
 	public String getIs_twitter_visible() {
@@ -134,8 +133,10 @@ public class FPUser {
 	public String toString() {
 		return "{\"id\":\"" + id + "\",\"device_id\":\"" + device_id
 				+ "\",\"group_id\":\"" + group_id + "\",\"nickname\":\""
-				+ nickname + "\",\"tag\":\"" + tag + "\",\"twitter\":\""
-				+ twitter + "\",\"is_twitter_visible\":\"" + is_twitter_visible
+				+ nickname + "\",\"is_nickname_initialized\":\""
+				+ is_nickname_initialized + "\",\"tag\":\"" + tag
+				+ "\",\"twitter\":\"" + twitter
+				+ "\",\"is_twitter_visible\":\"" + is_twitter_visible
 				+ "\",\"facebook\":\"" + facebook
 				+ "\",\"is_facebook_visible\":\"" + is_facebook_visible
 				+ "\",\"score_dynamic\":\"" + score_dynamic
