@@ -107,6 +107,19 @@ private Logger logger = Logger.getLogger(getClass());
 		String device_id = ServletRequestUtils.getStringParameter(request, "device_id", "");
 		String nickname = ServletRequestUtils.getStringParameter(request, "nickname", "");
 		
+
+		String is_nickname_initialized = ServletRequestUtils.getStringParameter(request, "is_nickname_initialized", "");
+		
+		String tag = ServletRequestUtils.getStringParameter(request, "tag", "");
+		Integer group_id = ServletRequestUtils.getIntParameter(request, "group_id", 0);
+		Integer score_dynamic = ServletRequestUtils.getIntParameter(request, "score_dynamic", 0);
+		Integer score_static = ServletRequestUtils.getIntParameter(request, "score_static", 0);
+		String twitter = ServletRequestUtils.getStringParameter(request, "twitter", "");
+		String facebook = ServletRequestUtils.getStringParameter(request, "facebook", "");
+		String is_twitter_visible = ServletRequestUtils.getStringParameter(request, "is_twitter_visible", "");
+		String is_facebook_visible = ServletRequestUtils.getStringParameter(request, "is_facebook_visible", "");
+		
+		
 		FPUser user = new FPUser();
 		user.setNickname(nickname);
 		user.setDevice_id(device_id);
@@ -122,6 +135,19 @@ private Logger logger = Logger.getLogger(getClass());
 			FPUser addUser = new FPUser();
 			addUser.setNickname(nickname);
 			addUser.setDevice_id(device_id);
+
+			addUser.setIs_nickname_initialized(is_nickname_initialized);
+			
+			addUser.setTag(tag);
+			addUser.setGroup_id(group_id);
+			addUser.setScore_dynamic(score_dynamic);
+			addUser.setScore_static(score_static);
+			
+			addUser.setTwitter(twitter);
+			addUser.setIs_twitter_visible(is_twitter_visible);
+			addUser.setFacebook(facebook);
+			addUser.setIs_facebook_visible(is_facebook_visible);
+			
 			try {
 				userService.createUser(addUser);
 			} catch (Exception e) {
@@ -137,6 +163,55 @@ private Logger logger = Logger.getLogger(getClass());
 				return "success";
 			else
 				return "fail-unknown";
+		}
+    }
+	
+	@RequestMapping(value="/api.updateUser.do")
+    public @ResponseBody String updateUser(HttpServletRequest request, HttpServletResponse response) {
+		Integer query_page = ServletRequestUtils.getIntParameter(request, "query_page", 1);
+		Integer id = ServletRequestUtils.getIntParameter(request, "id", 0);
+		String device_id = ServletRequestUtils.getStringParameter(request, "device_id", "");
+		String nickname = ServletRequestUtils.getStringParameter(request, "nickname", "");
+		String is_nickname_initialized = ServletRequestUtils.getStringParameter(request, "is_nickname_initialized", "");
+		
+		String tag = ServletRequestUtils.getStringParameter(request, "tag", "");
+		Integer group_id = ServletRequestUtils.getIntParameter(request, "group_id", 0);
+		Integer score_dynamic = ServletRequestUtils.getIntParameter(request, "score_dynamic", 0);
+		Integer score_static = ServletRequestUtils.getIntParameter(request, "score_static", 0);
+		String twitter = ServletRequestUtils.getStringParameter(request, "twitter", "");
+		String facebook = ServletRequestUtils.getStringParameter(request, "facebook", "");
+		String is_twitter_visible = ServletRequestUtils.getStringParameter(request, "is_twitter_visible", "");
+		String is_facebook_visible = ServletRequestUtils.getStringParameter(request, "is_facebook_visible", "");
+		
+		FPUser user = new FPUser();
+		//user.setNickname(nickname);
+		user.setId(id);
+		user.setDevice_id(device_id);
+		List<FPUser> userList = userService.readUserList(user);
+		
+		if(userList.size() != 1){
+			return "fail-unmatched-number-of-user";
+		}else{
+			FPUser updateUser = new FPUser();
+			updateUser.setId(userList.get(0).getId());
+			//updateUser.setDevice_id(device_id);
+			
+			updateUser.setNickname(nickname);
+			updateUser.setIs_nickname_initialized(is_nickname_initialized);
+			
+			updateUser.setTag(tag);
+			updateUser.setGroup_id(group_id);
+			updateUser.setScore_dynamic(score_dynamic);
+			updateUser.setScore_static(score_static);
+			
+			updateUser.setTwitter(twitter);
+			updateUser.setIs_twitter_visible(is_twitter_visible);
+			updateUser.setFacebook(facebook);
+			updateUser.setIs_facebook_visible(is_facebook_visible);
+			System.out.println(updateUser);
+			userService.updateUser(updateUser);
+			
+			return "success";
 		}
     }
 	
