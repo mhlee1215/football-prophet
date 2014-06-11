@@ -89,7 +89,7 @@ public class GameService {
 						if ((str = (String) o2.get("away_team_id")) != null) {
 							int away_team_id = Integer.parseInt(str);
 							matchSchedule.setAway_team_id(away_team_id);
-							matchSchedule.setHome_team_name(teamNameMap.get(away_team_id));
+							matchSchedule.setAway_team_name(teamNameMap.get(away_team_id));
 						}
 						if ((str = (String) o2.get("city")) != null) {
 							matchSchedule.setCity(str);
@@ -218,8 +218,8 @@ public class GameService {
 	public static void main(String[] args) throws ParseException {
 
 		System.out.println(GameService.getGameMatchSchedules().size());
-		
-		System.out.println(GameService.getGameTeam().size());
+		System.out.println(GameService.getGameMatchSchedules());
+		//System.out.println(GameService.getGameTeam().size());
 		// // HttpClient ??
 		// HttpClient httpclient = new DefaultHttpClient();
 		// try {
