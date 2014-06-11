@@ -4,13 +4,32 @@ public class FPGameMatchSchedule {
 	int id;
 	String type;
 	int home_team_id;
+	String home_team_name;
 	int away_team_id;
+	String away_team_name;
 	String city;
 	String time;
 	String reference_time;
 
 	private int query_start = 0;
 	private int query_number = 0;
+
+	
+	public String getHome_team_name() {
+		return home_team_name;
+	}
+
+	public void setHome_team_name(String home_team_name) {
+		this.home_team_name = home_team_name;
+	}
+
+	public String getAway_team_name() {
+		return away_team_name;
+	}
+
+	public void setAway_team_name(String away_team_name) {
+		this.away_team_name = away_team_name;
+	}
 
 	public int getQuery_start() {
 		return query_start;
@@ -88,9 +107,12 @@ public class FPGameMatchSchedule {
 	public String toString() {
 		return "{\"id\":\"" + id + "\",\"type\":\"" + type
 				+ "\",\"home_team_id\":\"" + home_team_id
-				+ "\",\"away_team_id\":\"" + away_team_id + "\",\"city\":\""
-				+ city + "\",\"time\":\"" + time + "\",\"reference_time\":\""
-				+ reference_time + "\",\"query_start\":\"" + query_start
+				+ "\",\"home_team_name\":\"" + home_team_name
+				+ "\",\"away_team_id\":\"" + away_team_id
+				+ "\",\"away_team_name\":\"" + away_team_name
+				+ "\",\"city\":\"" + city + "\",\"time\":\"" + time
+				+ "\",\"reference_time\":\"" + reference_time
+				+ "\",\"query_start\":\"" + query_start
 				+ "\",\"query_number\":\"" + query_number + "\"}";
 	}
 }
