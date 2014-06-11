@@ -76,10 +76,10 @@ public class PredictionListAdapter extends BaseAdapter {
 		((TextView) convertView.findViewById(R.id.myPrediction)).setVisibility(View.INVISIBLE);
 		(convertView.findViewById(R.id.predictionResult)).setVisibility(View.INVISIBLE);
 		
-		//Default + 예측 (nations, nextGameTimer/Timer, myPrediction)
+		//Default + prediction (nations, nextGameTimer/Timer, myPrediction)
 		
 		//Ended (nations, matchResult, predictionREsult)
-		//종료된 경기/경기중 경기 Edit 못하게 설정
+		//Ended game/On going game: set to uneditable
 		
 		
 		convertView.setOnClickListener(new Button.OnClickListener() {
@@ -92,26 +92,6 @@ public class PredictionListAdapter extends BaseAdapter {
 	}
 	
 	public void detailInfo(int position) {
-		/*
-		//ContextThemeWrapper ctw = new ContextThemeWrapper(mContext, R.style.DialogSlideAnim);
-		AlertDialog.Builder detailPop = new AlertDialog.Builder(mContext);
-		detailPop.setMessage(categorya[position]).setCancelable(false).setPositiveButton("확인", new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int id) {
-				Toast.makeText(mContext,  "확인을 클릭 했습니다.", Toast.LENGTH_LONG).show();
-			}
-		}).setNegativeButton("닫기", new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int id) {
-				dialog.cancel();
-			}
-		});
-		
-		AlertDialog alert = detailPop.create();
-		//alert.setTitle("상세정보");
-		//alert.setIcon(android.R.drawable.ic_search_category_default);
-		
-		alert.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
-		alert.show();
-		*/
 		
 		final Dialog dialog = new Dialog(mContext);
 	    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); 
