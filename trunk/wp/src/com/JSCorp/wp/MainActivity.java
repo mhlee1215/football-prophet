@@ -19,7 +19,7 @@ public class MainActivity extends FragmentActivity implements
 	private TabsPagerAdapter mAdapter;
 	private ActionBar actionBar;
 	// Tab titles
-	private String[] tabs = { "나의 예언", "예언자 랭킹", /*"경기 분석",*/ "유저정보" };
+	private String[] tabs = { "나의 예언", "예언자 랭킹", /*"경기 분석",*/ "설정" };
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

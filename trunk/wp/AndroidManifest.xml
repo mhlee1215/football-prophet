@@ -58,6 +58,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.JSCorp.wp.MainActivity" />
         </activity>
+        <activity
+            android:name="com.JSCorp.wp.UserProfileActivity"
+            android:label="@string/title_activity_user_profile"
+            android:parentActivityName="com.JSCorp.wp.MainActivity"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.JSCorp.wp.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
