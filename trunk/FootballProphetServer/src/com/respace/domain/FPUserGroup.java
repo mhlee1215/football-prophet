@@ -40,8 +40,8 @@ public class FPUserGroup {
 
 	@Override
 	public String toString() {
-		return "{\"FPUserGroup\":[\"id\":\"" + id + "\", name\":\"" + name
-				+ "\", query_start\":\"" + query_start
-				+ "\", query_number\":\"" + query_number + "]}";
+		return "{\"id\":\"" + id + "\",\"name\":\"" + name
+				+ "\",\"query_start\":\"" + query_start
+				+ "\",\"query_number\":\"" + query_number + "\"}";
 	}
 }

@@ -9,8 +9,18 @@ public class FPGameProphet {
 	String away_team_win;
 	String draw;
 	String prophet_result;
+	String comment;
+	
 	private int query_start = 0;
 	private int query_number = 0;
+
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
 
 	public int getQuery_start() {
 		return query_start;
@@ -94,13 +104,12 @@ public class FPGameProphet {
 
 	@Override
 	public String toString() {
-		return "{\"FPGameProphet\":[\"id\":\"" + id + "\", user_id\":\""
-				+ user_id + "\", match_id\":\"" + match_id
-				+ "\", prophet_type\":\"" + prophet_type
-				+ "\", home_team_win\":\"" + home_team_win
-				+ "\", away_team_win\":\"" + away_team_win + "\", draw\":\""
-				+ draw + "\", prophet_result\":\"" + prophet_result
-				+ "\", query_start\":\"" + query_start
-				+ "\", query_number\":\"" + query_number + "]}";
+		return "{\"id\":\"" + id + "\",\"user_id\":\"" + user_id
+				+ "\",\"match_id\":\"" + match_id + "\",\"prophet_type\":\""
+				+ prophet_type + "\",\"home_team_win\":\"" + home_team_win
+				+ "\",\"away_team_win\":\"" + away_team_win + "\",\"draw\":\""
+				+ draw + "\",\"prophet_result\":\"" + prophet_result
+				+ "\",\"comment\":\"" + comment + "\",\"query_start\":\""
+				+ query_start + "\",\"query_number\":\"" + query_number + "\"}";
 	}
 }

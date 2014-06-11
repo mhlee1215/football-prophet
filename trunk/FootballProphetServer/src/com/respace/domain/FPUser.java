@@ -85,11 +85,11 @@ public class FPUser {
 
 	@Override
 	public String toString() {
-		return "{\"FPUser\":[\"id\":\"" + id + "\", device_id\":\"" + device_id
-				+ "\", group_id\":\"" + group_id + "\", nickname\":\""
-				+ nickname + "\", tag\":\"" + tag + "\", score_dynamic\":\""
-				+ score_dynamic + "\", score_static\":\"" + score_static
-				+ "\", query_start\":\"" + query_start
-				+ "\", query_number\":\"" + query_number + "]}";
+		return "{\"id\":\"" + id + "\",\"device_id\":\"" + device_id
+				+ "\",\"group_id\":\"" + group_id + "\",\"nickname\":\""
+				+ nickname + "\",\"tag\":\"" + tag + "\",\"score_dynamic\":\""
+				+ score_dynamic + "\",\"score_static\":\"" + score_static
+				+ "\",\"query_start\":\"" + query_start
+				+ "\",\"query_number\":\"" + query_number + "\"}";
 	}
 }

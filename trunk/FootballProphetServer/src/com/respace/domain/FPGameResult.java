@@ -68,11 +68,11 @@ public class FPGameResult {
 
 	@Override
 	public String toString() {
-		return "{\"FPGameResult\":[\"id\":\"" + id + "\", match_id\":\""
-				+ match_id + "\", match_type\":\"" + match_type
-				+ "\", home_team_score\":\"" + home_team_score
-				+ "\", away_team_score\":\"" + away_team_score
-				+ "\", query_start\":\"" + query_start
-				+ "\", query_number\":\"" + query_number + "]}";
+		return "{\"id\":\"" + id + "\",\"match_id\":\"" + match_id
+				+ "\",\"match_type\":\"" + match_type
+				+ "\",\"home_team_score\":\"" + home_team_score
+				+ "\",\"away_team_score\":\"" + away_team_score
+				+ "\",\"query_start\":\"" + query_start
+				+ "\",\"query_number\":\"" + query_number + "\"}";
 	}
 }
