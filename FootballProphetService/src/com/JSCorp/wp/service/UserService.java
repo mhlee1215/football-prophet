@@ -147,7 +147,7 @@ public class UserService {
 	
 
 	public static FPUser getUserByDeviceId(String device_id) {
-		FPUser user = new FPUser();
+		FPUser user = null;
 		
 		HttpClient httpclient = new DefaultHttpClient();
 		
@@ -175,10 +175,14 @@ public class UserService {
 					JSONObject o = (JSONObject) j.parse(line);
 					JSONArray lang = (JSONArray) o.get("users");
 					for (int i = 0; i < lang.size(); i++) {
-
+						user = new FPUser();
 						JSONObject o2 = (JSONObject) lang.get(i);
 						
 						user.setId(Integer.parseInt((String)o2.get("id")));
+						if(Integer.parseInt((String)o2.get("id")) == 0)
+							return null;
+						
+						
 						user.setDevice_id((String)o2.get("device_id"));
 						user.setNickname((String)o2.get("nickname"));
 						user.setTag((String)o2.get("tag"));
@@ -270,23 +274,26 @@ public class UserService {
 		//System.out.println(UserService.isUserExistByDeviceId("qwert"));
 		//System.out.println(UserService.getUserByDeviceId("qwert"));
 //		
-		FPUser user = new FPUser();
-		user.setNickname("abcdeee4");
-		user.setDevice_id("000000006");
-		user.setIs_nickname_initialized("N");
-		
+//		FPUser user = new FPUser();
+//		user.setNickname("abcdeee4");
+//		user.setDevice_id("000000006");
+//		user.setIs_nickname_initialized("N");
 //		
-		UserService.addUser(user);
+////		
+//		UserService.addUser(user);
+//		
+//		//if(1==1) return;
+//		FPUser userUpdate = new FPUser();
+//		userUpdate.setNickname("aaaabc345345de");
+//		userUpdate.setDevice_id("000000005");
+//		userUpdate.setScore_dynamic(100);
+//		userUpdate.setScore_static(1000);
+//		
+//		UserService.updateUser(userUpdate);
 		
-		//if(1==1) return;
-		FPUser userUpdate = new FPUser();
-		userUpdate.setNickname("aaaabc345345de");
-		userUpdate.setDevice_id("000000005");
-		userUpdate.setScore_dynamic(100);
-		userUpdate.setScore_static(1000);
 		
-		UserService.updateUser(userUpdate);
-		
+		FPUser readUser = UserService.getUserByDeviceId("1111");
+		System.out.println(readUser);
 
 		// // HttpClient ??
 		// HttpClient httpclient = new DefaultHttpClient();
