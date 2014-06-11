@@ -64,6 +64,8 @@ public class UserService {
 		}
 		return true;
 	}
+	
+	
 
 	public static boolean isUserExistByDeviceId(String divice_id) {
 		HttpClient httpclient = new DefaultHttpClient();
@@ -101,6 +103,45 @@ public class UserService {
 			httpclient.getConnectionManager().shutdown();
 		}
 		return true;
+	}
+	
+	public static boolean addUser(FPUser user) {
+		HttpClient httpclient = new DefaultHttpClient();
+		try {
+
+			HttpGet httpget = new HttpGet(Env.url + "api.addUser.do"
+					+ user.toStringSealize());
+
+			HttpResponse response = httpclient.execute(httpget);
+			HttpEntity entity = response.getEntity();
+
+			if (entity != null) {
+				BufferedReader rd = new BufferedReader(new InputStreamReader(
+						response.getEntity().getContent()));
+
+				String line = "";
+				while ((line = rd.readLine()) != null) {
+					if (line.startsWith("fail")) {
+						// Error handling
+						return false;
+					} else if (line.equals("success")) {
+						return true;
+					} else {
+						return false;
+					}
+				}
+			}
+			httpget.abort();
+			httpclient.getConnectionManager().shutdown();
+
+		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			httpclient.getConnectionManager().shutdown();
+		}
+		return false;
 	}
 
 	public static FPUser getUserByDeviceId(String device_id) {
