@@ -7,11 +7,17 @@
     android:orientation="vertical">
     
 	<TextView
-	    android:id="@+id/dynamicRankView1"
+	    android:id="@+id/nickname"
 	    android:layout_width="wrap_content"
     	android:layout_height="wrap_content"
     	android:layout_margin="10dp"
-    	android:text="TextView"
+    	android:text="닉네임"
     	android:textAppearance="?android:attr/textAppearanceLarge" />
+	<TextView
+	    android:id="@+id/tag"
+	    android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:layout_margin="10dp"
+    	android:text="my tag blah blah blah" />
 	
 </LinearLayout>

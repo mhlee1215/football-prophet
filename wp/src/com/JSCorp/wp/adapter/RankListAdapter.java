@@ -55,7 +55,7 @@ public class RankListAdapter extends BaseAdapter {
 		}
 		final int positionInt  = position;
 		
-		((TextView) convertView.findViewById(R.id.dynamicRankView1)).setText(categorya[position]);
+		//((TextView) convertView.findViewById(R.id.nickname)).setText(categorya[position]);
 		
 		convertView.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
