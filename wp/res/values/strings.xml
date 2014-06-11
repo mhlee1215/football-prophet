@@ -12,5 +12,6 @@
     <string name="title_activity_example">ExampleActivity</string>
     <string name="title_activity_dynamic_prediction">DynamicPredictionActivity</string>
     <string name="title_activity_dynamic_rank">DynamicRankActivity</string>
+    <string name="title_activity_user_profile">UserProfileActivity</string>
 
 </resources>
