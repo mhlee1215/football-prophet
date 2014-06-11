@@ -67,6 +67,22 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.JSCorp.wp.MainActivity" />
         </activity>
+        <activity
+            android:name="com.JSCorp.wp.EditNicknameActivity"
+            android:label="@string/title_activity_edit_nickname" >
+        </activity>
+        <activity
+            android:name="com.JSCorp.wp.EditTag1Activity"
+            android:label="@string/title_activity_edit_tag1" >
+        </activity>
+        <activity
+            android:name="com.JSCorp.wp.EditFacebookActivity"
+            android:label="@string/title_activity_edit_facebook" >
+        </activity>
+        <activity
+            android:name="com.JSCorp.wp.EditTwitterActivity"
+            android:label="@string/title_activity_edit_twitter" >
+        </activity>
     </application>
 
 </manifest>

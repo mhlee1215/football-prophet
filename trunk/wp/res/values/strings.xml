@@ -13,5 +13,9 @@
     <string name="title_activity_dynamic_prediction">DynamicPredictionActivity</string>
     <string name="title_activity_dynamic_rank">DynamicRankActivity</string>
     <string name="title_activity_user_profile">UserProfileActivity</string>
+    <string name="title_activity_edit_nickname">EditNicknameActivity</string>
+    <string name="title_activity_edit_tag1">EditTag1Activity</string>
+    <string name="title_activity_edit_facebook">EditFacebookActivity</string>
+    <string name="title_activity_edit_twitter">EditTwitterActivity</string>
 
 </resources>
