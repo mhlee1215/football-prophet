@@ -5,14 +5,42 @@ public class FPUser {
 	String device_id;
 	int group_id;
 	String nickname;
+	String is_initialized;
 	String tag;
 	String twitter;
+	String is_twitter_visible;
 	String facebook;
+	String is_facebook_visible;
 	
 	int score_dynamic;
 	int score_static;
 	private int query_start = 0;
 	private int query_number = 0;
+
+	
+	public String getIs_initialized() {
+		return is_initialized;
+	}
+
+	public void setIs_initialized(String is_initialized) {
+		this.is_initialized = is_initialized;
+	}
+
+	public String getIs_twitter_visible() {
+		return is_twitter_visible;
+	}
+
+	public void setIs_twitter_visible(String is_twitter_visible) {
+		this.is_twitter_visible = is_twitter_visible;
+	}
+
+	public String getIs_facebook_visible() {
+		return is_facebook_visible;
+	}
+
+	public void setIs_facebook_visible(String is_facebook_visible) {
+		this.is_facebook_visible = is_facebook_visible;
+	}
 
 	public String getTwitter() {
 		return twitter;
@@ -107,7 +135,9 @@ public class FPUser {
 		return "{\"id\":\"" + id + "\",\"device_id\":\"" + device_id
 				+ "\",\"group_id\":\"" + group_id + "\",\"nickname\":\""
 				+ nickname + "\",\"tag\":\"" + tag + "\",\"twitter\":\""
-				+ twitter + "\",\"facebook\":\"" + facebook
+				+ twitter + "\",\"is_twitter_visible\":\"" + is_twitter_visible
+				+ "\",\"facebook\":\"" + facebook
+				+ "\",\"is_facebook_visible\":\"" + is_facebook_visible
 				+ "\",\"score_dynamic\":\"" + score_dynamic
 				+ "\",\"score_static\":\"" + score_static
 				+ "\",\"query_start\":\"" + query_start
