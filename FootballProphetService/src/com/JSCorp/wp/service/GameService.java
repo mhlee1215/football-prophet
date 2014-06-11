@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.http.HttpEntity;
@@ -24,6 +25,17 @@ import com.JSCorp.wp.var.Env;
 public class GameService {
 
 	public static ArrayList<FPGameMatchSchedule> getGameMatchSchedules() {
+		
+		ArrayList<FPGameTeam> teams = getGameTeam();
+		
+		Map<Integer, String> teamNameMap = new HashMap<Integer, String>();
+		for(FPGameTeam team : teams){
+			if("kor".equals(Env.lang))
+				teamNameMap.put(team.getId(), team.getTeam_name_kor());
+			else
+				teamNameMap.put(team.getId(), team.getTeam_name());
+		}
+		
 		// HttpClient ??
 		HttpClient httpclient = new DefaultHttpClient();
 		ArrayList<FPGameMatchSchedule> matches = new ArrayList<FPGameMatchSchedule>();
@@ -70,12 +82,14 @@ public class GameService {
 							matchSchedule.setType(str);
 						}
 						if ((str = (String) o2.get("home_team_id")) != null) {
-							matchSchedule
-									.setAway_team_id(Integer.parseInt(str));
+							int home_team_id = Integer.parseInt(str);
+							matchSchedule.setAway_team_id(home_team_id);
+							matchSchedule.setHome_team_name(teamNameMap.get(home_team_id));
 						}
 						if ((str = (String) o2.get("away_team_id")) != null) {
-							matchSchedule
-									.setAway_team_id(Integer.parseInt(str));
+							int away_team_id = Integer.parseInt(str);
+							matchSchedule.setAway_team_id(away_team_id);
+							matchSchedule.setHome_team_name(teamNameMap.get(away_team_id));
 						}
 						if ((str = (String) o2.get("city")) != null) {
 							matchSchedule.setCity(str);
@@ -198,6 +212,8 @@ public class GameService {
 
 		return null;
 	}
+	
+	
 
 	public static void main(String[] args) throws ParseException {
 
