@@ -44,6 +44,7 @@
         <activity
             android:name="com.JSCorp.wp.DynamicPredictionActivity"
             android:label="@string/title_activity_dynamic_prediction"
+            android:screenOrientation="portrait"
             android:parentActivityName="com.JSCorp.wp.DynamicBracketActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -69,19 +70,23 @@
         </activity>
         <activity
             android:name="com.JSCorp.wp.EditNicknameActivity"
-            android:label="@string/title_activity_edit_nickname" >
+            android:label="@string/title_activity_edit_nickname"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.JSCorp.wp.EditTag1Activity"
-            android:label="@string/title_activity_edit_tag1" >
+            android:label="@string/title_activity_edit_tag1"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.JSCorp.wp.EditFacebookActivity"
-            android:label="@string/title_activity_edit_facebook" >
+            android:label="@string/title_activity_edit_facebook"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.JSCorp.wp.EditTwitterActivity"
-            android:label="@string/title_activity_edit_twitter" >
+            android:label="@string/title_activity_edit_twitter"
+            android:screenOrientation="portrait" >
         </activity>
     </application>
 
