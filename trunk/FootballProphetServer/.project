@@ -3,6 +3,7 @@
 	<name>FootballProphetServer</name>
 	<comment></comment>
 	<projects>
+		<project>FootBallProphetCore</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
