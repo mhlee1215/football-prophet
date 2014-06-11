@@ -7,8 +7,9 @@ import javax.annotation.Resource;
 import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
 import org.springframework.stereotype.Repository;
 
+import com.JSCorp.wp.domain.FPGameProphet;
 import com.ibatis.sqlmap.client.SqlMapClient;
-import com.respace.domain.FPGameProphet;
+
 
 @Repository
 public class FPGameProphetDaoImpl extends SqlMapClientDaoSupport {
