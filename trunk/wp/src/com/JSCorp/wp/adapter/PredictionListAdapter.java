@@ -63,7 +63,24 @@ public class PredictionListAdapter extends BaseAdapter {
 		}
 		final int positionInt  = position;
 		
-		((TextView) convertView.findViewById(R.id.textView1)).setText(categorya[position]);
+		
+		//((TextView) convertView.findViewById(R.id.matchTime)).setText(categorya[position]);
+		//((TextView) convertView.findViewById(R.id.matchResult)).setText(categorya[position]);
+		//((TextView) convertView.findViewById(R.id.myPrediction)).setText(categorya[position]);
+		//((ImageView) convertView.findViewById(R.id.predictionResult)).setImage();
+		
+		//Visibility Setting Cases
+		//Default (nations, nextGameTimer/Timer)
+		((TextView) convertView.findViewById(R.id.nations)).setText(categorya[position]);
+		((TextView) convertView.findViewById(R.id.matchResult)).setVisibility(View.INVISIBLE);
+		((TextView) convertView.findViewById(R.id.myPrediction)).setVisibility(View.INVISIBLE);
+		(convertView.findViewById(R.id.predictionResult)).setVisibility(View.INVISIBLE);
+		
+		//Default + 예측 (nations, nextGameTimer/Timer, myPrediction)
+		
+		//Ended (nations, matchResult, predictionREsult)
+		//종료된 경기/경기중 경기 Edit 못하게 설정
+		
 		
 		convertView.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {

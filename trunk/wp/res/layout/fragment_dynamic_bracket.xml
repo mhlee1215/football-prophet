@@ -4,14 +4,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_vertical"
-    android:orientation="vertical">
+    android:orientation="horizontal">
     
 	<TextView
-	    android:id="@+id/textView1"
+	    android:id="@+id/nations"
 	    android:layout_width="wrap_content"
     	android:layout_height="wrap_content"
     	android:layout_margin="10dp"
     	android:text="TextView"
     	android:textAppearance="?android:attr/textAppearanceLarge" />
+	<TextView
+	    android:id="@+id/matchTime"
+	    android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:layout_margin="10dp"
+    	android:text="경기 시간" />
+	<TextView
+	    android:id="@+id/matchResult"
+	    android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:layout_margin="10dp"
+    	android:text="경기 결과" />
+	<TextView
+	    android:id="@+id/myPrediction"
+	    android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:layout_margin="10dp"
+    	android:text="내 예측/예측 결과" />
+
+	<ImageView
+	    android:id="@+id/predictionResult"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:src="@drawable/ic_launcher" />
+	
 	
 </LinearLayout>
