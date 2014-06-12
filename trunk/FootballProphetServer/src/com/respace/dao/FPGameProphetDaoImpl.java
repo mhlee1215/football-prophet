@@ -45,6 +45,10 @@ public class FPGameProphetDaoImpl extends SqlMapClientDaoSupport {
 		return getSqlMapClientTemplate().update("GameProphetSql.updateGameProphet", gameProphet);
 	}
 	
+	public int updateGameProphetResult(FPGameProphet gameProphet) {
+		return getSqlMapClientTemplate().update("GameProphetSql.updateGameProphetResult", gameProphet);
+	}
+	
 	public int countGameProphet(FPGameProphet gameProphet) {
 		Integer count = (Integer) getSqlMapClientTemplate().queryForObject("GameProphetSql.countGameProphet", gameProphet);
 		return count;

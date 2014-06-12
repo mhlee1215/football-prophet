@@ -1,5 +1,8 @@
 package com.respace.web;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,10 +20,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.JSCorp.wp.domain.FPGameMatchSchedule;
 import com.JSCorp.wp.domain.FPGameProphet;
+import com.JSCorp.wp.domain.FPGameResult;
 import com.JSCorp.wp.domain.FPGameTeam;
 import com.JSCorp.wp.domain.FPUser;
 import com.respace.service.FPGameMatchScheduleServiceImpl;
 import com.respace.service.FPGameProphetServiceImpl;
+import com.respace.service.FPGameResultServiceImpl;
 import com.respace.service.FPGameTeamServiceImpl;
 import com.respace.util.MyJsonUtil;
 
@@ -34,7 +39,8 @@ private Logger logger = Logger.getLogger(getClass());
 	private final FPGameTeamServiceImpl gameTeamService = null;
 	@Autowired
 	private final FPGameProphetServiceImpl gameProphetService = null;
-	
+	@Autowired
+	private final FPGameResultServiceImpl gameResultService = null;
 	
 	
 	@RequestMapping(value="/api.readGameMatchSchedule.do")
@@ -78,19 +84,23 @@ private Logger logger = Logger.getLogger(getClass());
 		String away_team_win = ServletRequestUtils.getStringParameter(request, "away_team_win", "");
 		String draw = ServletRequestUtils.getStringParameter(request, "draw", "");
 		String prophet_result = ServletRequestUtils.getStringParameter(request, "prophet_result", "");	
+		String comment = ServletRequestUtils.getStringParameter(request, "comment", "");
 
-		int count_event = gameMatchScheduleService.countGameMatchSchedule(new FPGameMatchSchedule());
-		System.out.println("count_event :"+count_event);
+		int count_game_prophet = gameProphetService.countGameProphet(new FPGameProphet());
+		System.out.println("count_game_prophet :"+count_game_prophet);
 		
 		int query_number = 12;
-		double pager_size = Math.ceil((double)count_event/query_number);
+		double pager_size = Math.ceil((double)count_game_prophet/query_number);
 		int pager_start = 1;
 		
 		FPGameProphet gameProphet = new FPGameProphet();
-		//gameProphet.setId(id);
-		gameProphet.setId(user_id);
-		gameProphet.setId(match_id);
+		gameProphet.setId(id);
+		gameProphet.setUser_id(user_id);
+		gameProphet.setMatch_id(match_id);
+		
+		//System.out.println("한글..");
 
+		//System.out.println(">>>>gameProphet: "+gameProphet);
 		
 		int query_start = ( query_page - 1 ) * query_number;
 		List<FPGameProphet> gameProphetList = gameProphetService.readGameProphetList(gameProphet);
@@ -114,6 +124,7 @@ private Logger logger = Logger.getLogger(getClass());
 		String away_team_win = ServletRequestUtils.getStringParameter(request, "away_team_win", "");
 		String draw = ServletRequestUtils.getStringParameter(request, "draw", "");
 		String prophet_result = ServletRequestUtils.getStringParameter(request, "prophet_result", "");	
+		String comment = ServletRequestUtils.getStringParameter(request, "comment", "");
 		
 		
 		FPGameProphet gameProphet = new FPGameProphet();
@@ -125,6 +136,7 @@ private Logger logger = Logger.getLogger(getClass());
 		gameProphet.setHome_team_win(home_team_win);
 		gameProphet.setAway_team_win(away_team_win);
 		gameProphet.setDraw(draw);
+		gameProphet.setComment(comment);
 		
 		try {
 			gameProphetService.createGameProphet(gameProphet);
@@ -136,7 +148,7 @@ private Logger logger = Logger.getLogger(getClass());
     }
 	
 	@RequestMapping(value="/api.updateGameProphet.do")
-    public @ResponseBody String updateGameProphet(HttpServletRequest request, HttpServletResponse response) {
+    public @ResponseBody String updateGameProphet(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
 		Integer query_page = ServletRequestUtils.getIntParameter(request, "query_page", 1);
 		
 		Integer id = ServletRequestUtils.getIntParameter(request, "id", 0);
@@ -148,8 +160,10 @@ private Logger logger = Logger.getLogger(getClass());
 		String away_team_win = ServletRequestUtils.getStringParameter(request, "away_team_win", "");
 		String draw = ServletRequestUtils.getStringParameter(request, "draw", "");
 		String prophet_result = ServletRequestUtils.getStringParameter(request, "prophet_result", "");	
+		String comment = ServletRequestUtils.getStringParameter(request, "comment", "");
 		
-		
+		comment = URLDecoder.decode(comment, "UTF-8");
+
 		FPGameProphet gameProphet = new FPGameProphet();
 		gameProphet.setId(id);
 		gameProphet.setUser_id(user_id);
@@ -159,8 +173,10 @@ private Logger logger = Logger.getLogger(getClass());
 		gameProphet.setHome_team_win(home_team_win);
 		gameProphet.setAway_team_win(away_team_win);
 		gameProphet.setDraw(draw);
+		gameProphet.setComment(comment);
 		
-		System.out.println(">>>"+gameProphet);
+		//System.out.println(">>>comment:"+comment);
+		//System.out.println(">>>"+gameProphet);
 		
 		try {
 			gameProphetService.updateGameProphet(gameProphet);
@@ -185,6 +201,94 @@ private Logger logger = Logger.getLogger(getClass());
 		responseHeaders.add("Content-Type", "text/html; charset=UTF-8");
 		return new ResponseEntity<String>(MyJsonUtil.toString(gameTeamList, "GameTeams"), responseHeaders, HttpStatus.CREATED);
     }
+	
+	@RequestMapping("/api.updateGameResult.do")
+    public @ResponseBody String updateGameResult(HttpServletRequest request, HttpServletResponse response) throws Exception {		
+		Integer id = ServletRequestUtils.getIntParameter(request, "id", 0);
+		Integer match_id = ServletRequestUtils.getIntParameter(request, "match_id", 0);
+		
+		String match_type = ServletRequestUtils.getStringParameter(request, "match_type", "");
+		
+		Integer home_team_score = ServletRequestUtils.getIntParameter(request, "home_team_score", 0);
+		Integer away_team_score = ServletRequestUtils.getIntParameter(request, "away_team_score", 0);
+		
+		FPGameResult s = new FPGameResult();
+		s.setId(id);
+		s.setMatch_id(match_id);
+		
+		FPGameResult gameResults = gameResultService.readGameResult(s);
+		
+		
+			try {
+				
+				s.setMatch_type(match_type);
+				s.setHome_team_score(home_team_score);
+				s.setAway_team_score(away_team_score);
+				
+				String tag = "";
+				if(gameResults == null){
+					gameResultService.createGameResult(s);
+					tag = "-result-created";
+				}else{
+					s.setId(gameResults.getId());
+					gameResultService.updateGameResult(s);
+					tag = "-result-updated";
+				}
+				
+				System.out.println(">>>"+s);
+				FPGameProphet prophet = new FPGameProphet();
+				prophet.setMatch_id(match_id);
+				
+				if(home_team_score > away_team_score){
+					prophet.setHome_team_win("1");
+					prophet.setProphet_result("1");
+					gameProphetService.updateGameProphetResult(prophet);
+					
+					prophet.setAway_team_win("1");
+					prophet.setProphet_result("0");
+					gameProphetService.updateGameProphetResult(prophet);
+					
+					prophet.setDraw("1");
+					prophet.setProphet_result("0");
+					gameProphetService.updateGameProphetResult(prophet);
+				}
+				else if(home_team_score < away_team_score){
+					prophet.setHome_team_win("1");
+					prophet.setProphet_result("0");
+					gameProphetService.updateGameProphetResult(prophet);
+					
+					prophet.setAway_team_win("1");
+					prophet.setProphet_result("1");
+					gameProphetService.updateGameProphetResult(prophet);
+					
+					prophet.setDraw("1");
+					prophet.setProphet_result("0");
+					gameProphetService.updateGameProphetResult(prophet);
+				}
+				else{ 
+					prophet.setHome_team_win("1");
+					prophet.setProphet_result("0");
+					gameProphetService.updateGameProphetResult(prophet);
+					
+					prophet.setAway_team_win("1");
+					prophet.setProphet_result("0");
+					gameProphetService.updateGameProphetResult(prophet);
+					
+					prophet.setDraw("1");
+					prophet.setProphet_result("1");
+					gameProphetService.updateGameProphetResult(prophet);
+				}
+				
+				return "success"+tag;
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				return "fail-"+e.toString();
+			}
+		
+    }
+	
+
+	
 	
 //	@RequestMapping("/api.1eventDetail.do")
 //    public ResponseEntity<String> eventDetialAPI(HttpServletRequest request, HttpServletResponse response) throws Exception {		
