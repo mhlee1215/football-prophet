@@ -36,6 +36,10 @@ public class GameService {
 	
 	
 	public static ArrayList<FPGameMatchSchedule> getGameMatchSchedules() {
+		return getGameMatchSchedules(0);
+	}
+	
+	public static ArrayList<FPGameMatchSchedule> getGameMatchSchedules(int user_id) {
 		
 		ArrayList<FPGameTeam> teams = getGameTeam();
 		
@@ -139,6 +143,26 @@ public class GameService {
 			httpget.abort();
 			//System.out.println("----------------------------------------");
 			httpclient.getConnectionManager().shutdown();
+			
+			
+			if( user_id > 0){
+				FPGameProphet prophet = new FPGameProphet();
+				prophet.setUser_id(user_id);
+				List<FPGameProphet> gameProphets = GameService.getGameProphet(prophet);
+				
+				for(FPGameProphet p : gameProphets){
+					int match_id = p.getMatch_id();
+					
+					if(FPGameProphet.FLAG_TRUE.equals(p.getHome_team_win()))
+						matches.get(match_id).setProphet_home_win(1);
+					else if(FPGameProphet.FLAG_TRUE.equals(p.getAway_team_win()))
+						matches.get(match_id).setProphet_away_win(1);
+					else if(FPGameProphet.FLAG_TRUE.equals(p.getDraw()))
+						matches.get(match_id).setProphet_draw(1);
+				}
+			}
+			
+			
 			return matches;
 		} catch (ClientProtocolException e) {
 			e.printStackTrace();
