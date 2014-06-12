@@ -120,8 +120,11 @@ public class MainActivity extends FragmentActivity implements
 				addUser.setDevice_id(deviceId);
 				boolean result = UserService.addUser(addUser);
 				System.out.println("result : "+result);
+				user = UserService.getUserByDeviceId(deviceId);
+				GlobalVars.user = user;
 			}else{
 				Log.i(GlobalVars.WP_INFO_TAG, "USER ALREADY EXISTS");
+				GlobalVars.user = user;
 			}
 			
 			return null;
