@@ -44,4 +44,12 @@ public class FPUserGroup {
 				+ "\",\"query_start\":\"" + query_start
 				+ "\",\"query_number\":\"" + query_number + "\"}";
 	}
+
+
+	public String toStringSealize() {
+		return "?id=" + id + "&name=" + name + "&query_start=" + query_start
+				+ "&query_number=" + query_number;
+	}
+	
+	
 }
