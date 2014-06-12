@@ -2,7 +2,7 @@ package com.JSCorp.wp.domain;
 
 public class FPUserGroup {
 	int id;
-	String name;
+	String name = "";
 	private int query_start = 0;
 	private int query_number = 0;
 

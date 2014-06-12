@@ -1,15 +1,15 @@
 package com.JSCorp.wp.domain;
 
 public class FPGameProphet {
-	int id;
-	String user_id;
-	String match_id;
-	String prophet_type;
-	String home_team_win;
-	String away_team_win;
-	String draw;
-	String prophet_result;
-	String comment;
+	int id = 0;
+	int user_id = 0;
+	int match_id = 0;
+	String prophet_type = "";
+	String home_team_win = "";
+	String away_team_win = "";
+	String draw = "";
+	String prophet_result = "";
+	String comment = "";
 	
 	private int query_start = 0;
 	private int query_number = 0;
@@ -46,19 +46,19 @@ public class FPGameProphet {
 		this.id = id;
 	}
 
-	public String getUser_id() {
+	public int getUser_id() {
 		return user_id;
 	}
 
-	public void setUser_id(String user_id) {
+	public void setUser_id(int user_id) {
 		this.user_id = user_id;
 	}
 
-	public String getMatch_id() {
+	public int getMatch_id() {
 		return match_id;
 	}
 
-	public void setMatch_id(String match_id) {
+	public void setMatch_id(int match_id) {
 		this.match_id = match_id;
 	}
 

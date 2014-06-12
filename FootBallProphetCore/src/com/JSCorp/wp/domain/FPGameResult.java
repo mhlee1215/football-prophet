@@ -2,11 +2,11 @@ package com.JSCorp.wp.domain;
 
 public class FPGameResult {
 	int id;
-	String match_id;
-	String match_type; // '\'1\':group match\n\'2\':Round of 16\n\'3\':Quater
+	int match_id = 0;
+	String match_type = ""; // '\'1\':group match\n\'2\':Round of 16\n\'3\':Quater
 						// final\n\'4\':Semi final\n\'5\':final',
-	int home_team_score;
-	int away_team_score;
+	int home_team_score = 0;
+	int away_team_score = 0;
 	private int query_start = 0;
 	private int query_number = 0;
 
@@ -34,11 +34,11 @@ public class FPGameResult {
 		this.id = id;
 	}
 
-	public String getMatch_id() {
+	public int getMatch_id() {
 		return match_id;
 	}
 
-	public void setMatch_id(String match_id) {
+	public void setMatch_id(int match_id) {
 		this.match_id = match_id;
 	}
 

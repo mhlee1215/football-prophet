@@ -2,9 +2,9 @@ package com.JSCorp.wp.domain;
 
 public class FPGameTeam {
 	int id;
-	String team_name;
-	String team_name_kor;
-	String game_group;
+	String team_name = "";
+	String team_name_kor = "";
+	String game_group = "";
 	private int query_start = 0;
 	private int query_number = 0;
 

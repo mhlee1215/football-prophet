@@ -2,15 +2,15 @@ package com.JSCorp.wp.domain;
 
 public class FPGameMatchSchedule {
 	int id;
-	String type;
+	String type = "";
 	int home_team_id;
-	String home_team_name;
+	String home_team_name = "";
 	int away_team_id;
-	String away_team_name;
-	String gameGroup;
-	String city;
-	String time;
-	String reference_time;
+	String away_team_name = "";
+	String gameGroup = "";
+	String city = "";
+	String time = "";
+	String reference_time = "";
 
 	private int query_start = 0;
 	private int query_number = 0;
