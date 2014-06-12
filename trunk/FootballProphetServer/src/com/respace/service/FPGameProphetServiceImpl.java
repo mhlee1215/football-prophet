@@ -25,6 +25,14 @@ public class FPGameProphetServiceImpl{
 	public List<FPGameProphet> readGameProphetList(FPGameProphet gameProphet) {
 		return gameProphetDao.readGameProphetList(gameProphet);
 	}
+	
+	public List<FPGameProphet> readGameProphetListCorrect(FPGameProphet gameProphet) {
+		return gameProphetDao.readGameProphetListCorrect(gameProphet);
+	}
+	
+	public List<FPGameProphet> readGameProphetListFinished(FPGameProphet gameProphet) {
+		return gameProphetDao.readGameProphetListFinished(gameProphet);
+	}
 
 	public int createGameProphet(FPGameProphet gameProphet) throws Exception {
 		return gameProphetDao.createGameProphet(gameProphet);

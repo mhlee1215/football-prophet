@@ -24,6 +24,16 @@ public class FPGameProphetDaoImpl extends SqlMapClientDaoSupport {
 		List<FPGameProphet> array = getSqlMapClientTemplate().queryForList("GameProphetSql.readGameProphetList", gameProphet);
 		return array;
 	}
+	@SuppressWarnings("unchecked")
+	public List<FPGameProphet> readGameProphetListCorrect(FPGameProphet gameProphet) {	
+		List<FPGameProphet> array = getSqlMapClientTemplate().queryForList("GameProphetSql.readGameProphetListCorrect", gameProphet);
+		return array;
+	}
+	@SuppressWarnings("unchecked")
+	public List<FPGameProphet> readGameProphetListFinished(FPGameProphet gameProphet) {	
+		List<FPGameProphet> array = getSqlMapClientTemplate().queryForList("GameProphetSql.readGameProphetListFinished", gameProphet);
+		return array;
+	}
 
 	public FPGameProphet readGameProphet(FPGameProphet gameProphet) {
 		FPGameProphet result = (FPGameProphet)getSqlMapClientTemplate().queryForObject("GameProphetSql.readGameProphet", gameProphet);
