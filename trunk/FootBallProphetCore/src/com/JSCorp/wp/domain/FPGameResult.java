@@ -75,4 +75,14 @@ public class FPGameResult {
 				+ "\",\"query_start\":\"" + query_start
 				+ "\",\"query_number\":\"" + query_number + "\"}";
 	}
+
+
+	public String toStringSealize() {
+		return "?id=" + id + "&match_id=" + match_id + "&match_type="
+				+ match_type + "&home_team_score=" + home_team_score
+				+ "&away_team_score=" + away_team_score + "&query_start="
+				+ query_start + "&query_number=" + query_number;
+	}
+	
+	
 }

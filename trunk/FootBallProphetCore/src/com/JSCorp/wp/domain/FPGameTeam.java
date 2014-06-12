@@ -63,5 +63,4 @@ public class FPGameTeam {
 				+ "\",\"game_group\":\"" + game_group + "\",\"query_start\":\""
 				+ query_start + "\",\"query_number\":\"" + query_number + "\"}";
 	}
-
 }
