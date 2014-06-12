@@ -28,7 +28,7 @@ import android.widget.Toast;
 
 public class PredictionListAdapter extends BaseAdapter {
 	
-	int tempPredictValue = 0;
+	
 	
 	LayoutInflater inflater;
 	String[] categorya;
@@ -122,11 +122,11 @@ public class PredictionListAdapter extends BaseAdapter {
 	    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); 
 	    dialog.setContentView(R.layout.prediction_dialog);
 	    
-	    if(tempPredictValue == 1) {
+	    if(matches.get(position).getProphet_home_win() == 1) {
 	    	((TextView) dialog.findViewById(R.id.btnPredict1)).setText("승리할거임");
-	    } else if(tempPredictValue == 2) {
+	    } else if(matches.get(position).getProphet_away_win() == 1) {
 	    	((TextView) dialog.findViewById(R.id.btnPredict2)).setText("승리할거임");
-	    } else if(tempPredictValue == 3) {
+	    } else if(matches.get(position).getProphet_draw() == 1) {
 	    	((TextView) dialog.findViewById(R.id.btnPredict3)).setText("승리할거임");
 	    }
 	    
@@ -167,52 +167,74 @@ public class PredictionListAdapter extends BaseAdapter {
 	    Button predictionButton1 = (Button) dialog.findViewById(R.id.btnPredict1);
 	    predictionButton1.setOnClickListener(new View.OnClickListener() {
 
+	    	int position;
+	    	
 	        @Override
 	        public void onClick(View v) {
 	            dialog.dismiss();
-	            predictHomeVictory();
+	            predictHomeVictory(position);
 	        }
-	    });
+	        
+	        public View.OnClickListener init(int position){
+	        	this.position = position;
+	        	return this;
+	        }
+
+	    }.init(position));
 	    
 	    Button predictionButton2 = (Button) dialog.findViewById(R.id.btnPredict2);
 	    predictionButton2.setOnClickListener(new View.OnClickListener() {
 
+	    	int position;
+	    	
 	        @Override
 	        public void onClick(View v) {
 	            dialog.dismiss();
-	            predictDraw();
+	            predictDraw(position);
 	        }
-	    }); 
+	        
+	        public View.OnClickListener init(int position){
+	        	this.position = position;
+	        	return this;
+	        }
+	    }.init(position)); 
 	    
 	    Button predictionButton3 = (Button) dialog.findViewById(R.id.btnPredict3);
 	    predictionButton3.setOnClickListener(new View.OnClickListener() {
 
+	    	int position;
+	    	
 	        @Override
 	        public void onClick(View v) {
 	            dialog.dismiss();
-	            predictAwayVictory();
+	            predictAwayVictory(position);
 	        }
-	    }); 
+	        
+	        public View.OnClickListener init(int position){
+	        	this.position = position;
+	        	return this;
+	        }
+	    }.init(position)); 
 	    
 	    dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
 	    dialog.show();
 	}
 	
-	private void predictHomeVictory() {
+	private void predictHomeVictory(int position) {
 		// TODO Auto-generated method stub
 		Log.i("onClick", "1");
-		tempPredictValue = 1;
-		
+		//matches.get(position)
+		matches.get(position).setProphet_home_win(1);
 	}
-	private void predictDraw() {
+	private void predictDraw(int position) {
 		// TODO Auto-generated method stub
 		Log.i("onClick", "2");
-		tempPredictValue = 2;
+		matches.get(position).setProphet_away_win(1);
 	}
-	private void predictAwayVictory() {
+	private void predictAwayVictory(int position) {
 		// TODO Auto-generated method stub
 		Log.i("onClick", "3");
-		tempPredictValue = 3;
+		matches.get(position).setProphet_draw(1);
 	}
 
 }
