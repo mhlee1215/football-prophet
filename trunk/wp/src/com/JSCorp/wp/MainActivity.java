@@ -125,6 +125,7 @@ public class MainActivity extends FragmentActivity implements
 			}else{
 				Log.i(GlobalVars.WP_INFO_TAG, "USER ALREADY EXISTS");
 				GlobalVars.user = user;
+				System.out.println(user);
 			}
 			
 			return null;
