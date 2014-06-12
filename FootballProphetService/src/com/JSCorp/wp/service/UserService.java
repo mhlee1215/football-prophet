@@ -3,6 +3,8 @@ package com.JSCorp.wp.service;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.rmi.dgc.VMID;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,8 +32,13 @@ public class UserService {
 	 * @throws ParseException
 	 */
 
+	static String NICK_ALREADY_INITIALIZED = "Y";
+	static String NICK_NOT_INITIALIZED = "N";
+	
 	public static boolean isUserExistByNickname(String nickname) {
 
+		
+		
 		HttpClient httpclient = new DefaultHttpClient();
 		try {
 
@@ -109,7 +116,9 @@ public class UserService {
 		return true;
 	}
 	
-	public static boolean addUser(FPUser user) {
+	public static boolean addUser(FPUser user) throws UnsupportedEncodingException {
+		
+		user.setNickname(URLEncoder.encode(user.getNickname(), "UTF-8"));
 		
 		if(isUserExistByDeviceId(user.getDevice_id()))
 			return false;
@@ -211,6 +220,11 @@ public class UserService {
 						user.setScore_static(Integer.parseInt((String)o2.get("score_static")));
 						user.setTwitter((String)o2.get("twitter"));
 						user.setFacebook((String)o2.get("facebook"));
+						
+						user.setIs_nickname_initialized((String)o2.get("is_nickname_initialized"));
+						user.setIs_twitter_visible((String)o2.get("is_twitter_visible"));
+						user.setIs_facebook_visible((String)o2.get("is_facebook_visible"));
+						
 					}
 
 					// Map response2 = (Map)o.get("GameMatchSchedules");
@@ -311,7 +325,20 @@ public class UserService {
 		return users;
 	}
 	
-	public static boolean updateUser(FPUser user) {
+	public static boolean initializeUser(FPUser user) throws UnsupportedEncodingException {
+		
+		FPUser curUser = getUserByDeviceId(user.getDevice_id());
+		System.out.println(">>>"+curUser);
+		if(NICK_ALREADY_INITIALIZED.equals(curUser.getIs_nickname_initialized())){
+			return false;
+		}
+		
+		user.setIs_nickname_initialized(NICK_ALREADY_INITIALIZED);
+		return updateUser(user);
+	}
+	
+	public static boolean updateUser(FPUser user) throws UnsupportedEncodingException {
+		user.setNickname(URLEncoder.encode(user.getNickname(), "UTF-8"));
 		//FPUser user = new FPUser();
 		
 		HttpClient httpclient = new DefaultHttpClient();
@@ -362,7 +389,7 @@ public class UserService {
 	
 	
 
-	public static void main(String[] args) throws ParseException {
+	public static void main(String[] args) throws ParseException, UnsupportedEncodingException {
 
 		//System.out.println(UserService.isUserExistByNickname("abcde"));
 		//System.out.println(UserService.isUserExistByDeviceId("qwert"));
@@ -371,12 +398,20 @@ public class UserService {
 		
 		//System.out.println(UserService.isUserExistByDeviceId(String.format("%010d", 100)));
 		
-		for(int i=140 ; i < 150 ; i++){
-			FPUser user = new FPUser();
-//			user.setNickname("abcdeee4");
-			user.setDevice_id(String.format("%010d", i));
-			UserService.addUser(user);	
-		}
+//		for(int i=140 ; i < 143 ; i++){
+//			FPUser user = new FPUser();
+//			user.setNickname("한글닉넴_"+Integer.toString(i));
+//			user.setDevice_id(String.format("%010d", i));
+//			UserService.addUser(user);	
+//		}
+		
+		FPUser userupdate = new FPUser();
+		userupdate.setDevice_id("0000000140");
+		userupdate.setNickname("한글닉넴이지롱2555521");
+		//UserService.updateUser(userupdate);
+		
+		
+		initializeUser(userupdate);
 		
 //		for(int i = 0 ; i < 10 ; i++){
 //			String str = new java.rmi.dgc.VMID().toString();
