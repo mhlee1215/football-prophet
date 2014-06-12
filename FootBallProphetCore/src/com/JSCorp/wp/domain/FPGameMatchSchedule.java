@@ -15,12 +15,39 @@ public class FPGameMatchSchedule {
 	String day = "";
 	String reference_time = "";
 	
+	String prophet_home_win = "";
+	String prophet_away_win = "";
+	String prophet_draw = "";
 	
 
 	private int query_start = 0;
 	private int query_number = 0;
 
 	
+	public String getProphet_home_win() {
+		return prophet_home_win;
+	}
+
+	public void setProphet_home_win(String prophet_home_win) {
+		this.prophet_home_win = prophet_home_win;
+	}
+
+	public String getProphet_away_win() {
+		return prophet_away_win;
+	}
+
+	public void setProphet_away_win(String prophet_away_win) {
+		this.prophet_away_win = prophet_away_win;
+	}
+
+	public String getProphet_draw() {
+		return prophet_draw;
+	}
+
+	public void setProphet_draw(String prophet_draw) {
+		this.prophet_draw = prophet_draw;
+	}
+
 	public String getMonth() {
 		return month;
 	}
@@ -143,7 +170,10 @@ public class FPGameMatchSchedule {
 				+ "\",\"gameGroup\":\"" + gameGroup + "\",\"city\":\"" + city
 				+ "\",\"time\":\"" + time + "\",\"month\":\"" + month
 				+ "\",\"day\":\"" + day + "\",\"reference_time\":\""
-				+ reference_time + "\",\"query_start\":\"" + query_start
+				+ reference_time + "\",\"prophet_home_win\":\""
+				+ prophet_home_win + "\",\"prophet_away_win\":\""
+				+ prophet_away_win + "\",\"prophet_draw\":\"" + prophet_draw
+				+ "\",\"query_start\":\"" + query_start
 				+ "\",\"query_number\":\"" + query_number + "\"}";
 	}
 }
