@@ -103,6 +103,12 @@ public class GameService {
 						if ((str = (String) o2.get("city")) != null) {
 							matchSchedule.setCity(str);
 						}
+						if ((str = (String) o2.get("month")) != null) {
+							matchSchedule.setMonth(str);
+						}
+						if ((str = (String) o2.get("day")) != null) {
+							matchSchedule.setDay(str);
+						}
 						if ((str = (String) o2.get("time")) != null) {
 							matchSchedule.setTime(str);
 						}
