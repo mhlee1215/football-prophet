@@ -6,12 +6,17 @@ import com.JSCorp.wp.DynamicBracketActivity;
 import com.JSCorp.wp.DynamicPredictionActivity;
 import com.JSCorp.wp.R;
 import com.JSCorp.wp.domain.FPGameMatchSchedule;
+import com.JSCorp.wp.domain.FPGameProphet;
+import com.JSCorp.wp.service.GameService;
+import com.JSCorp.wp.var.GlobalVars;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.StrictMode;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.Gravity;
@@ -225,16 +230,53 @@ public class PredictionListAdapter extends BaseAdapter {
 		Log.i("onClick", "1");
 		//matches.get(position)
 		matches.get(position).setProphet_home_win(1);
+		
+		FPGameProphet gameProphet = new FPGameProphet();
+		gameProphet.setUser_id(GlobalVars.user.getId());
+		gameProphet.setMatch_id(position+1);
+		gameProphet.setProphet_type("1");
+		gameProphet.setHome_team_win();
+		
+		new SetProphetStatus().doInBackground(gameProphet);
 	}
 	private void predictDraw(int position) {
 		// TODO Auto-generated method stub
 		Log.i("onClick", "2");
 		matches.get(position).setProphet_away_win(1);
+		
+		FPGameProphet gameProphet = new FPGameProphet();
+		gameProphet.setUser_id(GlobalVars.user.getId());
+		gameProphet.setMatch_id(position+1);
+		gameProphet.setProphet_type("1");
+		gameProphet.setDraw();
+		
+		new SetProphetStatus().doInBackground(gameProphet);
 	}
 	private void predictAwayVictory(int position) {
 		// TODO Auto-generated method stub
 		Log.i("onClick", "3");
 		matches.get(position).setProphet_draw(1);
+		
+		FPGameProphet gameProphet = new FPGameProphet();
+		gameProphet.setUser_id(GlobalVars.user.getId());
+		gameProphet.setMatch_id(position+1);
+		gameProphet.setProphet_type("1");
+		gameProphet.setAway_team_win();
+		
+		new SetProphetStatus().doInBackground(gameProphet);
+	}
+	
+	public class SetProphetStatus extends AsyncTask {
+		@Override
+		protected Object doInBackground(Object... arg0) {
+			FPGameProphet gameProphet = (FPGameProphet) arg0[0];
+			// TODO Auto-generated method stub
+			StrictMode.enableDefaults();
+			System.out.println("UPDATE!!");
+			GameService.setGameProphet(gameProphet);
+			//System.out.println("MATCH SIZE:"+matches.size());
+			return null;
+		}
 	}
 
 }
