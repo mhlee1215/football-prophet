@@ -19,9 +19,17 @@ public class FPUser {
 	
 	int finished_game_num;
 	int prophet_num;
-	int righ_prophet_num;
+	int right_prophet_num;
 
 	
+	public int getRight_prophet_num() {
+		return right_prophet_num;
+	}
+
+	public void setRight_prophet_num(int right_prophet_num) {
+		this.right_prophet_num = right_prophet_num;
+	}
+
 	public int getFinished_game_num() {
 		return finished_game_num;
 	}
@@ -38,13 +46,7 @@ public class FPUser {
 		this.prophet_num = prophet_num;
 	}
 
-	public int getRigh_prophet_num() {
-		return righ_prophet_num;
-	}
-
-	public void setRigh_prophet_num(int righ_prophet_num) {
-		this.righ_prophet_num = righ_prophet_num;
-	}
+	
 
 	public String getIs_nickname_initialized() {
 		return is_nickname_initialized;
@@ -173,21 +175,21 @@ public class FPUser {
 
 	@Override
 	public String toString() {
-		return "{\"id\":\"" + id + "\",\"device_id\":\"" + device_id
-				+ "\",\"group_id\":\"" + group_id + "\",\"nickname\":\""
-				+ nickname + "\",\"is_nickname_initialized\":\""
-				+ is_nickname_initialized + "\",\"tag\":\"" + tag
-				+ "\",\"twitter\":\"" + twitter
-				+ "\",\"is_twitter_visible\":\"" + is_twitter_visible
-				+ "\",\"facebook\":\"" + facebook
-				+ "\",\"is_facebook_visible\":\"" + is_facebook_visible
-				+ "\",\"score_dynamic\":\"" + score_dynamic
-				+ "\",\"score_static\":\"" + score_static
-				+ "\",\"query_start\":\"" + query_start
-				+ "\",\"query_number\":\"" + query_number
-				+ "\",\"finished_game_num\":\"" + finished_game_num
-				+ "\",\"prophet_num\":\"" + prophet_num
-				+ "\",\"righ_prophet_num\":\"" + righ_prophet_num + "\"}";
+		return "{\"id\":\"" + id + "\", \"device_id\":\"" + device_id
+				+ "\", \"group_id\":\"" + group_id + "\", \"nickname\":\""
+				+ nickname + "\", \"is_nickname_initialized\":\""
+				+ is_nickname_initialized + "\", \"tag\":\"" + tag
+				+ "\", \"twitter\":\"" + twitter
+				+ "\", \"is_twitter_visible\":\"" + is_twitter_visible
+				+ "\", \"facebook\":\"" + facebook
+				+ "\", \"is_facebook_visible\":\"" + is_facebook_visible
+				+ "\", \"score_dynamic\":\"" + score_dynamic
+				+ "\", \"score_static\":\"" + score_static
+				+ "\", \"query_start\":\"" + query_start
+				+ "\", \"query_number\":\"" + query_number
+				+ "\", \"finished_game_num\":\"" + finished_game_num
+				+ "\", \"prophet_num\":\"" + prophet_num
+				+ "\", \"right_prophet_num\":\"" + right_prophet_num + "\"}";
 	}
 	
 	
