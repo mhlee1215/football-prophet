@@ -101,7 +101,7 @@ private Logger logger = Logger.getLogger(getClass());
     }
 	
 	@RequestMapping(value="/api.addUser.do")
-    public @ResponseBody String addUser(HttpServletRequest request, HttpServletResponse response) {
+    public @ResponseBody String addUser(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
 		Integer query_page = ServletRequestUtils.getIntParameter(request, "query_page", 1);
 		Integer id = ServletRequestUtils.getIntParameter(request, "id", 0);
 		String device_id = ServletRequestUtils.getStringParameter(request, "device_id", "");
@@ -119,6 +119,8 @@ private Logger logger = Logger.getLogger(getClass());
 		String is_twitter_visible = ServletRequestUtils.getStringParameter(request, "is_twitter_visible", "");
 		String is_facebook_visible = ServletRequestUtils.getStringParameter(request, "is_facebook_visible", "");
 		
+		
+		nickname = URLDecoder.decode(nickname, "UTF-8");
 		
 		FPUser user = new FPUser();
 		user.setNickname(nickname);
@@ -167,7 +169,7 @@ private Logger logger = Logger.getLogger(getClass());
     }
 	
 	@RequestMapping(value="/api.updateUser.do")
-    public @ResponseBody String updateUser(HttpServletRequest request, HttpServletResponse response) {
+    public @ResponseBody String updateUser(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
 		Integer query_page = ServletRequestUtils.getIntParameter(request, "query_page", 1);
 		Integer id = ServletRequestUtils.getIntParameter(request, "id", 0);
 		String device_id = ServletRequestUtils.getStringParameter(request, "device_id", "");
@@ -183,12 +185,14 @@ private Logger logger = Logger.getLogger(getClass());
 		String is_twitter_visible = ServletRequestUtils.getStringParameter(request, "is_twitter_visible", "");
 		String is_facebook_visible = ServletRequestUtils.getStringParameter(request, "is_facebook_visible", "");
 		
+		nickname = URLDecoder.decode(nickname, "UTF-8");
+		
 		FPUser user = new FPUser();
 		//user.setNickname(nickname);
 		user.setId(id);
 		user.setDevice_id(device_id);
 		List<FPUser> userList = userService.readUserList(user);
-		
+		System.out.println(userList);
 		if(userList.size() != 1){
 			return "fail-unmatched-number-of-user";
 		}else{
@@ -242,8 +246,10 @@ private Logger logger = Logger.getLogger(getClass());
     }
 	
 	@RequestMapping(value="/api.addUserGroup.do")
-    public @ResponseBody String addUserGroup(HttpServletRequest request, HttpServletResponse response) {
+    public @ResponseBody String addUserGroup(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
 		String name = ServletRequestUtils.getStringParameter(request, "name", "");
+		
+		name = URLDecoder.decode(name, "UTF-8");
 		
 		FPUserGroup userGroup = new FPUserGroup();
 		userGroup.setName(name);

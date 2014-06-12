@@ -38,6 +38,10 @@ public class FPGameProphetServiceImpl{
 	public int updateGameProphet(FPGameProphet gameProphet) {
 		return gameProphetDao.updateGameProphet(gameProphet);
 	}
+	
+	public int updateGameProphetResult(FPGameProphet gameProphet) {
+		return gameProphetDao.updateGameProphetResult(gameProphet);
+	}
 
 	public int deleteGameProphet(FPGameProphet gameProphet) {
 		return gameProphetDao.deleteGameProphet(gameProphet);
