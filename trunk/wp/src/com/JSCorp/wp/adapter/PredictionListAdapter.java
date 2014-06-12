@@ -28,6 +28,8 @@ import android.widget.Toast;
 
 public class PredictionListAdapter extends BaseAdapter {
 	
+	int tempPredictValue = 0;
+	
 	LayoutInflater inflater;
 	String[] categorya;
 	List<FPGameMatchSchedule> matches;
@@ -119,54 +121,15 @@ public class PredictionListAdapter extends BaseAdapter {
 		final Dialog dialog = new Dialog(mContext);
 	    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); 
 	    dialog.setContentView(R.layout.prediction_dialog);
-
-	    // set the custom dialog components - text and button
-	    //TextView text = (TextView) dialog.findViewById(R.id.txtDiaTitle);
-	    //TextView image = (TextView) dialog.findViewById(R.id.txtDiaMsg);
-
-	    ImageButton dialogButton = (ImageButton) dialog.findViewById(R.id.imageButton1);
-	    // if button is clicked, close the custom dialog
-	    dialogButton.setOnClickListener(new View.OnClickListener() {
-
-	        @Override
-	        public void onClick(View v) {
-	            dialog.dismiss();
-
-	        }
-	    }); 
 	    
-	    Button predictionButton1 = (Button) dialog.findViewById(R.id.btnPredict1);
-	    // if button is clicked, close the custom dialog
-	    predictionButton1.setOnClickListener(new View.OnClickListener() {
-
-	        @Override
-	        public void onClick(View v) {
-	            dialog.dismiss();
-	            predictHomeVictory();
-	        }
-	    });
-	    Button predictionButton2 = (Button) dialog.findViewById(R.id.btnPredict2);
-	    // if button is clicked, close the custom dialog
-	    predictionButton2.setOnClickListener(new View.OnClickListener() {
-
-	        @Override
-	        public void onClick(View v) {
-	            dialog.dismiss();
-	            predictDraw();
-	        }
-	    }); 
-	    Button predictionButton3 = (Button) dialog.findViewById(R.id.btnPredict3);
-	    // if button is clicked, close the custom dialog
-	    predictionButton3.setOnClickListener(new View.OnClickListener() {
-
-	        @Override
-	        public void onClick(View v) {
-	            dialog.dismiss();
-	            predictAwayVictory();
-	        }
-	    }); 
+	    if(tempPredictValue == 1) {
+	    	((TextView) dialog.findViewById(R.id.btnPredict1)).setText("승리할거임");
+	    } else if(tempPredictValue == 2) {
+	    	((TextView) dialog.findViewById(R.id.btnPredict2)).setText("승리할거임");
+	    } else if(tempPredictValue == 3) {
+	    	((TextView) dialog.findViewById(R.id.btnPredict3)).setText("승리할거임");
+	    }
 	    
-	    matches.get(position).getHome_team_id();
 	    ((TextView)dialog.findViewById(R.id.matchGroup)).setText(matches.get(position).getGameGroup() + "조 조별매치");
 	    
 	    //System.out.println(matches);
@@ -188,9 +151,48 @@ public class PredictionListAdapter extends BaseAdapter {
 	    ((TextView) dialog.findViewById(R.id.nationA)).setText(nationHomeName);
 	    ((TextView) dialog.findViewById(R.id.nationB)).setText(nationAwayName);
 	    
+	    ((TextView) dialog.findViewById(R.id.nationA)).setText(matches.get(position).get);
+
+	    // if button is clicked, close the custom dialog
+	    ImageButton dialogButton = (ImageButton) dialog.findViewById(R.id.imageButton1);
+	    dialogButton.setOnClickListener(new View.OnClickListener() {
+
+	        @Override
+	        public void onClick(View v) {
+	            dialog.dismiss();
+
+	        }
+	    }); 
 	    
+	    Button predictionButton1 = (Button) dialog.findViewById(R.id.btnPredict1);
+	    predictionButton1.setOnClickListener(new View.OnClickListener() {
+
+	        @Override
+	        public void onClick(View v) {
+	            dialog.dismiss();
+	            predictHomeVictory();
+	        }
+	    });
 	    
+	    Button predictionButton2 = (Button) dialog.findViewById(R.id.btnPredict2);
+	    predictionButton2.setOnClickListener(new View.OnClickListener() {
+
+	        @Override
+	        public void onClick(View v) {
+	            dialog.dismiss();
+	            predictDraw();
+	        }
+	    }); 
 	    
+	    Button predictionButton3 = (Button) dialog.findViewById(R.id.btnPredict3);
+	    predictionButton3.setOnClickListener(new View.OnClickListener() {
+
+	        @Override
+	        public void onClick(View v) {
+	            dialog.dismiss();
+	            predictAwayVictory();
+	        }
+	    }); 
 	    
 	    dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
 	    dialog.show();
@@ -199,14 +201,18 @@ public class PredictionListAdapter extends BaseAdapter {
 	private void predictHomeVictory() {
 		// TODO Auto-generated method stub
 		Log.i("onClick", "1");
+		tempPredictValue = 1;
+		
 	}
 	private void predictDraw() {
 		// TODO Auto-generated method stub
 		Log.i("onClick", "2");
+		tempPredictValue = 2;
 	}
 	private void predictAwayVictory() {
 		// TODO Auto-generated method stub
 		Log.i("onClick", "3");
+		tempPredictValue = 3;
 	}
 
 }
