@@ -123,14 +123,14 @@ public class PredictionListAdapter extends BaseAdapter {
 	    dialog.setContentView(R.layout.prediction_dialog);
 	    
 	    if(tempPredictValue == 1) {
-	    	((TextView) dialog.findViewById(R.id.btnPredict1)).setText("½Â¸®ÇÒ°ÅÀÓ");
+	    	((TextView) dialog.findViewById(R.id.btnPredict1)).setText("ìŠ¹ë¦¬í• ê±°ìž„");
 	    } else if(tempPredictValue == 2) {
-	    	((TextView) dialog.findViewById(R.id.btnPredict2)).setText("½Â¸®ÇÒ°ÅÀÓ");
+	    	((TextView) dialog.findViewById(R.id.btnPredict2)).setText("ìŠ¹ë¦¬í• ê±°ìž„");
 	    } else if(tempPredictValue == 3) {
-	    	((TextView) dialog.findViewById(R.id.btnPredict3)).setText("½Â¸®ÇÒ°ÅÀÓ");
+	    	((TextView) dialog.findViewById(R.id.btnPredict3)).setText("ìŠ¹ë¦¬í• ê±°ìž„");
 	    }
 	    
-	    ((TextView)dialog.findViewById(R.id.matchGroup)).setText(matches.get(position).getGameGroup() + "Á¶ Á¶º°¸ÅÄ¡");
+	    ((TextView)dialog.findViewById(R.id.matchGroup)).setText(matches.get(position).getGameGroup() + "ì¡° ì¡°ë³„ë§¤ì¹˜");
 	    
 	    //System.out.println(matches);
 	    String homeImage = "flag" + Integer.toString(matches.get(position).getHome_team_id());
@@ -142,16 +142,16 @@ public class PredictionListAdapter extends BaseAdapter {
 	    
 	    String nationHomeName = matches.get(position).getHome_team_name();
 	    String nationAwayName = matches.get(position).getAway_team_name();
-	    if(nationHomeName.equals("º¸½º´Ï¾Æ Çì¸£Ã¼°íºñ³ª")) {
+	    if(nationHomeName.equals("ë³´ìŠ¤ë‹ˆì•„ í—¤ë¥´ì²´ê³ ë¹„ë‚˜")) {
 	    	nationHomeName = nationHomeName.replace(" ", "\n");
 	    }
-	    if(nationAwayName.equals("º¸½º´Ï¾Æ Çì¸£Ã¼°íºñ³ª")) {
+	    if(nationAwayName.equals("ë³´ìŠ¤ë‹ˆì•„ í—¤ë¥´ì²´ê³ ë¹„ë‚˜")) {
 	    	nationAwayName = nationAwayName.replace(" ", "\n");
 	    }
 	    ((TextView) dialog.findViewById(R.id.nationA)).setText(nationHomeName);
 	    ((TextView) dialog.findViewById(R.id.nationB)).setText(nationAwayName);
 	    
-	    ((TextView) dialog.findViewById(R.id.nationA)).setText(matches.get(position).get);
+	    //((TextView) dialog.findViewById(R.id.nationA)).setText(matches.get(position).get);
 
 	    // if button is clicked, close the custom dialog
 	    ImageButton dialogButton = (ImageButton) dialog.findViewById(R.id.imageButton1);
