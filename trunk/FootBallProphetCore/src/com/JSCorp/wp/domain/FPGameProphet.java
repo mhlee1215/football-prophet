@@ -103,6 +103,7 @@ public class FPGameProphet {
 	}
 
 	@Override
+	//{"${member.name}":"${member.value}","${otherMembers}"}
 	public String toString() {
 		return "{\"id\":\"" + id + "\",\"user_id\":\"" + user_id
 				+ "\",\"match_id\":\"" + match_id + "\",\"prophet_type\":\""
@@ -112,4 +113,16 @@ public class FPGameProphet {
 				+ "\",\"comment\":\"" + comment + "\",\"query_start\":\""
 				+ query_start + "\",\"query_number\":\"" + query_number + "\"}";
 	}
+
+	//?${member.name()}=${member.value}&${otherMembers}
+	public String toStringSealize() {
+		return "?id=" + id + "&user_id=" + user_id + "&match_id=" + match_id
+				+ "&prophet_type=" + prophet_type + "&home_team_win="
+				+ home_team_win + "&away_team_win=" + away_team_win + "&draw="
+				+ draw + "&prophet_result=" + prophet_result + "&comment="
+				+ comment + "&query_start=" + query_start + "&query_number="
+				+ query_number;
+	}
+	
+	
 }
