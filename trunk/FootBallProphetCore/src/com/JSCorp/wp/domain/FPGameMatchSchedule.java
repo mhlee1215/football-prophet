@@ -14,6 +14,8 @@ public class FPGameMatchSchedule {
 	String month = "";
 	String day = "";
 	String reference_time = "";
+	
+	
 
 	private int query_start = 0;
 	private int query_number = 0;
