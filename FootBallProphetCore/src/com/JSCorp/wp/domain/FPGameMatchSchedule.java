@@ -18,6 +18,7 @@ public class FPGameMatchSchedule {
 	int prophet_home_win = 0;
 	int prophet_away_win = 0;
 	int prophet_draw = 0;
+	int prophet_finished = 0;
 	
 
 	private int query_start = 0;
@@ -25,6 +26,10 @@ public class FPGameMatchSchedule {
 
 	
 	
+
+	public int getProphet_finished() {
+		return prophet_finished;
+	}
 
 	public int getProphet_home_win() {
 		return prophet_home_win;
@@ -37,6 +42,8 @@ public class FPGameMatchSchedule {
 			this.prophet_away_win = 0;
 			this.prophet_draw = 0;
 		}
+		
+		prophet_finished = 1;
 	}
 
 	public int getProphet_away_win() {
@@ -50,6 +57,8 @@ public class FPGameMatchSchedule {
 			this.prophet_home_win = 0;
 			this.prophet_draw = 0;
 		}
+		
+		prophet_finished = 1;
 	}
 
 	public int getProphet_draw() {
@@ -63,6 +72,8 @@ public class FPGameMatchSchedule {
 			this.prophet_home_win = 0;
 			this.prophet_away_win = 0;
 		}
+		
+		prophet_finished = 1;
 	}
 
 	public String getMonth() {
