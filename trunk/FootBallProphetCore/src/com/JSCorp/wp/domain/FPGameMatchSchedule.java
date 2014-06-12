@@ -10,12 +10,31 @@ public class FPGameMatchSchedule {
 	String gameGroup = "";
 	String city = "";
 	String time = "";
+	
+	String month = "";
+	String day = "";
 	String reference_time = "";
 
 	private int query_start = 0;
 	private int query_number = 0;
 
 	
+	public String getMonth() {
+		return month;
+	}
+
+	public void setMonth(String month) {
+		this.month = month;
+	}
+
+	public String getDay() {
+		return day;
+	}
+
+	public void setDay(String day) {
+		this.day = day;
+	}
+
 	public String getGameGroup() {
 		return gameGroup;
 	}
@@ -120,7 +139,8 @@ public class FPGameMatchSchedule {
 				+ "\",\"away_team_id\":\"" + away_team_id
 				+ "\",\"away_team_name\":\"" + away_team_name
 				+ "\",\"gameGroup\":\"" + gameGroup + "\",\"city\":\"" + city
-				+ "\",\"time\":\"" + time + "\",\"reference_time\":\""
+				+ "\",\"time\":\"" + time + "\",\"month\":\"" + month
+				+ "\",\"day\":\"" + day + "\",\"reference_time\":\""
 				+ reference_time + "\",\"query_start\":\"" + query_start
 				+ "\",\"query_number\":\"" + query_number + "\"}";
 	}
