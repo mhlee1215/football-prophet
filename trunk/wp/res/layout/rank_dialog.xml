@@ -8,44 +8,94 @@ android:orientation="vertical">
         android:layout_height="fill_parent"
         android:layout_weight="0.4"
         android:orientation="vertical"/>
+    
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="0.8"
+        android:background="#A9E2F3"
+        android:orientation="vertical">
+        <ImageButton
+            	android:id="@+id/imageButton1"
+            	android:layout_width="wrap_content"
+            	android:layout_height="wrap_content"
+            	android:background="#A9E2F3"
+            	android:src="@drawable/abc_ic_clear_search_api_disabled_holo_light" />
+    </LinearLayout>
 
     <TableLayout
     	android:layout_width="fill_parent"
     	android:layout_height="fill_parent"
-    	android:layout_weight="0.6"
+    	android:layout_weight="0.7"
+    	android:shrinkColumns="*" 
+    	android:stretchColumns="*" 
+    	android:background="#A9E2F3"
+    	android:orientation="vertical"> 
+    	
+        <TableRow 
+        	android:layout_height="wrap_content" 
+        	android:layout_width="fill_parent"
+        	android:gravity="center_horizontal">
+        	<TextView
+            android:id="@+id/nickname"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="미냉공주"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+		</TableRow>
+		
+		<TableRow 
+        	android:layout_height="wrap_content" 
+        	android:layout_width="fill_parent"
+        	android:gravity="center_horizontal">
+        <TextView
+            android:id="@+id/tag1"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="나는 아무 생각이 없다. 왜나하면 아무 생각이 없기 때문이다."
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+		</TableRow>  
+		
+		<TableRow 
+        	android:layout_height="wrap_content" 
+        	android:layout_width="fill_parent"
+        	android:gravity="center_horizontal">
+        <TextView
+            android:id="@+id/rate"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:textStyle="bold"
+            android:text="적중률: "
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+		</TableRow>  
+    </TableLayout>
+    <TableLayout
+    	android:layout_width="fill_parent"
+    	android:layout_height="fill_parent"
+    	android:layout_weight="0.8"
     	android:shrinkColumns="*" 
     	android:stretchColumns="*" 
     	android:background="#A9E2F3"
     	android:orientation="vertical"> 
     	<TableRow 
         	android:layout_height="wrap_content" 
-        	android:layout_width="fill_parent" 
-        	android:gravity="center_horizontal">
-        	<ImageButton
-            	android:id="@+id/imageButton1"
-            	android:layout_width="wrap_content"
-            	android:layout_height="wrap_content"
-            	android:src="@drawable/abc_ic_clear_search_api_disabled_holo_light" />
-   		</TableRow>  
-		<TableRow 
-        	android:layout_height="wrap_content" 
         	android:layout_width="fill_parent"
         	android:gravity="center_horizontal">
         	<Button
             	android:id="@+id/btnFacebook"
-            	android:layout_weight="1" 
-            	android:padding="20dip"
+            	android:layout_width="fill_parent"
+            	android:layout_height="fill_parent"
+            	android:padding="10dip"
             	android:gravity="center"
-            	android:text="Facebook"
-            	android:textStyle="bold" />
+            	android:text="Facebook" />
         	<Button
             	android:id="@+id/btnTwitter"
-            	android:layout_weight="1" 
-            	android:padding="20dip"
+            	android:layout_width="fill_parent"
+            	android:layout_height="fill_parent"
+            	android:padding="10dip"
             	android:gravity="center"
-            	android:text="Twitter"
-            	android:textStyle="bold" />
-		</TableRow>  
-    </TableLayout>
+            	android:text="Twitter" />
+		</TableRow> 
+	</TableLayout>
 
 </LinearLayout>
