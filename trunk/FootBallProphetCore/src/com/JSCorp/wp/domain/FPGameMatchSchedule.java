@@ -15,36 +15,38 @@ public class FPGameMatchSchedule {
 	String day = "";
 	String reference_time = "";
 	
-	String prophet_home_win = "";
-	String prophet_away_win = "";
-	String prophet_draw = "";
+	int prophet_home_win = 0;
+	int prophet_away_win = 0;
+	int prophet_draw = 0;
 	
 
 	private int query_start = 0;
 	private int query_number = 0;
 
 	
-	public String getProphet_home_win() {
+	
+
+	public int getProphet_home_win() {
 		return prophet_home_win;
 	}
 
-	public void setProphet_home_win(String prophet_home_win) {
+	public void setProphet_home_win(int prophet_home_win) {
 		this.prophet_home_win = prophet_home_win;
 	}
 
-	public String getProphet_away_win() {
+	public int getProphet_away_win() {
 		return prophet_away_win;
 	}
 
-	public void setProphet_away_win(String prophet_away_win) {
+	public void setProphet_away_win(int prophet_away_win) {
 		this.prophet_away_win = prophet_away_win;
 	}
 
-	public String getProphet_draw() {
+	public int getProphet_draw() {
 		return prophet_draw;
 	}
 
-	public void setProphet_draw(String prophet_draw) {
+	public void setProphet_draw(int prophet_draw) {
 		this.prophet_draw = prophet_draw;
 	}
 
