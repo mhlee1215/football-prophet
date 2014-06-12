@@ -116,12 +116,12 @@ public class UserService {
 		
 		if(user.getNickname() == null || "".equals(user.getNickname())){
 			//Generate pseudo-random string
-			String str = new java.rmi.dgc.VMID().toString();
+			String str = UUID.randomUUID().toString();//new java.rmi.dgc.VMID().toString();
 			str = str.replace(":", "").replace("-", "").toUpperCase();
 			user.setNickname("NONAME_"+str.toString().substring(str.length()-10, str.length()));
 		}
 		
-		if(user.getIs_nickname_initialized().isEmpty()){
+		if(user.getIs_nickname_initialized() == null || "".equals(user.getIs_nickname_initialized())){
 			user.setIs_nickname_initialized("N");
 		}
 		
@@ -131,6 +131,8 @@ public class UserService {
 			HttpGet httpget = new HttpGet(Env.url + "api.addUser.do"
 					+ user.toStringSealize());
 
+			System.out.println("executing request " + httpget.getURI());
+			
 			HttpResponse response = httpclient.execute(httpget);
 			HttpEntity entity = response.getEntity();
 

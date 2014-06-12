@@ -29,12 +29,18 @@ public class GameService {
 		ArrayList<FPGameTeam> teams = getGameTeam();
 		
 		Map<Integer, String> teamNameMap = new HashMap<Integer, String>();
+		Map<Integer, String> teamGroupMap = new HashMap<Integer, String>();
 		for(FPGameTeam team : teams){
 			if("kor".equals(Env.lang))
 				teamNameMap.put(team.getId(), team.getTeam_name_kor());
 			else
 				teamNameMap.put(team.getId(), team.getTeam_name());
+			
+			teamGroupMap.put(team.getId(), team.getGame_group());
 		}
+		
+		
+		
 		
 		// HttpClient ??
 		HttpClient httpclient = new DefaultHttpClient();
@@ -85,6 +91,7 @@ public class GameService {
 							int home_team_id = Integer.parseInt(str);
 							matchSchedule.setAway_team_id(home_team_id);
 							matchSchedule.setHome_team_name(teamNameMap.get(home_team_id));
+							matchSchedule.setGameGroup(teamGroupMap.get(home_team_id));
 						}
 						if ((str = (String) o2.get("away_team_id")) != null) {
 							int away_team_id = Integer.parseInt(str);

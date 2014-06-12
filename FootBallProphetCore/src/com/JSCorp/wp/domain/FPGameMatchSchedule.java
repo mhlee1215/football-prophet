@@ -7,6 +7,7 @@ public class FPGameMatchSchedule {
 	String home_team_name;
 	int away_team_id;
 	String away_team_name;
+	String gameGroup;
 	String city;
 	String time;
 	String reference_time;
@@ -15,6 +16,14 @@ public class FPGameMatchSchedule {
 	private int query_number = 0;
 
 	
+	public String getGameGroup() {
+		return gameGroup;
+	}
+
+	public void setGameGroup(String gameGroup) {
+		this.gameGroup = gameGroup;
+	}
+
 	public String getHome_team_name() {
 		return home_team_name;
 	}
@@ -110,9 +119,9 @@ public class FPGameMatchSchedule {
 				+ "\",\"home_team_name\":\"" + home_team_name
 				+ "\",\"away_team_id\":\"" + away_team_id
 				+ "\",\"away_team_name\":\"" + away_team_name
-				+ "\",\"city\":\"" + city + "\",\"time\":\"" + time
-				+ "\",\"reference_time\":\"" + reference_time
-				+ "\",\"query_start\":\"" + query_start
+				+ "\",\"gameGroup\":\"" + gameGroup + "\",\"city\":\"" + city
+				+ "\",\"time\":\"" + time + "\",\"reference_time\":\""
+				+ reference_time + "\",\"query_start\":\"" + query_start
 				+ "\",\"query_number\":\"" + query_number + "\"}";
 	}
 }
