@@ -118,8 +118,15 @@ public class MainActivity extends FragmentActivity implements
 				FPUser addUser = new FPUser();
 				System.out.println(addUser);
 				addUser.setDevice_id(deviceId);
-				boolean result = UserService.addUser(addUser);
-				System.out.println("result : "+result);
+				boolean result;
+				try {
+					result = UserService.addUser(addUser);
+					System.out.println("result : "+result);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
 				user = UserService.getUserByDeviceId(deviceId);
 				GlobalVars.user = user;
 			}else{
