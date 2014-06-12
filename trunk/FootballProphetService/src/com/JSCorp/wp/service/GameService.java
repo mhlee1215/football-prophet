@@ -456,6 +456,8 @@ public static int getGameProphetCorrect(int user_id) {
 		
 		List<FPGameProphet> readProphet = getGameProphet(gameProphet);
 		
+		System.out.println("readProphet size : "+readProphet.size());
+		
 		if(readProphet.size() == 1){
 			updateGameProphet(gameProphet);
 			return RESULT_UPDATE;
