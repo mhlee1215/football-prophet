@@ -3,8 +3,11 @@ package com.JSCorp.wp.service;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.http.HttpEntity;
@@ -26,6 +29,11 @@ import com.JSCorp.wp.var.Env;
 
 public class GameService {
 
+	public static int RESULT_ADD = 1;
+	public static int RESULT_UPDATE = 2;
+	public static int RESULT_FAIL = -1;
+	
+	
 	public static ArrayList<FPGameMatchSchedule> getGameMatchSchedules() {
 		
 		ArrayList<FPGameTeam> teams = getGameTeam();
@@ -229,15 +237,21 @@ public class GameService {
 	}
 	
 	public static ArrayList<FPGameProphet> getGameProphet() {
+		return getGameProphet(null);
+	}
+	
+	public static ArrayList<FPGameProphet> getGameProphet(FPGameProphet prophet) {
+		if(prophet == null)
+			prophet = new FPGameProphet();
 		// HttpClient ??
 		HttpClient httpclient = new DefaultHttpClient();
 		ArrayList<FPGameProphet> prophets = new ArrayList<FPGameProphet>();
 		try {
 			// HttpGet??
 			HttpGet httpget = new HttpGet(Env.url
-					+ "api.readGameProphet.do");
+					+ "api.readGameProphet.do"+prophet.toStringSealize());
 
-			//System.out.println("executing request " + httpget.getURI());
+			System.out.println("executing request " + httpget.getURI());
 			HttpResponse response = httpclient.execute(httpget);
 			HttpEntity entity = response.getEntity();
 
@@ -253,9 +267,9 @@ public class GameService {
 				String line = "";
 				while ((line = rd.readLine()) != null) {
 					JSONParser j = new JSONParser();
-					//System.out.println("line:" + line);
+					System.out.println("line:" + line);
 					JSONObject o = (JSONObject) j.parse(line);
-					JSONArray lang = (JSONArray) o.get("GameTeams");
+					JSONArray lang = (JSONArray) o.get("GameProphets");
 
 					
 
@@ -271,9 +285,32 @@ public class GameService {
 						if ((str = (String) o2.get("id")) != null) {
 							gameProphet.setId(Integer.parseInt(str));
 						}
+						if ((str = (String) o2.get("user_id")) != null) {
+							gameProphet.setUser_id(Integer.parseInt(str));
+						}
+						if ((str = (String) o2.get("match_id")) != null) {
+							gameProphet.setMatch_id(Integer.parseInt(str));
+						}
+						if ((str = (String) o2.get("prophet_type")) != null) {
+							gameProphet.setProphet_type(str);
+						}
+						if ((str = (String) o2.get("home_team_win")) != null) {
+							gameProphet.setHome_team_win(str);
+						}
+						if ((str = (String) o2.get("away_team_win")) != null) {
+							gameProphet.setAway_team_win(str);
+						}
+						if ((str = (String) o2.get("draw")) != null) {
+							gameProphet.setDraw(str);
+						}
+						if ((str = (String) o2.get("prophet_result")) != null) {
+							gameProphet.setProphet_result(str);
+						}
+						if ((str = (String) o2.get("comment")) != null) {
+							gameProphet.setComment(str);
+						}
 						
 						
-
 						prophets.add(gameProphet);
 					}
 
@@ -303,9 +340,31 @@ public class GameService {
 		return null;
 	}
 	
+	
+	public static int setGameProphet(FPGameProphet gameProphet){
+		
+
+		try {
+			gameProphet.setComment(URLEncoder.encode(gameProphet.getComment(), "UTF-8"));
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		List<FPGameProphet> readProphet = getGameProphet(gameProphet);
+		
+		if(readProphet.size() == 1){
+			updateGameProphet(gameProphet);
+			return RESULT_UPDATE;
+		}else if(readProphet.size() == 0){
+			addGameProphet(gameProphet);
+			return RESULT_ADD;
+		}else{
+			return RESULT_FAIL;
+		}
+	}
+	
 	public static boolean addGameProphet(FPGameProphet gameProphet) {
-		
-		
 		HttpClient httpclient = new DefaultHttpClient();
 		try {
 
@@ -389,27 +448,53 @@ public class GameService {
 	public static void main(String[] args) throws ParseException {
 
 //		FPGameProphet gameProphet = new FPGameProphet();
-//		gameProphet.setUser_id(11);
-//		gameProphet.setMatch_id(100);
-//		gameProphet.setProphet_type("1");
-//		gameProphet.setHome_team_win("1");
-//		gameProphet.setAway_team_win("0");
-//		gameProphet.setDraw("0");
-//		gameProphet.setProphet_result("0");
+//		List<FPGameProphet> readGameProphet = GameService.getGameProphet(gameProphet);
+//		System.out.println(readGameProphet);
+		
+		
+		
+		
+		
+		
+		
+		
+		//ADD GAME PROPHET
+		for(int j = 1 ; j < 10 ; j++){
+			for(int i = 1 ; i <= 10 ; i++){
+				int prophet_case = ((int)(Math.random()*100))%3+1;
+				
+				FPGameProphet gameProphet = new FPGameProphet();
+				gameProphet.setUser_id(j);
+				gameProphet.setMatch_id(i);
+				gameProphet.setProphet_type("1");
+				if(prophet_case == 1)
+					gameProphet.setHome_team_win("1");
+				else if(prophet_case == 2)
+					gameProphet.setAway_team_win("1");	
+				else if(prophet_case == 3)
+					gameProphet.setDraw("1");	
+				gameProphet.setProphet_result("");
+				gameProphet.setComment("뭔가 한글 코멘트..");
+				System.out.println(GameService.setGameProphet(gameProphet));
+			}
+		}
+		//System.out.println(encodeResult);
 //		
-//		
-//		System.out.println(GameService.addGameProphet(gameProphet));
+
 		
 		
 		
 //		FPGameProphet updateGameProphet = new FPGameProphet();
 //		updateGameProphet.setUser_id(11);
-//		updateGameProphet.setMatch_id(100);
+//		updateGameProphet.setMatch_id(101);
 //		updateGameProphet.setHome_team_win("0");
 //		updateGameProphet.setAway_team_win("0");
 //		updateGameProphet.setDraw("1");
 //		updateGameProphet.setProphet_result("1");
+//		updateGameProphet.setComment("blahblah...adsfadsfsdfafdadfdsaf..");
 //		System.out.println(GameService.updateGameProphet(updateGameProphet));
+		
+		
 		
 		
 		
