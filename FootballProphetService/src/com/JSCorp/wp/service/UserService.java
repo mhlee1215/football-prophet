@@ -22,6 +22,8 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import com.JSCorp.wp.domain.FPGameProphet;
+import com.JSCorp.wp.domain.FPGameResult;
 import com.JSCorp.wp.domain.FPUser;
 import com.JSCorp.wp.var.Env;
 
@@ -174,6 +176,19 @@ public class UserService {
 		return false;
 	}
 	
+	
+	public static FPUser getUserByDeviceIdEx(String device_id) {
+		FPUser user = getUserByDeviceId(device_id);
+				
+		ArrayList<FPGameResult> gameResults = GameService.getGameResults(new FPGameResult());
+		
+		user.setFinished_game_num(gameResults.size());
+		user.setProphet_num(GameService.getGameProphetFinished(user.getId()));
+		user.setRight_prophet_num(GameService.getGameProphetCorrect(user.getId()));
+		
+		
+		return user;
+	}
 	
 
 	public static FPUser getUserByDeviceId(String device_id) {
@@ -405,13 +420,29 @@ public class UserService {
 //			UserService.addUser(user);	
 //		}
 		
-		FPUser userupdate = new FPUser();
-		userupdate.setDevice_id("0000000140");
-		userupdate.setNickname("한글닉넴이지롱2555521");
+		
+		int test_case = 1;
+		
+		if(test_case == 1){
+			//0000000140
+			FPUser user = UserService.getUserByDeviceIdEx("0000000140");
+			System.out.println(user);
+			
+			
+		}else if(test_case == 2){
+			FPUser userupdate = new FPUser();
+			userupdate.setDevice_id("0000000140");
+			userupdate.setNickname("한글닉넴이지롱2555521");
+			initializeUser(userupdate);
+		}
+		
+		
+		
+		
 		//UserService.updateUser(userupdate);
 		
 		
-		initializeUser(userupdate);
+		
 		
 //		for(int i = 0 ; i < 10 ; i++){
 //			String str = new java.rmi.dgc.VMID().toString();

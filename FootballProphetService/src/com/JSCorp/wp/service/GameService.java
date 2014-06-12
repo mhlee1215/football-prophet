@@ -23,6 +23,7 @@ import org.json.simple.parser.ParseException;
 
 import com.JSCorp.wp.domain.FPGameMatchSchedule;
 import com.JSCorp.wp.domain.FPGameProphet;
+import com.JSCorp.wp.domain.FPGameResult;
 import com.JSCorp.wp.domain.FPGameTeam;
 import com.JSCorp.wp.domain.FPUser;
 import com.JSCorp.wp.var.Env;
@@ -340,6 +341,108 @@ public class GameService {
 		return null;
 	}
 	
+	public static int getGameProphetFinished(int user_id) {
+		
+		HttpClient httpclient = new DefaultHttpClient();
+		ArrayList<FPGameProphet> prophets = new ArrayList<FPGameProphet>();
+		try {
+			// HttpGet??
+			HttpGet httpget = new HttpGet(Env.url
+					+ "api.readGameProphetFinished.do"+"?user_id="+Integer.toString(user_id));
+
+			System.out.println("executing request " + httpget.getURI());
+			HttpResponse response = httpclient.execute(httpget);
+			HttpEntity entity = response.getEntity();
+
+			//System.out.println("----------------------------------------");
+			// ?? ??
+			//System.out.println(response.getStatusLine());
+			if (entity != null) {
+				//System.out.println("Response content length: "
+				//		+ entity.getContentLength());
+				BufferedReader rd = new BufferedReader(new InputStreamReader(
+						response.getEntity().getContent()));
+
+				String line = "";
+				while ((line = rd.readLine()) != null) {
+					JSONParser j = new JSONParser();
+					System.out.println("line:" + line);
+					JSONObject o = (JSONObject) j.parse(line);
+					JSONArray lang = (JSONArray) o.get("GameProphets");
+
+					return lang.size();
+				}
+
+			}
+			httpget.abort();
+			//System.out.println("----------------------------------------");
+			httpclient.getConnectionManager().shutdown();
+			return 0;
+		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			httpclient.getConnectionManager().shutdown();
+		}
+
+		return 0;
+	}
+	
+public static int getGameProphetCorrect(int user_id) {
+		
+		HttpClient httpclient = new DefaultHttpClient();
+		ArrayList<FPGameProphet> prophets = new ArrayList<FPGameProphet>();
+		try {
+			// HttpGet??
+			HttpGet httpget = new HttpGet(Env.url
+					+ "api.readGameProphetCorrect.do"+"?user_id="+Integer.toString(user_id));
+
+			System.out.println("executing request " + httpget.getURI());
+			HttpResponse response = httpclient.execute(httpget);
+			HttpEntity entity = response.getEntity();
+
+			//System.out.println("----------------------------------------");
+			// ?? ??
+			//System.out.println(response.getStatusLine());
+			if (entity != null) {
+				//System.out.println("Response content length: "
+				//		+ entity.getContentLength());
+				BufferedReader rd = new BufferedReader(new InputStreamReader(
+						response.getEntity().getContent()));
+
+				String line = "";
+				while ((line = rd.readLine()) != null) {
+					JSONParser j = new JSONParser();
+					System.out.println("line:" + line);
+					JSONObject o = (JSONObject) j.parse(line);
+					JSONArray lang = (JSONArray) o.get("GameProphets");
+
+					return lang.size();
+				}
+
+			}
+			httpget.abort();
+			//System.out.println("----------------------------------------");
+			httpclient.getConnectionManager().shutdown();
+			return 0;
+		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			httpclient.getConnectionManager().shutdown();
+		}
+
+		return 0;
+	}
+	
 	
 	public static int setGameProphet(FPGameProphet gameProphet){
 		
@@ -444,6 +547,103 @@ public class GameService {
 		return false;
 	}
 	
+	
+public static ArrayList<FPGameResult> getGameResults(FPGameResult gameResult_params) {
+		
+
+		
+		
+		// HttpClient ??
+		HttpClient httpclient = new DefaultHttpClient();
+		ArrayList<FPGameResult> results = new ArrayList<FPGameResult>();
+		try {
+			// HttpGet??
+			HttpGet httpget = new HttpGet(Env.url
+					+ "api.readGameResult.do"+gameResult_params.toStringSealize());
+
+			System.out.println("executing request " + httpget.getURI());
+			HttpResponse response = httpclient.execute(httpget);
+			HttpEntity entity = response.getEntity();
+
+			//System.out.println("----------------------------------------");
+			// ?? ??
+			//System.out.println(response.getStatusLine());
+			if (entity != null) {
+				//System.out.println("Response content length: "
+				//		+ entity.getContentLength());
+				BufferedReader rd = new BufferedReader(new InputStreamReader(
+						response.getEntity().getContent()));
+
+				String line = "";
+				while ((line = rd.readLine()) != null) {
+					JSONParser j = new JSONParser();
+					//System.out.println("line:" + line);
+					JSONObject o = (JSONObject) j.parse(line);
+					JSONArray lang = (JSONArray) o.get("GameResults");
+
+					
+
+					for (int i = 0; i < lang.size(); i++) {
+
+						// System.out.println("The " + i
+						// + " element of the array: " + lang.get(i));
+						JSONObject o2 = (JSONObject) lang.get(i);
+						//System.out.println(o2.get("reference_time"));
+
+						FPGameResult gameResult = new FPGameResult();
+						String str;
+						if ((str = (String) o2.get("id")) != null) {
+							gameResult.setId(Integer.parseInt(str));
+						}
+						
+						if ((str = (String) o2.get("match_id")) != null) {
+							gameResult.setMatch_id(Integer.parseInt(str));
+						}
+						
+						if ((str = (String) o2.get("match_type")) != null) {
+							gameResult.setMatch_type(str);
+						}
+						
+						if ((str = (String) o2.get("home_team_score")) != null) {
+							gameResult.setHome_team_score(Integer.parseInt(str));
+						}
+						
+						if ((str = (String) o2.get("away_team_score")) != null) {
+							gameResult.setAway_team_score(Integer.parseInt(str));
+						}
+						
+						
+						
+
+						results.add(gameResult);
+					}
+
+					// Map response2 = (Map)o.get("GameMatchSchedules");
+					// JSONObject o2 = (JSONObject) o.get("GameMatchSchedules");
+					// System.out.println(o2.entrySet().size());
+
+					// //System.out.println(response2.get("FPGameMatchSchedule"));
+				}
+
+			}
+			httpget.abort();
+			//System.out.println("----------------------------------------");
+			httpclient.getConnectionManager().shutdown();
+			return results;
+		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			httpclient.getConnectionManager().shutdown();
+		}
+
+		return null;
+	}
+	
 
 	public static void main(String[] args) throws ParseException {
 
@@ -453,12 +653,14 @@ public class GameService {
 		
 		
 		
-		
-		
+		System.out.println(GameService.getGameProphetFinished(1));
+		System.out.println(GameService.getGameProphetCorrect(1));
+		System.out.println(GameService.getGameResults(new FPGameResult()));
 		
 		
 		
 		//ADD GAME PROPHET
+		/*
 		for(int j = 1 ; j < 10 ; j++){
 			for(int i = 1 ; i <= 10 ; i++){
 				int prophet_case = ((int)(Math.random()*100))%3+1;
@@ -478,6 +680,7 @@ public class GameService {
 				System.out.println(GameService.setGameProphet(gameProphet));
 			}
 		}
+		*/
 		//System.out.println(encodeResult);
 //		
 
