@@ -1,6 +1,10 @@
 package com.JSCorp.wp.domain;
 
 public class FPGameProphet {
+	
+	public static String FLAG_TRUE = "1";
+	public static String FLAG_FALSE = "0";
+	
 	int id = 0;
 	int user_id = 0;
 	int match_id = 0;
@@ -77,13 +81,37 @@ public class FPGameProphet {
 	public void setHome_team_win(String home_team_win) {
 		this.home_team_win = home_team_win;
 	}
+	
+	public void setHome_team_win(){
+		this.home_team_win = "1";
+		this.away_team_win = "0";
+		this.draw = "0";
+	}
+	
+	public void setAway_team_win(){
+		this.home_team_win = "0";
+		this.away_team_win = "1";
+		this.draw = "0";
+	}
+	
+	public void setDraw(){
+		this.home_team_win = "0";
+		this.away_team_win = "0";
+		this.draw = "1";
+	}
 
 	public String getAway_team_win() {
 		return away_team_win;
 	}
 
 	public void setAway_team_win(String away_team_win) {
-		this.away_team_win = away_team_win;
+		if(FLAG_TRUE.equals(away_team_win)){
+			this.home_team_win = FLAG_FALSE;
+			this.away_team_win = FLAG_TRUE;
+			this.draw = FLAG_FALSE;
+		}else{
+			this.away_team_win = FLAG_FALSE;
+		}
 	}
 
 	public String getDraw() {
