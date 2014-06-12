@@ -114,7 +114,7 @@ public class PredictionListAdapter extends BaseAdapter {
 		//((TextView) convertView.findViewById(R.id.nations_home)).setText(categorya[position]);
 		//((TextView) convertView.findViewById(R.id.nations_away)).setText(categorya[position]);
 		((TextView) convertView.findViewById(R.id.matchResult)).setVisibility(View.INVISIBLE);
-		((TextView) convertView.findViewById(R.id.myPrediction)).setVisibility(View.INVISIBLE);
+		//((TextView) convertView.findViewById(R.id.myPrediction)).setVisibility(View.INVISIBLE);
 		(convertView.findViewById(R.id.predictionResult)).setVisibility(View.INVISIBLE);
 		
 		//Default + prediction (nations, nextGameTimer/Timer, myPrediction)
