@@ -12,6 +12,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -21,6 +22,7 @@ import android.view.Window;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -133,20 +135,78 @@ public class PredictionListAdapter extends BaseAdapter {
 	        }
 	    }); 
 	    
-	    Button predictionButton = (Button) dialog.findViewById(R.id.btnPredict);
+	    Button predictionButton1 = (Button) dialog.findViewById(R.id.btnPredict1);
 	    // if button is clicked, close the custom dialog
-	    predictionButton.setOnClickListener(new View.OnClickListener() {
+	    predictionButton1.setOnClickListener(new View.OnClickListener() {
 
 	        @Override
 	        public void onClick(View v) {
 	            dialog.dismiss();
-	            Intent dynamicPredictionActivity = new Intent(mContext, DynamicPredictionActivity.class);
-	        	mContext.startActivity(dynamicPredictionActivity); 
+	            predictHomeVictory();
+	        }
+	    });
+	    Button predictionButton2 = (Button) dialog.findViewById(R.id.btnPredict2);
+	    // if button is clicked, close the custom dialog
+	    predictionButton2.setOnClickListener(new View.OnClickListener() {
+
+	        @Override
+	        public void onClick(View v) {
+	            dialog.dismiss();
+	            predictDraw();
+	        }
+	    }); 
+	    Button predictionButton3 = (Button) dialog.findViewById(R.id.btnPredict3);
+	    // if button is clicked, close the custom dialog
+	    predictionButton3.setOnClickListener(new View.OnClickListener() {
+
+	        @Override
+	        public void onClick(View v) {
+	            dialog.dismiss();
+	            predictAwayVictory();
 	        }
 	    }); 
 	    
+	    matches.get(position).getHome_team_id();
+	    ((TextView)dialog.findViewById(R.id.matchGroup)).setText(matches.get(position).getGameGroup() + "조 조별매치");
+	    
+	    //System.out.println(matches);
+	    String homeImage = "flag" + Integer.toString(matches.get(position).getHome_team_id());
+	    String awayImage = "flag" + Integer.toString(matches.get(position).getAway_team_id());
+	    int resIDHome = mContext.getResources().getIdentifier(homeImage, "drawable", mContext.getPackageName());
+	    ((ImageView) dialog.findViewById(R.id.flagA)).setImageResource(resIDHome );;
+	    int resIDAway = mContext.getResources().getIdentifier(awayImage, "drawable", mContext.getPackageName());
+	    ((ImageView) dialog.findViewById(R.id.flagB)).setImageResource(resIDAway );;
+	    
+	    String nationHomeName = matches.get(position).getHome_team_name();
+	    String nationAwayName = matches.get(position).getAway_team_name();
+	    if(nationHomeName.equals("보스니아 헤르체고비나")) {
+	    	nationHomeName = nationHomeName.replace(" ", "\n");
+	    }
+	    if(nationAwayName.equals("보스니아 헤르체고비나")) {
+	    	nationAwayName = nationAwayName.replace(" ", "\n");
+	    }
+	    ((TextView) dialog.findViewById(R.id.nationA)).setText(nationHomeName);
+	    ((TextView) dialog.findViewById(R.id.nationB)).setText(nationAwayName);
+	    
+	    
+	    
+	    
+	    
 	    dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
 	    dialog.show();
+	}
+	
+	private void predictHomeVictory() {
+		// TODO Auto-generated method stub
+		Log.i("onClick", "1");
+	}
+	private void predictDraw() {
+		// TODO Auto-generated method stub
+		Log.i("onClick", "2");
+	}
+	private void predictAwayVictory() {
+		// TODO Auto-generated method stub
+		Log.i("onClick", "3");
 	}
 
 }
