@@ -79,7 +79,13 @@ public class FPGameProphet {
 	}
 
 	public void setHome_team_win(String home_team_win) {
-		this.home_team_win = home_team_win;
+		if(FLAG_TRUE.equals(home_team_win)){
+			this.home_team_win = FLAG_TRUE;
+			this.away_team_win = FLAG_FALSE;
+			this.draw = FLAG_FALSE;
+		}else{
+			this.home_team_win = FLAG_FALSE;
+		}
 	}
 	
 	public void setHome_team_win(){
@@ -118,8 +124,14 @@ public class FPGameProphet {
 		return draw;
 	}
 
-	public void setDraw(String draw) {
-		this.draw = draw;
+	public void setDraw(String draw) {		
+		if(FLAG_TRUE.equals(draw)){
+			this.home_team_win = FLAG_FALSE;
+			this.away_team_win = FLAG_FALSE;
+			this.draw = FLAG_TRUE;
+		}else{
+			this.draw = FLAG_FALSE;
+		}
 	}
 
 	public String getProphet_result() {
