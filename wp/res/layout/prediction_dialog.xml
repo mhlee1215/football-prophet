@@ -10,32 +10,38 @@ android:orientation="vertical">
         android:orientation="vertical">
 
     </LinearLayout>
-    <LinearLayout
+	<LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_weight="0.8"
-        android:background="#A9E2F3"
+        android:layout_weight="0.6"
+        android:background="@drawable/prediction_main"
         android:orientation="vertical">
-        <ImageButton
-            	android:id="@+id/imageButton1"
-            	android:layout_width="wrap_content"
-            	android:layout_height="wrap_content"
-            	android:background="#A9E2F3"
-            	android:src="@drawable/abc_ic_clear_search_api_disabled_holo_light" />
+        <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="0.85"
+        android:orientation="vertical">
+		<ImageButton
+    		    android:id="@+id/imageButton1"
+    		    android:layout_width="wrap_content"
+    		    android:layout_height="wrap_content"
+    		    android:background="@android:color/transparent"
+    		    android:src="@drawable/abc_ic_clear_search_api_disabled_holo_light" />
     </LinearLayout>
 
     <TableLayout
     	android:layout_width="fill_parent"
     	android:layout_height="fill_parent"
-    	android:layout_weight="0.6"
+    	android:layout_weight="0.15"
     	android:shrinkColumns="*" 
     	android:stretchColumns="*" 
-    	android:background="#A9E2F3"
+    	
     	android:orientation="vertical"> 
     	
     	<TableRow 
         	android:layout_height="wrap_content" 
         	android:layout_width="fill_parent" 
+        	android:layout_weight="0.1"
         	android:gravity="center_horizontal">
         	<TextView
             android:id="@+id/matchGroup"
@@ -103,6 +109,7 @@ android:orientation="vertical">
             	android:layout_height="fill_parent"
             	android:padding="10dip"
             	android:gravity="center"
+            	android:background="@drawable/dialog_button"
             	android:text="A팀 승리" />
         	<Button
             	android:id="@+id/btnPredict2"
@@ -110,6 +117,7 @@ android:orientation="vertical">
             	android:layout_height="fill_parent"
             	android:padding="10dip"
             	android:gravity="center"
+            	android:background="@drawable/dialog_button"
             	android:text="무승부" />
         	<Button
             	android:id="@+id/btnPredict3"
@@ -117,8 +125,21 @@ android:orientation="vertical">
            	 	android:layout_height="fill_parent"
             	android:padding="10dip"
             	android:gravity="center"
+            	android:background="@drawable/dialog_button"
             	android:text="B팀 승리" />
 		</TableRow>  
+		<TableRow 
+        	android:layout_height="wrap_content" 
+        	android:layout_width="fill_parent" 
+        	android:gravity="center_horizontal">
+        	<TextView
+            android:id="@+id/dummy"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:text="" />
+   		</TableRow>
     </TableLayout>
+    </LinearLayout>
 
 </LinearLayout>
