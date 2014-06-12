@@ -100,6 +100,17 @@ public class PredictionListAdapter extends BaseAdapter {
 		((TextView) convertView.findViewById(R.id.nations_away)).setText(matches.get(position).getAway_team_name());
 		((TextView) convertView.findViewById(R.id.matchTime)).setText(matches.get(position).getReference_time());
 		
+		
+		 if(matches.get(position).getProphet_home_win() == 1) {
+			 ((TextView) convertView.findViewById(R.id.myPrediction)).setText("홈 이김");
+		    } else if(matches.get(position).getProphet_draw() == 1) {
+		    	((TextView) convertView.findViewById(R.id.myPrediction)).setText("비김");
+		    } else if(matches.get(position).getProphet_away_win() == 1) {
+		    	((TextView) convertView.findViewById(R.id.myPrediction)).setText("어웨이 이김");
+		    }
+		
+		
+		
 		//((TextView) convertView.findViewById(R.id.nations_home)).setText(categorya[position]);
 		//((TextView) convertView.findViewById(R.id.nations_away)).setText(categorya[position]);
 		((TextView) convertView.findViewById(R.id.matchResult)).setVisibility(View.INVISIBLE);
@@ -129,9 +140,9 @@ public class PredictionListAdapter extends BaseAdapter {
 	    
 	    if(matches.get(position).getProphet_home_win() == 1) {
 	    	((TextView) dialog.findViewById(R.id.btnPredict1)).setText("승리할거임");
-	    } else if(matches.get(position).getProphet_away_win() == 1) {
-	    	((TextView) dialog.findViewById(R.id.btnPredict2)).setText("승리할거임");
 	    } else if(matches.get(position).getProphet_draw() == 1) {
+	    	((TextView) dialog.findViewById(R.id.btnPredict2)).setText("승리할거임");
+	    } else if(matches.get(position).getProphet_away_win() == 1) {
 	    	((TextView) dialog.findViewById(R.id.btnPredict3)).setText("승리할거임");
 	    }
 	    
