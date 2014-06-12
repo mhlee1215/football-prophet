@@ -32,6 +32,11 @@ public class FPGameMatchSchedule {
 
 	public void setProphet_home_win(int prophet_home_win) {
 		this.prophet_home_win = prophet_home_win;
+		
+		if(this.prophet_home_win == 1){
+			this.prophet_away_win = 0;
+			this.prophet_draw = 0;
+		}
 	}
 
 	public int getProphet_away_win() {
@@ -40,6 +45,11 @@ public class FPGameMatchSchedule {
 
 	public void setProphet_away_win(int prophet_away_win) {
 		this.prophet_away_win = prophet_away_win;
+		
+		if(this.prophet_away_win == 1){
+			this.prophet_home_win = 0;
+			this.prophet_draw = 0;
+		}
 	}
 
 	public int getProphet_draw() {
@@ -48,6 +58,11 @@ public class FPGameMatchSchedule {
 
 	public void setProphet_draw(int prophet_draw) {
 		this.prophet_draw = prophet_draw;
+		
+		if(this.prophet_draw == 1){
+			this.prophet_home_win = 0;
+			this.prophet_away_win = 0;
+		}
 	}
 
 	public String getMonth() {
