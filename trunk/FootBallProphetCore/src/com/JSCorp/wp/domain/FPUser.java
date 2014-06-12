@@ -16,6 +16,35 @@ public class FPUser {
 	int score_static;
 	private int query_start = 0;
 	private int query_number = 0;
+	
+	int finished_game_num;
+	int prophet_num;
+	int righ_prophet_num;
+
+	
+	public int getFinished_game_num() {
+		return finished_game_num;
+	}
+
+	public void setFinished_game_num(int finished_game_num) {
+		this.finished_game_num = finished_game_num;
+	}
+
+	public int getProphet_num() {
+		return prophet_num;
+	}
+
+	public void setProphet_num(int prophet_num) {
+		this.prophet_num = prophet_num;
+	}
+
+	public int getRigh_prophet_num() {
+		return righ_prophet_num;
+	}
+
+	public void setRigh_prophet_num(int righ_prophet_num) {
+		this.righ_prophet_num = righ_prophet_num;
+	}
 
 	public String getIs_nickname_initialized() {
 		return is_nickname_initialized;
@@ -155,7 +184,10 @@ public class FPUser {
 				+ "\",\"score_dynamic\":\"" + score_dynamic
 				+ "\",\"score_static\":\"" + score_static
 				+ "\",\"query_start\":\"" + query_start
-				+ "\",\"query_number\":\"" + query_number + "\"}";
+				+ "\",\"query_number\":\"" + query_number
+				+ "\",\"finished_game_num\":\"" + finished_game_num
+				+ "\",\"prophet_num\":\"" + prophet_num
+				+ "\",\"righ_prophet_num\":\"" + righ_prophet_num + "\"}";
 	}
 	
 	
