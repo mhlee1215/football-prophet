@@ -678,10 +678,12 @@ public static ArrayList<FPGameResult> getGameResults(FPGameResult gameResult_par
 //		System.out.println(readGameProphet);
 		
 		
+		//System.out.println(GameService.getGameMatchSchedules(62));
 		
-		System.out.println(GameService.getGameProphetFinished(1));
-		System.out.println(GameService.getGameProphetCorrect(1));
-		System.out.println(GameService.getGameResults(new FPGameResult()));
+		
+//		System.out.println(GameService.getGameProphetFinished(1));
+//		System.out.println(GameService.getGameProphetCorrect(1));
+//		System.out.println(GameService.getGameResults(new FPGameResult()));
 		
 		
 		
