@@ -111,6 +111,37 @@ private Logger logger = Logger.getLogger(getClass());
 		return new ResponseEntity<String>(MyJsonUtil.toString(gameProphetList, "GameProphets"), responseHeaders, HttpStatus.CREATED);
     }
 	
+	@RequestMapping(value="/api.readGameProphetCorrect.do")
+    public ResponseEntity<String> readGameProphetCorrect(HttpServletRequest request, HttpServletResponse response) {
+			
+		Integer user_id = ServletRequestUtils.getIntParameter(request, "user_id", 0);
+	
+		FPGameProphet gameProphet = new FPGameProphet();
+		gameProphet.setUser_id(user_id);
+		gameProphet.setProphet_result("1");		
+		List<FPGameProphet> gameProphetList = gameProphetService.readGameProphetListCorrect(gameProphet);
+ 
+		
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "text/html; charset=UTF-8");
+		return new ResponseEntity<String>(MyJsonUtil.toString(gameProphetList, "GameProphets"), responseHeaders, HttpStatus.CREATED);
+    }
+	
+	@RequestMapping(value="/api.readGameProphetFinished.do")
+    public ResponseEntity<String> readGameProphetFinished(HttpServletRequest request, HttpServletResponse response) {
+		Integer user_id = ServletRequestUtils.getIntParameter(request, "user_id", 0);		
+		
+		FPGameProphet gameProphet = new FPGameProphet();
+		gameProphet.setUser_id(user_id);
+		
+		List<FPGameProphet> gameProphetList = gameProphetService.readGameProphetListFinished(gameProphet);
+ 
+		
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "text/html; charset=UTF-8");
+		return new ResponseEntity<String>(MyJsonUtil.toString(gameProphetList, "GameProphets"), responseHeaders, HttpStatus.CREATED);
+    }
+	
 	@RequestMapping(value="/api.addGameProphet.do")
     public @ResponseBody String addGameProphet(HttpServletRequest request, HttpServletResponse response) {
 		Integer query_page = ServletRequestUtils.getIntParameter(request, "query_page", 1);
@@ -202,19 +233,38 @@ private Logger logger = Logger.getLogger(getClass());
 		return new ResponseEntity<String>(MyJsonUtil.toString(gameTeamList, "GameTeams"), responseHeaders, HttpStatus.CREATED);
     }
 	
-	@RequestMapping("/api.updateGameResult.do")
-    public @ResponseBody String updateGameResult(HttpServletRequest request, HttpServletResponse response) throws Exception {		
+	@RequestMapping("/api.readGameResult.do")
+    public ResponseEntity<String> readGameResult(HttpServletRequest request, HttpServletResponse response) throws Exception {		
 		Integer id = ServletRequestUtils.getIntParameter(request, "id", 0);
 		Integer match_id = ServletRequestUtils.getIntParameter(request, "match_id", 0);
-		
 		String match_type = ServletRequestUtils.getStringParameter(request, "match_type", "");
-		
 		Integer home_team_score = ServletRequestUtils.getIntParameter(request, "home_team_score", 0);
 		Integer away_team_score = ServletRequestUtils.getIntParameter(request, "away_team_score", 0);
 		
 		FPGameResult s = new FPGameResult();
 		s.setId(id);
 		s.setMatch_id(match_id);
+		s.setMatch_type(match_type);
+		
+		List<FPGameResult> gameResultList = gameResultService.readGameResultList(s);
+		
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "text/html; charset=UTF-8");
+		return new ResponseEntity<String>(MyJsonUtil.toString(gameResultList, "GameResults"), responseHeaders, HttpStatus.CREATED);
+    }
+	
+	@RequestMapping("/api.updateGameResult.do")
+    public @ResponseBody String updateGameResult(HttpServletRequest request, HttpServletResponse response) throws Exception {		
+		Integer id = ServletRequestUtils.getIntParameter(request, "id", 0);
+		Integer match_id = ServletRequestUtils.getIntParameter(request, "match_id", 0);
+		String match_type = ServletRequestUtils.getStringParameter(request, "match_type", "");
+		Integer home_team_score = ServletRequestUtils.getIntParameter(request, "home_team_score", 0);
+		Integer away_team_score = ServletRequestUtils.getIntParameter(request, "away_team_score", 0);
+		
+		FPGameResult s = new FPGameResult();
+		s.setId(id);
+		s.setMatch_id(match_id);
+		s.setMatch_type(match_type);
 		
 		FPGameResult gameResults = gameResultService.readGameResult(s);
 		
