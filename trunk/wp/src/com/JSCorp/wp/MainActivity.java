@@ -7,6 +7,7 @@ import com.JSCorp.wp.domain.FPGameMatchSchedule;
 import com.JSCorp.wp.domain.FPUser;
 import com.JSCorp.wp.service.GameService;
 import com.JSCorp.wp.service.UserService;
+import com.JSCorp.wp.var.GlobalVars;
 
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
@@ -20,6 +21,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.telephony.TelephonyManager;
+import android.util.Log;
 
 @SuppressLint("NewApi")
 public class MainActivity extends FragmentActivity implements
@@ -112,13 +114,14 @@ public class MainActivity extends FragmentActivity implements
 			
 			if(user == null){
 				//add user
-				System.out.println("Add USER!");
+				Log.i(GlobalVars.WP_INFO_TAG, "ADD USER");
 				FPUser addUser = new FPUser();
+				System.out.println(addUser);
 				addUser.setDevice_id(deviceId);
 				boolean result = UserService.addUser(addUser);
 				System.out.println("result : "+result);
 			}else{
-				System.out.println("USER ALERADY EXISTS");
+				Log.i(GlobalVars.WP_INFO_TAG, "USER ALREADY EXISTS");
 			}
 			
 			return null;
