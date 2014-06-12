@@ -10,7 +10,9 @@ import com.JSCorp.wp.var.GlobalVars;
 
 import android.app.ActionBar;
 import android.app.ListActivity;
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
@@ -28,6 +30,7 @@ import android.widget.Toast;
 public class DynamicBracketActivity extends ListActivity {
 
 	public List<FPGameMatchSchedule> matches;
+	ProgressDialog dialog;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -37,9 +40,14 @@ public class DynamicBracketActivity extends ListActivity {
         // Enabling Up / Back navigation
         getActionBar().setDisplayHomeAsUpEnabled(true);
 		
+
         
         if(GlobalVars.matches == null){
         	Log.i(GlobalVars.WP_INFO_TAG, "Transaction to server for match retrieval.");
+        	
+        	
+        	
+        	
         	new GetGameTeamMap().execute(this);
         }
         else{
@@ -67,6 +75,9 @@ public class DynamicBracketActivity extends ListActivity {
 		PredictionListAdapter listAdapter = new PredictionListAdapter(this, R.layout.fragment_dynamic_bracket, matches);
 		ListView listView = (ListView) findViewById(android.R.id.list);
 		listView.setAdapter(listAdapter);
+		
+		if(GlobalVars.dynamicBracketDialog.isShowing())
+			GlobalVars.dynamicBracketDialog.cancel();
 	}
 	
 	
