@@ -436,7 +436,8 @@ public class UserService {
 		}else if(test_case == 2){
 			FPUser userupdate = new FPUser();
 			userupdate.setDevice_id("000000000000000");
-			userupdate.setNickname("한글닉넴이지롱2555521");
+			//userupdate.setNickname("한글닉넴이지롱2555521");
+			userupdate.setTag("tag123한글도 있음 ");
 			updateUser(userupdate);
 			//initializeUser(userupdate);
 		}
