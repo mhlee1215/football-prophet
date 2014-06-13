@@ -138,6 +138,7 @@ public class PredictionListAdapter extends BaseAdapter {
 	    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); 
 	    dialog.setContentView(R.layout.prediction_dialog);
 	    
+	    System.out.println(">>>>"+matches.get(position));
 	    if(matches.get(position).getProphet_home_win() == 1) {
 	    	((TextView) dialog.findViewById(R.id.btnPredict1)).setText("승리할거임");
 	    	((Button) dialog.findViewById(R.id.btnPredict1)).setBackgroundResource(R.drawable.dialog_selected_button);
@@ -256,7 +257,7 @@ public class PredictionListAdapter extends BaseAdapter {
 		
 		FPGameProphet gameProphet = new FPGameProphet();
 		gameProphet.setUser_id(GlobalVars.user.getId());
-		gameProphet.setMatch_id(position+1);
+		gameProphet.setMatch_id(position);
 		gameProphet.setProphet_type("1");
 		gameProphet.setHome_team_win();
 		
@@ -269,7 +270,7 @@ public class PredictionListAdapter extends BaseAdapter {
 		
 		FPGameProphet gameProphet = new FPGameProphet();
 		gameProphet.setUser_id(GlobalVars.user.getId());
-		gameProphet.setMatch_id(position+1);
+		gameProphet.setMatch_id(position);
 		gameProphet.setProphet_type("1");
 		gameProphet.setDraw();
 		
@@ -282,7 +283,7 @@ public class PredictionListAdapter extends BaseAdapter {
 		
 		FPGameProphet gameProphet = new FPGameProphet();
 		gameProphet.setUser_id(GlobalVars.user.getId());
-		gameProphet.setMatch_id(position+1);
+		gameProphet.setMatch_id(position);
 		gameProphet.setProphet_type("1");
 		gameProphet.setAway_team_win();
 		
