@@ -128,6 +128,10 @@ public class GameService {
 						if ((str = (String) o2.get("reference_time")) != null) {
 							matchSchedule.setReference_time(str);
 						}
+						
+						if ((str = (String) o2.get("match_finished")) != null) {
+							matchSchedule.setMatch_finished(str);
+						}
 
 						matches.add(matchSchedule);
 					}
@@ -711,8 +715,8 @@ public static boolean updateGameResult(FPGameResult gameResult) {
 
 	public static void main(String[] args) throws ParseException {
 
-		//System.out.println(GameService.getGameMatchSchedules(62));
-		
+		System.out.println(GameService.getGameMatchSchedules(62));
+		if(1==1) return;
 		//GameService.getGameMatchSchedules(62);
 		
 		for(int i = 1; i < 6; i++)
