@@ -6,10 +6,15 @@ import android.app.ListActivity;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ListView;
+import android.widget.TableLayout;
 
 
 public class DynamicRankActivity extends ListActivity {	
+	
+	private RankListAdapter listAdapter;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -21,9 +26,34 @@ public class DynamicRankActivity extends ListActivity {
 		
 		String[] lista = getResources().getStringArray(R.array.nation);
 		
-		RankListAdapter listAdapter = new RankListAdapter(this, R.layout.fragment_dynamic_rank, lista);
+		listAdapter = new RankListAdapter(this, R.layout.fragment_dynamic_rank, lista);
 		ListView listView = (ListView) findViewById(android.R.id.list);
 		listView.setAdapter(listAdapter);
+		
+		
+		TableLayout firstPlace = (TableLayout)findViewById(R.id.firstPlace);
+		TableLayout secondPlace = (TableLayout)findViewById(R.id.secondPlace);
+		TableLayout thirdPlace = (TableLayout)findViewById(R.id.thirdPlace);
+		firstPlace.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				listAdapter.detailInfo(1);
+			}
+		});
+		secondPlace.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				listAdapter.detailInfo(1);
+			}
+		});
+		thirdPlace.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				listAdapter.detailInfo(1);
+			}
+		});
+		
+		
 	}
 	
 	@Override

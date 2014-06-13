@@ -3,34 +3,149 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:background="@drawable/background_main"
     android:orientation="vertical">
-
+	
+    <LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_weight="0.6"
+    android:orientation="horizontal">
+    <LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/first_place"
+    android:layout_marginTop="10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_weight="1"
+    android:orientation="vertical">
     <TableLayout 
+    android:id="@+id/firstPlace"
     android:layout_width="match_parent" 
     android:layout_height="match_parent" 
-    android:layout_weight="0.6"
-    android:shrinkColumns="*"  android:stretchColumns="*" android:background="#ffffff"> 
+    android:shrinkColumns="*"  android:stretchColumns="*"> 
     <TableRow 
-        android:id="@+id/tableRow1" 
+        android:id="@+id/col1" 
         android:layout_height="wrap_content" 
         android:layout_width="match_parent">  
         <TextView 
-            android:id="@+id/TextView04" android:text="1등"
-            android:layout_weight="1" android:background="#dcdcdc"
-            android:textColor="#000000"
-            android:padding="20dip" android:gravity="center"/>  
-        <TextView 
-            android:id="@+id/TextView04" android:text="2등"
-            android:layout_weight="1" android:background="#d3d3d3"
+            android:id="@+id/firstPlaceRemark" android:text="1등"
+            android:layout_weight="1"
             android:textColor="#000000"
             android:padding="20dip" android:gravity="center"/>
+    </TableRow>
+
+    <TextView
+        android:id="@+id/firstPlaceNickname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="내가 지존"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/firstPlaceTag1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="내가 예언왕이다"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+ 
+    </TableLayout>
+    </LinearLayout>
+    <LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+	android:background="@drawable/second_place"
+    android:layout_marginTop="10dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginLeft="5dp"
+    android:layout_weight="1"
+    android:orientation="vertical">
+    <TableLayout 
+    android:id="@+id/secondPlace"
+    android:layout_width="match_parent" 
+    android:layout_height="match_parent" 
+    android:shrinkColumns="*"  android:stretchColumns="*"> 
+    <TableRow 
+        android:id="@+id/col2" 
+        android:layout_height="wrap_content" 
+        android:layout_width="match_parent">  
         <TextView 
-            android:id="@+id/TextView04" android:text="3등"
-            android:layout_weight="1" android:background="#cac9c9"
+            android:id="@+id/secondPlaceRemark" android:text="2등"
+            android:layout_weight="1"
             android:textColor="#000000"
             android:padding="20dip" android:gravity="center"/>
     </TableRow> 
+    
+    <TextView
+        android:id="@+id/secondPlaceNickname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="거의 지존"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/secondPlaceTag1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="아까비..."
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+    
     </TableLayout>
+    </LinearLayout>
+    <LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+	android:background="@drawable/third_place"
+    android:layout_marginTop="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_weight="1"
+    android:orientation="vertical">
+    <TableLayout 
+    android:id="@+id/thirdPlace"
+    android:layout_width="match_parent" 
+    android:layout_height="match_parent" 
+    android:shrinkColumns="*"  android:stretchColumns="*"> 
+    <TableRow 
+        android:id="@+id/col3" 
+        android:layout_height="wrap_content" 
+        android:layout_width="match_parent">  
+        <TextView 
+            android:id="@+id/thirdPlaceRemark" android:text="3등"
+            android:layout_weight="1"
+            android:textColor="#000000"
+            android:padding="20dip" android:gravity="center"/>
+    </TableRow> 
+    
+    <TextView
+        android:id="@+id/thridPlaceNickname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="안습맨"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/thridPlaceTag1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1등 그거슨 꿈.."
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+    
+    </TableLayout>
+    </LinearLayout>
+    </LinearLayout>
+    <View
+    android:layout_width="match_parent"
+    android:layout_height="5dip"
+    android:background="@drawable/background_line"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    />
     
     <LinearLayout
     android:layout_width="fill_parent"
@@ -42,19 +157,52 @@
 	    android:layout_width="match_parent"
     	android:layout_height="wrap_content" />
 	</LinearLayout>
-	<LinearLayout
+	<View
+    android:layout_width="match_parent"
+    android:layout_height="5dip"
+    android:background="@drawable/background_line"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    />
+	<RelativeLayout
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:layout_weight="0.8"
-    android:orientation="vertical"
-    android:background="#ffffff">
+    android:layout_weight="0.75"
+    android:orientation="horizontal">
 
 		<TextView
-		    android:id="@+id/myRankView"
-		    android:layout_width="fill_parent"
-		    android:layout_height="fill_parent"
-		    android:text="5422595 미냉이 					미냉미냉" />
+		    android:id="@+id/tag"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignBaseline="@+id/myNickname"
+		    android:layout_alignBottom="@+id/myNickname"
+		    android:layout_alignParentRight="true"
+		    android:layout_marginRight="10dp"
+		    android:gravity="center_vertical"
+		    android:text="미냉미냉" />
+
+		<TextView
+		    android:id="@+id/myNickname"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignParentTop="true"
+		    android:layout_marginLeft="20dp"
+		    android:layout_toRightOf="@+id/myRank"
+		    android:gravity="center_vertical"
+		    android:text="미냉공주"
+		    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+		<TextView
+		    android:id="@+id/myRank"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignBaseline="@+id/myNickname"
+		    android:layout_alignBottom="@+id/myNickname"
+		    android:layout_alignParentLeft="true"
+		    android:layout_marginLeft="10dp"
+		    android:gravity="center_vertical"
+		    android:text="내등수" />
 	
-	</LinearLayout>
+	</RelativeLayout>
 	
 </LinearLayout>

@@ -3,21 +3,21 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#17df0d"
+    android:background="@drawable/background_main"
     android:orientation="vertical">
 
     <TableLayout 
     android:layout_width="match_parent" 
     android:layout_height="match_parent" 
     android:layout_weight="0.6"
-    android:shrinkColumns="*"  android:stretchColumns="*" android:background="#ffffff"> 
+    android:shrinkColumns="*"  android:stretchColumns="*" > 
     <TableRow 
         android:id="@+id/tableRow1" 
         android:layout_height="wrap_content" 
         android:layout_width="match_parent">  
         <TextView 
             android:id="@+id/nickname" android:text="닉네임"
-            android:layout_weight="1" android:background="#dcdcdc"
+            android:layout_weight="1"
             android:textColor="#000000"
             android:padding="20dip" android:gravity="center"/>  
         </TableRow> 
@@ -27,7 +27,7 @@
         android:layout_width="match_parent">  
         <TextView 
             android:id="@+id/tag1" android:text="내 한마디"
-            android:layout_weight="1" android:background="#d3d3d3"
+            android:layout_weight="1" 
             android:textColor="#000000"
             android:padding="20dip" android:gravity="center"/>
         </TableRow> 
@@ -37,7 +37,7 @@
         android:layout_width="match_parent">  
         <TextView 
             android:id="@+id/facebook" android:text="Facebook"
-            android:layout_weight="1" android:background="#cac9c9"
+            android:layout_weight="1" 
             android:textColor="#000000"
             android:padding="20dip" android:gravity="center"/>
         </TableRow> 
@@ -47,7 +47,7 @@
         android:layout_width="match_parent">  
         <TextView 
             android:id="@+id/twitter" android:text="Twitter"
-            android:layout_weight="1" android:background="#cac9c9"
+            android:layout_weight="1"
             android:textColor="#000000"
             android:padding="20dip" android:gravity="center"/>
     </TableRow> 
