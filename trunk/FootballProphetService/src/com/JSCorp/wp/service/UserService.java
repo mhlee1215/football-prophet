@@ -121,6 +121,7 @@ public class UserService {
 	public static boolean addUser(FPUser user) throws UnsupportedEncodingException {
 		
 		user.setNickname(URLEncoder.encode(user.getNickname(), "UTF-8"));
+		user.setTag(URLEncoder.encode(user.getTag(), "UTF-8"));
 		
 		if(isUserExistByDeviceId(user.getDevice_id()))
 			return false;
@@ -342,6 +343,8 @@ public class UserService {
 	
 	public static boolean initializeUser(FPUser user) throws UnsupportedEncodingException {
 		
+		System.out.println("Here is initialization. :"+user);
+		
 		FPUser curUser = getUserByDeviceId(user.getDevice_id());
 		System.out.println(">>>"+curUser);
 		if(NICK_ALREADY_INITIALIZED.equals(curUser.getIs_nickname_initialized())){
@@ -354,6 +357,7 @@ public class UserService {
 	
 	public static boolean updateUser(FPUser user) throws UnsupportedEncodingException {
 		user.setNickname(URLEncoder.encode(user.getNickname(), "UTF-8"));
+		user.setTag(URLEncoder.encode(user.getTag(), "UTF-8"));
 		//FPUser user = new FPUser();
 		
 		HttpClient httpclient = new DefaultHttpClient();
@@ -421,7 +425,7 @@ public class UserService {
 //		}
 		
 		
-		int test_case = 1;
+		int test_case = 2;
 		
 		if(test_case == 1){
 			//0000000140
@@ -431,9 +435,10 @@ public class UserService {
 			
 		}else if(test_case == 2){
 			FPUser userupdate = new FPUser();
-			userupdate.setDevice_id("0000000140");
+			userupdate.setDevice_id("000000000000000");
 			userupdate.setNickname("한글닉넴이지롱2555521");
-			initializeUser(userupdate);
+			updateUser(userupdate);
+			//initializeUser(userupdate);
 		}
 		
 		
