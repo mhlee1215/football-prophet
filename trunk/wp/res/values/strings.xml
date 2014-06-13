@@ -12,8 +12,8 @@
     <string name="title_activity_static_bracket">StaticBracketActivity</string>
     <string name="title_activity_example">ExampleActivity</string>
     <string name="title_activity_dynamic_prediction">DynamicPredictionActivity</string>
-    <string name="title_activity_dynamic_rank">예언자 랭</string>
-    <string name="title_activity_user_profile">설</string>
+    <string name="title_activity_dynamic_rank">예언자 랭킹</string>
+    <string name="title_activity_user_profile">설정</string>
     <string name="title_activity_edit_nickname">닉네임 설정</string>
     <string name="title_activity_edit_tag1">나의 한마디</string>
     <string name="title_activity_edit_facebook">페이스북</string>

@@ -96,19 +96,28 @@ public class PredictionListAdapter extends BaseAdapter {
 		//Visibility Setting Cases
 		//Default (nations, nextGameTimer/Timer)
 		//System.out.println("Pos:"+position+", "+matches.get(position));
-		((TextView) convertView.findViewById(R.id.nations_home)).setText(matches.get(position).getHome_team_name());
-		((TextView) convertView.findViewById(R.id.nations_away)).setText(matches.get(position).getAway_team_name());
-		((TextView) convertView.findViewById(R.id.matchTime)).setText(matches.get(position).getReference_time());
+		String homeImage = "flag" + Integer.toString(matches.get(position).getHome_team_id());
+	    String awayImage = "flag" + Integer.toString(matches.get(position).getAway_team_id());
+	    int resIDHome = mContext.getResources().getIdentifier(homeImage, "drawable", mContext.getPackageName());
+	    int resIDAway = mContext.getResources().getIdentifier(awayImage, "drawable", mContext.getPackageName());
+		((ImageView) convertView.findViewById(R.id.nations_home)).setImageResource(resIDHome);
+		((ImageView) convertView.findViewById(R.id.nations_away)).setImageResource(resIDAway);
+		
+		String matchTime = "\n " + matches.get(position).getReference_time();
+		if((matches.get(position).getMonth()).equals("06")) {
+			matchTime = "June " + (matches.get(position).getDay()) + matchTime;
+		}
+		((TextView) convertView.findViewById(R.id.matchTime)).setText(matchTime);
 		
 		
 		 if(matches.get(position).getProphet_home_win() == 1) {
-			 ((TextView) convertView.findViewById(R.id.myPrediction)).setText("홈 이김");
+			 ((TextView) convertView.findViewById(R.id.myPrediction)).setText((matches.get(position).getHome_team_name()) + "\n승리 예언");
 		 } else if(matches.get(position).getProphet_draw() == 1) {
-		   	((TextView) convertView.findViewById(R.id.myPrediction)).setText("비김");
+		   	((TextView) convertView.findViewById(R.id.myPrediction)).setText("무승부 예언");
 		 } else if(matches.get(position).getProphet_away_win() == 1) {
-		   	((TextView) convertView.findViewById(R.id.myPrediction)).setText("어웨이 이김");
+		   	((TextView) convertView.findViewById(R.id.myPrediction)).setText((matches.get(position).getAway_team_name()) + "\n승리 예언");
 		 } else{
-		  	((TextView) convertView.findViewById(R.id.myPrediction)).setText("모름");
+		  	((TextView) convertView.findViewById(R.id.myPrediction)).setText("");
 		 }
 		
 		
@@ -170,12 +179,14 @@ public class PredictionListAdapter extends BaseAdapter {
 	    
 	    String nationHomeName = matches.get(position).getHome_team_name();
 	    String nationAwayName = matches.get(position).getAway_team_name();
+	    /*
 	    if(nationHomeName.equals("보스니아 헤르체고비나")) {
 	    	nationHomeName = nationHomeName.replace(" ", "\n");
 	    }
 	    if(nationAwayName.equals("보스니아 헤르체고비나")) {
 	    	nationAwayName = nationAwayName.replace(" ", "\n");
-	    }
+	    } 
+	    */
 	    ((TextView) dialog.findViewById(R.id.nationA)).setText(nationHomeName);
 	    ((TextView) dialog.findViewById(R.id.nationB)).setText(nationAwayName);
 	    

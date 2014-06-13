@@ -90,6 +90,7 @@ public class DynamicBracketActivity extends ListActivity {
 		protected Object doInBackground(Object... arg0) {
 			tContext = (DynamicBracketActivity) arg0[0];
 			// TODO Auto-generated method stub
+			System.out.println(GlobalVars.user);
 			matches = GameService.getGameMatchSchedules(GlobalVars.user.getId());
 			//System.out.println("MATCH SIZE:"+matches.size());
 			
