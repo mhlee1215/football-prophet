@@ -253,7 +253,7 @@ public class PredictionListAdapter extends BaseAdapter {
 	private void predictDraw(int position) {
 		// TODO Auto-generated method stub
 		Log.i("onClick", "2");
-		matches.get(position).setProphet_away_win(1);
+		matches.get(position).setProphet_draw(1);
 		
 		FPGameProphet gameProphet = new FPGameProphet();
 		gameProphet.setUser_id(GlobalVars.user.getId());
@@ -266,7 +266,7 @@ public class PredictionListAdapter extends BaseAdapter {
 	private void predictAwayVictory(int position) {
 		// TODO Auto-generated method stub
 		Log.i("onClick", "3");
-		matches.get(position).setProphet_draw(1);
+		matches.get(position).setProphet_away_win(1);
 		
 		FPGameProphet gameProphet = new FPGameProphet();
 		gameProphet.setUser_id(GlobalVars.user.getId());
