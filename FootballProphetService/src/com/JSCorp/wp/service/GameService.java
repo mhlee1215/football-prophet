@@ -149,16 +149,17 @@ public class GameService {
 				FPGameProphet prophet = new FPGameProphet();
 				prophet.setUser_id(user_id);
 				List<FPGameProphet> gameProphets = GameService.getGameProphet(prophet);
-				
+				//System.out.println("P>>"+gameProphets);
 				for(FPGameProphet p : gameProphets){
 					int match_id = p.getMatch_id();
+					if(match_id ==0) continue;
 					
 					if(FPGameProphet.FLAG_TRUE.equals(p.getHome_team_win()))
-						matches.get(match_id).setProphet_home_win(1);
+						matches.get(match_id-1).setProphet_home_win(1);
 					else if(FPGameProphet.FLAG_TRUE.equals(p.getAway_team_win()))
-						matches.get(match_id).setProphet_away_win(1);
+						matches.get(match_id-1).setProphet_away_win(1);
 					else if(FPGameProphet.FLAG_TRUE.equals(p.getDraw()))
-						matches.get(match_id).setProphet_draw(1);
+						matches.get(match_id-1).setProphet_draw(1);
 				}
 			}
 			
@@ -390,7 +391,7 @@ public class GameService {
 				String line = "";
 				while ((line = rd.readLine()) != null) {
 					JSONParser j = new JSONParser();
-					System.out.println("line:" + line);
+					//System.out.println("line:" + line);
 					JSONObject o = (JSONObject) j.parse(line);
 					JSONArray lang = (JSONArray) o.get("GameProphets");
 
@@ -441,7 +442,7 @@ public static int getGameProphetCorrect(int user_id) {
 				String line = "";
 				while ((line = rd.readLine()) != null) {
 					JSONParser j = new JSONParser();
-					System.out.println("line:" + line);
+					//System.out.println("line:" + line);
 					JSONObject o = (JSONObject) j.parse(line);
 					JSONArray lang = (JSONArray) o.get("GameProphets");
 
@@ -673,6 +674,10 @@ public static ArrayList<FPGameResult> getGameResults(FPGameResult gameResult_par
 
 	public static void main(String[] args) throws ParseException {
 
+		//System.out.println(GameService.getGameMatchSchedules(62));
+		
+		GameService.getGameMatchSchedules(62);
+		
 //		FPGameProphet gameProphet = new FPGameProphet();
 //		List<FPGameProphet> readGameProphet = GameService.getGameProphet(gameProphet);
 //		System.out.println(readGameProphet);
