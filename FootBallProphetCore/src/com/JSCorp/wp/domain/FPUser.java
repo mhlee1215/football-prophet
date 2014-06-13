@@ -22,7 +22,16 @@ public class FPUser {
 	int right_prophet_num;
 	float right_prophet_ratio;
 
+	int rank;
 	
+	public int getRank() {
+		return rank;
+	}
+
+	public void setRank(int rank) {
+		this.rank = rank;
+	}
+
 	public float getRight_prophet_ratio() {
 		return right_prophet_ratio;
 	}
@@ -184,11 +193,11 @@ public class FPUser {
 
 	@Override
 	public String toString() {
-		return "{\"id\":\"" + id + "\",\"device_id\":\"" + device_id
-				+ "\",\"group_id\":\"" + group_id + "\",\"nickname\":\""
-				+ nickname + "\",\"is_nickname_initialized\":\""
-				+ is_nickname_initialized + "\",\"tag\":\"" + tag
-				+ "\",\"twitter\":\"" + twitter
+		return "{\"id\":\"" + id + "\",\"rank\":\"" + rank
+				+ "\",\"device_id\":\"" + device_id + "\",\"group_id\":\""
+				+ group_id + "\",\"nickname\":\"" + nickname
+				+ "\",\"is_nickname_initialized\":\"" + is_nickname_initialized
+				+ "\",\"tag\":\"" + tag + "\",\"twitter\":\"" + twitter
 				+ "\",\"is_twitter_visible\":\"" + is_twitter_visible
 				+ "\",\"facebook\":\"" + facebook
 				+ "\",\"is_facebook_visible\":\"" + is_facebook_visible
