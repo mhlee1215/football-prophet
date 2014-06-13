@@ -121,6 +121,7 @@ private Logger logger = Logger.getLogger(getClass());
 		
 		
 		nickname = URLDecoder.decode(nickname, "UTF-8");
+		tag = URLDecoder.decode(tag, "UTF-8");
 		
 		FPUser user = new FPUser();
 		user.setNickname(nickname);
@@ -185,7 +186,9 @@ private Logger logger = Logger.getLogger(getClass());
 		String is_twitter_visible = ServletRequestUtils.getStringParameter(request, "is_twitter_visible", "");
 		String is_facebook_visible = ServletRequestUtils.getStringParameter(request, "is_facebook_visible", "");
 		
+
 		nickname = URLDecoder.decode(nickname, "UTF-8");
+		tag = URLDecoder.decode(tag, "UTF-8");
 		
 		FPUser user = new FPUser();
 		//user.setNickname(nickname);
