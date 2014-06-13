@@ -574,12 +574,49 @@ public static int getGameProphetCorrect(int user_id) {
 		return false;
 	}
 	
-	
-public static ArrayList<FPGameResult> getGameResults(FPGameResult gameResult_params) {
+public static boolean updateGameResult(FPGameResult gameResult) {
 		
+		
+		HttpClient httpclient = new DefaultHttpClient();
+		try {
 
-		
-		
+			HttpGet httpget = new HttpGet(Env.url + "api.updateGameResult.do"
+					+ gameResult.toStringSealize());
+			System.out.println("executing request " + httpget.getURI());
+			HttpResponse response = httpclient.execute(httpget);
+			HttpEntity entity = response.getEntity();
+
+			if (entity != null) {
+				BufferedReader rd = new BufferedReader(new InputStreamReader(
+						response.getEntity().getContent()));
+
+				String line = "";
+				while ((line = rd.readLine()) != null) {
+					if (line.startsWith("fail")) {
+						// Error handling
+						return false;
+					} else if (line.startsWith("success")) {
+						return true;
+					} else {
+						return false;
+					}
+				}
+			}
+			httpget.abort();
+			httpclient.getConnectionManager().shutdown();
+
+		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			httpclient.getConnectionManager().shutdown();
+		}
+		return false;
+	}
+	
+	
+	public static ArrayList<FPGameResult> getGameResults(FPGameResult gameResult_params) {
 		// HttpClient ??
 		HttpClient httpclient = new DefaultHttpClient();
 		ArrayList<FPGameResult> results = new ArrayList<FPGameResult>();
@@ -676,7 +713,20 @@ public static ArrayList<FPGameResult> getGameResults(FPGameResult gameResult_par
 
 		//System.out.println(GameService.getGameMatchSchedules(62));
 		
-		GameService.getGameMatchSchedules(62);
+		//GameService.getGameMatchSchedules(62);
+		
+		for(int i = 1; i < 6; i++)
+		{
+			FPGameResult gameResult = new FPGameResult();
+			gameResult.setMatch_id(i);
+			gameResult.setMatch_type("1");
+			
+			int home_score = ((int)(Math.random()*100))%3+1;
+			gameResult.setHome_team_score(home_score);
+			int away_score = ((int)(Math.random()*100))%3+1;
+			gameResult.setAway_team_score(away_score);
+			GameService.updateGameResult(gameResult);
+		}
 		
 //		FPGameProphet gameProphet = new FPGameProphet();
 //		List<FPGameProphet> readGameProphet = GameService.getGameProphet(gameProphet);
