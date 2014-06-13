@@ -74,6 +74,39 @@ private Logger logger = Logger.getLogger(getClass());
 		return new ResponseEntity<String>(MyJsonUtil.toString(userList, "users"), responseHeaders, HttpStatus.CREATED);
     }
 	
+	@RequestMapping(value="/api.readUserRanking.do")
+    public ResponseEntity<String> readUserRanking(HttpServletRequest request, HttpServletResponse response) {
+		Integer query_page = ServletRequestUtils.getIntParameter(request, "query_page", 1);
+		Integer id = ServletRequestUtils.getIntParameter(request, "id", 0);
+		
+		int count_event = userService.countUser(new FPUser());
+		System.out.println("count_event :"+count_event);
+		
+		int query_number = 12;
+		double pager_size = Math.ceil((double)count_event/query_number);
+		int pager_start = 1;
+		
+		FPUser user = new FPUser();
+		user.setId(id);
+		//user.setNickname(nickname);
+		//user.setDevice_id(device_id);
+	
+		int query_start = ( query_page - 1 ) * query_number;
+		//event.setCode_category(code_category);
+		//event.setQuery_start(query_start);
+		//event.setQuery_number(query_number);
+		List<FPUser> userList = userService.readUserRankingList(user);
+		
+		for(int i = 0 ; i < userList.size() ; i++){
+			FPUser u = userList.get(i);
+			u.setRank(i+1);
+		}
+ 
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "text/html; charset=UTF-8");
+		return new ResponseEntity<String>(MyJsonUtil.toString(userList, "users"), responseHeaders, HttpStatus.CREATED);
+    }
+	
 	@RequestMapping(value="/api.isUserExist.do")
     public @ResponseBody String isUserExist(HttpServletRequest request, HttpServletResponse response) {
 		Integer id = ServletRequestUtils.getIntParameter(request, "id", 0);

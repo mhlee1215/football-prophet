@@ -24,7 +24,13 @@ public class FPUserDaoImpl extends SqlMapClientDaoSupport {
 		List<FPUser> array = getSqlMapClientTemplate().queryForList("UserSql.readUserList", user);
 		return array;
 	}
-
+	
+	@SuppressWarnings("unchecked")
+	public List<FPUser> readUserRankingList(FPUser user) {	
+		List<FPUser> array = getSqlMapClientTemplate().queryForList("UserSql.readUserRankingList", user);
+		return array;
+	}
+	
 	public FPUser readUser(FPUser user) {
 		FPUser result = (FPUser)getSqlMapClientTemplate().queryForObject("UserSql.readUser", user);
 		return result;

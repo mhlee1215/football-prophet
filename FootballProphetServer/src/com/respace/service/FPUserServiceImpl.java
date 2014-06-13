@@ -24,6 +24,10 @@ public class FPUserServiceImpl{
 	public List<FPUser> readUserList(FPUser user) {
 		return userDao.readUserList(user);
 	}
+	
+	public List<FPUser> readUserRankingList(FPUser user) {
+		return userDao.readUserRankingList(user);
+	}
 
 	public int createUser(FPUser user) throws Exception {
 		return userDao.createUser(user);
