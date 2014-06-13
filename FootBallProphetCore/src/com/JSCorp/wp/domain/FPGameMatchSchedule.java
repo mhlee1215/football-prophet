@@ -26,6 +26,24 @@ public class FPGameMatchSchedule {
 
 	String match_finished = "";
 	
+	int home_team_score = 0;
+	int away_team_score = 0;
+
+	public int getHome_team_score() {
+		return home_team_score;
+	}
+
+	public void setHome_team_score(int home_team_score) {
+		this.home_team_score = home_team_score;
+	}
+
+	public int getAway_team_score() {
+		return away_team_score;
+	}
+
+	public void setAway_team_score(int away_team_score) {
+		this.away_team_score = away_team_score;
+	}
 
 	public String getMatch_finished() {
 		return match_finished;
@@ -216,6 +234,8 @@ public class FPGameMatchSchedule {
 				+ "\",\"prophet_finished\":\"" + prophet_finished
 				+ "\",\"query_start\":\"" + query_start
 				+ "\",\"query_number\":\"" + query_number
-				+ "\",\"match_finished\":\"" + match_finished + "\"}";
+				+ "\",\"match_finished\":\"" + match_finished
+				+ "\",\"home_team_score\":\"" + home_team_score
+				+ "\",\"away_team_score\":\"" + away_team_score + "\"}";
 	}
 }
