@@ -134,12 +134,32 @@ public class PredictionListAdapter extends BaseAdapter {
 		//Ended (nations, matchResult, predictionREsult)
 		//Ended game/On going game: set to uneditable
 		
+		   
+		boolean isMatchFinished = true;
+		if("N".equals(matches.get(position).getMatch_finished())){
+			isMatchFinished = false;
+		}
+		
+		
 		
 		convertView.setOnClickListener(new Button.OnClickListener() {
+			boolean isMatchFinished;
 			public void onClick(View v) {
-				detailInfo(positionInt);
+				
+				System.out.println("isMatchFinished : "+isMatchFinished);
+				if(isMatchFinished){
+					System.out.println("깝 ㄴㄴ 끝남");
+				}else{
+					detailInfo(positionInt);	
+				}
+				
 			}
-		});
+			
+			public Button.OnClickListener init(boolean isMatchFinished){
+				this.isMatchFinished = isMatchFinished;
+				return this;
+			}
+		}.init(isMatchFinished));
 		
 		return convertView;
 	}
@@ -149,6 +169,8 @@ public class PredictionListAdapter extends BaseAdapter {
 		final Dialog dialog = new Dialog(mContext);
 	    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); 
 	    dialog.setContentView(R.layout.prediction_dialog);
+	    
+	 
 	    
 	    System.out.println(">>>>"+matches.get(position));
 	    if(matches.get(position).getProphet_home_win() == 1) {
