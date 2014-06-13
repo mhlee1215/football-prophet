@@ -19,6 +19,8 @@
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:layout_marginLeft="10dp"
+	    android:layout_marginTop="5dp"
+	    android:layout_marginBottom="5dp"
 	    android:src="@drawable/ic_launcher" />
 	<TextView
 	    android:id="@+id/nations_vs"
@@ -50,11 +52,13 @@
 	    android:id="@+id/matchResult"
 	    android:layout_width="wrap_content"
     	android:layout_height="wrap_content"
-    	android:text="경기 결과" />
+    	android:layout_marginRight="10dp"
+    	android:text="경기 결과\n 3 : 1" />
 	<TextView
 	    android:id="@+id/myPrediction"
 	    android:layout_width="wrap_content"
     	android:layout_height="wrap_content"
+    	android:layout_marginLeft="25dp"
     	android:text="" />
 
 	<ImageView

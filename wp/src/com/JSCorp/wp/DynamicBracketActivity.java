@@ -31,6 +31,7 @@ public class DynamicBracketActivity extends ListActivity {
 
 	public List<FPGameMatchSchedule> matches;
 	ProgressDialog dialog;
+	PredictionListAdapter listAdapter;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -73,7 +74,7 @@ public class DynamicBracketActivity extends ListActivity {
 	public void doPrint(){
 		Log.i(GlobalVars.WP_INFO_TAG, "Print matches");
 		System.out.println(matches);
-		PredictionListAdapter listAdapter = new PredictionListAdapter(this, R.layout.fragment_dynamic_bracket, matches);
+		listAdapter = new PredictionListAdapter(this, R.layout.fragment_dynamic_bracket, matches);
 		ListView listView = (ListView) findViewById(android.R.id.list);
 		listView.setAdapter(listAdapter);
 		
