@@ -715,11 +715,40 @@ public static boolean updateGameResult(FPGameResult gameResult) {
 
 	public static void main(String[] args) throws ParseException {
 
+
 		System.out.println(GameService.getGameMatchSchedules(62));
 		if(1==1) return;
+
+		//System.out.println(GameService.getGameMatchSchedules(62));
+		//if(1==1)return;
 		//GameService.getGameMatchSchedules(62);
 		
-		for(int i = 1; i < 6; i++)
+		
+		
+		//ADD GAME PROPHET
+		
+		for(int j = 68 ; j < 118 ; j++){
+			for(int i = 1 ; i <= 20 ; i++){
+				int prophet_case = ((int)(Math.random()*100))%3+1;
+				
+				FPGameProphet gameProphet = new FPGameProphet();
+				gameProphet.setUser_id(j);
+				gameProphet.setMatch_id(i);
+				gameProphet.setProphet_type("1");
+				if(prophet_case == 1)
+					gameProphet.setHome_team_win("1");
+				else if(prophet_case == 2)
+					gameProphet.setAway_team_win("1");	
+				else if(prophet_case == 3)
+					gameProphet.setDraw("1");	
+				gameProphet.setProphet_result("");
+				gameProphet.setComment("뭔가 한글 코멘트..");
+				System.out.println(GameService.setGameProphet(gameProphet));
+			}
+		}
+		
+		
+		for(int i = 1; i <= 15; i++)
 		{
 			FPGameResult gameResult = new FPGameResult();
 			gameResult.setMatch_id(i);
@@ -746,28 +775,7 @@ public static boolean updateGameResult(FPGameResult gameResult) {
 		
 		
 		
-		//ADD GAME PROPHET
-		/*
-		for(int j = 1 ; j < 10 ; j++){
-			for(int i = 1 ; i <= 10 ; i++){
-				int prophet_case = ((int)(Math.random()*100))%3+1;
-				
-				FPGameProphet gameProphet = new FPGameProphet();
-				gameProphet.setUser_id(j);
-				gameProphet.setMatch_id(i);
-				gameProphet.setProphet_type("1");
-				if(prophet_case == 1)
-					gameProphet.setHome_team_win("1");
-				else if(prophet_case == 2)
-					gameProphet.setAway_team_win("1");	
-				else if(prophet_case == 3)
-					gameProphet.setDraw("1");	
-				gameProphet.setProphet_result("");
-				gameProphet.setComment("뭔가 한글 코멘트..");
-				System.out.println(GameService.setGameProphet(gameProphet));
-			}
-		}
-		*/
+		
 		//System.out.println(encodeResult);
 //		
 

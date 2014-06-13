@@ -392,6 +392,8 @@ public class UserService {
 						user.setScore_static(Integer.parseInt((String)o2.get("score_static")));
 						user.setTwitter((String)o2.get("twitter"));
 						user.setFacebook((String)o2.get("facebook"));
+						user.setIs_facebook_visible((String)o2.get("is_facebook_visible"));
+						user.setIs_twitter_visible((String)o2.get("is_twitter_visible"));
 						
 						users.add(user);
 					}
@@ -497,15 +499,10 @@ public class UserService {
 		
 		//System.out.println(UserService.isUserExistByDeviceId(String.format("%010d", 100)));
 		
-//		for(int i=140 ; i < 143 ; i++){
-//			FPUser user = new FPUser();
-//			user.setNickname("한글닉넴_"+Integer.toString(i));
-//			user.setDevice_id(String.format("%010d", i));
-//			UserService.addUser(user);	
-//		}
 		
 		
-		int test_case = 3;
+		
+		int test_case = 4;
 		
 		if(test_case == 1){
 			//0000000140
@@ -522,6 +519,13 @@ public class UserService {
 			//initializeUser(userupdate);
 		}else if(test_case == 3){
 			System.out.println(UserService.getRankingUsers());
+		}else if(test_case == 4){
+			for(int i=200 ; i < 250 ; i++){
+				FPUser user = new FPUser();
+				user.setNickname("한글닉넴_"+Integer.toString(i));
+				user.setDevice_id(String.format("%010d", i));
+				UserService.addUser(user);	
+			}
 		}
 		
 		
