@@ -1,6 +1,9 @@
 package com.JSCorp.wp.adapter;
 
+import java.util.List;
+
 import com.JSCorp.wp.R;
+import com.JSCorp.wp.domain.FPUser;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -17,6 +20,7 @@ public class RankListAdapter extends BaseAdapter {
 	
 	LayoutInflater inflater;
 	String[] categorya;
+	List<FPUser> userRanks;
 	Context mContext;
 	int mListLayout;
 	public String TAG = "listAdapter";
@@ -30,6 +34,17 @@ public class RankListAdapter extends BaseAdapter {
 		
 		if(categorya != null) {
 			listCount = categorya.length;
+		}
+	}
+	
+	public RankListAdapter(Context tContext, int listLayout, List<FPUser> userRanks) {
+		mContext = tContext;
+		mListLayout = listLayout;
+		this.userRanks = userRanks;
+		inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		
+		if(categorya != null) {
+			listCount = userRanks.size();
 		}
 	}
 	
