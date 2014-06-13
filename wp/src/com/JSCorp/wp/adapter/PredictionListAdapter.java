@@ -140,10 +140,19 @@ public class PredictionListAdapter extends BaseAdapter {
 	    
 	    if(matches.get(position).getProphet_home_win() == 1) {
 	    	((TextView) dialog.findViewById(R.id.btnPredict1)).setText("승리할거임");
+	    	((Button) dialog.findViewById(R.id.btnPredict1)).setBackgroundResource(R.drawable.dialog_selected_button);
+	    	((Button) dialog.findViewById(R.id.btnPredict2)).setBackgroundResource(R.drawable.dialog_button);
+	    	((Button) dialog.findViewById(R.id.btnPredict3)).setBackgroundResource(R.drawable.dialog_button);
 	    } else if(matches.get(position).getProphet_draw() == 1) {
 	    	((TextView) dialog.findViewById(R.id.btnPredict2)).setText("승리할거임");
+	    	((Button) dialog.findViewById(R.id.btnPredict2)).setBackgroundResource(R.drawable.dialog_selected_button);
+	    	((Button) dialog.findViewById(R.id.btnPredict1)).setBackgroundResource(R.drawable.dialog_button);
+	    	((Button) dialog.findViewById(R.id.btnPredict3)).setBackgroundResource(R.drawable.dialog_button);
 	    } else if(matches.get(position).getProphet_away_win() == 1) {
 	    	((TextView) dialog.findViewById(R.id.btnPredict3)).setText("승리할거임");
+	    	((Button) dialog.findViewById(R.id.btnPredict3)).setBackgroundResource(R.drawable.dialog_selected_button);
+	    	((Button) dialog.findViewById(R.id.btnPredict1)).setBackgroundResource(R.drawable.dialog_button);
+	    	((Button) dialog.findViewById(R.id.btnPredict2)).setBackgroundResource(R.drawable.dialog_button);
 	    }
 	    
 	    ((TextView)dialog.findViewById(R.id.matchGroup)).setText(matches.get(position).getGameGroup() + "조 조별매치");
@@ -181,6 +190,9 @@ public class PredictionListAdapter extends BaseAdapter {
 	    }); 
 	    
 	    Button predictionButton1 = (Button) dialog.findViewById(R.id.btnPredict1);
+	    Button predictionButton2 = (Button) dialog.findViewById(R.id.btnPredict2);
+	    Button predictionButton3 = (Button) dialog.findViewById(R.id.btnPredict3);
+	    
 	    predictionButton1.setOnClickListener(new View.OnClickListener() {
 
 	    	int position;
@@ -198,7 +210,7 @@ public class PredictionListAdapter extends BaseAdapter {
 
 	    }.init(position));
 	    
-	    Button predictionButton2 = (Button) dialog.findViewById(R.id.btnPredict2);
+	    
 	    predictionButton2.setOnClickListener(new View.OnClickListener() {
 
 	    	int position;
@@ -215,7 +227,7 @@ public class PredictionListAdapter extends BaseAdapter {
 	        }
 	    }.init(position)); 
 	    
-	    Button predictionButton3 = (Button) dialog.findViewById(R.id.btnPredict3);
+	    
 	    predictionButton3.setOnClickListener(new View.OnClickListener() {
 
 	    	int position;
