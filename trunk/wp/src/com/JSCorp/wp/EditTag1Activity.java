@@ -1,12 +1,22 @@
 package com.JSCorp.wp;
 
+import java.io.UnsupportedEncodingException;
+
+import com.JSCorp.wp.EditNicknameActivity.SetUserInfo;
+import com.JSCorp.wp.domain.FPUser;
+import com.JSCorp.wp.service.UserService;
+import com.JSCorp.wp.var.GlobalVars;
+
 import android.app.ActionBar;
 import android.app.Activity;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class EditTag1Activity extends Activity {
@@ -18,6 +28,8 @@ public class EditTag1Activity extends Activity {
 		
         // Enabling Up / Back navigation
         getActionBar().setDisplayHomeAsUpEnabled(true);
+        
+        ((TextView) this.findViewById(R.id.callForTag1)).setText(GlobalVars.user.getTag());
 		
 	}
 	
@@ -41,10 +53,42 @@ public class EditTag1Activity extends Activity {
         	//go back to game list view.
         	Toast.makeText(getApplicationContext(),
         		      "Need to Implement Data Save", Toast.LENGTH_SHORT).show();
+        	
+        	String tag_new = (String) ((TextView) this.findViewById(R.id.callForTag1)).getText().toString();
+        	
+        	FPUser user = new FPUser();
+          	user.setDevice_id(GlobalVars.user.getDevice_id());
+          	user.setTag(tag_new);
+          	new SetUserTagInfo().doInBackground(user);
+          	
+          	System.out.println("Set new tag"); 
+  			GlobalVars.user.setTag(tag_new);
+        	
         	super.onBackPressed();
             return true;
         default:
             return super.onOptionsItemSelected(item);
         }
     }
+	
+	public class SetUserTagInfo extends AsyncTask {
+		FPUser user;
+		@Override
+		protected Object doInBackground(Object... arg0) {
+			FPUser user = (FPUser) arg0[0];
+			this.user = user;
+			// TODO Auto-generated method stub
+			StrictMode.enableDefaults();
+			System.out.println("UPDATE USER TAG INFO!!");
+			//GameService.setGameProphet(gameProphet);
+			try {
+				UserService.updateUser(user);
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			//System.out.println("MATCH SIZE:"+matches.size());
+			return null;
+		}
+	}
 }
