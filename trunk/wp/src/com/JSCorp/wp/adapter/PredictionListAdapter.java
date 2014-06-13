@@ -28,6 +28,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -124,9 +125,9 @@ public class PredictionListAdapter extends BaseAdapter {
 		
 		//((TextView) convertView.findViewById(R.id.nations_home)).setText(categorya[position]);
 		//((TextView) convertView.findViewById(R.id.nations_away)).setText(categorya[position]);
-		((TextView) convertView.findViewById(R.id.matchResult)).setVisibility(View.INVISIBLE);
+		((TextView) convertView.findViewById(R.id.matchResult)).setVisibility(View.GONE);
 		//((TextView) convertView.findViewById(R.id.myPrediction)).setVisibility(View.INVISIBLE);
-		(convertView.findViewById(R.id.predictionResult)).setVisibility(View.INVISIBLE);
+		(convertView.findViewById(R.id.predictionResult)).setVisibility(View.GONE);
 		
 		//Default + prediction (nations, nextGameTimer/Timer, myPrediction)
 		
@@ -215,6 +216,7 @@ public class PredictionListAdapter extends BaseAdapter {
 	        public void onClick(View v) {
 	            dialog.dismiss();
 	            predictHomeVictory(position);
+	            notifyDataSetChanged();
 	        }
 	        
 	        public View.OnClickListener init(int position){
@@ -233,6 +235,7 @@ public class PredictionListAdapter extends BaseAdapter {
 	        public void onClick(View v) {
 	            dialog.dismiss();
 	            predictDraw(position);
+	            notifyDataSetChanged();
 	        }
 	        
 	        public View.OnClickListener init(int position){
@@ -250,6 +253,7 @@ public class PredictionListAdapter extends BaseAdapter {
 	        public void onClick(View v) {
 	            dialog.dismiss();
 	            predictAwayVictory(position);
+	            notifyDataSetChanged();
 	        }
 	        
 	        public View.OnClickListener init(int position){
