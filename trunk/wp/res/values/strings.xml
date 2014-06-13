@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">World Cup Prophet</string>
+    <string name="app_name">월드컵 예언자</string>
+    <string name="app_name_eng">World Cup Prophet</string>
     <string name="title_section1">Section 1</string>
     <string name="title_section2">Section 2</string>
     <string name="title_section3">Section 3</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_dynamic_bracket">DynamicBracketActivity</string>
+    <string name="title_activity_dynamic_bracket">나의 예언</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_static_bracket">StaticBracketActivity</string>
     <string name="title_activity_example">ExampleActivity</string>
     <string name="title_activity_dynamic_prediction">DynamicPredictionActivity</string>
-    <string name="title_activity_dynamic_rank">DynamicRankActivity</string>
-    <string name="title_activity_user_profile">UserProfileActivity</string>
-    <string name="title_activity_edit_nickname">EditNicknameActivity</string>
-    <string name="title_activity_edit_tag1">EditTag1Activity</string>
-    <string name="title_activity_edit_facebook">EditFacebookActivity</string>
-    <string name="title_activity_edit_twitter">EditTwitterActivity</string>
+    <string name="title_activity_dynamic_rank">예언자 랭</string>
+    <string name="title_activity_user_profile">설</string>
+    <string name="title_activity_edit_nickname">닉네임 설정</string>
+    <string name="title_activity_edit_tag1">나의 한마디</string>
+    <string name="title_activity_edit_facebook">페이스북</string>
+    <string name="title_activity_edit_twitter">트위터</string>
 
 </resources>
