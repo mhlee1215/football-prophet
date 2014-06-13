@@ -103,11 +103,13 @@ public class PredictionListAdapter extends BaseAdapter {
 		
 		 if(matches.get(position).getProphet_home_win() == 1) {
 			 ((TextView) convertView.findViewById(R.id.myPrediction)).setText("홈 이김");
-		    } else if(matches.get(position).getProphet_draw() == 1) {
-		    	((TextView) convertView.findViewById(R.id.myPrediction)).setText("비김");
-		    } else if(matches.get(position).getProphet_away_win() == 1) {
-		    	((TextView) convertView.findViewById(R.id.myPrediction)).setText("어웨이 이김");
-		    }
+		 } else if(matches.get(position).getProphet_draw() == 1) {
+		   	((TextView) convertView.findViewById(R.id.myPrediction)).setText("비김");
+		 } else if(matches.get(position).getProphet_away_win() == 1) {
+		   	((TextView) convertView.findViewById(R.id.myPrediction)).setText("어웨이 이김");
+		 } else{
+		  	((TextView) convertView.findViewById(R.id.myPrediction)).setText("모름");
+		 }
 		
 		
 		
@@ -257,7 +259,7 @@ public class PredictionListAdapter extends BaseAdapter {
 		
 		FPGameProphet gameProphet = new FPGameProphet();
 		gameProphet.setUser_id(GlobalVars.user.getId());
-		gameProphet.setMatch_id(position);
+		gameProphet.setMatch_id(position+1);
 		gameProphet.setProphet_type("1");
 		gameProphet.setHome_team_win();
 		
@@ -270,7 +272,7 @@ public class PredictionListAdapter extends BaseAdapter {
 		
 		FPGameProphet gameProphet = new FPGameProphet();
 		gameProphet.setUser_id(GlobalVars.user.getId());
-		gameProphet.setMatch_id(position);
+		gameProphet.setMatch_id(position+1);
 		gameProphet.setProphet_type("1");
 		gameProphet.setDraw();
 		
@@ -283,7 +285,7 @@ public class PredictionListAdapter extends BaseAdapter {
 		
 		FPGameProphet gameProphet = new FPGameProphet();
 		gameProphet.setUser_id(GlobalVars.user.getId());
-		gameProphet.setMatch_id(position);
+		gameProphet.setMatch_id(position+1);
 		gameProphet.setProphet_type("1");
 		gameProphet.setAway_team_win();
 		
