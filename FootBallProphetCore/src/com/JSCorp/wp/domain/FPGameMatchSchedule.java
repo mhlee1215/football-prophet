@@ -24,8 +24,20 @@ public class FPGameMatchSchedule {
 	private int query_start = 0;
 	private int query_number = 0;
 
+	String match_finished = "";
 	
-	
+
+	public String getMatch_finished() {
+		return match_finished;
+	}
+
+	public void setMatch_finished(String match_finished) {
+		this.match_finished = match_finished;
+	}
+
+	public void setProphet_finished(int prophet_finished) {
+		this.prophet_finished = prophet_finished;
+	}
 
 	public int getProphet_finished() {
 		return prophet_finished;
@@ -201,7 +213,9 @@ public class FPGameMatchSchedule {
 				+ reference_time + "\",\"prophet_home_win\":\""
 				+ prophet_home_win + "\",\"prophet_away_win\":\""
 				+ prophet_away_win + "\",\"prophet_draw\":\"" + prophet_draw
+				+ "\",\"prophet_finished\":\"" + prophet_finished
 				+ "\",\"query_start\":\"" + query_start
-				+ "\",\"query_number\":\"" + query_number + "\"}";
+				+ "\",\"query_number\":\"" + query_number
+				+ "\",\"match_finished\":\"" + match_finished + "\"}";
 	}
 }
