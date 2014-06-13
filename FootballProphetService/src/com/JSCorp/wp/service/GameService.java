@@ -132,6 +132,14 @@ public class GameService {
 						if ((str = (String) o2.get("match_finished")) != null) {
 							matchSchedule.setMatch_finished(str);
 						}
+						
+						if ((str = (String) o2.get("home_team_score")) != null) {
+							matchSchedule.setHome_team_score(Integer.parseInt(str));
+						}
+						
+						if ((str = (String) o2.get("away_team_score")) != null) {
+							matchSchedule.setAway_team_score(Integer.parseInt(str));
+						}
 
 						matches.add(matchSchedule);
 					}
