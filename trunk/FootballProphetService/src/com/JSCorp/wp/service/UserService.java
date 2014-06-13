@@ -341,6 +341,86 @@ public class UserService {
 		return users;
 	}
 	
+	public static List<FPUser> getRankingUsers() {
+		return getRankingUsers(new FPUser());
+	}
+	
+	public static List<FPUser> getRankingUsers(FPUser userParam) {
+		FPUser user = null;
+		
+		HttpClient httpclient = new DefaultHttpClient();
+		ArrayList<FPUser> users = new ArrayList<FPUser>();
+		try {
+			// HttpGet??
+			HttpGet httpget = new HttpGet(Env.url + "api.readUserRanking.do"+userParam.toStringSealize());
+
+			System.out.println("executing request " + httpget.getURI());
+			HttpResponse response = httpclient.execute(httpget);
+			HttpEntity entity = response.getEntity();
+
+			System.out.println("----------------------------------------");
+			// ?? ??
+			System.out.println(response.getStatusLine());
+			if (entity != null) {
+				System.out.println("Response content length: "
+						+ entity.getContentLength());
+				BufferedReader rd = new BufferedReader(new InputStreamReader(
+						response.getEntity().getContent()));
+
+				String line = "";
+				while ((line = rd.readLine()) != null) {
+					JSONParser j = new JSONParser();
+					System.out.println("line:" + line);
+					JSONObject o = (JSONObject) j.parse(line);
+					JSONArray lang = (JSONArray) o.get("users");
+					for (int i = 0; i < lang.size(); i++) {
+						user = new FPUser();
+						JSONObject o2 = (JSONObject) lang.get(i);
+						
+						user.setId(Integer.parseInt((String)o2.get("id")));
+						if(Integer.parseInt((String)o2.get("id")) == 0)
+							return null;
+						
+						user.setRank(Integer.parseInt((String)o2.get("rank")));
+						user.setRight_prophet_num(Integer.parseInt((String)o2.get("right_prophet_num")));
+						user.setRight_prophet_ratio(Float.parseFloat((String)o2.get("right_prophet_ratio")));
+						user.setProphet_num(Integer.parseInt((String)o2.get("prophet_num")));
+						user.setDevice_id((String)o2.get("device_id"));
+						user.setNickname((String)o2.get("nickname"));
+						user.setTag((String)o2.get("tag"));
+						user.setScore_dynamic(Integer.parseInt((String)o2.get("score_dynamic")));
+						user.setScore_static(Integer.parseInt((String)o2.get("score_static")));
+						user.setTwitter((String)o2.get("twitter"));
+						user.setFacebook((String)o2.get("facebook"));
+						
+						users.add(user);
+					}
+
+					// Map response2 = (Map)o.get("GameMatchSchedules");
+					// JSONObject o2 = (JSONObject) o.get("GameMatchSchedules");
+					// System.out.println(o2.entrySet().size());
+
+					// //System.out.println(response2.get("FPGameMatchSchedule"));
+				}
+			}
+			httpget.abort();
+			System.out.println("----------------------------------------");
+			httpclient.getConnectionManager().shutdown();
+			return users;
+		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			httpclient.getConnectionManager().shutdown();
+		}
+		
+		return users;
+	}
+	
 	public static boolean initializeUser(FPUser user) throws UnsupportedEncodingException {
 		
 		System.out.println("Here is initialization. :"+user);
@@ -425,7 +505,7 @@ public class UserService {
 //		}
 		
 		
-		int test_case = 2;
+		int test_case = 3;
 		
 		if(test_case == 1){
 			//0000000140
@@ -440,6 +520,8 @@ public class UserService {
 			userupdate.setTag("tag123한글도 있음 ");
 			updateUser(userupdate);
 			//initializeUser(userupdate);
+		}else if(test_case == 3){
+			System.out.println(UserService.getRankingUsers());
 		}
 		
 		
