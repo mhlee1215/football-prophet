@@ -16,8 +16,10 @@ import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 public class EditFacebookActivity extends Activity {
 
@@ -30,6 +32,34 @@ public class EditFacebookActivity extends Activity {
         getActionBar().setDisplayHomeAsUpEnabled(true);
         
         ((TextView) this.findViewById(R.id.callForFacebook)).setText(GlobalVars.user.getFacebook());
+        
+        ToggleButton toggle = (ToggleButton) findViewById(R.id.toggleFacebook);
+        if("Y".equals(GlobalVars.user.getIs_facebook_visible())){
+        	toggle.setChecked(true);
+        }else{
+        	toggle.setChecked(false);
+        }
+        
+        
+        toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    // The toggle is enabled
+                	FPUser user = new FPUser();
+                  	user.setDevice_id(GlobalVars.user.getDevice_id());
+                  	user.setIs_facebook_visible("Y");
+                  	new SetUserTagInfo().doInBackground(user);
+                  	GlobalVars.user.setIs_facebook_visible("Y");
+                } else {
+                    // The toggle is disabled
+                	FPUser user = new FPUser();
+                  	user.setDevice_id(GlobalVars.user.getDevice_id());
+                  	user.setIs_facebook_visible("N");
+                  	new SetUserTagInfo().doInBackground(user);
+                  	GlobalVars.user.setIs_facebook_visible("N");
+                }
+            }
+        });
 		
 	}
 	
