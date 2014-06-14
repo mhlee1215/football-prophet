@@ -491,7 +491,7 @@ public static int getGameProphetCorrect(int user_id) {
 		return 0;
 	}
 	
-	public static int setGameProphetEx(FPGameProphet gameProphet){
+	public static int setGameProphet(FPGameProphet gameProphet){
 		
 		try {
 			gameProphet.setComment(URLEncoder.encode(gameProphet.getComment(), "UTF-8"));
@@ -541,7 +541,7 @@ public static int getGameProphetCorrect(int user_id) {
 		return RESULT_FAIL;
 	}
 	
-	public static int setGameProphet(FPGameProphet gameProphet){
+	public static int setGameProphetOld(FPGameProphet gameProphet){
 		
 
 		try {
@@ -811,7 +811,7 @@ public static boolean updateGameResult(FPGameResult gameResult) {
 					gameProphet.setDraw("1");	
 				gameProphet.setProphet_result("");
 				gameProphet.setComment("1111뭔가 한글 코멘트..123123");
-				System.out.println(GameService.setGameProphetEx(gameProphet));
+				System.out.println(GameService.setGameProphet(gameProphet));
 			}
 		}
 		
