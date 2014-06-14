@@ -151,24 +151,26 @@ public class PredictionListAdapter extends BaseAdapter {
 			
 			 if(matches.get(position).getProphet_home_win() == 1) {
 				 if(homeScore > awayScore) {
-					 ((ImageView) convertView.findViewById(R.id.predictionResult)).setImageResource(R.drawable.abc_ic_cab_done_holo_light);
+					 ((ImageView) convertView.findViewById(R.id.predictionResult)).setImageResource(R.drawable.hit55);
 				 } else {
-					 ((ImageView) convertView.findViewById(R.id.predictionResult)).setImageResource(R.drawable.abc_ic_clear_search_api_holo_light);
+					 ((ImageView) convertView.findViewById(R.id.predictionResult)).setImageResource(R.drawable.miss55);
 				 }
 			 } else if(matches.get(position).getProphet_draw() == 1) {
 				 if(homeScore == awayScore) {
-					 ((ImageView) convertView.findViewById(R.id.predictionResult)).setImageResource(R.drawable.abc_ic_cab_done_holo_light);
+					 ((ImageView) convertView.findViewById(R.id.predictionResult)).setImageResource(R.drawable.hit55);
 				 } else {
-					 ((ImageView) convertView.findViewById(R.id.predictionResult)).setImageResource(R.drawable.abc_ic_clear_search_api_holo_light);
+					 ((ImageView) convertView.findViewById(R.id.predictionResult)).setImageResource(R.drawable.miss55);
 				 }
 			 } else if(matches.get(position).getProphet_away_win() == 1) {
 				 if(homeScore < awayScore) {
-					 ((ImageView) convertView.findViewById(R.id.predictionResult)).setImageResource(R.drawable.abc_ic_cab_done_holo_light);
+					 ((ImageView) convertView.findViewById(R.id.predictionResult)).setImageResource(R.drawable.hit55);
 				 } else {
-					 ((ImageView) convertView.findViewById(R.id.predictionResult)).setImageResource(R.drawable.abc_ic_clear_search_api_holo_light);
+					 ((ImageView) convertView.findViewById(R.id.predictionResult)).setImageResource(R.drawable.miss55);
 				 }
 			 } else{
-				 ((ImageView) convertView.findViewById(R.id.predictionResult)).setImageResource(R.drawable.abc_ic_commit_search_api_holo_light);
+				 (convertView.findViewById(R.id.myPrediction)).setVisibility(View.VISIBLE);
+					(convertView.findViewById(R.id.predictionResult)).setVisibility(View.GONE);
+					((TextView) convertView.findViewById(R.id.myPrediction)).setText(" - ");
 			 }
 		}
 		   
