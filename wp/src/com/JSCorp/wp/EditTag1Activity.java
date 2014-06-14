@@ -51,10 +51,14 @@ public class EditTag1Activity extends Activity {
         case R.id.action_accept:
             //save user decisions to DB.
         	//go back to game list view.
-        	Toast.makeText(getApplicationContext(),
-        		      "Need to Implement Data Save", Toast.LENGTH_SHORT).show();
         	
         	String tag_new = (String) ((TextView) this.findViewById(R.id.callForTag1)).getText().toString();
+        	
+        	if(tag_new.length() > 20){
+          		Toast.makeText(getApplicationContext(),
+            		      "내 한마디는 20글자 미만으로 입력해주세요.", Toast.LENGTH_SHORT).show();
+          		return true;
+          	}
         	
         	FPUser user = new FPUser();
           	user.setDevice_id(GlobalVars.user.getDevice_id());
