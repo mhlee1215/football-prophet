@@ -30,9 +30,9 @@
         android:layout_width="match_parent">  
         <TextView 
             android:id="@+id/firstPlaceRemark" android:text="1위"
-            android:layout_weight="1"
+            android:layout_weight="30"
             android:textColor="#000000"
-            android:padding="20dip" android:gravity="center"/>
+            android:padding="10dip" android:gravity="center"/>
     </TableRow>
 
     <TextView
@@ -40,6 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="내가 지존"
+        android:layout_weight="30"
         android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -48,6 +49,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="내가 예언왕이다"
+        android:layout_weight="40"
         android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceSmall" />
  
@@ -73,9 +75,9 @@
         android:layout_width="match_parent">  
         <TextView 
             android:id="@+id/secondPlaceRemark" android:text="2위"
-            android:layout_weight="1"
+            android:layout_weight="30"
             android:textColor="#000000"
-            android:padding="20dip" android:gravity="center"/>
+            android:padding="10dip" android:gravity="center"/>
     </TableRow> 
     
     <TextView
@@ -83,6 +85,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="거의 지존"
+        android:layout_weight="30"
         android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -91,6 +94,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="아까비..."
+        android:layout_weight="40"
         android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceSmall" />
     
@@ -115,9 +119,9 @@
         android:layout_width="match_parent">  
         <TextView 
             android:id="@+id/thirdPlaceRemark" android:text="3위"
-            android:layout_weight="1"
             android:textColor="#000000"
-            android:padding="20dip" android:gravity="center"/>
+            android:layout_weight="30"
+            android:padding="10dip" android:gravity="center"/>
     </TableRow> 
     
     <TextView
@@ -125,6 +129,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="안습맨"
+        android:layout_weight="30"
         android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -133,6 +138,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="1등 그거슨 꿈.."
+        android:layout_weight="40"
         android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceSmall" />
     
@@ -178,6 +184,7 @@
 		    android:layout_alignBottom="@+id/myNickname"
 		    android:layout_alignParentRight="true"
 		    android:layout_marginRight="10dp"
+		    android:layout_marginBottom="10dp"
 		    android:gravity="center_vertical"
 		    android:text="미냉미냉" />
 
