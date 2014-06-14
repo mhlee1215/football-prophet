@@ -502,7 +502,7 @@ public class UserService {
 		
 		
 		
-		int test_case = 4;
+		int test_case = 5;
 		
 		if(test_case == 1){
 			//0000000140
@@ -526,6 +526,10 @@ public class UserService {
 				user.setDevice_id(String.format("%010d", i));
 				UserService.addUser(user);	
 			}
+		}else if(test_case == 5){
+			FPUser user = new FPUser();
+			user.setId(67);
+			System.out.println(UserService.getRankingUsers(user));
 		}
 		
 		
