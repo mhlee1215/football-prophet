@@ -104,36 +104,70 @@ public class PredictionListAdapter extends BaseAdapter {
 		((ImageView) convertView.findViewById(R.id.nations_home)).setImageResource(resIDHome);
 		((ImageView) convertView.findViewById(R.id.nations_away)).setImageResource(resIDAway);
 		
-		String matchTime = "\n " + matches.get(position).getReference_time();
-		if((matches.get(position).getMonth()).equals("06")) {
-			matchTime = "June " + (matches.get(position).getDay()) + matchTime;
+		if(matches.get(position).getMatch_finished().equals("N")) {
+			((TextView) convertView.findViewById(R.id.matchResult)).setVisibility(View.GONE);
+			(convertView.findViewById(R.id.predictionResult)).setVisibility(View.GONE);
+			((TextView) convertView.findViewById(R.id.matchTime)).setVisibility(View.VISIBLE);
+			(convertView.findViewById(R.id.myPrediction)).setVisibility(View.VISIBLE);
+			
+			String matchTime = "\n " + matches.get(position).getReference_time();
+			if((matches.get(position).getMonth()).equals("06")) {
+				matchTime = "June " + (matches.get(position).getDay()) + matchTime;
+			}
+			((TextView) convertView.findViewById(R.id.matchTime)).setText(matchTime);
+			
+			
+			 if(matches.get(position).getProphet_home_win() == 1) {
+				 ((TextView) convertView.findViewById(R.id.myPrediction)).setText((matches.get(position).getHome_team_name()) + "\n승리 예언");
+			 } else if(matches.get(position).getProphet_draw() == 1) {
+			   	((TextView) convertView.findViewById(R.id.myPrediction)).setText("무승부 예언");
+			 } else if(matches.get(position).getProphet_away_win() == 1) {
+			   	((TextView) convertView.findViewById(R.id.myPrediction)).setText((matches.get(position).getAway_team_name()) + "\n승리 예언");
+			 } else{
+			  	((TextView) convertView.findViewById(R.id.myPrediction)).setText("");
+			 }
+		} else if(matches.get(position).getMatch_finished().equals("Y")){
+			((TextView) convertView.findViewById(R.id.matchTime)).setVisibility(View.GONE);
+			(convertView.findViewById(R.id.myPrediction)).setVisibility(View.GONE);
+			((TextView) convertView.findViewById(R.id.matchResult)).setVisibility(View.VISIBLE);
+			(convertView.findViewById(R.id.predictionResult)).setVisibility(View.VISIBLE);
+			
+			String matchResult = "";
+			int homeScore = matches.get(position).getHome_team_score();
+			int awayScore = matches.get(position).getAway_team_score();
+			if(homeScore > awayScore) {
+				matchResult = matches.get(position).getHome_team_name() + " 승리\n" + matches.get(position).getHome_team_score() + " : " + matches.get(position).getAway_team_score();
+			} else if(homeScore == awayScore) {
+				matchResult = "무승부\n" + matches.get(position).getHome_team_score() + " : " + matches.get(position).getAway_team_score();
+			} else {
+				matchResult = matches.get(position).getAway_team_name() + " 승리\n" + matches.get(position).getHome_team_score() + " : " + matches.get(position).getAway_team_score();
+			}
+			
+			((TextView) convertView.findViewById(R.id.matchResult)).setText(matchResult);
+			
+			
+			 if(matches.get(position).getProphet_home_win() == 1) {
+				 if(homeScore > awayScore) {
+					 ((ImageView) convertView.findViewById(R.id.predictionResult)).setImageResource(R.drawable.abc_ic_cab_done_holo_light);
+				 } else {
+					 ((ImageView) convertView.findViewById(R.id.predictionResult)).setImageResource(R.drawable.abc_ic_clear_search_api_holo_light);
+				 }
+			 } else if(matches.get(position).getProphet_draw() == 1) {
+				 if(homeScore == awayScore) {
+					 ((ImageView) convertView.findViewById(R.id.predictionResult)).setImageResource(R.drawable.abc_ic_cab_done_holo_light);
+				 } else {
+					 ((ImageView) convertView.findViewById(R.id.predictionResult)).setImageResource(R.drawable.abc_ic_clear_search_api_holo_light);
+				 }
+			 } else if(matches.get(position).getProphet_away_win() == 1) {
+				 if(homeScore < awayScore) {
+					 ((ImageView) convertView.findViewById(R.id.predictionResult)).setImageResource(R.drawable.abc_ic_cab_done_holo_light);
+				 } else {
+					 ((ImageView) convertView.findViewById(R.id.predictionResult)).setImageResource(R.drawable.abc_ic_clear_search_api_holo_light);
+				 }
+			 } else{
+				 ((ImageView) convertView.findViewById(R.id.predictionResult)).setImageResource(R.drawable.abc_ic_commit_search_api_holo_light);
+			 }
 		}
-		((TextView) convertView.findViewById(R.id.matchTime)).setText(matchTime);
-		
-		
-		 if(matches.get(position).getProphet_home_win() == 1) {
-			 ((TextView) convertView.findViewById(R.id.myPrediction)).setText((matches.get(position).getHome_team_name()) + "\n승리 예언");
-		 } else if(matches.get(position).getProphet_draw() == 1) {
-		   	((TextView) convertView.findViewById(R.id.myPrediction)).setText("무승부 예언");
-		 } else if(matches.get(position).getProphet_away_win() == 1) {
-		   	((TextView) convertView.findViewById(R.id.myPrediction)).setText((matches.get(position).getAway_team_name()) + "\n승리 예언");
-		 } else{
-		  	((TextView) convertView.findViewById(R.id.myPrediction)).setText("");
-		 }
-		
-		
-		
-		//((TextView) convertView.findViewById(R.id.nations_home)).setText(categorya[position]);
-		//((TextView) convertView.findViewById(R.id.nations_away)).setText(categorya[position]);
-		((TextView) convertView.findViewById(R.id.matchResult)).setVisibility(View.GONE);
-		//((TextView) convertView.findViewById(R.id.myPrediction)).setVisibility(View.INVISIBLE);
-		(convertView.findViewById(R.id.predictionResult)).setVisibility(View.GONE);
-		
-		//Default + prediction (nations, nextGameTimer/Timer, myPrediction)
-		
-		//Ended (nations, matchResult, predictionREsult)
-		//Ended game/On going game: set to uneditable
-		
 		   
 		boolean isMatchFinished = true;
 		if("N".equals(matches.get(position).getMatch_finished())){
