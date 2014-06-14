@@ -66,8 +66,12 @@ public class DynamicBracketActivity extends ListActivity {
     }
 	
 	public void doPrint(){
-		Log.i(GlobalVars.WP_INFO_TAG, "Print matches");
-		System.out.println(matches);
+		Log.i(GlobalVars.WP_INFO_TAG, "Print matchess");
+		
+		
+		matches = matches.subList(0, 10);
+		System.out.println("MATCH LIST: "+matches);
+		
 		listAdapter = new PredictionListAdapter(this, R.layout.fragment_dynamic_bracket, matches);
 		ListView listView = (ListView) findViewById(android.R.id.list);
 		listView.setAdapter(listAdapter);
