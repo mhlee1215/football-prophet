@@ -112,18 +112,36 @@ public class DynamicRankActivity extends ListActivity {
 		listView.setAdapter(listAdapter);
 		
 		if(userTopRanks.size() > 0){
-			((TextView)findViewById(R.id.firstPlaceNickname)).setText(userTopRanks.get(0).getNickname());
-			((TextView)findViewById(R.id.firstPlaceTag1)).setText(userTopRanks.get(0).getTag());
+			String nn = userTopRanks.get(0).getNickname();
+			if(nn.length() <= 5) {
+				((TextView)findViewById(R.id.firstPlaceNickname)).setTextSize(12); 
+			} else {
+				((TextView)findViewById(R.id.firstPlaceNickname)).setTextSize(12); 
+			}
+			((TextView)findViewById(R.id.firstPlaceNickname)).setText(nn);
+			//((TextView)findViewById(R.id.firstPlaceTag1)).setText(userTopRanks.get(0).getTag());
 		}
 		
 		if(userTopRanks.size() > 1){
-			((TextView)findViewById(R.id.secondPlaceNickname)).setText(userTopRanks.get(1).getNickname());
-			((TextView)findViewById(R.id.secondPlaceTag1)).setText(userTopRanks.get(1).getTag());
+			String nn = userTopRanks.get(0).getNickname();
+			if(nn.length() <= 5) {
+				((TextView)findViewById(R.id.secondPlaceNickname)).setTextSize(12); 
+			} else {
+				((TextView)findViewById(R.id.secondPlaceNickname)).setTextSize(12); 
+			}
+			((TextView)findViewById(R.id.secondPlaceNickname)).setText(nn);
+			//((TextView)findViewById(R.id.secondPlaceTag1)).setText(userTopRanks.get(1).getTag());
 		}
 		
 		if(userTopRanks.size() > 2){
-			((TextView)findViewById(R.id.thridPlaceNickname)).setText(userTopRanks.get(2).getNickname());
-			((TextView)findViewById(R.id.thridPlaceTag1)).setText(userTopRanks.get(2).getTag());
+			String nn = userTopRanks.get(0).getNickname();
+			if(nn.length() <= 5) {
+				((TextView)findViewById(R.id.thridPlaceNickname)).setTextSize(12); 
+			} else {
+				((TextView)findViewById(R.id.thridPlaceNickname)).setTextSize(12); 
+			}
+			((TextView)findViewById(R.id.thridPlaceNickname)).setText(nn);
+			//((TextView)findViewById(R.id.thridPlaceTag1)).setText(userTopRanks.get(2).getTag());
 		}
 		
 		

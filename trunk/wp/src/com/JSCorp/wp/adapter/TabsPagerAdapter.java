@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 
 import com.JSCorp.wp.BracketsFragment;
 import com.JSCorp.wp.RanksFragment;
@@ -55,5 +56,16 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
         // get item count - equal to number of tabs
         return 3;
     }
+    
+    /*
+    public Fragment getFragment(ViewPager container, int position, FragmentManager fm) {
+        String name = makeFragmentName(container.getId(), position);
+        return fm.findFragmentByTag(name);
+    }
+
+    private String makeFragmentName(int viewId, int index) {
+        return "android:switcher:" + viewId + ":" + index;
+    }
+    */
  
 }

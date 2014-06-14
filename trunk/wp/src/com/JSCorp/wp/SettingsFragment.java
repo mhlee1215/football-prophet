@@ -31,7 +31,9 @@ public class SettingsFragment extends Fragment {
 			public void onClick(View v) {
 				Log.i("onClick", "Edit Nickname Activity");
 	        	Intent editNicknameActivity = new Intent(getActivity(), EditNicknameActivity.class);
-	        	startActivity(editNicknameActivity); 
+	        	startActivity(editNicknameActivity);
+	        	//Fragment fragment1 = (Fragment) ((MainActivity)getActivity()).getFragmentbyPosition(1);
+	        	//((Object) fragment1).refreshFragment();
 			}
 		});
 		
