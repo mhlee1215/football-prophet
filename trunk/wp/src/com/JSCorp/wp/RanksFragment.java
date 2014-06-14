@@ -30,6 +30,9 @@ public class RanksFragment extends Fragment {
 	private RankListAdapter listAdapter; 
 	List<FPUser> userTopRanks;
 	List<FPUser> userRanks;
+	List<FPUser> userRanksAll;
+	
+	
 	View rootView;
 	
 	@Override
@@ -95,6 +98,25 @@ public class RanksFragment extends Fragment {
 		}
 		
 		
+		
+		for(FPUser user : userRanksAll){
+			if(user.getId() == GlobalVars.user.getId()){
+				GlobalVars.user.setRank(user.getRank());
+				break;
+			}
+		}
+		
+		String rankStr = "-위"; 
+		if(GlobalVars.user.getRank() > 0)
+			rankStr = Integer.toString(GlobalVars.user.getRank())+"위";
+		TextView myRank = (TextView) rootView.findViewById(R.id.myRank);
+		myRank.setText(rankStr);
+		TextView myNickname = (TextView) rootView.findViewById(R.id.myNickname);
+		myNickname.setText(GlobalVars.user.getNickname());
+		TextView tag = (TextView) rootView.findViewById(R.id.tag);
+		tag.setText(GlobalVars.user.getTag());
+		
+		
 		/*
 		if(GlobalVars.dynamicBracketDialog.isShowing())
 			GlobalVars.dynamicBracketDialog.cancel();
@@ -114,6 +136,7 @@ public class RanksFragment extends Fragment {
 			userRanks = UserService.getRankingUsers();
 			//System.out.println("userRanks:"+userRanks);
 			
+			tContext.userRanksAll = userRanks;
 			tContext.userTopRanks = userRanks.subList(0, 3);
 			tContext.userRanks = userRanks.subList(3, userRanks.size());
 			//tContext.userRanks = userRanks;
