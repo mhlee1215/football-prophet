@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_main"
     android:gravity="center_vertical"
-    android:orientation="vertical">
-    
-     <TextView
+    android:orientation="vertical" >
+
+    <TextView
         android:id="@+id/twitterText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -23,6 +22,22 @@
         android:layout_centerHorizontal="true"
         android:ems="10" />
 
-   
-	
+    <ToggleButton
+        android:id="@+id/toggleTwitter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/twitterText"
+        android:layout_below="@+id/twitterText"
+        android:text="ToggleButton" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/toggleFacebook"
+        android:layout_alignBottom="@+id/toggleFacebook"
+        android:layout_alignLeft="@+id/twitterText"
+        android:layout_marginLeft="20dp"
+        android:text="공개" />
+
 </RelativeLayout>

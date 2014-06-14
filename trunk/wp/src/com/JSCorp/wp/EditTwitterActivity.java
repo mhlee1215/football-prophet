@@ -16,8 +16,10 @@ import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 public class EditTwitterActivity extends Activity {
 
@@ -31,6 +33,33 @@ public class EditTwitterActivity extends Activity {
         
         ((TextView) this.findViewById(R.id.callForTwitter)).setText(GlobalVars.user.getTwitter());
 		
+        ToggleButton toggle = (ToggleButton) findViewById(R.id.toggleTwitter);
+        if("Y".equals(GlobalVars.user.getIs_twitter_visible())){
+        	toggle.setChecked(true);
+        }else{
+        	toggle.setChecked(false);
+        }
+        
+        
+        toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    // The toggle is enabled
+                	FPUser user = new FPUser();
+                  	user.setDevice_id(GlobalVars.user.getDevice_id());
+                  	user.setIs_twitter_visible("Y");
+                  	new SetUserTagInfo().doInBackground(user);
+                  	GlobalVars.user.setIs_twitter_visible("Y");
+                } else {
+                    // The toggle is disabled
+                	FPUser user = new FPUser();
+                  	user.setDevice_id(GlobalVars.user.getDevice_id());
+                  	user.setIs_twitter_visible("N");
+                  	new SetUserTagInfo().doInBackground(user);
+                  	GlobalVars.user.setIs_twitter_visible("N");
+                }
+            }
+        });
 	}
 	
 	@Override
