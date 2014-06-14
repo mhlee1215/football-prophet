@@ -34,11 +34,10 @@ public class EditNicknameActivity extends Activity {
         
         ((TextView) this.findViewById(R.id.callForNickname)).setText(GlobalVars.user.getNickname());
         
-        if("Y".equals(GlobalVars.user.getIs_nickname_initialized())){
+        if("Y".equals(GlobalVars.user.getIs_nickname_initialized())) {
         	//Remove Action bar accept button.
-        	
         	((TextView) this.findViewById(R.id.callForNickname)).setEnabled(false);
-        	
+        	((TextView) this.findViewById(R.id.nicknameText)).setText("내 닉네임:");
         }
 		
 	}
@@ -46,7 +45,9 @@ public class EditNicknameActivity extends Activity {
 	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.activity_prediction_actions, menu);
+        if("N".equals(GlobalVars.user.getIs_nickname_initialized())){
+        	inflater.inflate(R.menu.activity_prediction_actions, menu);
+        }
  
         return super.onCreateOptionsMenu(menu);
     }
