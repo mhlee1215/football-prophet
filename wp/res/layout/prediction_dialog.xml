@@ -49,7 +49,8 @@ android:orientation="vertical">
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:gravity="center"
-            android:text="A조 조별매치" />
+            android:text="A조 조별매치"
+            android:textAppearance="?android:attr/textAppearanceMedium"  />
    		</TableRow>
    		
    		<TableRow 
@@ -80,24 +81,28 @@ android:orientation="vertical">
         	android:layout_height="wrap_content" 
         	android:layout_width="fill_parent" 
         	android:gravity="center_horizontal">
+        	<!--
         	<TextView
             android:id="@+id/nationA"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:gravity="center"
             android:text="잉글랜드" />
+             -->
         	<TextView
             android:id="@+id/matchDate"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:gravity="center"
             android:text="06.18 07:00" />
+        	<!--
         	<TextView
             android:id="@+id/nationB"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:gravity="center"
             android:text="보스니아\n 헤르체고비나" />
+             -->
    		</TableRow>  
    		
 		<TableRow 
@@ -115,7 +120,8 @@ android:orientation="vertical">
             	android:padding="5dip"
             	android:gravity="center"
             	android:background="@drawable/dialog_button"
-            	android:text="A팀 승리" />
+            	android:text=""
+            	android:textAppearance="?android:attr/textAppearanceSmall" />
         	<Button
             	android:id="@+id/btnPredict2"
             	android:layout_width="fill_parent"
@@ -127,7 +133,8 @@ android:orientation="vertical">
             	android:padding="5dip"
             	android:gravity="center"
             	android:background="@drawable/dialog_button"
-            	android:text="무승부" />
+            	android:text="무승부 예언"
+            	android:textAppearance="?android:attr/textAppearanceSmall" />
         	<Button
             	android:id="@+id/btnPredict3"
             	android:layout_width="fill_parent"
@@ -139,7 +146,8 @@ android:orientation="vertical">
             	android:padding="5dip"
             	android:gravity="center"
             	android:background="@drawable/dialog_button"
-            	android:text="B팀 승리" />
+            	android:text=""
+            	android:textAppearance="?android:attr/textAppearanceSmall" />
 		</TableRow>
     </TableLayout>
     </LinearLayout>
