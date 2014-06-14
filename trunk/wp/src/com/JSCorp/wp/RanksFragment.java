@@ -1,46 +1,125 @@
 package com.JSCorp.wp;
 
-import com.JSCorp.wp.R;
+import java.util.List;
 
+import com.JSCorp.wp.R;
+import com.JSCorp.wp.DynamicRankActivity.GetRanks;
+import com.JSCorp.wp.adapter.RankListAdapter;
+import com.JSCorp.wp.domain.FPUser;
+import com.JSCorp.wp.service.UserService;
+import com.JSCorp.wp.var.GlobalVars;
+
+import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ListView;
+import android.widget.TableLayout;
+import android.widget.TextView;
 
-public class RanksFragment extends Fragment implements View.OnClickListener {
+public class RanksFragment extends Fragment {
 
+	private RankListAdapter listAdapter; 
+	List<FPUser> userTopRanks;
+	List<FPUser> userRanks;
+	View rootView;
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-		View rootView = inflater.inflate(R.layout.fragment_ranks, container, false);
-
-		Button dynamicRankButton = (Button) rootView.findViewById(R.id.dynamicRankButton);
-		dynamicRankButton.setOnClickListener(this);
-		Button staticRankButton = (Button) rootView.findViewById(R.id.staticRankButton);
-		staticRankButton.setOnClickListener(this);
+		rootView = inflater.inflate(R.layout.activity_dynamic_rank, container, false);
+		
+		new GetRanks().doInBackground(this);
+        
+		TableLayout firstPlace = (TableLayout) rootView.findViewById(R.id.firstPlace);
+		TableLayout secondPlace = (TableLayout) rootView.findViewById(R.id.secondPlace);
+		TableLayout thirdPlace = (TableLayout) rootView.findViewById(R.id.thirdPlace);
+		firstPlace.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				listAdapter.detailInfo(0, userTopRanks);
+			}
+		});
+		secondPlace.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				listAdapter.detailInfo(1, userTopRanks);
+			}
+		});
+		thirdPlace.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				listAdapter.detailInfo(2, userTopRanks);
+			}
+		});
 		
 		return rootView;
 	}
+	
+	public void doPrint(){
+		Log.i(GlobalVars.WP_INFO_TAG, "Print ranks");
+		System.out.println("userTopRanks: "+userTopRanks);
+		System.out.println("userRanks :" +userRanks);
+		listAdapter = new RankListAdapter(getActivity(), R.layout.fragment_dynamic_rank, userRanks);
+		ListView listView = (ListView) rootView.findViewById(android.R.id.list);
+		listView.setAdapter(listAdapter);
+		
+		if(userTopRanks.size() > 0){
+			TextView fpn = (TextView) rootView.findViewById(R.id.firstPlaceNickname);
+			fpn.setText(userTopRanks.get(0).getNickname());
+			TextView fpt1 = (TextView) rootView.findViewById(R.id.firstPlaceTag1);
+			fpt1.setText(userTopRanks.get(0).getTag());
+		}
+		
+		if(userTopRanks.size() > 1){
+			TextView spn = (TextView) rootView.findViewById(R.id.secondPlaceNickname);
+			spn.setText(userTopRanks.get(0).getNickname());
+			TextView spt1 = (TextView) rootView.findViewById(R.id.secondPlaceTag1);
+			spt1.setText(userTopRanks.get(0).getTag());
+		}
+		
+		if(userTopRanks.size() > 2){
+			TextView tpn = (TextView) rootView.findViewById(R.id.thridPlaceNickname);
+			tpn.setText(userTopRanks.get(0).getNickname());
+			TextView tpt1 = (TextView) rootView.findViewById(R.id.thridPlaceTag1);
+			tpt1.setText(userTopRanks.get(0).getTag());
+		}
+		
+		
+		/*
+		if(GlobalVars.dynamicBracketDialog.isShowing())
+			GlobalVars.dynamicBracketDialog.cancel();
+		 */
+	}
+	
+	
+	public class GetRanks extends AsyncTask {
 
-	@Override
-	public void onClick(View v) {
-		 //do what you want to do when button is clicked
-	    switch (v.getId()) {
-	        case R.id.dynamicRankButton:
-	        	Log.i("onClick", "Dynamic Rank Activity");
-	        	Intent dynamicRankActivity = new Intent(getActivity(), DynamicRankActivity.class);
-	        	getActivity().startActivity(dynamicRankActivity); 
-	        	break;
-	        case R.id.staticRankButton:
-	        	Log.i("onClick", "Static Rank Activity");
-	        	Intent staticBracketActivity = new Intent(getActivity(), DynamicRankActivity.class);
-	        	getActivity().startActivity(staticBracketActivity); 
-	        	break;
-	    }
+		RanksFragment tContext;
+		List<FPUser> userRanks;
+		@Override
+		protected Object doInBackground(Object... arg0) {
+			tContext = (RanksFragment) arg0[0];
+			// TODO Auto-generated method stub
+			StrictMode.enableDefaults();
+			userRanks = UserService.getRankingUsers();
+			//System.out.println("userRanks:"+userRanks);
+			
+			tContext.userTopRanks = userRanks.subList(0, 3);
+			tContext.userRanks = userRanks.subList(3, userRanks.size());
+			//tContext.userRanks = userRanks;
+			tContext.doPrint();
+			
+			return null;
+		}	
 	}
 }

@@ -3,29 +3,35 @@
     package="com.JSCorp.wp"
     android:versionCode="1"
     android:versionName="1.0" >
-    
+
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <uses-sdk
         android:minSdkVersion="11"
         android:targetSdkVersion="19" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:allowBackup="true" 
+        android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.JSCorp.wp.MainActivity"
-            android:label="@string/app_name"
+            android:name="com.JSCorp.wp.SplashActivity"
+            android:label="@string/title_activity_splash"
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+                <activity
+            android:name="com.JSCorp.wp.MainActivity"
+            android:label="@string/app_name" >
         </activity>
         <activity
             android:name="com.JSCorp.wp.DynamicBracketActivity"
@@ -48,8 +54,8 @@
         <activity
             android:name="com.JSCorp.wp.DynamicPredictionActivity"
             android:label="@string/title_activity_dynamic_prediction"
-            android:screenOrientation="portrait"
-            android:parentActivityName="com.JSCorp.wp.DynamicBracketActivity" >
+            android:parentActivityName="com.JSCorp.wp.DynamicBracketActivity"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.JSCorp.wp.DynamicBracketActivity" />
