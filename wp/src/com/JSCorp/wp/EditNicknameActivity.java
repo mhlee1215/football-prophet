@@ -17,6 +17,7 @@ import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +34,12 @@ public class EditNicknameActivity extends Activity {
         
         ((TextView) this.findViewById(R.id.callForNickname)).setText(GlobalVars.user.getNickname());
         
+        if("Y".equals(GlobalVars.user.getIs_nickname_initialized())){
+        	//Remove Action bar accept button.
+        	
+        	((TextView) this.findViewById(R.id.callForNickname)).setEnabled(false);
+        	
+        }
 		
 	}
 	
@@ -59,11 +66,18 @@ public class EditNicknameActivity extends Activity {
         		System.out.println("CANNOT edit nick name, already set.");
         		Toast.makeText(getApplicationContext(),
             		      "Cannot Update nick name. It already defined.", Toast.LENGTH_SHORT).show();
+        		
+        		
+        		
         	}else if("N".equals(GlobalVars.user.getIs_nickname_initialized())){
-        		Toast.makeText(getApplicationContext(),
-          		      "Update nick name", Toast.LENGTH_SHORT).show();
           	
 	          	String nickname_new = (String) ((TextView) this.findViewById(R.id.callForNickname)).getText().toString();
+	          	
+	          	if(nickname_new.length() < 4 || nickname_new.length() > 10){
+	          		Toast.makeText(getApplicationContext(),
+	            		      "닉네임을 4글자 이상, 10글자 미만으로 입력해주세요.", Toast.LENGTH_SHORT).show();
+	          		return true;
+	          	}
 	          	
 	          	FPUser user = new FPUser();
 	          	user.setDevice_id(GlobalVars.user.getDevice_id());
@@ -73,6 +87,8 @@ public class EditNicknameActivity extends Activity {
 	          	System.out.println("Set new nick name"); 
 	  			GlobalVars.user.setNickname(nickname_new);
 	  			GlobalVars.user.setIs_nickname_initialized("Y");
+	  			
+	  			
         	}
 
         	
@@ -100,6 +116,9 @@ public class EditNicknameActivity extends Activity {
 				e.printStackTrace();
 			}
 			//System.out.println("MATCH SIZE:"+matches.size());
+			
+			Toast.makeText(getApplicationContext(),
+        		      "닉네임이 수정되었습니다.", Toast.LENGTH_SHORT).show();
 			return null;
 		}
 	}
