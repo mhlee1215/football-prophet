@@ -64,10 +64,6 @@ public class DynamicRankActivity extends ListActivity {
 		
         new GetRanks().doInBackground(this);
         
-        
-        
-        
-		
 		TableLayout firstPlace = (TableLayout)findViewById(R.id.firstPlace);
 		TableLayout secondPlace = (TableLayout)findViewById(R.id.secondPlace);
 		TableLayout thirdPlace = (TableLayout)findViewById(R.id.thirdPlace);

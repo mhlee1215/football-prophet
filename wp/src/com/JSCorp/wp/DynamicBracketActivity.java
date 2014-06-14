@@ -40,15 +40,9 @@ public class DynamicBracketActivity extends ListActivity {
 		
         // Enabling Up / Back navigation
         getActionBar().setDisplayHomeAsUpEnabled(true);
-		
-
         
         if(GlobalVars.matches == null){
         	Log.i(GlobalVars.WP_INFO_TAG, "Transaction to server for match retrieval.");
-        	
-        	
-        	
-        	
         	new GetGameTeamMap().execute(this);
         }
         else{

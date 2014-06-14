@@ -44,17 +44,6 @@ public class PredictionListAdapter extends BaseAdapter {
 	public String TAG = "listAdapter";
 	public int listCount = 0;
 	
-	public PredictionListAdapter(Context tContext, int listLayout, String[] tmpa) {
-		mContext = tContext;
-		mListLayout = listLayout;
-		categorya = tmpa;
-		inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		
-		if(categorya != null) {
-			listCount = categorya.length;
-		}
-	}
-	
 	public PredictionListAdapter(Context tContext, int listLayout, List<FPGameMatchSchedule> tmpa) {
 		mContext = tContext;
 		mListLayout = listLayout;
@@ -63,6 +52,17 @@ public class PredictionListAdapter extends BaseAdapter {
 		
 		if(matches != null) {
 			listCount = matches.size();
+		}
+	}
+	
+	public PredictionListAdapter(Context tContext, int listLayout, String[] tmpa) {
+		mContext = tContext;
+		mListLayout = listLayout;
+		categorya = tmpa;
+		inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		
+		if(categorya != null) {
+			listCount = categorya.length;
 		}
 	}
 	

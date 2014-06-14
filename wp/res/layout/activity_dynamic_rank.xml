@@ -29,7 +29,7 @@
         android:layout_height="wrap_content" 
         android:layout_width="match_parent">  
         <TextView 
-            android:id="@+id/firstPlaceRemark" android:text="1등"
+            android:id="@+id/firstPlaceRemark" android:text="1위"
             android:layout_weight="1"
             android:textColor="#000000"
             android:padding="20dip" android:gravity="center"/>
@@ -72,7 +72,7 @@
         android:layout_height="wrap_content" 
         android:layout_width="match_parent">  
         <TextView 
-            android:id="@+id/secondPlaceRemark" android:text="2등"
+            android:id="@+id/secondPlaceRemark" android:text="2위"
             android:layout_weight="1"
             android:textColor="#000000"
             android:padding="20dip" android:gravity="center"/>
@@ -114,7 +114,7 @@
         android:layout_height="wrap_content" 
         android:layout_width="match_parent">  
         <TextView 
-            android:id="@+id/thirdPlaceRemark" android:text="3등"
+            android:id="@+id/thirdPlaceRemark" android:text="3위"
             android:layout_weight="1"
             android:textColor="#000000"
             android:padding="20dip" android:gravity="center"/>

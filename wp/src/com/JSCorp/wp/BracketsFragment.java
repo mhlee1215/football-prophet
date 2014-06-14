@@ -3,6 +3,8 @@ package com.JSCorp.wp;
 import java.util.List;
 
 import com.JSCorp.wp.R;
+import com.JSCorp.wp.DynamicBracketActivity.GetGameTeamMap;
+import com.JSCorp.wp.adapter.PredictionListAdapter;
 import com.JSCorp.wp.domain.FPGameMatchSchedule;
 import com.JSCorp.wp.service.GameService;
 import com.JSCorp.wp.var.GlobalVars;
@@ -20,11 +22,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ListView;
 
 @SuppressLint("ValidFragment")
-public class BracketsFragment extends Fragment implements View.OnClickListener {
+public class BracketsFragment extends Fragment {
 
 	Context context;
+	
+	////
+	public List<FPGameMatchSchedule> matches;
+	ProgressDialog dialog;
+	PredictionListAdapter listAdapter;
 
 	public BracketsFragment() {
 		// TODO Auto-generated constructor stub
@@ -39,37 +47,82 @@ public class BracketsFragment extends Fragment implements View.OnClickListener {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-		View rootView = inflater.inflate(R.layout.fragment_brackets, container,
+		View rootView = inflater.inflate(R.layout.activity_dynamic_bracket, container,
 				false);
+		
+		//// 
+        if(GlobalVars.matches == null){
+        	Log.i(GlobalVars.WP_INFO_TAG, "Transaction to server for match retrieval.");
+        	
+        	/*
+        	ProgressDialog dialog = new ProgressDialog(context);
+    		dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+    		dialog.setTitle("Waiting..");
+    		dialog.setMessage("Now retrieving game info");
+    		dialog.setProgress(0);
+    		dialog.setMax(100);
+    		dialog.setButton("취소", new DialogInterface.OnClickListener() {
+    			public void onClick(DialogInterface dialog, int which) {
+    				dialog.cancel();
+    			}
+    		});
+    		dialog.show();
 
-		Button dynamicBracketButton = (Button) rootView
-				.findViewById(R.id.dynamicBracketButton);
-		dynamicBracketButton.setOnClickListener(this);
-		Button staticBracketButton = (Button) rootView
-				.findViewById(R.id.staticBracketButton);
-		staticBracketButton.setOnClickListener(this);
-		return rootView;
-	}
-
-	@Override
-	public void onClick(View v) {
-		// do what you want to do when button is clicked
-		switch (v.getId()) {
-		case R.id.dynamicBracketButton:
-
-			new StartChildActivity().doInBackground(this.context, DynamicBracketActivity.class);
-			
-			break;
-		case R.id.staticBracketButton:
-			Log.i("onClick", "Static Bracket Activity");
-			Intent staticBracketActivity = new Intent(getActivity(),
-					StaticBracketActivity.class);
-			getActivity().startActivity(staticBracketActivity);
-			break;
-		}
-
+    		GlobalVars.dynamicBracketDialog = dialog;
+        	*/
+        	
+        	new GetGameTeamMap().execute(this);
+        }
+        else{
+        	Log.i(GlobalVars.WP_INFO_TAG, "Match found in the app. Skip match retrieval to server.");
+        	this.matches = GlobalVars.matches;
+        	doPrint();
+        }
+        ////
+        
+        return rootView;
 	}
 	
+	public void doPrint(){
+		Log.i(GlobalVars.WP_INFO_TAG, "Print matches");
+		System.out.println(matches);
+		listAdapter = new PredictionListAdapter(this.context, R.layout.fragment_dynamic_bracket, matches);
+		ListView listView = (ListView) getView().findViewById(android.R.id.list);
+		listView.setAdapter(listAdapter);
+		
+		/*
+		if(GlobalVars.dynamicBracketDialog.isShowing())
+			GlobalVars.dynamicBracketDialog.cancel();
+		*/
+	}
+	
+	public class GetGameTeamMap extends AsyncTask {
+
+		BracketsFragment tContext;
+		List<FPGameMatchSchedule> matches;
+		@Override
+		protected Object doInBackground(Object... arg0) {
+			
+			tContext = (BracketsFragment) arg0[0];
+			// TODO Auto-generated method stub
+			System.out.println(GlobalVars.user);
+			matches = GameService.getGameMatchSchedules(GlobalVars.user.getId());
+			//System.out.println("MATCH SIZE:"+matches.size());
+			
+			return null;
+		}
+		
+		@Override
+		protected void onPostExecute(Object result) {
+			// TODO Auto-generated method stub
+			super.onPostExecute(result);
+			tContext.matches = matches;
+			tContext.doPrint();
+		}
+		
+	}
+	
+	/*
 	public class StartChildActivity extends AsyncTask {
 
 		
@@ -99,4 +152,5 @@ public class BracketsFragment extends Fragment implements View.OnClickListener {
 			return null;
 		}
 	}
+	*/
 }
