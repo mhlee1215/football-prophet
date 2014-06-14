@@ -92,10 +92,18 @@ public class MainActivity extends FragmentActivity implements
 	public void onTabUnselected(Tab tab, FragmentTransaction ft) {
 	}
 	
+
+	/*
+	public Fragment getFragmentbyPosition(int position) {
+	    return mAdapter.getFragment(viewPager, position, getSupportFragmentManager());
+	}
+	*/
+
 	public void doPrintUser(FPUser user){
 		System.out.println(user);
 	}
 	
+
 	public class GetUserInfo extends AsyncTask {
 
 		MainActivity tContext;
