@@ -125,7 +125,7 @@ public class RankListAdapter extends BaseAdapter {
 		    	String url;
 		        @Override
 		        public void onClick(View v) {
-		        	Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://"+url));
+		        	Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://facebook.com/"+url));
 		    	    mContext.startActivity(browserIntent);
 		        }
 		        
@@ -146,7 +146,7 @@ public class RankListAdapter extends BaseAdapter {
 		    	String url;
 		        @Override
 		        public void onClick(View v) {
-		        	Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://"+url));
+		        	Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://twitter.com/"+url));
 		    	    mContext.startActivity(browserIntent);
 		        }
 		        public View.OnClickListener setUrl(String url){
