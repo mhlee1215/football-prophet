@@ -13,9 +13,17 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
  
 	Context context;
 	
+	static BracketsFragment bracketsFragment;
+	static RanksFragment ranksFragment;
+	static SettingsFragment settingsFragment;
+	
     public TabsPagerAdapter(FragmentManager fm, Context context) {
         super(fm);
         this.context = context;
+        
+        bracketsFragment = new BracketsFragment(this.context);
+        ranksFragment = new RanksFragment();
+        settingsFragment = new SettingsFragment();
     }
  
     @Override
@@ -26,16 +34,17 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
             // Top Rated fragment activity
       
         	
-            return new BracketsFragment(this.context);
+            return bracketsFragment;//new BracketsFragment(this.context);
         case 1:
             // Games fragment activity
-            return new RanksFragment();
+        	ranksFragment.init();
+            return ranksFragment;//new RanksFragment();
         //case 2:
             // Movies fragment activity
         //    return new AnalysisFragment();
         case 2:
             // Movies fragment activity
-            return new SettingsFragment();
+            return settingsFragment;//new SettingsFragment();
         }
  
         return null;

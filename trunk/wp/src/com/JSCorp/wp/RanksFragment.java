@@ -34,6 +34,7 @@ public class RanksFragment extends Fragment {
 	
 	
 	View rootView;
+	boolean isCreated = false;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -41,7 +42,7 @@ public class RanksFragment extends Fragment {
 
 		rootView = inflater.inflate(R.layout.activity_dynamic_rank, container, false);
 		
-		new GetRanks().doInBackground(this);
+		
         
 		TableLayout firstPlace = (TableLayout) rootView.findViewById(R.id.firstPlace);
 		TableLayout secondPlace = (TableLayout) rootView.findViewById(R.id.secondPlace);
@@ -65,8 +66,20 @@ public class RanksFragment extends Fragment {
 			}
 		});
 		
+		isCreated = true;
+		
+		init();
+		
 		return rootView;
 	}
+	
+	public void init(){
+		System.out.println("ini!");
+		if(isCreated)
+			new GetRanks().doInBackground(this);
+	}
+	
+	 
 	
 	public void doPrint(){
 		Log.i(GlobalVars.WP_INFO_TAG, "Print ranks");

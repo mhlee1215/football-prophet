@@ -47,7 +47,7 @@ public class MainActivity extends FragmentActivity implements
 		actionBar.setHomeButtonEnabled(false);
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);		
 
-		
+		//new GetUserInfo().execute(this);
 		
 		// Adding Tabs
 		for (String tab_name : tabs) {
@@ -92,5 +92,58 @@ public class MainActivity extends FragmentActivity implements
 	public void onTabUnselected(Tab tab, FragmentTransaction ft) {
 	}
 	
+	public void doPrintUser(FPUser user){
+		System.out.println(user);
+	}
 	
+	public class GetUserInfo extends AsyncTask {
+
+		MainActivity tContext;
+		FPUser user;
+		@Override
+		protected Object doInBackground(Object... arg0) {
+			tContext = (MainActivity) arg0[0];
+			// TODO Auto-generated method stub
+			
+			TelephonyManager tManager = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
+			String deviceId = tManager.getDeviceId();
+			System.out.println("device Id :"+deviceId);
+			
+			user = UserService.getUserByDeviceId(deviceId);
+			System.out.println(user);
+			
+			if(user == null){
+				//add user
+				Log.i(GlobalVars.WP_INFO_TAG, "ADD USER");
+				FPUser addUser = new FPUser();
+				System.out.println(addUser);
+				addUser.setDevice_id(deviceId);
+				boolean result;
+				try {
+					result = UserService.addUser(addUser);
+					System.out.println("result : "+result);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				user = UserService.getUserByDeviceId(deviceId);
+				GlobalVars.user = user;
+			}else{
+				Log.i(GlobalVars.WP_INFO_TAG, "USER ALREADY EXISTS");
+				GlobalVars.user = user;
+				System.out.println(user);
+			}
+			
+			return null;
+		}
+		
+		@Override
+		protected void onPostExecute(Object result) {
+			// TODO Auto-generated method stub
+			super.onPostExecute(result);
+			//tContext.doPrint(matches);
+		}
+		
+	}
 }
