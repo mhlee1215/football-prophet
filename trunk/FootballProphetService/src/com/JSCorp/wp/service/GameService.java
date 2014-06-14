@@ -30,9 +30,12 @@ import com.JSCorp.wp.var.Env;
 
 public class GameService {
 
+	public static int RESULT_SUCCESS = 2;
 	public static int RESULT_ADD = 1;
 	public static int RESULT_UPDATE = 2;
 	public static int RESULT_FAIL = -1;
+	public static int RESULT_FAIL_TIME_OVER = -2;
+	
 	
 	
 	public static ArrayList<FPGameMatchSchedule> getGameMatchSchedules() {
@@ -125,6 +128,14 @@ public class GameService {
 						if ((str = (String) o2.get("time")) != null) {
 							matchSchedule.setTime(str);
 						}
+						if ((str = (String) o2.get("reference_month")) != null) {
+							matchSchedule.setReference_month(str);
+						}
+						
+						if ((str = (String) o2.get("reference_day")) != null) {
+							matchSchedule.setReference_day(str);
+						}
+						
 						if ((str = (String) o2.get("reference_time")) != null) {
 							matchSchedule.setReference_time(str);
 						}
@@ -480,6 +491,55 @@ public static int getGameProphetCorrect(int user_id) {
 		return 0;
 	}
 	
+	public static int setGameProphetEx(FPGameProphet gameProphet){
+		
+		try {
+			gameProphet.setComment(URLEncoder.encode(gameProphet.getComment(), "UTF-8"));
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		HttpClient httpclient = new DefaultHttpClient();
+		try {
+
+			HttpGet httpget = new HttpGet(Env.url + "api.setGameProphet.do"
+					+ gameProphet.toStringSealize());
+			System.out.println("executing request " + httpget.getURI());
+			HttpResponse response = httpclient.execute(httpget);
+			HttpEntity entity = response.getEntity();
+
+			if (entity != null) {
+				BufferedReader rd = new BufferedReader(new InputStreamReader(
+						response.getEntity().getContent()));
+
+				String line = "";
+				while ((line = rd.readLine()) != null) {
+					if (line.startsWith("fail-time-over")) {
+						// Error handling
+						return RESULT_FAIL_TIME_OVER;
+					}else if (line.startsWith("fail")) {
+						// Error handling
+						return RESULT_FAIL;
+					} else if (line.equals("success")) {
+						return RESULT_SUCCESS;
+					} else {
+						return RESULT_FAIL;
+					}
+				}
+			}
+			httpget.abort();
+			httpclient.getConnectionManager().shutdown();
+
+		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			httpclient.getConnectionManager().shutdown();
+		}
+		return RESULT_FAIL;
+	}
 	
 	public static int setGameProphet(FPGameProphet gameProphet){
 		
@@ -724,8 +784,8 @@ public static boolean updateGameResult(FPGameResult gameResult) {
 	public static void main(String[] args) throws ParseException {
 
 
-		System.out.println(GameService.getGameMatchSchedules(62));
-		if(1==1) return;
+		//System.out.println(GameService.getGameMatchSchedules(62));
+		//if(1==1) return;
 
 		//System.out.println(GameService.getGameMatchSchedules(62));
 		//if(1==1)return;
@@ -735,8 +795,8 @@ public static boolean updateGameResult(FPGameResult gameResult) {
 		
 		//ADD GAME PROPHET
 		
-		for(int j = 68 ; j < 118 ; j++){
-			for(int i = 1 ; i <= 20 ; i++){
+		for(int j = 68 ; j < 70 ; j++){
+			for(int i = 21 ; i <= 25 ; i++){
 				int prophet_case = ((int)(Math.random()*100))%3+1;
 				
 				FPGameProphet gameProphet = new FPGameProphet();
@@ -750,11 +810,12 @@ public static boolean updateGameResult(FPGameResult gameResult) {
 				else if(prophet_case == 3)
 					gameProphet.setDraw("1");	
 				gameProphet.setProphet_result("");
-				gameProphet.setComment("뭔가 한글 코멘트..");
-				System.out.println(GameService.setGameProphet(gameProphet));
+				gameProphet.setComment("1111뭔가 한글 코멘트..123123");
+				System.out.println(GameService.setGameProphetEx(gameProphet));
 			}
 		}
 		
+		if(1==1) return;
 		
 		for(int i = 1; i <= 15; i++)
 		{
