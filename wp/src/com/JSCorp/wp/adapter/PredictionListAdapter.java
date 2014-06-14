@@ -129,7 +129,7 @@ public class PredictionListAdapter extends BaseAdapter {
 			  	((TextView) convertView.findViewById(R.id.myPrediction)).setText("");
 			 }
 			 
-		} else if(matches.get(position).getMatch_finished().equals("Y")){
+		} else if(matches.get(position).getMatch_finished().equals("Y")) {
 			((TextView) convertView.findViewById(R.id.matchTime)).setVisibility(View.GONE);
 			(convertView.findViewById(R.id.myPrediction)).setVisibility(View.GONE);
 			((TextView) convertView.findViewById(R.id.matchResult)).setVisibility(View.VISIBLE);
@@ -171,6 +171,24 @@ public class PredictionListAdapter extends BaseAdapter {
 				 (convertView.findViewById(R.id.myPrediction)).setVisibility(View.VISIBLE);
 					(convertView.findViewById(R.id.predictionResult)).setVisibility(View.GONE);
 					((TextView) convertView.findViewById(R.id.myPrediction)).setText(" - ");
+			 }
+		} else if(matches.get(position).getMatch_finished().equals("NOW")) {
+			((TextView) convertView.findViewById(R.id.matchResult)).setVisibility(View.GONE);
+			(convertView.findViewById(R.id.predictionResult)).setVisibility(View.GONE);
+			((TextView) convertView.findViewById(R.id.matchTime)).setVisibility(View.VISIBLE);
+			(convertView.findViewById(R.id.myPrediction)).setVisibility(View.VISIBLE);
+			
+			((TextView) convertView.findViewById(R.id.matchTime)).setText("경기 진행중");
+			
+			
+			 if(matches.get(position).getProphet_home_win() == 1) {
+				 ((TextView) convertView.findViewById(R.id.myPrediction)).setText((matches.get(position).getHome_team_name()) + "\n승리 예언");
+			 } else if(matches.get(position).getProphet_draw() == 1) {
+			   	((TextView) convertView.findViewById(R.id.myPrediction)).setText("무승부 예언");
+			 } else if(matches.get(position).getProphet_away_win() == 1) {
+			   	((TextView) convertView.findViewById(R.id.myPrediction)).setText((matches.get(position).getAway_team_name()) + "\n승리 예언");
+			 } else{
+			  	((TextView) convertView.findViewById(R.id.myPrediction)).setText("");
 			 }
 		}
 		   
