@@ -85,7 +85,9 @@ public class BracketsFragment extends Fragment {
 	
 	public void doPrint(){
 		Log.i(GlobalVars.WP_INFO_TAG, "Print matches");
-		System.out.println(matches);
+		//Temporally hid tournamnet
+		matches = matches.subList(0, 48);
+		System.out.println("MATCH LIST: "+matches);
 		listAdapter = new PredictionListAdapter(this.context, R.layout.fragment_dynamic_bracket, matches);
 		ListView listView = (ListView) getView().findViewById(android.R.id.list);
 		listView.setAdapter(listAdapter);
