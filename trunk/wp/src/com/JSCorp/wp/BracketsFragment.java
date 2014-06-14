@@ -85,8 +85,11 @@ public class BracketsFragment extends Fragment {
 		matches = matches.subList(0, 48);
 		System.out.println("MATCH LIST: "+matches);
 		listAdapter = new PredictionListAdapter(this.context, R.layout.fragment_dynamic_bracket, matches);
-		ListView listView = (ListView) getView().findViewById(android.R.id.list);
-		listView.setAdapter(listAdapter);
+		System.out.println("getView: "+getView());
+		if(getView() != null){
+			ListView listView = (ListView) getView().findViewById(android.R.id.list);
+			listView.setAdapter(listAdapter);
+		}
 		
 		/*
 		if(GlobalVars.dynamicBracketDialog.isShowing())
@@ -103,7 +106,7 @@ public class BracketsFragment extends Fragment {
 			
 			tContext = (BracketsFragment) arg0[0];
 			// TODO Auto-generated method stub
-			System.out.println(GlobalVars.user);
+			System.out.println("GLOBAL USER: "+GlobalVars.user);
 			matches = GameService.getGameMatchSchedules(GlobalVars.user.getId());
 			//System.out.println("MATCH SIZE:"+matches.size());
 			
@@ -113,7 +116,7 @@ public class BracketsFragment extends Fragment {
 		@Override
 		protected void onPostExecute(Object result) {
 			// TODO Auto-generated method stub
-			super.onPostExecute(result);
+			//super.onPostExecute(result);
 			tContext.matches = matches;
 			tContext.doPrint();
 		}
