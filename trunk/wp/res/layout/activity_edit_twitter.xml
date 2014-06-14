@@ -1,43 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_main"
-    android:gravity="center_vertical"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/twitterText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/editText1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="61dp"
-        android:text="Twitter 입력 해주세요." />
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="35dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Twitter ID를 입력 해주세요." />
 
     <EditText
         android:id="@+id/callForTwitter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:ems="10" />
-
-    <ToggleButton
-        android:id="@+id/toggleTwitter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/twitterText"
         android:layout_below="@+id/twitterText"
-        android:text="ToggleButton" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="5dp"
+        android:ems="10"
+        android:inputType="" />
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/toggleFacebook"
-        android:layout_alignBottom="@+id/toggleFacebook"
-        android:layout_alignLeft="@+id/twitterText"
-        android:layout_marginLeft="20dp"
-        android:text="공개" />
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
 
-</RelativeLayout>
+	    <TextView
+	        android:id="@+id/textView1"
+	        android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:layout_marginLeft="30dp"
+        	android:layout_marginRight="30dp"
+        	android:layout_marginTop="35dp"
+        	android:textAppearance="?android:attr/textAppearanceMedium"
+	        android:text="공개:" />
+	
+	    <ToggleButton
+	        android:id="@+id/toggleTwitter"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="25dp"
+        	android:layout_marginRight="15dp"
+        	android:layout_marginTop="35dp"
+	        android:text="ToggleButton" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -10,9 +10,10 @@
         android:id="@+id/tag1Text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="35dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="한마디 해주세요." />
 
     <EditText
@@ -21,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tag1Text"
         android:layout_centerHorizontal="true"
-        android:layout_marginLeft="15dp"
+        android:layout_marginLeft="25dp"
         android:layout_marginRight="15dp"
         android:layout_marginTop="5dp"
         android:ems="10"

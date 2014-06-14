@@ -3,7 +3,6 @@ package com.JSCorp.wp;
 import java.util.List;
 
 import com.JSCorp.wp.R;
-import com.JSCorp.wp.DynamicBracketActivity.GetGameTeamMap;
 import com.JSCorp.wp.adapter.PredictionListAdapter;
 import com.JSCorp.wp.domain.FPGameMatchSchedule;
 import com.JSCorp.wp.service.GameService;
@@ -12,8 +11,6 @@ import com.JSCorp.wp.var.GlobalVars;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -21,7 +18,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ListView;
 
 @SuppressLint("ValidFragment")
