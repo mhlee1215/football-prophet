@@ -27,7 +27,7 @@
  -->
     	
     	 
-    	<property name="url" value="jdbc:mysql://mineng2.cafe24.com:3306/mineng2" />
+    	<property name="url" value="jdbc:mysql://localhost:3306/mineng2" />
     	<property name="username" value="mineng2" />
     	<property name="password" value="ckaist20144" />
     	

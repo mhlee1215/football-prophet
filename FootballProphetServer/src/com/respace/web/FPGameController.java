@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
+import org.joda.time.LocalDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -64,6 +65,30 @@ private Logger logger = Logger.getLogger(getClass());
 		
 		int query_start = ( query_page - 1 ) * query_number;
 		List<FPGameMatchSchedule> gameMatchScheduleList = gameMatchScheduleService.readGameMatchScheduleList(gameMatchSchedule);
+		
+		for(FPGameMatchSchedule ms : gameMatchScheduleList){
+			if("Y".equalsIgnoreCase(ms.getMatch_finished())) continue;
+			LocalDateTime cur_time = new LocalDateTime();//2014, 10, 15, 11, 0);
+			int month = Integer.parseInt(ms.getMonth());
+			int day = Integer.parseInt(ms.getDay());
+			String t = ms.getTime();
+			int hour = Integer.parseInt(t.substring(0, 2));
+			int min = Integer.parseInt(t.substring(3, 5));
+			System.out.println("Match time is "+month+"//"+day+"//"+hour+":"+min);
+			LocalDateTime match_time = new LocalDateTime(2014, month, day, hour, min);
+			//LocalDateTime match_time_end = match_time.plu
+			//System.out.println(time.toDate().);
+			
+			if(cur_time.toDate().compareTo(match_time.toDate()) == 0){
+				//return "fail-time-over";
+			} else if(cur_time.toDate().compareTo(match_time.toDate()) > 0){
+				//return "fail-time-over";
+				ms.setMatch_finished("NOW");
+			} else if(cur_time.toDate().compareTo(match_time.toDate()) < 0){
+				//System.out.println("a is earlier than b");
+			}
+		}
+		
  
 		
 		HttpHeaders responseHeaders = new HttpHeaders();
@@ -176,6 +201,90 @@ private Logger logger = Logger.getLogger(getClass());
 			// TODO Auto-generated catch block
 			return "fail-"+e.toString();
 		}
+    }
+	
+	@RequestMapping(value="/api.setGameProphet.do")
+    public @ResponseBody String setGameProphet(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
+		Integer query_page = ServletRequestUtils.getIntParameter(request, "query_page", 1);
+		
+		Integer id = ServletRequestUtils.getIntParameter(request, "id", 0);
+		Integer user_id = ServletRequestUtils.getIntParameter(request, "user_id", 0);
+		Integer match_id = ServletRequestUtils.getIntParameter(request, "match_id", 0);
+		
+		String prophet_type = ServletRequestUtils.getStringParameter(request, "prophet_type", "");
+		String home_team_win = ServletRequestUtils.getStringParameter(request, "home_team_win", "");
+		String away_team_win = ServletRequestUtils.getStringParameter(request, "away_team_win", "");
+		String draw = ServletRequestUtils.getStringParameter(request, "draw", "");
+		String prophet_result = ServletRequestUtils.getStringParameter(request, "prophet_result", "");	
+		String comment = ServletRequestUtils.getStringParameter(request, "comment", "");
+		
+		comment = URLDecoder.decode(comment, "UTF-8");
+		
+		FPGameMatchSchedule gameMatchSchedule = new FPGameMatchSchedule();
+		gameMatchSchedule.setId(match_id);
+		List<FPGameMatchSchedule> gameMatch = gameMatchScheduleService.readGameMatchScheduleList(gameMatchSchedule);
+		
+		if(gameMatch.size() != 1) return "fail-match-unavailable";
+		//Time Check
+		LocalDateTime cur_time = new LocalDateTime();//2014, 10, 15, 11, 0);
+		int month = Integer.parseInt(gameMatch.get(0).getMonth());
+		int day = Integer.parseInt(gameMatch.get(0).getDay());
+		String t = gameMatch.get(0).getTime();
+		int hour = Integer.parseInt(t.substring(0, 2));
+		int min = Integer.parseInt(t.substring(3, 5));
+		System.out.println("Match time is "+month+"//"+day+"//"+hour+":"+min);
+		LocalDateTime match_time = new LocalDateTime(2014, month, day, hour, min);
+		
+		//System.out.println(time.toDate().);
+		
+		if(cur_time.toDate().compareTo(match_time.toDate()) == 0){
+			return "fail-time-over";
+		} else if(cur_time.toDate().compareTo(match_time.toDate()) > 0){
+			return "fail-time-over";
+		} else if(cur_time.toDate().compareTo(match_time.toDate()) < 0){
+			System.out.println("a is earlier than b");
+		}
+		
+		
+		FPGameProphet gameProphetExistCheck = new FPGameProphet();
+		gameProphetExistCheck.setId(id);
+		gameProphetExistCheck.setUser_id(user_id);
+		gameProphetExistCheck.setMatch_id(match_id);
+		List<FPGameProphet> gameProphetListExist = gameProphetService.readGameProphetList(gameProphetExistCheck);
+		
+		
+		FPGameProphet gameProphet = new FPGameProphet();
+		//gameProphet.setId(id);
+		gameProphet.setUser_id(user_id);
+		gameProphet.setMatch_id(match_id);
+		gameProphet.setProphet_type(prophet_type);
+		gameProphet.setProphet_result(prophet_result);
+		gameProphet.setHome_team_win(home_team_win);
+		gameProphet.setAway_team_win(away_team_win);
+		gameProphet.setDraw(draw);
+		gameProphet.setComment(comment);
+		
+		if(gameProphetListExist.size() == 1){
+			try {
+				gameProphetService.updateGameProphet(gameProphet);
+				return "success-update";
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				return "fail-"+e.toString();
+			}
+		}else if(gameProphetListExist.size() == 0){
+			try {
+				gameProphetService.createGameProphet(gameProphet);
+				return "success-add";
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				return "fail-"+e.toString();
+			}
+		}else{
+			return "fail-unknown";
+		}
+		
+		
     }
 	
 	@RequestMapping(value="/api.updateGameProphet.do")
@@ -338,6 +447,30 @@ private Logger logger = Logger.getLogger(getClass());
     }
 	
 
+	public static void main(String[] argv){
+		
+		System.out.println(Integer.parseInt("01"));
+		String a = "17:00";
+		System.out.println(a.substring(0, 2)+"//"+a.substring(3, 5));
+		
+		System.out.println("hi");
+		LocalDateTime time = new LocalDateTime();//2014, 10, 15, 11, 0);
+		LocalDateTime time3 = time.plusHours(4);
+		LocalDateTime time2 = new LocalDateTime(2014, 10, 15, 10, 0);
+		
+		System.out.println(time.toDate());
+		System.out.println(time3.toDate());
+		
+		if(time.toDate().compareTo(time2.toDate()) == 0){
+			System.out.println("same");
+		} else if(time.toDate().compareTo(time2.toDate()) > 0){
+			System.out.println("a is later than b");
+		} else if(time.toDate().compareTo(time2.toDate()) < 0){
+			System.out.println("a is earlier than b");
+		}
+		
+		
+	}
 	
 	
 //	@RequestMapping("/api.1eventDetail.do")
