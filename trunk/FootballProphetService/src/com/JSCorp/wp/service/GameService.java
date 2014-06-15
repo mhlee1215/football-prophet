@@ -796,7 +796,7 @@ public static boolean updateGameResult(FPGameResult gameResult) {
 		//ADD GAME PROPHET
 		
 		for(int j = 68 ; j < 70 ; j++){
-			for(int i = 21 ; i <= 25 ; i++){
+			for(int i = 1 ; i <= 10 ; i++){
 				int prophet_case = ((int)(Math.random()*100))%3+1;
 				
 				FPGameProphet gameProphet = new FPGameProphet();
@@ -811,7 +811,11 @@ public static boolean updateGameResult(FPGameResult gameResult) {
 					gameProphet.setDraw("1");	
 				gameProphet.setProphet_result("");
 				gameProphet.setComment("1111뭔가 한글 코멘트..123123");
-				System.out.println(GameService.setGameProphet(gameProphet));
+				int rtn = GameService.setGameProphet(gameProphet);
+				
+				if(rtn == GameService.RESULT_FAIL_TIME_OVER){
+					System.out.println("time is late!");
+				}
 			}
 		}
 		
