@@ -1,5 +1,6 @@
 package com.JSCorp.wp;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.JSCorp.wp.R;
@@ -44,27 +45,8 @@ public class RanksFragment extends Fragment {
 		
 		
         
-		TableLayout firstPlace = (TableLayout) rootView.findViewById(R.id.firstPlace);
-		TableLayout secondPlace = (TableLayout) rootView.findViewById(R.id.secondPlace);
-		TableLayout thirdPlace = (TableLayout) rootView.findViewById(R.id.thirdPlace);
-		firstPlace.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				listAdapter.detailInfo(0, userTopRanks);
-			}
-		});
-		secondPlace.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				listAdapter.detailInfo(1, userTopRanks);
-			}
-		});
-		thirdPlace.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				listAdapter.detailInfo(2, userTopRanks);
-			}
-		});
+		
+		
 		
 		isCreated = true;
 		
@@ -125,6 +107,32 @@ public class RanksFragment extends Fragment {
 			//((TextView)findViewById(R.id.thridPlaceTag1)).setText(userTopRanks.get(2).getTag());
 		}
 		
+		if(userTopRanks.size() > 0) {
+			TableLayout firstPlace = (TableLayout) rootView.findViewById(R.id.firstPlace);
+			firstPlace.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					listAdapter.detailInfo(0, userTopRanks);
+				}
+			});
+	        } else  if(userTopRanks.size() > 1) {
+			TableLayout secondPlace = (TableLayout) rootView.findViewById(R.id.secondPlace);
+			secondPlace.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					listAdapter.detailInfo(1, userTopRanks);
+				}
+			});
+	        } else  if(userTopRanks.size() > 2) {
+			TableLayout thirdPlace = (TableLayout) rootView.findViewById(R.id.thirdPlace);
+			thirdPlace.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					listAdapter.detailInfo(2, userTopRanks);
+				}
+			});
+	        }
+		
 		
 		
 		for(FPUser user : userRanksAll){
@@ -165,8 +173,16 @@ public class RanksFragment extends Fragment {
 			//System.out.println("userRanks:"+userRanks);
 			
 			tContext.userRanksAll = userRanks;
-			tContext.userTopRanks = userRanks.subList(0, 3);
-			tContext.userRanks = userRanks.subList(3, userRanks.size());
+			if(userRanks == null) {
+				tContext.userTopRanks = new ArrayList<FPUser>();
+				tContext.userRanks = new ArrayList<FPUser>();
+			} else if(userRanks.size() < 3) {
+				tContext.userTopRanks = userRanks;
+				tContext.userRanks = new ArrayList<FPUser>();
+			} else {
+				tContext.userTopRanks = userRanks.subList(0, 3);
+				tContext.userRanks = userRanks.subList(3, userRanks.size());
+			}
 			//tContext.userRanks = userRanks;
 			tContext.doPrint();
 			
