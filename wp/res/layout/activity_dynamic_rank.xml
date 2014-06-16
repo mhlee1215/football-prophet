@@ -39,7 +39,7 @@
         android:id="@+id/firstPlaceNickname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="내가 지존"
+        android:text=""
         android:layout_weight="30"
         android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -48,7 +48,7 @@
         android:id="@+id/firstPlaceTag1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="내가 예언왕이다"
+        android:text=""
         android:layout_weight="40"
         android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceSmall" />
@@ -84,7 +84,7 @@
         android:id="@+id/secondPlaceNickname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="거의 지존"
+        android:text=""
         android:layout_weight="30"
         android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -93,7 +93,7 @@
         android:id="@+id/secondPlaceTag1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="아까비..."
+        android:text=""
         android:layout_weight="40"
         android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceSmall" />
@@ -128,7 +128,7 @@
         android:id="@+id/thridPlaceNickname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="안습맨"
+        android:text=""
         android:layout_weight="30"
         android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -137,7 +137,7 @@
         android:id="@+id/thridPlaceTag1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="1등 그거슨 꿈.."
+        android:text=""
         android:layout_weight="40"
         android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceSmall" />
