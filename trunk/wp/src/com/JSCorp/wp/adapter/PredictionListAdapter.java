@@ -2,8 +2,6 @@ package com.JSCorp.wp.adapter;
 
 import java.util.List;
 
-import com.JSCorp.wp.DynamicBracketActivity;
-import com.JSCorp.wp.DynamicPredictionActivity;
 import com.JSCorp.wp.R;
 import com.JSCorp.wp.domain.FPGameMatchSchedule;
 import com.JSCorp.wp.domain.FPGameProphet;
