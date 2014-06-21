@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.JSCorp.wp"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <uses-sdk
+        android:minSdkVersion="11"
+        android:targetSdkVersion="19" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.JSCorp.wp.SplashActivity"
+            android:label="@string/title_activity_splash"
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+                <activity
+            android:name="com.JSCorp.wp.MainActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.JSCorp.wp.DynamicBracketActivity"
+            android:label="@string/title_activity_dynamic_bracket"
+            android:parentActivityName="com.JSCorp.wp.MainActivity"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.JSCorp.wp.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.JSCorp.wp.StaticBracketActivity"
+            android:label="@string/title_activity_static_bracket"
+            android:parentActivityName="com.JSCorp.wp.MainActivity"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.JSCorp.wp.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.JSCorp.wp.DynamicPredictionActivity"
+            android:label="@string/title_activity_dynamic_prediction"
+            android:parentActivityName="com.JSCorp.wp.DynamicBracketActivity"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.JSCorp.wp.DynamicBracketActivity" />
+        </activity>
+        <activity
+            android:name="com.JSCorp.wp.DynamicRankActivity"
+            android:label="@string/title_activity_dynamic_rank"
+            android:parentActivityName="com.JSCorp.wp.MainActivity"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.JSCorp.wp.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.JSCorp.wp.UserProfileActivity"
+            android:label="@string/title_activity_user_profile"
+            android:parentActivityName="com.JSCorp.wp.MainActivity"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.JSCorp.wp.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.JSCorp.wp.EditNicknameActivity"
+            android:label="@string/title_activity_edit_nickname"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.JSCorp.wp.EditTag1Activity"
+            android:label="@string/title_activity_edit_tag1"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.JSCorp.wp.EditFacebookActivity"
+            android:label="@string/title_activity_edit_facebook"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.JSCorp.wp.EditTwitterActivity"
+            android:label="@string/title_activity_edit_twitter"
+            android:screenOrientation="portrait" >
+        </activity>
+    </application>
+
+</manifest>
