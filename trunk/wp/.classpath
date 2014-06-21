@@ -8,7 +8,7 @@
 	<classpathentry exported="true" kind="lib" path="libs/android-support-v4.jar"/>
 	<classpathentry exported="true" kind="lib" path="libs/gson-2.2.2.jar"/>
 	<classpathentry exported="true" kind="lib" path="libs/json-simple-1.1.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="libs/FootballProphetCore.jar"/>
-	<classpathentry exported="true" kind="lib" path="libs/FootballProphetService.jar"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/FootBallProphetCore"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/FootballProphetService"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
