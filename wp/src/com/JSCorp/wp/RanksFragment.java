@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.JSCorp.wp.R;
-import com.JSCorp.wp.DynamicRankActivity.GetRanks;
 import com.JSCorp.wp.adapter.RankListAdapter;
 import com.JSCorp.wp.domain.FPUser;
 import com.JSCorp.wp.service.UserService;
