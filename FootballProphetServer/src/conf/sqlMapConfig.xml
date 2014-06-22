@@ -36,5 +36,6 @@
   <sqlMap resource="query/FPUserGroupSql.xml"/>
   <sqlMap resource="query/FPUserSql.xml"/>
   <sqlMap resource="query/FPGameTeamSql.xml"/>
+  <sqlMap resource="query/FPAppInfoSql.xml"/>
   
 </sqlMapConfig>
