@@ -23,13 +23,14 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import com.JSCorp.wp.domain.FPAppInfo;
 import com.JSCorp.wp.domain.FPGameMatchSchedule;
 import com.JSCorp.wp.domain.FPGameMatchScheduleBin;
 import com.JSCorp.wp.domain.FPGameProphet;
 import com.JSCorp.wp.domain.FPGameProphetBin;
 import com.JSCorp.wp.domain.FPGameResult;
 import com.JSCorp.wp.domain.FPGameTeam;
-import com.JSCorp.wp.domain.FPUser;
+import com.JSCorp.wp.domain.FPGameTeamBin;
 import com.JSCorp.wp.var.Env;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
@@ -118,82 +119,43 @@ public class GameService {
 		HttpClient httpclient = new DefaultHttpClient();
 		ArrayList<FPGameTeam> teams = new ArrayList<FPGameTeam>();
 		try {
-			// HttpGet??
-			HttpGet httpget = new HttpGet(Env.url
-					+ "api.readGameTeam.do");
-
-			//System.out.println("executing request " + httpget.getURI());
-			HttpResponse response = httpclient.execute(httpget);
-			HttpEntity entity = response.getEntity();
-
-			//System.out.println("----------------------------------------");
-			// ?? ??
-			//System.out.println(response.getStatusLine());
-			if (entity != null) {
-				//System.out.println("Response content length: "
-				//		+ entity.getContentLength());
-				BufferedReader rd = new BufferedReader(new InputStreamReader(
-						response.getEntity().getContent()));
-
-				String line = "";
-				while ((line = rd.readLine()) != null) {
-					JSONParser j = new JSONParser();
-					//System.out.println("line:" + line);
-					JSONObject o = (JSONObject) j.parse(line);
-					JSONArray lang = (JSONArray) o.get("GameTeams");
-
-					
-
-					for (int i = 0; i < lang.size(); i++) {
-
-						// System.out.println("The " + i
-						// + " element of the array: " + lang.get(i));
-						JSONObject o2 = (JSONObject) lang.get(i);
-						//System.out.println(o2.get("reference_time"));
-
-						FPGameTeam gameTeam = new FPGameTeam();
-						String str;
-						if ((str = (String) o2.get("id")) != null) {
-							gameTeam.setId(Integer.parseInt(str));
-						}
-						if ((str = (String) o2.get("team_name")) != null) {
-							gameTeam.setTeam_name(str);
-						}
-						if ((str = (String) o2.get("team_name_kor")) != null) {
-							gameTeam.setTeam_name_kor(str);
-						}
-						if ((str = (String) o2.get("game_group")) != null) {
-							gameTeam.setGame_group(str);
-						}
-						
-
-						teams.add(gameTeam);
-					}
-
-					// Map response2 = (Map)o.get("GameMatchSchedules");
-					// JSONObject o2 = (JSONObject) o.get("GameMatchSchedules");
-					// System.out.println(o2.entrySet().size());
-
-					// //System.out.println(response2.get("FPGameMatchSchedule"));
-				}
-
-			}
-			httpget.abort();
-			//System.out.println("----------------------------------------");
-			httpclient.getConnectionManager().shutdown();
+			
+			InputStream in = new URL(Env.url + "api.readGameTeam.do").openStream();
+			JsonReader reader = new JsonReader(new InputStreamReader(in, "UTF-8"));
+			Gson gson = new Gson();
+			FPGameTeamBin gameTeamBin = gson.fromJson(reader, FPGameTeamBin.class);   ;
+			teams = (ArrayList<FPGameTeam>) gameTeamBin.getGameTeams();
+		
 			return teams;
 		} catch (ClientProtocolException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			httpclient.getConnectionManager().shutdown();
 		}
 
 		return null;
+	}
+	
+	public static FPAppInfo getAppInfo() {
+		
+		FPAppInfo appInfo = null;
+		try {
+			
+			InputStream in = new URL(Env.url + "api.readAppInfo.do").openStream();
+			JsonReader reader = new JsonReader(new InputStreamReader(in, "UTF-8"));
+			Gson gson = new Gson();
+			appInfo = gson.fromJson(reader, FPAppInfo.class);   ;
+		
+			return appInfo;
+		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} 
+
+		return appInfo;
 	}
 	
 	public static ArrayList<FPGameProphet> getGameProphet() {
@@ -557,7 +519,9 @@ public static boolean updateGameResult(FPGameResult gameResult) {
 	public static void main(String[] args) throws ParseException {
 
 
-		System.out.println(GameService.getGameMatchSchedules(62));
+		//System.out.println(GameService.getGameMatchSchedules(62));
+		//System.out.println(GameService.getGameTeam());
+		System.out.println(GameService.getAppInfo());
 		if(1==1) return;
 
 		//System.out.println(GameService.getGameMatchSchedules(62));
@@ -662,7 +626,7 @@ public static boolean updateGameResult(FPGameResult gameResult) {
 //		System.out.println(GameService.getGameMatchSchedules());
 //		//System.out.println(GameService.getGameMatchSchedules().size());
 //		
-//		//System.out.println(GameService.getGameTeam().size());
+//		System.out.println(GameService.getGameTeam().size());
 //=======
 //		System.out.println(GameService.getGameMatchSchedules());
 //		//System.out.println(GameService.getGameTeam().size());
