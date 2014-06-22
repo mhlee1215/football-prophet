@@ -19,11 +19,13 @@ import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.JSCorp.wp.domain.FPAppInfo;
 import com.JSCorp.wp.domain.FPGameMatchSchedule;
 import com.JSCorp.wp.domain.FPGameProphet;
 import com.JSCorp.wp.domain.FPGameResult;
 import com.JSCorp.wp.domain.FPGameTeam;
 import com.JSCorp.wp.domain.FPUser;
+import com.respace.service.FPAppInfoServiceImpl;
 import com.respace.service.FPGameMatchScheduleServiceImpl;
 import com.respace.service.FPGameProphetServiceImpl;
 import com.respace.service.FPGameResultServiceImpl;
@@ -42,6 +44,8 @@ private Logger logger = Logger.getLogger(getClass());
 	private final FPGameProphetServiceImpl gameProphetService = null;
 	@Autowired
 	private final FPGameResultServiceImpl gameResultService = null;
+	@Autowired
+	private final FPAppInfoServiceImpl appInfoService = null;
 	
 	
 	@RequestMapping(value="/api.readGameMatchSchedule.do")
@@ -360,6 +364,18 @@ private Logger logger = Logger.getLogger(getClass());
 		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.add("Content-Type", "text/html; charset=UTF-8");
 		return new ResponseEntity<String>(MyJsonUtil.toString(gameResultList, "GameResults"), responseHeaders, HttpStatus.CREATED);
+    }
+	
+	@RequestMapping("/api.readAppInfo.do")
+    public ResponseEntity<String> readAppInfo(HttpServletRequest request, HttpServletResponse response) throws Exception {		
+		//Integer id = ServletRequestUtils.getIntParameter(request, "id", 0);
+		List<FPAppInfo> appInfoList = appInfoService.readAppInfoList(new FPAppInfo());
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "text/html; charset=UTF-8");
+		if(appInfoList == null || appInfoList.size() == 0)
+			return new ResponseEntity<String>(new FPAppInfo().toString(), responseHeaders, HttpStatus.CREATED);
+		else
+			return new ResponseEntity<String>(appInfoList.get(0).toString(), responseHeaders, HttpStatus.CREATED);
     }
 	
 	@RequestMapping("/api.updateGameResult.do")
