@@ -12,4 +12,5 @@ public class GlobalVars {
 	public static List<FPGameMatchSchedule> matches;
 	public static String WP_INFO_TAG = "WP_INFO_TAG";
 	public static ProgressDialog dynamicBracketDialog;
+	public static boolean isDebugMode = true;
 }
