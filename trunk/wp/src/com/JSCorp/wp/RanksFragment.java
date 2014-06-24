@@ -78,7 +78,8 @@ public class RanksFragment extends Fragment {
 				((TextView)rootView.findViewById(R.id.firstPlaceNickname)).setTextSize(14); 
 			}
 			((TextView)rootView.findViewById(R.id.firstPlaceNickname)).setText(nn);
-			((TextView)rootView.findViewById(R.id.firstPlaceTag1)).setVisibility(View.GONE);
+			//((TextView)rootView.findViewById(R.id.firstPlaceTag1)).setVisibility(View.GONE);
+			
 			//((TextView)findViewById(R.id.firstPlaceTag1)).setText(userTopRanks.get(0).getTag());
 		}
 		
@@ -90,7 +91,8 @@ public class RanksFragment extends Fragment {
 				((TextView)rootView.findViewById(R.id.secondPlaceNickname)).setTextSize(14); 
 			}
 			((TextView)rootView.findViewById(R.id.secondPlaceNickname)).setText(nn);
-			((TextView)rootView.findViewById(R.id.secondPlaceTag1)).setVisibility(View.GONE);
+			//((TextView)rootView.findViewById(R.id.secondPlaceTag1)).setVisibility(View.GONE);
+			
 			//((TextView)findViewById(R.id.secondPlaceTag1)).setText(userTopRanks.get(1).getTag());
 		}
 		
@@ -102,7 +104,8 @@ public class RanksFragment extends Fragment {
 				((TextView)rootView.findViewById(R.id.thridPlaceNickname)).setTextSize(14); 
 			}
 			((TextView)rootView.findViewById(R.id.thridPlaceNickname)).setText(nn);
-			((TextView)rootView.findViewById(R.id.thridPlaceTag1)).setVisibility(View.GONE);
+			//((TextView)rootView.findViewById(R.id.thridPlaceTag1)).setVisibility(View.GONE);
+			
 			//((TextView)findViewById(R.id.thridPlaceTag1)).setText(userTopRanks.get(2).getTag());
 		}
 		
