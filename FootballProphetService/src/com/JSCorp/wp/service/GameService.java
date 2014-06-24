@@ -682,20 +682,21 @@ public static boolean updateGameResult(FPGameResult gameResult) {
 	public static void manualDummyUserAdd(){
 		int dummyCount=10;
 		
-		for(int i=200 ; i < 200+dummyCount ; i++){
-			FPUser user = new FPUser();
-			user.setNickname("한글닉넴_"+Integer.toString(i));
-			user.setDevice_id(String.format("%010d", i));
-			try {
-				UserService.addUser(user);
-			} catch (UnsupportedEncodingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}	
-		}
+//		for(int i=200 ; i < 200+dummyCount ; i++){
+//			FPUser user = new FPUser();
+//			//user.setId(id);
+//			user.setNickname("한글닉넴_"+Integer.toString(i));
+//			user.setDevice_id(String.format("%010d", i));
+//			try {
+//				UserService.addUser(user);
+//			} catch (UnsupportedEncodingException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}	
+//		}
 		
-		for(int j = 200 ; j < 200+dummyCount ; j++){
-			for(int i = 1 ; i <= 48 ; i++){
+		for(int j = 122 ; j < 122+dummyCount ; j++){
+			for(int i = 1 ; i <= 6 ; i++){
 				int prophet_case = ((int)(Math.random()*100))%3+1;
 				
 				FPGameProphet gameProphet = new FPGameProphet();
