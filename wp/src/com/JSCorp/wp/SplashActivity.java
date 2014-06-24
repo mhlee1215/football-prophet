@@ -7,6 +7,7 @@ import com.JSCorp.wp.service.GameService;
 import com.JSCorp.wp.service.UserService;
 import com.JSCorp.wp.var.GlobalVars;
 
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -94,8 +95,12 @@ public class SplashActivity extends Activity {
 			
 			if(!version.equalsIgnoreCase(appInfo.getVersion_name())){
 				//Do update!
-				Toast.makeText(getApplicationContext(),
-	        		      "Need to update!!!", Toast.LENGTH_SHORT).show();
+				String appPackageName = "com.JSCorp.wc";
+				String url = "https://play.google.com/store/apps/details?id=" + appPackageName;
+				Intent intent = new Intent(Intent.ACTION_VIEW);
+				intent.setData(Uri.parse(url));
+				startActivity(intent);
+				//Toast.makeText(getApplicationContext(), "Need to update!!!", Toast.LENGTH_SHORT).show();
 			}else{
 				goMainActivity();
 			}
