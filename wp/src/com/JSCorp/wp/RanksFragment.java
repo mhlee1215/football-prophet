@@ -114,7 +114,8 @@ public class RanksFragment extends Fragment {
 					listAdapter.detailInfo(0, userTopRanks);
 				}
 			});
-	        } else  if(userTopRanks.size() > 1) {
+	        }
+		if(userTopRanks.size() > 1) {
 			TableLayout secondPlace = (TableLayout) rootView.findViewById(R.id.secondPlace);
 			secondPlace.setOnClickListener(new OnClickListener() {
 				@Override
@@ -122,7 +123,8 @@ public class RanksFragment extends Fragment {
 					listAdapter.detailInfo(1, userTopRanks);
 				}
 			});
-	        } else  if(userTopRanks.size() > 2) {
+	        } 
+		if(userTopRanks.size() > 2) {
 			TableLayout thirdPlace = (TableLayout) rootView.findViewById(R.id.thirdPlace);
 			thirdPlace.setOnClickListener(new OnClickListener() {
 				@Override
