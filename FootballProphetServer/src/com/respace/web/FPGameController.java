@@ -241,13 +241,13 @@ private Logger logger = Logger.getLogger(getClass());
 		
 		//System.out.println(time.toDate().);
 		
-		if(cur_time.toDate().compareTo(match_time.toDate()) == 0){
-			return "fail-time-over";
-		} else if(cur_time.toDate().compareTo(match_time.toDate()) > 0){
-			return "fail-time-over";
-		} else if(cur_time.toDate().compareTo(match_time.toDate()) < 0){
-			System.out.println("a is earlier than b");
-		}
+//		if(cur_time.toDate().compareTo(match_time.toDate()) == 0){
+//			return "fail-time-over";
+//		} else if(cur_time.toDate().compareTo(match_time.toDate()) > 0){
+//			return "fail-time-over";
+//		} else if(cur_time.toDate().compareTo(match_time.toDate()) < 0){
+//			System.out.println("a is earlier than b");
+//		}
 		
 		
 		FPGameProphet gameProphetExistCheck = new FPGameProphet();
