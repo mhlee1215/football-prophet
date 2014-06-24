@@ -10,6 +10,17 @@ public class FPGameResult {
 	private int query_start = 0;
 	private int query_number = 0;
 
+	public FPGameResult(){
+		
+	}
+	
+	public FPGameResult(int match_id, String match_type, int home_team_score, int away_team_score){
+		this.match_id = match_id;
+		this.match_type = match_type;
+		this.home_team_score = home_team_score;
+		this.away_team_score = away_team_score;
+	}
+	
 	public int getQuery_start() {
 		return query_start;
 	}
