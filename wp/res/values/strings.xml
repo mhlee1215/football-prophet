@@ -19,5 +19,6 @@
     <string name="title_activity_edit_facebook">페이스북</string>
     <string name="title_activity_edit_twitter">트위터</string>
     <string name="title_activity_splash">월드컵 예언자</string>
+    <string name="title_activity_tournament_bracket">TournamentBracketActivity</string>
 
 </resources>

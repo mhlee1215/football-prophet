@@ -14,7 +14,7 @@
     <LinearLayout
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/first_place"
+    android:background="@drawable/first_place_trophy"
     android:layout_marginTop="10dp"
     android:layout_marginLeft="10dp"
     android:layout_weight="1"
@@ -34,6 +34,15 @@
             android:textColor="#000000"
             android:padding="10dip" android:gravity="center"/>
     </TableRow>
+    
+    <TextView
+        android:id="@+id/firstPlaceTag1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:layout_weight="40"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
         android:id="@+id/firstPlaceNickname"
@@ -43,22 +52,13 @@
         android:layout_weight="30"
         android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TextView
-        android:id="@+id/firstPlaceTag1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:layout_weight="40"
-        android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
  
     </TableLayout>
     </LinearLayout>
     <LinearLayout
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-	android:background="@drawable/second_place"
+	android:background="@drawable/second_place_trophy"
     android:layout_marginTop="10dp"
     android:layout_marginRight="5dp"
     android:layout_marginLeft="5dp"
@@ -81,15 +81,6 @@
     </TableRow> 
     
     <TextView
-        android:id="@+id/secondPlaceNickname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:layout_weight="30"
-        android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TextView
         android:id="@+id/secondPlaceTag1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -98,12 +89,21 @@
         android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceSmall" />
     
+    <TextView
+        android:id="@+id/secondPlaceNickname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:layout_weight="30"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    
     </TableLayout>
     </LinearLayout>
     <LinearLayout
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-	android:background="@drawable/third_place"
+	android:background="@drawable/third_place_trophy"
     android:layout_marginTop="10dp"
     android:layout_marginRight="10dp"
     android:layout_weight="1"
@@ -125,15 +125,6 @@
     </TableRow> 
     
     <TextView
-        android:id="@+id/thridPlaceNickname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:layout_weight="30"
-        android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TextView
         android:id="@+id/thridPlaceTag1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -141,6 +132,15 @@
         android:layout_weight="40"
         android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceSmall" />
+    
+    <TextView
+        android:id="@+id/thridPlaceNickname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:layout_weight="30"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
     
     </TableLayout>
     </LinearLayout>
