@@ -1,7 +1,748 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.JSCorp.wp.TournamentBracketActivity"
-    tools:ignore="MergeRootFrame" />
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/background_main"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="12dp"
+        android:paddingBottom="5dp"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="토너먼트" />
+
+	<LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+	    android:layout_weight="1"
+	    android:orientation="horizontal">
+	    <LinearLayout
+	        android:id="@+id/round_of_16_1"
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent"
+		    android:paddingTop="8dp"
+	        android:paddingBottom="8dp"
+	        android:layout_marginRight="2dp"
+	        android:layout_marginLeft="2dp"
+		    android:layout_weight="1"
+		    android:background="@drawable/tournament_game_background"
+		    android:orientation="horizontal">
+		    <ImageView
+			    android:id="@+id/nations_home"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_marginLeft="2dp"
+				android:layout_weight="1"
+			    android:src="@drawable/flag1" />
+
+			<TextView
+			    android:id="@+id/nations_vs"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_weight="1"
+			    android:gravity="center"
+			    android:minWidth="30dp"
+			    android:text="vs"
+			    android:textSize="10sp" />
+
+			<ImageView
+			    android:id="@+id/nations_away"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_marginRight="2dp"
+			    android:layout_weight="1"
+			    android:src="@drawable/flag7" />
+		</LinearLayout>
+		<LinearLayout
+		    android:id="@+id/round_of_16_2"
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent"
+		    android:paddingTop="8dp"
+	        android:paddingBottom="8dp"
+	        android:layout_marginRight="2dp"
+	        android:layout_marginLeft="2dp"
+		    android:layout_weight="1"
+		    android:background="@drawable/tournament_game_background"
+		    android:orientation="horizontal">
+		    <ImageView
+			    android:id="@+id/nations_home"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_marginLeft="2dp"
+				android:layout_weight="1"
+			    android:src="@drawable/flag_empty" />
+
+			<TextView
+			    android:id="@+id/nations_vs"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_weight="1"
+			    android:gravity="center"
+			    android:minWidth="30dp"
+			    android:text="vs"
+			    android:textSize="10sp" />
+
+			<ImageView
+			    android:id="@+id/nations_away"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_marginRight="2dp"
+			    android:layout_weight="1"
+			    android:src="@drawable/flag_empty" />
+		</LinearLayout>
+		<LinearLayout
+		    android:id="@+id/round_of_16_5"
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent"
+		    android:paddingTop="8dp"
+	        android:paddingBottom="8dp"
+	        android:layout_marginRight="2dp"
+	        android:layout_marginLeft="2dp"
+		    android:layout_weight="1"
+		    android:background="@drawable/tournament_game_background"
+		    android:orientation="horizontal">
+		    <ImageView
+			    android:id="@+id/nations_home"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_marginLeft="2dp"
+				android:layout_weight="1"
+			    android:src="@drawable/flag_empty" />
+
+			<TextView
+			    android:id="@+id/nations_vs"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_weight="1"
+			    android:gravity="center"
+			    android:minWidth="30dp"
+			    android:text="vs"
+			    android:textSize="10sp" />
+
+			<ImageView
+			    android:id="@+id/nations_away"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_marginRight="2dp"
+			    android:layout_weight="1"
+			    android:src="@drawable/flag_empty" />
+		</LinearLayout>
+		<LinearLayout
+		    android:id="@+id/round_of_16_6"
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent"
+		    android:paddingTop="8dp"
+	        android:paddingBottom="8dp"
+	        android:layout_marginRight="2dp"
+	        android:layout_marginLeft="2dp"
+		    android:layout_weight="1"
+		    android:background="@drawable/tournament_game_background"
+		    android:orientation="horizontal">
+		    <ImageView
+			    android:id="@+id/nations_home"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_marginLeft="2dp"
+				android:layout_weight="1"
+			    android:src="@drawable/flag_empty" />
+
+			<TextView
+			    android:id="@+id/nations_vs"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_weight="1"
+			    android:gravity="center"
+			    android:minWidth="30dp"
+			    android:text="vs"
+			    android:textSize="10sp" />
+
+			<ImageView
+			    android:id="@+id/nations_away"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_marginRight="2dp"
+			    android:layout_weight="1"
+			    android:src="@drawable/flag_empty" />
+		</LinearLayout>
+	</LinearLayout>
+	
+	<LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+	    android:layout_weight="1"
+	    android:orientation="horizontal">
+	</LinearLayout>
+	
+	<LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+	    android:layout_weight="1"
+	    android:orientation="horizontal">
+		<LinearLayout
+		    android:id="@+id/quarter_final1"
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent"
+		    android:paddingTop="8dp"
+	        android:paddingBottom="8dp"
+	        android:layout_marginRight="2dp"
+	        android:layout_marginLeft="2dp"
+		    android:layout_weight="1"
+		    android:background="@drawable/tournament_game_background"
+		    android:orientation="horizontal">
+		    <ImageView
+			    android:id="@+id/nations_home"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_marginLeft="2dp"
+				android:layout_weight="1"
+			    android:src="@drawable/flag_empty" />
+
+			<TextView
+			    android:id="@+id/nations_vs"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_weight="1"
+			    android:gravity="center"
+			    android:minWidth="30dp"
+			    android:text="vs"
+			    android:textSize="10sp" />
+
+			<ImageView
+			    android:id="@+id/nations_away"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_marginRight="2dp"
+			    android:layout_weight="1"
+			    android:src="@drawable/flag_empty" />
+		</LinearLayout>
+		<LinearLayout
+		    android:id="@+id/quarter_final2"
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent"
+		    android:paddingTop="8dp"
+	        android:paddingBottom="8dp"
+	        android:layout_marginRight="2dp"
+	        android:layout_marginLeft="2dp"
+		    android:layout_weight="1"
+		    android:background="@drawable/tournament_game_background"
+		    android:orientation="horizontal">
+		    <ImageView
+			    android:id="@+id/nations_home"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_marginLeft="2dp"
+				android:layout_weight="1"
+			    android:src="@drawable/flag_empty" />
+
+			<TextView
+			    android:id="@+id/nations_vs"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_weight="1"
+			    android:gravity="center"
+			    android:minWidth="30dp"
+			    android:text="vs"
+			    android:textSize="10sp" />
+
+			<ImageView
+			    android:id="@+id/nations_away"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_marginRight="2dp"
+			    android:layout_weight="1"
+			    android:src="@drawable/flag_empty" />
+		</LinearLayout>
+	</LinearLayout>
+	
+	<LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+	    android:layout_weight="1"
+	    android:orientation="horizontal">
+	</LinearLayout>
+	
+	<LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+	    android:layout_weight="1"
+	    android:orientation="horizontal">
+		<LinearLayout
+		    android:id="@+id/semi_final1"
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent"
+		    android:paddingTop="8dp"
+	        android:paddingBottom="8dp"
+	        android:layout_marginRight="2dp"
+	        android:layout_marginLeft="2dp"
+		    android:layout_weight="1"
+		    android:background="@drawable/tournament_game_background"
+		    android:orientation="horizontal">
+		    <ImageView
+			    android:id="@+id/nations_home"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_marginLeft="2dp"
+				android:layout_weight="1"
+			    android:src="@drawable/flag_empty" />
+
+			<TextView
+			    android:id="@+id/nations_vs"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_weight="1"
+			    android:gravity="center"
+			    android:minWidth="30dp"
+			    android:text="vs"
+			    android:textSize="10sp" />
+
+			<ImageView
+			    android:id="@+id/nations_away"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_marginRight="2dp"
+			    android:layout_weight="1"
+			    android:src="@drawable/flag_empty" />
+		</LinearLayout>
+	</LinearLayout>
+	
+	<LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+	    android:layout_weight="1"
+	    android:orientation="horizontal">
+	</LinearLayout>
+	
+	<LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+	    android:layout_weight="1"
+	    android:orientation="horizontal">
+		<LinearLayout
+		    android:id="@+id/final1"
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent"
+		    android:paddingTop="8dp"
+	        android:paddingBottom="8dp"
+	        android:layout_marginRight="2dp"
+	        android:layout_marginLeft="2dp"
+		    android:layout_weight="1"
+		    android:orientation="horizontal">
+		</LinearLayout>
+		<LinearLayout
+		    android:id="@+id/final1"
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent"
+		    android:paddingTop="8dp"
+	        android:paddingBottom="8dp"
+	        android:layout_marginRight="2dp"
+	        android:layout_marginLeft="2dp"
+		    android:layout_weight="1"
+		    android:background="@drawable/tournament_game_background"
+		    android:orientation="horizontal">
+		    <ImageView
+			    android:id="@+id/nations_home"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_marginLeft="2dp"
+				android:layout_weight="1"
+			    android:src="@drawable/flag_empty" />
+
+			<TextView
+			    android:id="@+id/nations_vs"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_weight="1"
+			    android:gravity="center"
+			    android:minWidth="30dp"
+			    android:text="vs"
+			    android:textSize="10sp" />
+
+			<ImageView
+			    android:id="@+id/nations_away"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_marginRight="2dp"
+			    android:layout_weight="1"
+			    android:src="@drawable/flag_empty" />
+		</LinearLayout>
+		<LinearLayout
+		    android:id="@+id/final2"
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent"
+		    android:paddingTop="8dp"
+	        android:paddingBottom="8dp"
+	        android:layout_marginRight="2dp"
+	        android:layout_marginLeft="2dp"
+		    android:layout_weight="1"
+		    android:background="@drawable/tournament_game_background"
+		    android:orientation="horizontal">
+		    <ImageView
+			    android:id="@+id/nations_home"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_marginLeft="2dp"
+				android:layout_weight="1"
+			    android:src="@drawable/flag_empty" />
+
+			<TextView
+			    android:id="@+id/nations_vs"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_weight="1"
+			    android:gravity="center"
+			    android:minWidth="30dp"
+			    android:text="vs"
+			    android:textSize="10sp" />
+
+			<ImageView
+			    android:id="@+id/nations_away"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_marginRight="2dp"
+			    android:layout_weight="1"
+			    android:src="@drawable/flag_empty" />
+		</LinearLayout>
+	</LinearLayout>
+	
+	<LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+	    android:layout_weight="1"
+	    android:orientation="horizontal">
+	</LinearLayout>
+	
+	<LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+	    android:layout_weight="1"
+	    android:orientation="horizontal">
+		<LinearLayout
+		    android:id="@+id/semi_final2"
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent"
+		    android:paddingTop="8dp"
+	        android:paddingBottom="8dp"
+	        android:layout_marginRight="2dp"
+	        android:layout_marginLeft="2dp"
+		    android:layout_weight="1"
+		    android:background="@drawable/tournament_game_background"
+		    android:orientation="horizontal">
+		    <ImageView
+			    android:id="@+id/nations_home"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_marginLeft="2dp"
+				android:layout_weight="1"
+			    android:src="@drawable/flag_empty" />
+
+			<TextView
+			    android:id="@+id/nations_vs"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_weight="1"
+			    android:gravity="center"
+			    android:minWidth="30dp"
+			    android:text="vs"
+			    android:textSize="10sp" />
+
+			<ImageView
+			    android:id="@+id/nations_away"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_marginRight="2dp"
+			    android:layout_weight="1"
+			    android:src="@drawable/flag_empty" />
+		</LinearLayout>
+	</LinearLayout>
+	
+	<LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+	    android:layout_weight="1"
+	    android:orientation="horizontal">
+	</LinearLayout>
+	
+	<LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+	    android:layout_weight="1"
+	    android:orientation="horizontal">
+		<LinearLayout
+		    android:id="@+id/quarter_final3"
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent"
+		    android:paddingTop="8dp"
+	        android:paddingBottom="8dp"
+	        android:layout_marginRight="2dp"
+	        android:layout_marginLeft="2dp"
+		    android:layout_weight="1"
+		    android:background="@drawable/tournament_game_background"
+		    android:orientation="horizontal">
+		    <ImageView
+			    android:id="@+id/nations_home"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_marginLeft="2dp"
+				android:layout_weight="1"
+			    android:src="@drawable/flag_empty" />
+
+			<TextView
+			    android:id="@+id/nations_vs"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_weight="1"
+			    android:gravity="center"
+			    android:minWidth="30dp"
+			    android:text="vs"
+			    android:textSize="10sp" />
+
+			<ImageView
+			    android:id="@+id/nations_away"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_marginRight="2dp"
+			    android:layout_weight="1"
+			    android:src="@drawable/flag_empty" />
+		</LinearLayout>
+		<LinearLayout
+		    android:id="@+id/quarter_final4"
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent"
+		    android:paddingTop="8dp"
+	        android:paddingBottom="8dp"
+	        android:layout_marginRight="2dp"
+	        android:layout_marginLeft="2dp"
+		    android:layout_weight="1"
+		    android:background="@drawable/tournament_game_background"
+		    android:orientation="horizontal">
+		    <ImageView
+			    android:id="@+id/nations_home"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_marginLeft="2dp"
+				android:layout_weight="1"
+			    android:src="@drawable/flag_empty" />
+
+			<TextView
+			    android:id="@+id/nations_vs"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_weight="1"
+			    android:gravity="center"
+			    android:minWidth="30dp"
+			    android:text="vs"
+			    android:textSize="10sp" />
+
+			<ImageView
+			    android:id="@+id/nations_away"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_marginRight="2dp"
+			    android:layout_weight="1"
+			    android:src="@drawable/flag_empty" />
+		</LinearLayout>
+	</LinearLayout>
+	
+	<LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+	    android:layout_weight="1"
+	    android:orientation="horizontal">
+	</LinearLayout>
+	
+	<LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+	    android:layout_weight="1"
+	    android:orientation="horizontal">
+	    <LinearLayout
+	        android:id="@+id/round_of_16_3"
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent"
+		    android:paddingTop="8dp"
+	        android:paddingBottom="8dp"
+	        android:layout_marginRight="2dp"
+	        android:layout_marginLeft="2dp"
+		    android:layout_weight="1"
+		    android:background="@drawable/tournament_game_background"
+		    android:orientation="horizontal">
+		    <ImageView
+			    android:id="@+id/nations_home"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_marginLeft="2dp"
+				android:layout_weight="1"
+			    android:src="@drawable/flag6" />
+
+			<TextView
+			    android:id="@+id/nations_vs"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_weight="1"
+			    android:gravity="center"
+			    android:minWidth="30dp"
+			    android:text="vs"
+			    android:textSize="10sp" />
+
+			<ImageView
+			    android:id="@+id/nations_away"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_marginRight="2dp"
+			    android:layout_weight="1"
+			    android:src="@drawable/flag3" />
+		</LinearLayout>
+		<LinearLayout
+		    android:id="@+id/round_of_16_4"
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent"
+		    android:paddingTop="8dp"
+	        android:paddingBottom="8dp"
+	        android:layout_marginRight="2dp"
+	        android:layout_marginLeft="2dp"
+		    android:layout_weight="1"
+		    android:background="@drawable/tournament_game_background"
+		    android:orientation="horizontal">
+		    <ImageView
+			    android:id="@+id/nations_home"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_marginLeft="2dp"
+				android:layout_weight="1"
+			    android:src="@drawable/flag_empty" />
+
+			<TextView
+			    android:id="@+id/nations_vs"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_weight="1"
+			    android:gravity="center"
+			    android:minWidth="30dp"
+			    android:text="vs"
+			    android:textSize="10sp" />
+
+			<ImageView
+			    android:id="@+id/nations_away"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_marginRight="2dp"
+			    android:layout_weight="1"
+			    android:src="@drawable/flag_empty" />
+		</LinearLayout>
+		<LinearLayout
+		    android:id="@+id/round_of_16_7"
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent"
+		    android:paddingTop="8dp"
+	        android:paddingBottom="8dp"
+	        android:layout_marginRight="2dp"
+	        android:layout_marginLeft="2dp"
+		    android:layout_weight="1"
+		    android:background="@drawable/tournament_game_background"
+		    android:orientation="horizontal">
+		    <ImageView
+			    android:id="@+id/nations_home"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_marginLeft="2dp"
+				android:layout_weight="1"
+			    android:src="@drawable/flag_empty" />
+
+			<TextView
+			    android:id="@+id/nations_vs"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_weight="1"
+			    android:gravity="center"
+			    android:minWidth="30dp"
+			    android:text="vs"
+			    android:textSize="10sp" />
+
+			<ImageView
+			    android:id="@+id/nations_away"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_marginRight="2dp"
+			    android:layout_weight="1"
+			    android:src="@drawable/flag_empty" />
+		</LinearLayout>
+		<LinearLayout
+		    android:id="@+id/round_of_16_8"
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent"
+		    android:paddingTop="8dp"
+	        android:paddingBottom="8dp"
+	        android:layout_marginRight="2dp"
+	        android:layout_marginLeft="2dp"
+		    android:layout_weight="1"
+		    android:background="@drawable/tournament_game_background"
+		    android:orientation="horizontal">
+		    <ImageView
+			    android:id="@+id/nations_home"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_marginLeft="2dp"
+				android:layout_weight="1"
+			    android:src="@drawable/flag_empty" />
+
+			<TextView
+			    android:id="@+id/nations_vs"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_weight="1"
+			    android:gravity="center"
+			    android:minWidth="30dp"
+			    android:text="vs"
+			    android:textSize="10sp" />
+
+			<ImageView
+			    android:id="@+id/nations_away"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_marginRight="2dp"
+			    android:layout_weight="1"
+			    android:src="@drawable/flag_empty" />
+		</LinearLayout>
+	</LinearLayout>
+	
+	<TextView
+        android:id="@+id/textView1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="" />
+
+</LinearLayout>
