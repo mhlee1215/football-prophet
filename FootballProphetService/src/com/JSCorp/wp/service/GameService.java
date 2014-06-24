@@ -669,6 +669,10 @@ public static boolean updateGameResult(FPGameResult gameResult) {
 		match_id++;
 		GameService.updateGameResult(gameResult);
 		
+		gameResult = new FPGameResult(match_id, "1", 2, 0);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+		
 		//36
 		
 	}
