@@ -31,6 +31,7 @@ import com.JSCorp.wp.domain.FPGameProphetBin;
 import com.JSCorp.wp.domain.FPGameResult;
 import com.JSCorp.wp.domain.FPGameTeam;
 import com.JSCorp.wp.domain.FPGameTeamBin;
+import com.JSCorp.wp.domain.FPUser;
 import com.JSCorp.wp.var.Env;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
@@ -678,6 +679,50 @@ public static boolean updateGameResult(FPGameResult gameResult) {
 	}
 	
 	
+	public static void manualDummyUserAdd(){
+		int dummyCount=10;
+		
+		for(int i=200 ; i < 200+dummyCount ; i++){
+			FPUser user = new FPUser();
+			user.setNickname("한글닉넴_"+Integer.toString(i));
+			user.setDevice_id(String.format("%010d", i));
+			try {
+				UserService.addUser(user);
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}	
+		}
+		
+		for(int j = 200 ; j < 200+dummyCount ; j++){
+			for(int i = 1 ; i <= 48 ; i++){
+				int prophet_case = ((int)(Math.random()*100))%3+1;
+				
+				FPGameProphet gameProphet = new FPGameProphet();
+				gameProphet.setUser_id(j);
+				gameProphet.setMatch_id(i);
+				gameProphet.setProphet_type("1");
+				if(prophet_case == 1)
+					gameProphet.setHome_team_win("1");
+				else if(prophet_case == 2)
+					gameProphet.setAway_team_win("1");	
+				else if(prophet_case == 3)
+					gameProphet.setDraw("1");	
+				gameProphet.setProphet_result("");
+				gameProphet.setComment("");
+				int rtn = GameService.setGameProphet(gameProphet);
+				
+				if(rtn == GameService.RESULT_FAIL_TIME_OVER){
+					System.out.println("time is late!");
+				}
+			}
+		}
+		
+		
+		
+		
+	}
+	
 
 	public static void main(String[] args) throws ParseException {
 
@@ -685,6 +730,7 @@ public static boolean updateGameResult(FPGameResult gameResult) {
 		//System.out.println(GameService.getGameMatchSchedules(62));
 		//System.out.println(GameService.getGameTeam());
 		//System.out.println(GameService.getAppInfo());
+		GameService.manualDummyUserAdd();
 		GameService.manualUpdateGameResults();
 		if(1==1) return;
 
