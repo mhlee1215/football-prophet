@@ -515,13 +515,173 @@ public static boolean updateGameResult(FPGameResult gameResult) {
 		return null;
 	}
 	
+	public static void manualUpdateGameResults(){
+		FPGameResult gameResult = null;
+		int match_id = 1;
+		
+		//1
+		gameResult = new FPGameResult(match_id, "1", 3, 1);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+		
+		gameResult = new FPGameResult(match_id, "1", 1, 0);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+		
+		gameResult = new FPGameResult(match_id, "1", 1, 5);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+		
+		gameResult = new FPGameResult(match_id, "1", 3, 1);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+		
+		gameResult = new FPGameResult(match_id, "1", 3, 0);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+		
+		//6
+		gameResult = new FPGameResult(match_id, "1", 2, 1);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+		
+		gameResult = new FPGameResult(match_id, "1", 1, 3);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+		
+		gameResult = new FPGameResult(match_id, "1", 1, 2);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+		
+		gameResult = new FPGameResult(match_id, "1", 2, 1);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+		
+		gameResult = new FPGameResult(match_id, "1", 3, 0);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+		
+		//11
+		
+		gameResult = new FPGameResult(match_id, "1", 2, 1);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+		
+		gameResult = new FPGameResult(match_id, "1", 0, 0);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+		
+		gameResult = new FPGameResult(match_id, "1", 4, 0);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+		
+		gameResult = new FPGameResult(match_id, "1", 1, 2);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+		
+		gameResult = new FPGameResult(match_id, "1", 2, 1);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+		
+		//16
+		
+		gameResult = new FPGameResult(match_id, "1", 1, 1);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+		
+		gameResult = new FPGameResult(match_id, "1", 0, 0);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+		
+		gameResult = new FPGameResult(match_id, "1", 4, 0);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+		
+		gameResult = new FPGameResult(match_id, "1", 0, 2);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+		
+		gameResult = new FPGameResult(match_id, "1", 3, 2);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+		
+		//
+		
+		gameResult = new FPGameResult(match_id, "1", 2, 1);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+		
+		gameResult = new FPGameResult(match_id, "1", 0, 0);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+		
+		gameResult = new FPGameResult(match_id, "1", 2, 1);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+		
+		gameResult = new FPGameResult(match_id, "1", 0, 0);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+		
+		gameResult = new FPGameResult(match_id, "1", 1, 0);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+		
+		//
+		gameResult = new FPGameResult(match_id, "1", 2, 5);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+		
+		gameResult = new FPGameResult(match_id, "1", 2, 1);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+		
+		gameResult = new FPGameResult(match_id, "1", 1, 0);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+		
+		gameResult = new FPGameResult(match_id, "1", 2, 2);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+		
+		gameResult = new FPGameResult(match_id, "1", 2, 2);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+		
+		//31
+		gameResult = new FPGameResult(match_id, "1", 1, 0);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+		
+		gameResult = new FPGameResult(match_id, "1", 4, 2);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+		
+		gameResult = new FPGameResult(match_id, "1", 4, 1);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+		
+		gameResult = new FPGameResult(match_id, "1", 1, 3);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+		
+		gameResult = new FPGameResult(match_id, "1", 3, 0);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+		
+		//36
+		
+	}
+	
+	
 
 	public static void main(String[] args) throws ParseException {
 
 
 		//System.out.println(GameService.getGameMatchSchedules(62));
 		//System.out.println(GameService.getGameTeam());
-		System.out.println(GameService.getAppInfo());
+		//System.out.println(GameService.getAppInfo());
+		GameService.manualUpdateGameResults();
 		if(1==1) return;
 
 		//System.out.println(GameService.getGameMatchSchedules(62));
