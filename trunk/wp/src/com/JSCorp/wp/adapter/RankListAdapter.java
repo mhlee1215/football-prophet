@@ -113,7 +113,7 @@ public class RankListAdapter extends BaseAdapter {
 	    
 	    ((TextView) dialog.findViewById(R.id.nickname)).setText(u.getNickname());
 	    ((TextView) dialog.findViewById(R.id.tag1)).setText(u.getTag());
-	    String rate_str = "적중률: " + String.format("%.1f", u.getRight_prophet_ratio() * 100) + "%";
+	    String rate_str = "예언 적중률: " + String.format("%.1f", u.getRight_prophet_ratio() * 100) + "% 예언적중/총예언수: " + String.valueOf(u.getRight_prophet_num()) + "/" + String.valueOf(u.getProphet_num());
 	    ((TextView) dialog.findViewById(R.id.rate)).setText(rate_str);
 	    
 	    
