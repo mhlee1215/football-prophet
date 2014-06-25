@@ -4,7 +4,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:id="@+id/TournamentFragment"
-    android:background="@drawable/backgroun_tour"
+    android:background="@drawable/background_tour"
     android:orientation="vertical">
 
     <LinearLayout
