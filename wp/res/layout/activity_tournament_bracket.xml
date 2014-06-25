@@ -77,7 +77,7 @@
 			    android:layout_height="wrap_content"
 			    android:layout_marginLeft="2dp"
 				android:layout_weight="1"
-			    android:src="@drawable/flag_empty" />
+			    android:src="@drawable/flag9" />
 
 			<TextView
 			    android:id="@+id/nations_vs"
@@ -95,7 +95,7 @@
 			    android:layout_height="wrap_content"
 			    android:layout_marginRight="2dp"
 			    android:layout_weight="1"
-			    android:src="@drawable/flag_empty" />
+			    android:src="@drawable/flag13" />
 		</LinearLayout>
 		<LinearLayout
 		    android:id="@+id/round_of_16_5"
@@ -640,7 +640,7 @@
 			    android:layout_height="wrap_content"
 			    android:layout_marginLeft="2dp"
 				android:layout_weight="1"
-			    android:src="@drawable/flag_empty" />
+			    android:src="@drawable/flag14" />
 
 			<TextView
 			    android:id="@+id/nations_vs"
@@ -658,7 +658,7 @@
 			    android:layout_height="wrap_content"
 			    android:layout_marginRight="2dp"
 			    android:layout_weight="1"
-			    android:src="@drawable/flag_empty" />
+			    android:src="@drawable/flag10" />
 		</LinearLayout>
 		<LinearLayout
 		    android:id="@+id/round_of_16_7"
