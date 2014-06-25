@@ -15,16 +15,23 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 @SuppressLint("ValidFragment")
-public class BracketsFragment extends Fragment {
+public class BracketsFragment extends Fragment implements FirstPageFragmentListener {
 
+	static FirstPageFragmentListener firstPageListener;
+	
 	Context context;
+	View rootView;
 	
 	////
 	public List<FPGameMatchSchedule> matches;
@@ -35,16 +42,17 @@ public class BracketsFragment extends Fragment {
 		// TODO Auto-generated constructor stub
 	}
 
-	public BracketsFragment(Context context) {
+	public BracketsFragment(Context context, FirstPageFragmentListener listener) {
 		// TODO Auto-generated constructor stub
 		this.context = context;
+		firstPageListener = listener;
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-		View rootView = inflater.inflate(R.layout.activity_dynamic_bracket, container,
+		rootView = inflater.inflate(R.layout.activity_dynamic_bracket, container,
 				false);
 		
 		//// 
@@ -77,6 +85,16 @@ public class BracketsFragment extends Fragment {
         }
         ////
         
+        
+        View ros1 = (View) rootView.findViewById(R.id.groupMatchesText);
+        ros1.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				firstPageListener.onSwitchToNextFragment();
+			}
+		});
+		
+        
         return rootView;
 	}
 	
@@ -84,9 +102,9 @@ public class BracketsFragment extends Fragment {
 		Log.i(GlobalVars.WP_INFO_TAG, "Print matches");
 		//Temporally hid tournamnet
 		matches = matches.subList(0, 48);
-		System.out.println("MATCH LIST: "+matches);
+		//System.out.println("MATCH LIST: "+matches);
 		listAdapter = new PredictionListAdapter(this.context, R.layout.fragment_dynamic_bracket, matches);
-		System.out.println("getView: "+getView());
+		//System.out.println("getView: "+getView());
 		if(getView() != null){
 			ListView listView = (ListView) getView().findViewById(android.R.id.list);
 			listView.setAdapter(listAdapter);
@@ -121,6 +139,12 @@ public class BracketsFragment extends Fragment {
 			tContext.matches = matches;
 			tContext.doPrint();
 		}
+		
+	}
+
+	@Override
+	public void onSwitchToNextFragment() {
+		// TODO Auto-generated method stub
 		
 	}
 	

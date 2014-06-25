@@ -41,10 +41,10 @@ public class SettingsFragment extends Fragment {
 		tag1.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
 				Log.i("onClick", "Edit Tag1 Activity");
-	        	//Intent editTag1Activity = new Intent(getActivity(), EditTag1Activity.class);
-	        	//startActivity(editTag1Activity); 
-	        	Intent editTag1Activity = new Intent(getActivity(), TournamentBracketActivity.class);
+	        	Intent editTag1Activity = new Intent(getActivity(), EditTag1Activity.class);
 	        	startActivity(editTag1Activity); 
+	        	//Intent editTag1Activity = new Intent(getActivity(), TournamentBracketActivity.class);
+	        	//startActivity(editTag1Activity); 
 			}
 		});
 

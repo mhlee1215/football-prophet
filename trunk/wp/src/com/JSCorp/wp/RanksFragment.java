@@ -51,6 +51,8 @@ public class RanksFragment extends Fragment {
 		
 		init();
 		
+		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + UserService.getUsers().size());
+		
 		return rootView;
 	}
 	
@@ -136,7 +138,6 @@ public class RanksFragment extends Fragment {
 				}
 			});
 	        }
-		
 		
 		
 		for(FPUser user : userRanksAll){
