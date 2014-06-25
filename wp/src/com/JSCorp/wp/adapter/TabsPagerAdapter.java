@@ -5,24 +5,51 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.view.View;
 
 import com.JSCorp.wp.BracketsFragment;
+import com.JSCorp.wp.FirstPageFragmentListener;
+import com.JSCorp.wp.TournamentBracketFragment;
 import com.JSCorp.wp.RanksFragment;
 import com.JSCorp.wp.SettingsFragment;
  
 public class TabsPagerAdapter extends FragmentPagerAdapter {
+	
+	private final class FirstPageListener implements FirstPageFragmentListener {
+        public void onSwitchToNextFragment() {
+        	System.out.println("hfqowihvowhvqvnqlvlowhgevoq;hfeio;qwhoef;ch");
+          mFragmentManager.beginTransaction().remove(bracketsFragment).commit();
+          bracketsFragment = new TournamentBracketFragment();
+          mFragmentManager.beginTransaction().add(new TournamentBracketFragment(), "TournamentFragment").commit();
+          /*
+            if (mFragmentAtPos0 instanceof FacturasFragment){
+                mFragmentAtPos0 = new DetallesFacturaFragment(listener);
+            }else{ // Instance of NextFragment
+                mFragmentAtPos0 = new FacturasFragment(listener);
+            }
+            */
+          	
+            notifyDataSetChanged();
+        }
+    }
+	
+	private final FragmentManager mFragmentManager;
+	FirstPageListener listener = new FirstPageListener();
  
 	Context context;
 	
-	static BracketsFragment bracketsFragment;
-	static RanksFragment ranksFragment;
-	static SettingsFragment settingsFragment;
+	Fragment bracketsFragment;
+	TournamentBracketFragment tournamentBracketFragment;
+	RanksFragment ranksFragment;
+	SettingsFragment settingsFragment;
 	
     public TabsPagerAdapter(FragmentManager fm, Context context) {
         super(fm);
+        mFragmentManager = fm;
         this.context = context;
         
-        bracketsFragment = new BracketsFragment(this.context);
+        bracketsFragment = new BracketsFragment(this.context, listener);
+        //tournamentBracketFragment =  new TournamentBracketFragment();
         ranksFragment = new RanksFragment();
         settingsFragment = new SettingsFragment();
     }

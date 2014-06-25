@@ -44,7 +44,7 @@ public class SplashActivity extends Activity {
     }
     
     public void doPrintUser(FPUser user){
-		System.out.println(user);
+		//System.out.println(user);
 	}
     
     public void goMainActivity(){
@@ -146,19 +146,20 @@ public class SplashActivity extends Activity {
 			// TODO Auto-generated method stub
 			
 			TelephonyManager tManager = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
-			String deviceId = tManager.getDeviceId();
+			//String deviceId = tManager.getDeviceId();
+			String deviceId = "arsenal1";
 			System.out.println("device Id :"+deviceId);
 			
 			user = UserService.getUserByDeviceId(deviceId);
 			if(GlobalVars.isDebugMode)
-				System.out.println("user: "+user);
+				//System.out.println("user: "+user);
 			
 			if(user == null){
 				//add user
 				if(GlobalVars.isDebugMode)
 					Log.i(GlobalVars.WP_INFO_TAG, "ADD USER");
 				FPUser addUser = new FPUser();
-				System.out.println(addUser);
+				//System.out.println(addUser);
 				addUser.setDevice_id(deviceId);
 				boolean result;
 				try {

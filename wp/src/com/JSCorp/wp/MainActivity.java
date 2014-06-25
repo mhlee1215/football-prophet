@@ -22,6 +22,8 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.telephony.TelephonyManager;
 import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 @SuppressLint("NewApi")
 public class MainActivity extends FragmentActivity implements
@@ -45,7 +47,14 @@ public class MainActivity extends FragmentActivity implements
 
 		viewPager.setAdapter(mAdapter);
 		actionBar.setHomeButtonEnabled(false);
-		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);		
+		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);	
+		
+		/*
+		Fragment fv = mAdapter.getItem(0);
+		FragmentManager fm = getFragmentManager();
+		FragmentTransaction ft = fm.beginTransaction();
+		ft.add(R.id., fv);
+		*/
 
 		//new GetUserInfo().execute(this);
 		
@@ -55,9 +64,8 @@ public class MainActivity extends FragmentActivity implements
 					.setTabListener(this));
 		}
 
-		/**
-		 * on swiping the viewpager make respective tab selected
-		 * */
+		
+		 //on swiping the viewpager make respective tab selected
 		viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
 			@Override
@@ -75,6 +83,23 @@ public class MainActivity extends FragmentActivity implements
 			public void onPageScrollStateChanged(int arg0) {
 			}
 		});
+		
+		/*
+		View ros1 = (View) findViewById(R.id.groupMatchesText);
+        ros1.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				System.out.println("hfqowihvowhvqvnqlvlowhgevoq;hfeio;qwhoef;ch");
+				Fragment fragment = new SettingsFragment();
+				// Insert the fragment by replacing any existing fragment
+			    //List<Fragment> fragments = fm.getFragments();
+			    //Fragment lastFragment = fragments.get(fragments.size() - 1);
+				FragmentTransaction ft = getFragmentManager().beginTransaction();
+				ft.replace(R.id.groupMatchesFragment, fragment);
+				ft.commit();
+			}
+		});
+		*/
 	}
 
 	@Override
@@ -115,21 +140,21 @@ public class MainActivity extends FragmentActivity implements
 			
 			TelephonyManager tManager = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
 			String deviceId = tManager.getDeviceId();
-			System.out.println("device Id :"+deviceId);
+			//System.out.println("device Id :"+deviceId);
 			
 			user = UserService.getUserByDeviceId(deviceId);
-			System.out.println(user);
+			//System.out.println(user);
 			
 			if(user == null){
 				//add user
 				Log.i(GlobalVars.WP_INFO_TAG, "ADD USER");
 				FPUser addUser = new FPUser();
-				System.out.println(addUser);
+				//System.out.println(addUser);
 				addUser.setDevice_id(deviceId);
 				boolean result;
 				try {
 					result = UserService.addUser(addUser);
-					System.out.println("result : "+result);
+					//System.out.println("result : "+result);
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -140,7 +165,7 @@ public class MainActivity extends FragmentActivity implements
 			}else{
 				Log.i(GlobalVars.WP_INFO_TAG, "USER ALREADY EXISTS");
 				GlobalVars.user = user;
-				System.out.println(user);
+				//System.out.println(user);
 			}
 			
 			return null;
