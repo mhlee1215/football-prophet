@@ -7,6 +7,7 @@ public class FPGameResult {
 						// final\n\'4\':Semi final\n\'5\':final',
 	int home_team_score = 0;
 	int away_team_score = 0;
+	
 	private int query_start = 0;
 	private int query_number = 0;
 

@@ -5,8 +5,30 @@ public class FPGameTeam {
 	String team_name = "";
 	String team_name_kor = "";
 	String game_group = "";
+	
+	int gameScorePoint;
+	int goalScorePoint;
+	
+	
 	private int query_start = 0;
 	private int query_number = 0;
+
+	
+	public int getGameScorePoint() {
+		return gameScorePoint;
+	}
+
+	public void setGameScorePoint(int gameScorePoint) {
+		this.gameScorePoint = gameScorePoint;
+	}
+
+	public int getGoalScorePoint() {
+		return goalScorePoint;
+	}
+
+	public void setGoalScorePoint(int goalScorePoint) {
+		this.goalScorePoint = goalScorePoint;
+	}
 
 	public String getTeam_name_kor() {
 		return team_name_kor;
@@ -58,9 +80,12 @@ public class FPGameTeam {
 
 	@Override
 	public String toString() {
-		return "{\"id\":\"" + id + "\",\"team_name\":\"" + team_name
-				+ "\",\"team_name_kor\":\"" + team_name_kor
-				+ "\",\"game_group\":\"" + game_group + "\",\"query_start\":\""
-				+ query_start + "\",\"query_number\":\"" + query_number + "\"}";
+		return "{\"id\":\"" + id + "\", \"team_name\":\"" + team_name
+				+ "\", \"team_name_kor\":\"" + team_name_kor
+				+ "\", \"game_group\":\"" + game_group
+				+ "\", \"gameScorePoint\":\"" + gameScorePoint
+				+ "\", \"goalScorePoint\":\"" + goalScorePoint
+				+ "\", \"query_start\":\"" + query_start
+				+ "\", \"query_number\":\"" + query_number + "\"}";
 	}
 }
