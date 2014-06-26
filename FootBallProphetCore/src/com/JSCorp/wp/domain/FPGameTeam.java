@@ -14,6 +14,14 @@ public class FPGameTeam {
 	private int query_number = 0;
 
 	
+	public void addGameScore(int score){
+		this.gameScorePoint += score;
+	}
+	
+	public void addGoalScore(int score){
+		this.goalScorePoint += score;
+	}
+	
 	public int getGameScorePoint() {
 		return gameScorePoint;
 	}
