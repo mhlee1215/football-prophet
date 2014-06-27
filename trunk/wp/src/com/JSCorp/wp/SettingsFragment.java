@@ -25,12 +25,17 @@ public class SettingsFragment extends Fragment {
 		TelephonyManager tManager = (TelephonyManager) getActivity().getSystemService(Context.TELEPHONY_SERVICE);
 		String deviceId = tManager.getDeviceId();
 		System.out.println("device Id :"+deviceId);
-		
+		 
 		TextView nickname = (TextView) rootView.findViewById(R.id.nickname);
 		nickname.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
 				Log.i("onClick", "Edit Nickname Activity");
 	        	Intent editNicknameActivity = new Intent(getActivity(), EditNicknameActivity.class);
+	        	
+	        	Bundle b = new Bundle();
+     		    b.putString("isAfterSplash", "N"); //Your id
+     		    editNicknameActivity.putExtras(b); //Put your id to your next Intent
+	        	
 	        	startActivity(editNicknameActivity);
 	        	//Fragment fragment1 = (Fragment) ((MainActivity)getActivity()).getFragmentbyPosition(1);
 	        	//((Object) fragment1).refreshFragment();
