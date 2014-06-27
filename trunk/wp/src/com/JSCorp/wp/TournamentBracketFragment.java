@@ -5,7 +5,9 @@ import java.util.List;
 import com.JSCorp.wp.R;
 import com.JSCorp.wp.BracketsFragment.GetGameTeamMap;
 import com.JSCorp.wp.adapter.PredictionListAdapter;
+import com.JSCorp.wp.adapter.PredictionListAdapter.SetProphetStatus;
 import com.JSCorp.wp.domain.FPGameMatchSchedule;
+import com.JSCorp.wp.domain.FPGameProphet;
 import com.JSCorp.wp.service.GameService;
 import com.JSCorp.wp.var.GlobalVars;
 
@@ -17,6 +19,7 @@ import android.content.Intent;
 import android.graphics.Point;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -31,6 +34,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListView;
@@ -212,11 +216,66 @@ public class TournamentBracketFragment extends Fragment implements FirstPageFrag
 	        }
 	    });
 	    
-	    
-	    
 	    Button predictionButton1 = (Button) dialog.findViewById(R.id.btnPredict1);
 	    Button predictionButton2 = (Button) dialog.findViewById(R.id.btnPredict2);
 	    Button predictionButton3 = (Button) dialog.findViewById(R.id.btnPredict3);
+	    
+	    predictionButton1.setOnClickListener(new View.OnClickListener() {
+
+	    	int position;
+	    	
+	        @Override
+	        public void onClick(View v) {
+	            dialog.dismiss();
+	            predictHomeVictory(position);
+	            //notifyDataSetChanged();
+	        }
+	        
+	        public View.OnClickListener init(int position){
+	        	this.position = position;
+	        	return this;
+	        }
+
+	    }.init(position));
+	    
+	    
+	    predictionButton2.setOnClickListener(new View.OnClickListener() {
+
+	    	int position;
+	    	
+	        @Override
+	        public void onClick(View v) {
+	            dialog.dismiss();
+	            predictDraw(position);
+	            //notifyDataSetChanged();
+	        }
+	        
+	        public View.OnClickListener init(int position){
+	        	this.position = position;
+	        	return this;
+	        }
+	    }.init(position)); 
+	    
+	    
+	    predictionButton3.setOnClickListener(new View.OnClickListener() {
+
+	    	int position;
+	    	
+	        @Override
+	        public void onClick(View v) {
+	            dialog.dismiss();
+	            predictAwayVictory(position);
+	            //notifyDataSetChanged();
+	        }
+	        
+	        public View.OnClickListener init(int position){
+	        	this.position = position;
+	        	return this;
+	        }
+	    }.init(position)); 
+	    
+	    TableRow tr = (TableRow) dialog.findViewById(R.id.matchGroupTableRow);
+	    tr.setMinimumHeight(tr.getHeight() + 100);
 	    
 	    dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
 	    dialog.show();
@@ -236,6 +295,60 @@ public class TournamentBracketFragment extends Fragment implements FirstPageFrag
 		    int resIDAway = getResources().getIdentifier(awayImage, "drawable", context.getPackageName());
 			((ImageView) layout.findViewById(R.id.nations_home)).setImageResource(resIDHome);
 			((ImageView) layout.findViewById(R.id.nations_away)).setImageResource(resIDAway);
+		}
+	}
+	
+	private void predictHomeVictory(int position) {
+		// TODO Auto-generated method stub
+		Log.i("onClick", "1");
+		//matches.get(position)
+		matches.get(position).setProphet_home_win(1);
+		
+		FPGameProphet gameProphet = new FPGameProphet();
+		gameProphet.setUser_id(GlobalVars.user.getId());
+		gameProphet.setMatch_id(position+1);
+		gameProphet.setProphet_type("1");
+		gameProphet.setHome_team_win();
+		
+		new SetProphetStatus().doInBackground(gameProphet);
+	}
+	private void predictDraw(int position) {
+		// TODO Auto-generated method stub
+		Log.i("onClick", "2");
+		matches.get(position).setProphet_draw(1);
+		
+		FPGameProphet gameProphet = new FPGameProphet();
+		gameProphet.setUser_id(GlobalVars.user.getId());
+		gameProphet.setMatch_id(position+1);
+		gameProphet.setProphet_type("1");
+		gameProphet.setDraw();
+		
+		new SetProphetStatus().doInBackground(gameProphet);
+	}
+	private void predictAwayVictory(int position) {
+		// TODO Auto-generated method stub
+		Log.i("onClick", "3");
+		matches.get(position).setProphet_away_win(1);
+		
+		FPGameProphet gameProphet = new FPGameProphet();
+		gameProphet.setUser_id(GlobalVars.user.getId());
+		gameProphet.setMatch_id(position+1);
+		gameProphet.setProphet_type("1");
+		gameProphet.setAway_team_win();
+		
+		new SetProphetStatus().doInBackground(gameProphet);
+	}
+	
+	public class SetProphetStatus extends AsyncTask {
+		@Override
+		protected Object doInBackground(Object... arg0) {
+			FPGameProphet gameProphet = (FPGameProphet) arg0[0];
+			// TODO Auto-generated method stub
+			StrictMode.enableDefaults();
+			System.out.println("UPDATE!!");
+			GameService.setGameProphet(gameProphet);
+			//System.out.println("MATCH SIZE:"+matches.size());
+			return null;
 		}
 	}
 
