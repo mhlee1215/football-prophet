@@ -153,7 +153,53 @@ public class TournamentBracketFragment extends Fragment implements FirstPageFrag
     			}
     		});
         }
-        
+        /*
+        for(int i = 56; i < 60; i++) {
+			if(matches.get(i).getHome_team_id() != 0) {
+				String viewID = "quarter_final" + (i-56);
+			    int resID = getResources().getIdentifier(viewID, "id", context.getPackageName());
+			    LinearLayout layout = (LinearLayout) rootView.findViewById(resID);
+			    
+			    final int position = i;
+			    layout.setOnClickListener(new OnClickListener() {
+	    			@Override
+	    			public void onClick(View v) {
+	    				detailInfo(position);
+	    			}
+	    		});
+			}
+		}
+		for(int i = 60; i < 62; i++) {
+			if(matches.get(i).getHome_team_id() != 0) {
+				String viewID = "semi_final" + (i-60);
+			    int resID = getResources().getIdentifier(viewID, "id", context.getPackageName());
+			    LinearLayout layout = (LinearLayout) rootView.findViewById(resID);
+			    
+			    final int position = i;
+			    layout.setOnClickListener(new OnClickListener() {
+	    			@Override
+	    			public void onClick(View v) {
+	    				detailInfo(position);
+	    			}
+	    		});
+			}
+		}
+		for(int i = 62; i < 64; i++) {
+			if(matches.get(i).getHome_team_id() != 0) {
+				String viewID = "final" + (i-62);
+			    int resID = getResources().getIdentifier(viewID, "id", context.getPackageName());
+			    LinearLayout layout = (LinearLayout) rootView.findViewById(resID);
+			    
+			    final int position = i;
+			    layout.setOnClickListener(new OnClickListener() {
+	    			@Override
+	    			public void onClick(View v) {
+	    				detailInfo(position);
+	    			}
+	    		});
+			}
+		}
+        */
         return rootView;
 	}
 	
@@ -283,6 +329,12 @@ public class TournamentBracketFragment extends Fragment implements FirstPageFrag
 	}
 	
 	public void doPrint(){
+		
+		System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+		for(int j = 48; j < matches.size(); j++) {
+			System.out.println("MATCH SIZE:"+matches.get(j));
+		}
+		
 		//16th round
 		for(int i = 0; i < 8; i++) {
 			String viewID = "round_of_16_" + (i+1);
@@ -297,6 +349,61 @@ public class TournamentBracketFragment extends Fragment implements FirstPageFrag
 			((ImageView) layout.findViewById(R.id.nations_home)).setImageResource(resIDHome);
 			((ImageView) layout.findViewById(R.id.nations_away)).setImageResource(resIDAway);
 		}
+		for(int i = 56; i < 60; i++) {
+			if(matches.get(i).getHome_team_id() != 0) {
+				String viewID = "quarter_final" + (i-55);
+			    int resID = getResources().getIdentifier(viewID, "id", context.getPackageName());
+			    LinearLayout layout = (LinearLayout) rootView.findViewById(resID);
+			    
+			    String homeImage = "flag" + Integer.toString(matches.get(i).getHome_team_id());
+			    String awayImage = "flag" + Integer.toString(matches.get(i).getAway_team_id());
+			    int resIDHome = getResources().getIdentifier(homeImage, "drawable", context.getPackageName());
+			    int resIDAway = getResources().getIdentifier(awayImage, "drawable", context.getPackageName());
+				((ImageView) layout.findViewById(R.id.nations_home)).setImageResource(resIDHome);
+				((ImageView) layout.findViewById(R.id.nations_away)).setImageResource(resIDAway);
+
+			    
+			    final int position = i;
+			    layout.setOnClickListener(new OnClickListener() {
+	    			@Override
+	    			public void onClick(View v) {
+	    				detailInfo(position);
+	    			}
+	    		});
+			}
+		}
+		for(int i = 60; i < 62; i++) {
+			if(matches.get(i).getHome_team_id() != 0) {
+				String viewID = "semi_final" + (i-59);
+			    int resID = getResources().getIdentifier(viewID, "id", context.getPackageName());
+			    LinearLayout layout = (LinearLayout) rootView.findViewById(resID);
+			    
+			    String homeImage = "flag" + Integer.toString(matches.get(i).getHome_team_id());
+			    String awayImage = "flag" + Integer.toString(matches.get(i).getAway_team_id());
+			    int resIDHome = getResources().getIdentifier(homeImage, "drawable", context.getPackageName());
+			    int resIDAway = getResources().getIdentifier(awayImage, "drawable", context.getPackageName());
+				((ImageView) layout.findViewById(R.id.nations_home)).setImageResource(resIDHome);
+				((ImageView) layout.findViewById(R.id.nations_away)).setImageResource(resIDAway);
+			}
+		}
+		for(int i = 62; i < 64; i++) {
+			if(matches.get(i).getHome_team_id() != 0) {
+				String viewID = "final" + (i-61);
+			    int resID = getResources().getIdentifier(viewID, "id", context.getPackageName());
+			    LinearLayout layout = (LinearLayout) rootView.findViewById(resID);
+			    
+			    String homeImage = "flag" + Integer.toString(matches.get(i).getHome_team_id());
+			    String awayImage = "flag" + Integer.toString(matches.get(i).getAway_team_id());
+			    int resIDHome = getResources().getIdentifier(homeImage, "drawable", context.getPackageName());
+			    int resIDAway = getResources().getIdentifier(awayImage, "drawable", context.getPackageName());
+				((ImageView) layout.findViewById(R.id.nations_home)).setImageResource(resIDHome);
+				((ImageView) layout.findViewById(R.id.nations_away)).setImageResource(resIDAway);
+			}
+		}
+		
+		
+		
+		
 	}
 	
 	private void predictHomeVictory(int position) {
