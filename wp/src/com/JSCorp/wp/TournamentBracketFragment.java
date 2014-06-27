@@ -63,6 +63,7 @@ public class TournamentBracketFragment extends Fragment implements FirstPageFrag
 		//firstPageListener = listener;
 	}
 
+	@SuppressLint("NewApi")
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -83,7 +84,7 @@ public class TournamentBracketFragment extends Fragment implements FirstPageFrag
 		
 		Display display = getActivity().getWindowManager().getDefaultDisplay();
         Point size = new Point();
-        display.getSize(size);
+        display.getSize(size); 
         int width = size.x;
         int qf_margin = (width - 80) / 8;
         int sf_margin = qf_margin * 3;
