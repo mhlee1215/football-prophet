@@ -405,7 +405,7 @@
 	        android:layout_width="fill_parent"
 	        android:layout_height="fill_parent"
 	        android:layout_weight="1"
-	        android:src="@drawable/tour_arrow_big_off" />
+	        android:src="@drawable/tour_arrow_0_big" />
 	    
 	</LinearLayout>
 	
@@ -516,7 +516,7 @@
 	        android:layout_width="fill_parent"
 	        android:layout_height="fill_parent"
 	        android:layout_weight="1"
-	        android:src="@drawable/tour_arrow_big_off" />
+	        android:src="@drawable/tour_arrow_0_big" />
 	    
 	</LinearLayout>
 	

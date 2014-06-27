@@ -564,7 +564,23 @@ public class TournamentBracketFragment extends Fragment implements FirstPageFrag
 				}
 			}
 		} else if(position > 59 && position < 62) {
-			
+			if(position == 60) {
+				int pos = 60;
+				ImageView b16_1 = (ImageView) rootView.findViewById(R.id.bracket_4_1);
+				if((matches.get(pos).getProphet_home_win() == 1)) {
+					b16_1.setImageResource(R.drawable.tour_arrow_h_big);
+				} else if((matches.get(pos).getProphet_away_win() == 1)) {
+					b16_1.setImageResource(R.drawable.tour_arrow_a_big);
+				}
+			} else {
+				int pos = 61;
+				ImageView b16_1 = (ImageView) rootView.findViewById(R.id.bracket_4_2);
+				if((matches.get(pos).getProphet_home_win() == 1)) {
+					b16_1.setImageResource(R.drawable.tour_arrow_h_big);
+				} else if((matches.get(pos).getProphet_away_win() == 1)) {
+					b16_1.setImageResource(R.drawable.tour_arrow_a_big);
+				}
+			}
 		}
 	}
 	
