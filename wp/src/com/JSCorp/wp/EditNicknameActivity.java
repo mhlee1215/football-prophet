@@ -74,9 +74,9 @@ public class EditNicknameActivity extends Activity {
           	
 	          	String nickname_new = (String) ((TextView) this.findViewById(R.id.callForNickname)).getText().toString();
 	          	
-	          	if(nickname_new.length() < 4 || nickname_new.length() > 10){
+	          	if(nickname_new.length() < 4 || nickname_new.length() > 14){
 	          		Toast.makeText(getApplicationContext(),
-	            		      "닉네임을 4글자 이상, 10글자 미만으로 입력해주세요.", Toast.LENGTH_SHORT).show();
+	            		      "닉네임을 4글자 이상, 14글자 미만으로 입력해주세요.", Toast.LENGTH_SHORT).show();
 	          		return true;
 	          	}
 	          	
