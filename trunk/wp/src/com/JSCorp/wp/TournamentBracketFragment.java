@@ -41,6 +41,7 @@ public class TournamentBracketFragment extends Fragment implements FirstPageFrag
 	//static FirstPageFragmentListener firstPageListener;
 
 	Context context;
+	View rootView;
 	
 	////
 	public List<FPGameMatchSchedule> matches;
@@ -64,16 +65,16 @@ public class TournamentBracketFragment extends Fragment implements FirstPageFrag
 		
 		System.out.println("In Fragment 1-2");
 
-		View rootView = inflater.inflate(R.layout.activity_tournament_bracket, container,
+		rootView = inflater.inflate(R.layout.activity_tournament_bracket, container,
 				false);
 		
 		 if(GlobalVars.matches == null){
 	        	Log.i(GlobalVars.WP_INFO_TAG, "Transaction to server for match retrieval.");
-	        	
 	        	new GetGameTeamMap().execute(this);
 	    } else{
 	        	Log.i(GlobalVars.WP_INFO_TAG, "Match found in the app. Skip match retrieval to server.");
 	        	this.matches = GlobalVars.matches;
+	        	doPrint();
 	    }
 		 
 		
@@ -118,67 +119,40 @@ public class TournamentBracketFragment extends Fragment implements FirstPageFrag
         f_layout2.setMargins(f_margin, 0, 0, 0);
         f2.setLayoutParams(f_layout2);
         
-        LinearLayout ros1 = (LinearLayout) rootView.findViewById(R.id.round_of_16_1);
-        ros1.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				detailInfo(48);
-			}
-		});
-        LinearLayout ros2 = (LinearLayout) rootView.findViewById(R.id.round_of_16_2);
-        ros2.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				detailInfo(49);
-			}
-		});
-        LinearLayout ros3 = (LinearLayout) rootView.findViewById(R.id.round_of_16_3);
-        ros3.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				detailInfo(50);
-			}
-		});
-        LinearLayout ros4 = (LinearLayout) rootView.findViewById(R.id.round_of_16_4);
-        ros4.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				detailInfo(51);
-			}
-		});
-        LinearLayout ros5 = (LinearLayout) rootView.findViewById(R.id.round_of_16_5);
-        ros5.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				detailInfo(52);
-			}
-		});
-        LinearLayout ros6 = (LinearLayout) rootView.findViewById(R.id.round_of_16_6);
-        ros6.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				detailInfo(53);
-			}
-		});
-        LinearLayout ros7 = (LinearLayout) rootView.findViewById(R.id.round_of_16_7);
-        ros7.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				detailInfo(54);
-			}
-		});
-        LinearLayout ros8 = (LinearLayout) rootView.findViewById(R.id.round_of_16_8);
-        ros8.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				detailInfo(55);
-			}
-		});
+        //16h round view onclicklistener
+        for(int i = 0; i < 8; i++) {
+        	String viewID = "round_of_16_" + (i+1);
+        	int resID = getResources().getIdentifier(viewID, "id", context.getPackageName());
+        	LinearLayout layout = (LinearLayout) rootView.findViewById(resID);
+        	final int position = 48 + i;
+        	layout.setOnClickListener(new OnClickListener() {
+    			@Override
+    			public void onClick(View v) {
+    				detailInfo(position);
+    			}
+    		});
+        }
+        
+        //System.out.println("matchess: " + this.matches);
         
         return rootView;
 	}
 	
-public void detailInfo(int position) {
+	/*
+	@Override
+	public void onStart() {
+		
+		System.out.println("ID~~~~~~~~~~~~" + matches.get(48));
+    	String homeImage = "flag" + Integer.toString(matches.get(48).getHome_team_id());
+	    String awayImage = "flag" + Integer.toString(matches.get(48).getAway_team_id());
+	    int resIDHome = getResources().getIdentifier(homeImage, "drawable", context.getPackageName());
+	    int resIDAway = getResources().getIdentifier(awayImage, "drawable", context.getPackageName());
+		((ImageView) rootView.findViewById(R.id.nations_home)).setImageResource(resIDHome);
+		((ImageView) rootView.findViewById(R.id.nations_away)).setImageResource(resIDAway);
+	}
+	*/
+	
+	public void detailInfo(int position) {
 		
 		final Dialog dialog = new Dialog(context);
 	    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); 
@@ -212,6 +186,20 @@ public void detailInfo(int position) {
 	    	((TextView) dialog.findViewById(R.id.btnPredict3)).setText(matches.get(position).getAway_team_name() + "\n 승리");
 	    }
 	    
+	    if((matches.get(position).getId() > 47) && (matches.get(position).getId() < 57)) {
+	    	((TextView)dialog.findViewById(R.id.matchGroup)).setText("16강 제 " + (matches.get(position).getId() - 48) + "경기");
+	    }
+	    
+	    String matchTime = (matches.get(position).getMonth()) + "." + (matches.get(position).getDay()) + "." + (matches.get(position).getTime());
+		((TextView) dialog.findViewById(R.id.matchDate)).setText(matchTime);
+	    
+	    String homeImage = "flag" + Integer.toString(matches.get(position).getHome_team_id());
+	    String awayImage = "flag" + Integer.toString(matches.get(position).getAway_team_id());
+	    int resIDHome = context.getResources().getIdentifier(homeImage, "drawable", context.getPackageName());
+	    ((ImageView) dialog.findViewById(R.id.flagA)).setImageResource(resIDHome );;
+	    int resIDAway = context.getResources().getIdentifier(awayImage, "drawable", context.getPackageName());
+	    ((ImageView) dialog.findViewById(R.id.flagB)).setImageResource(resIDAway );;
+	    
 
 	    // if button is clicked, close the custom dialog
 	    ImageButton dialogButton = (ImageButton) dialog.findViewById(R.id.imageButton1);
@@ -233,6 +221,23 @@ public void detailInfo(int position) {
 	    dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
 	    dialog.show();
 	}
+	
+	public void doPrint(){
+		//16th round
+		for(int i = 0; i < 8; i++) {
+			String viewID = "round_of_16_" + (i+1);
+		    int resID = getResources().getIdentifier(viewID, "id", context.getPackageName());
+		    LinearLayout layout = (LinearLayout) rootView.findViewById(resID);
+		    final int position = 48 + i;
+		    
+	    	String homeImage = "flag" + Integer.toString(matches.get(position).getHome_team_id());
+		    String awayImage = "flag" + Integer.toString(matches.get(position).getAway_team_id());
+		    int resIDHome = getResources().getIdentifier(homeImage, "drawable", context.getPackageName());
+		    int resIDAway = getResources().getIdentifier(awayImage, "drawable", context.getPackageName());
+			((ImageView) layout.findViewById(R.id.nations_home)).setImageResource(resIDHome);
+			((ImageView) layout.findViewById(R.id.nations_away)).setImageResource(resIDAway);
+		}
+	}
 
 	public class GetGameTeamMap extends AsyncTask {
 	
@@ -246,7 +251,6 @@ public void detailInfo(int position) {
 			System.out.println("GLOBAL USER: "+GlobalVars.user);
 			matches = GameService.getGameMatchSchedules(GlobalVars.user.getId());
 			//System.out.println("MATCH SIZE:"+matches.size());
-			
 			return null;
 		}
 		
@@ -255,6 +259,7 @@ public void detailInfo(int position) {
 			// TODO Auto-generated method stub
 			//super.onPostExecute(result);
 			tContext.matches = matches;
+			tContext.doPrint();
 		}
 		
 	}
