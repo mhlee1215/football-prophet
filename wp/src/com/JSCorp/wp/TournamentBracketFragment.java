@@ -80,7 +80,6 @@ public class TournamentBracketFragment extends Fragment implements FirstPageFrag
 	        	this.matches = GlobalVars.matches;
 	        	doPrint();
 	    }
-		 
 		
 		Display display = getActivity().getWindowManager().getDefaultDisplay();
         Point size = new Point();
@@ -89,6 +88,18 @@ public class TournamentBracketFragment extends Fragment implements FirstPageFrag
         int qf_margin = (width - 80) / 8;
         int sf_margin = qf_margin * 3;
         int f_margin = ((width - 80) / 3) - ((width - 80) / 4);
+        
+        int bracket_margin_16 = qf_margin / 2;
+        ImageView b16_1 = (ImageView) rootView.findViewById(R.id.bracket_16_1);
+		b16_1.setPadding(bracket_margin_16, 0, bracket_margin_16, 0);
+		ImageView b16_2 = (ImageView) rootView.findViewById(R.id.bracket_16_2);
+		b16_2.setPadding(bracket_margin_16, 0, bracket_margin_16, 0);
+		b16_2.setRotation(180);
+		ImageView b16_3 = (ImageView) rootView.findViewById(R.id.bracket_16_3);
+		b16_3.setPadding(bracket_margin_16, 0, bracket_margin_16, 0);
+		ImageView b16_4 = (ImageView) rootView.findViewById(R.id.bracket_16_4);
+		b16_4.setPadding(bracket_margin_16, 0, bracket_margin_16, 0);
+		b16_4.setRotation(180);
         
         LinearLayout qf1 = (LinearLayout) rootView.findViewById(R.id.quarter_final1);
         LayoutParams qf_layout1 = (LayoutParams) qf1.getLayoutParams();
@@ -125,6 +136,12 @@ public class TournamentBracketFragment extends Fragment implements FirstPageFrag
         
         //16h round view onclicklistener
         for(int i = 0; i < 8; i++) {
+        	String idString = "predictionResult_16_" + (i+1);
+        	//String idString = "nations_vs_16_" + (i+1);
+        	int predictionID = getResources().getIdentifier(idString, "id", context.getPackageName());
+        	((ImageView) rootView.findViewById(predictionID)).setVisibility(View.GONE);
+        	//((TextView) rootView.findViewById(predictionID)).setVisibility(View.GONE);
+        	
         	String viewID = "round_of_16_" + (i+1);
         	int resID = getResources().getIdentifier(viewID, "id", context.getPackageName());
         	LinearLayout layout = (LinearLayout) rootView.findViewById(resID);
@@ -137,24 +154,8 @@ public class TournamentBracketFragment extends Fragment implements FirstPageFrag
     		});
         }
         
-        //System.out.println("matchess: " + this.matches);
-        
         return rootView;
 	}
-	
-	/*
-	@Override
-	public void onStart() {
-		
-		System.out.println("ID~~~~~~~~~~~~" + matches.get(48));
-    	String homeImage = "flag" + Integer.toString(matches.get(48).getHome_team_id());
-	    String awayImage = "flag" + Integer.toString(matches.get(48).getAway_team_id());
-	    int resIDHome = getResources().getIdentifier(homeImage, "drawable", context.getPackageName());
-	    int resIDAway = getResources().getIdentifier(awayImage, "drawable", context.getPackageName());
-		((ImageView) rootView.findViewById(R.id.nations_home)).setImageResource(resIDHome);
-		((ImageView) rootView.findViewById(R.id.nations_away)).setImageResource(resIDAway);
-	}
-	*/
 	
 	public void detailInfo(int position) {
 		
