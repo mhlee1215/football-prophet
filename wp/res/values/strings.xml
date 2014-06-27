@@ -20,5 +20,8 @@
     <string name="title_activity_edit_twitter">트위터</string>
     <string name="title_activity_splash">월드컵 예언자</string>
     <string name="title_activity_tournament_bracket">TournamentBracketActivity</string>
-
+	<string name="nickname_indication"> 닉네임을 입력해 주세요. \n(닉네임은 확정 후 수정이 불가능 합니다)</string>
+	<string name="confirm">확인</string>
+   
+    
 </resources>

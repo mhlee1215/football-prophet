@@ -24,6 +24,9 @@ import android.view.WindowManager;
 import android.widget.Toast;
  
 public class SplashActivity extends Activity {
+	
+	boolean isUserChecked = false;
+	boolean isAppChecked = false;
  
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,17 +56,42 @@ public class SplashActivity extends Activity {
         /****** Create Thread that will sleep for 5 seconds *************/        
        Thread background = new Thread() {
            public void run() {
-                
+               
+        	   
+        	   
                try {
+            	   sleep((long) (1.0*1000));
                    // Thread will sleep for 5 seconds
-                   sleep((long) (1.5*1000));
+            	   boolean isCheckedAll = true;
+            	   
+            	   do{
+	            	   if(!isAppChecked) isCheckedAll = false;
+	            	   if(!isUserChecked) isCheckedAll = false;
+	            	   
+	                   sleep((long) (0.5*1000));
+                   
+            	   }while(!isCheckedAll);
                     
                    // After 5 seconds redirect to another intent
-                   Intent i=new Intent(getBaseContext(),MainActivity.class);
-                   startActivity(i);
-                    
-                   //Remove activity
-                   finish();
+            	   
+            	   if("Y".equals(GlobalVars.user.getIs_nickname_initialized())){
+            		   Intent i=new Intent(getBaseContext(),MainActivity.class);
+                       startActivity(i);
+                       //Remove activity
+                       finish();   
+            	   }else{ 
+            		   Intent i=new Intent(getBaseContext(),EditNicknameActivity.class);
+            		   
+            		   Bundle b = new Bundle();
+            		   b.putString("isAfterSplash", "Y"); //Your id
+            		   i.putExtras(b); //Put your id to your next Intent
+            		   
+                       startActivity(i);
+                       //Remove activity
+                       finish();
+            	   }
+            	   
+                   
                     
                } catch (Exception e) {
                 
@@ -123,8 +151,12 @@ public class SplashActivity extends Activity {
 		protected FPAppInfo doInBackground(Object... arg0) {
 			tContext = (SplashActivity) arg0[0];
 			appInfo = GameService.getAppInfo();
+			GlobalVars.appInfo = appInfo;
+			isAppChecked = true;
+			
 			if(GlobalVars.isDebugMode)
 				System.out.println("appInfo : "+appInfo);
+			
 			return appInfo;
 		}
     	
@@ -179,6 +211,7 @@ public class SplashActivity extends Activity {
 				if(GlobalVars.isDebugMode)
 					System.out.println("USER ALREADY EXISTS//user: "+user);
 			}
+			isUserChecked = true;
 			
 			return null;
 		}
