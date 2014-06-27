@@ -705,6 +705,22 @@ public static boolean updateGameResult(FPGameResult gameResult) {
 		gameResult = new FPGameResult(match_id, "1", 3, 1);
 		match_id++;
 		GameService.updateGameResult(gameResult);
+		
+		gameResult = new FPGameResult(match_id, "1", 1, 0);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+		
+		gameResult = new FPGameResult(match_id, "1", 2, 1);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+		
+		gameResult = new FPGameResult(match_id, "1", 1, 0);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+		
+		gameResult = new FPGameResult(match_id, "1", 1, 1);
+		match_id++;
+		GameService.updateGameResult(gameResult);
 		//36
 		
 	}
