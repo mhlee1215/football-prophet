@@ -35,10 +35,13 @@ public class EditNicknameActivity extends Activity {
 		// Enabling Up / Back navigation
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 
-		((TextView) this.findViewById(R.id.callForNickname))
-				.setText(GlobalVars.user.getNickname());
+		
+		
+		
 
 		if ("Y".equals(GlobalVars.user.getIs_nickname_initialized())) {
+			((TextView) this.findViewById(R.id.callForNickname))
+			.setText(GlobalVars.user.getNickname());
 			// Remove Action bar accept button.
 			((TextView) this.findViewById(R.id.callForNickname))
 					.setEnabled(false);
@@ -47,6 +50,8 @@ public class EditNicknameActivity extends Activity {
 			Button confirm_button = (Button) findViewById(R.id.nickname_confirm_button);
 			confirm_button.setVisibility(View.INVISIBLE);
 		}else{
+			//((TextView) this.findViewById(R.id.callForNickname))
+			//.setText("");
 			Bundle b = getIntent().getExtras();
 			String isAfterSplash = b.getString("isAfterSplash");
 
