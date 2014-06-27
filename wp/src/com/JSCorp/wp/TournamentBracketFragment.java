@@ -100,6 +100,16 @@ public class TournamentBracketFragment extends Fragment implements FirstPageFrag
 		ImageView b16_4 = (ImageView) rootView.findViewById(R.id.bracket_16_4);
 		b16_4.setPadding(bracket_margin_16, 0, bracket_margin_16, 0);
 		b16_4.setRotation(180);
+		
+		int bracket_margin_8 = qf_margin + (qf_margin / 2) - 20;
+		ImageView b8_1 = (ImageView) rootView.findViewById(R.id.bracket_8_1);
+		b8_1.setPadding(bracket_margin_8, 0, bracket_margin_8, 0);
+		ImageView b8_2 = (ImageView) rootView.findViewById(R.id.bracket_8_2);
+		b8_2.setPadding(bracket_margin_8, 0, bracket_margin_8, 0);
+		b8_2.setRotation(180);
+		
+		ImageView b4_2 = (ImageView) rootView.findViewById(R.id.bracket_4_2);
+		b4_2.setRotation(180);
         
         LinearLayout qf1 = (LinearLayout) rootView.findViewById(R.id.quarter_final1);
         LayoutParams qf_layout1 = (LayoutParams) qf1.getLayoutParams();
@@ -217,13 +227,7 @@ public class TournamentBracketFragment extends Fragment implements FirstPageFrag
 	    	((Button) dialog.findViewById(R.id.btnPredict1)).setBackgroundResource(R.drawable.dialog_selected_button);
 	    	((Button) dialog.findViewById(R.id.btnPredict2)).setBackgroundResource(R.drawable.dialog_button);
 	    	((Button) dialog.findViewById(R.id.btnPredict3)).setBackgroundResource(R.drawable.dialog_button);
-	    } else if(matches.get(position).getProphet_draw() == 1) {
-	    	((TextView) dialog.findViewById(R.id.btnPredict1)).setText(matches.get(position).getHome_team_name() + "\n 승리");
-	    	((TextView) dialog.findViewById(R.id.btnPredict2)).setText("무승부 예언");
-	    	((TextView) dialog.findViewById(R.id.btnPredict3)).setText(matches.get(position).getAway_team_name() + "\n 승리");
-	    	((Button) dialog.findViewById(R.id.btnPredict2)).setBackgroundResource(R.drawable.dialog_selected_button);
-	    	((Button) dialog.findViewById(R.id.btnPredict1)).setBackgroundResource(R.drawable.dialog_button);
-	    	((Button) dialog.findViewById(R.id.btnPredict3)).setBackgroundResource(R.drawable.dialog_button);
+	    	((Button) dialog.findViewById(R.id.btnPredict2)).setVisibility(View.GONE);
 	    } else if(matches.get(position).getProphet_away_win() == 1) {
 	    	((TextView) dialog.findViewById(R.id.btnPredict1)).setText(matches.get(position).getHome_team_name() + "\n 승리");
 	    	((TextView) dialog.findViewById(R.id.btnPredict2)).setText("무승부");
@@ -231,10 +235,12 @@ public class TournamentBracketFragment extends Fragment implements FirstPageFrag
 	    	((Button) dialog.findViewById(R.id.btnPredict3)).setBackgroundResource(R.drawable.dialog_selected_button);
 	    	((Button) dialog.findViewById(R.id.btnPredict1)).setBackgroundResource(R.drawable.dialog_button);
 	    	((Button) dialog.findViewById(R.id.btnPredict2)).setBackgroundResource(R.drawable.dialog_button);
+	    	((Button) dialog.findViewById(R.id.btnPredict2)).setVisibility(View.GONE);
 	    } else {
 	    	((TextView) dialog.findViewById(R.id.btnPredict1)).setText(matches.get(position).getHome_team_name() + "\n 승리");
 	    	((TextView) dialog.findViewById(R.id.btnPredict2)).setText("무승부");
 	    	((TextView) dialog.findViewById(R.id.btnPredict3)).setText(matches.get(position).getAway_team_name() + "\n 승리");
+	    	((Button) dialog.findViewById(R.id.btnPredict2)).setVisibility(View.GONE);
 	    }
 	    
 	    if((matches.get(position).getId() > 47) && (matches.get(position).getId() < 57)) {
@@ -276,6 +282,7 @@ public class TournamentBracketFragment extends Fragment implements FirstPageFrag
 	            dialog.dismiss();
 	            predictHomeVictory(position);
 	            //notifyDataSetChanged();
+	            drawArrows(position);
 	        }
 	        
 	        public View.OnClickListener init(int position){
@@ -313,6 +320,7 @@ public class TournamentBracketFragment extends Fragment implements FirstPageFrag
 	            dialog.dismiss();
 	            predictAwayVictory(position);
 	            //notifyDataSetChanged();
+	            drawArrows(position);
 	        }
 	        
 	        public View.OnClickListener init(int position){
@@ -320,6 +328,8 @@ public class TournamentBracketFragment extends Fragment implements FirstPageFrag
 	        	return this;
 	        }
 	    }.init(position)); 
+	    
+	    ((Button) dialog.findViewById(R.id.btnPredict2)).setVisibility(View.GONE);
 	    
 	    TableRow tr = (TableRow) dialog.findViewById(R.id.matchGroupTableRow);
 	    tr.setMinimumHeight(tr.getHeight() + 100);
@@ -335,6 +345,11 @@ public class TournamentBracketFragment extends Fragment implements FirstPageFrag
 			System.out.println("MATCH SIZE:"+matches.get(j));
 		}
 		
+		//arrow color
+		for(int i = 48; i < 61; i+=2) {
+			drawArrows(i);
+		}
+ 		
 		//16th round
 		for(int i = 0; i < 8; i++) {
 			String viewID = "round_of_16_" + (i+1);
@@ -384,6 +399,14 @@ public class TournamentBracketFragment extends Fragment implements FirstPageFrag
 			    int resIDAway = getResources().getIdentifier(awayImage, "drawable", context.getPackageName());
 				((ImageView) layout.findViewById(R.id.nations_home)).setImageResource(resIDHome);
 				((ImageView) layout.findViewById(R.id.nations_away)).setImageResource(resIDAway);
+				
+				final int position = i;
+			    layout.setOnClickListener(new OnClickListener() {
+	    			@Override
+	    			public void onClick(View v) {
+	    				detailInfo(position);
+	    			}
+	    		});
 			}
 		}
 		for(int i = 62; i < 64; i++) {
@@ -398,12 +421,150 @@ public class TournamentBracketFragment extends Fragment implements FirstPageFrag
 			    int resIDAway = getResources().getIdentifier(awayImage, "drawable", context.getPackageName());
 				((ImageView) layout.findViewById(R.id.nations_home)).setImageResource(resIDHome);
 				((ImageView) layout.findViewById(R.id.nations_away)).setImageResource(resIDAway);
+				
+				final int position = i;
+			    layout.setOnClickListener(new OnClickListener() {
+	    			@Override
+	    			public void onClick(View v) {
+	    				detailInfo(position);
+	    			}
+	    		});
 			}
 		}
-		
-		
-		
-		
+	}
+	
+	private void drawArrows(int position) {
+		//48 -55
+		//56 - 59
+		//60 - 61
+		//62 - 63
+		if(position > 47 && position < 56) {
+			if(position == 48 || position == 49) {
+				int pos = 48;
+				ImageView b16_1 = (ImageView) rootView.findViewById(R.id.bracket_16_1);
+				if((matches.get(pos).getProphet_home_win() == 1) && (matches.get(pos+1).getProphet_home_win() == 1)) {
+					b16_1.setImageResource(R.drawable.tour_arrow_hh);
+				} else if((matches.get(pos).getProphet_home_win() == 1) && (matches.get(pos+1).getProphet_away_win() == 1)) {
+					b16_1.setImageResource(R.drawable.tour_arrow_ha);
+				} else if((matches.get(pos).getProphet_away_win() == 1) && (matches.get(pos+1).getProphet_home_win() == 1)) {
+					b16_1.setImageResource(R.drawable.tour_arrow_ah);
+				} else if((matches.get(pos).getProphet_away_win() == 1) && (matches.get(pos+1).getProphet_away_win() == 1)) {
+					b16_1.setImageResource(R.drawable.tour_arrow_aa);
+				} else if((matches.get(pos).getProphet_home_win() == 1)) {
+					b16_1.setImageResource(R.drawable.tour_arrow_h0);
+				} else if((matches.get(pos).getProphet_away_win() == 1)) {
+					b16_1.setImageResource(R.drawable.tour_arrow_a0);
+				} else if((matches.get(pos+1).getProphet_home_win() == 1)) {
+					b16_1.setImageResource(R.drawable.tour_arrow_0h);
+				} else if((matches.get(pos+1).getProphet_away_win() == 1)) {
+					b16_1.setImageResource(R.drawable.tour_arrow_0a);
+				}
+			} else if(position == 50 || position == 51) {
+				int pos = 50;
+				ImageView b16_1 = (ImageView) rootView.findViewById(R.id.bracket_16_2);
+				if((matches.get(pos).getProphet_home_win() == 1) && (matches.get(pos+1).getProphet_home_win() == 1)) {
+					b16_1.setImageResource(R.drawable.tour_arrow_aa);
+				} else if((matches.get(pos).getProphet_home_win() == 1) && (matches.get(pos+1).getProphet_away_win() == 1)) {
+					b16_1.setImageResource(R.drawable.tour_arrow_ha);
+				} else if((matches.get(pos).getProphet_away_win() == 1) && (matches.get(pos+1).getProphet_home_win() == 1)) {
+					b16_1.setImageResource(R.drawable.tour_arrow_ah);
+				} else if((matches.get(pos).getProphet_away_win() == 1) && (matches.get(pos+1).getProphet_away_win() == 1)) {
+					b16_1.setImageResource(R.drawable.tour_arrow_hh);
+				} else if((matches.get(pos).getProphet_home_win() == 1)) {
+					b16_1.setImageResource(R.drawable.tour_arrow_0a);
+				} else if((matches.get(pos).getProphet_away_win() == 1)) {
+					b16_1.setImageResource(R.drawable.tour_arrow_0h);
+				} else if((matches.get(pos+1).getProphet_home_win() == 1)) {
+					b16_1.setImageResource(R.drawable.tour_arrow_a0);
+				} else if((matches.get(pos+1).getProphet_away_win() == 1)) {
+					b16_1.setImageResource(R.drawable.tour_arrow_h0);
+				}
+			} else if(position == 52 || position == 53) {
+				int pos = 52;
+				ImageView b16_1 = (ImageView) rootView.findViewById(R.id.bracket_16_3);
+				if((matches.get(pos).getProphet_home_win() == 1) && (matches.get(pos+1).getProphet_home_win() == 1)) {
+					b16_1.setImageResource(R.drawable.tour_arrow_hh);
+				} else if((matches.get(pos).getProphet_home_win() == 1) && (matches.get(pos+1).getProphet_away_win() == 1)) {
+					b16_1.setImageResource(R.drawable.tour_arrow_ha);
+				} else if((matches.get(pos).getProphet_away_win() == 1) && (matches.get(pos+1).getProphet_home_win() == 1)) {
+					b16_1.setImageResource(R.drawable.tour_arrow_ah);
+				} else if((matches.get(pos).getProphet_away_win() == 1) && (matches.get(pos+1).getProphet_away_win() == 1)) {
+					b16_1.setImageResource(R.drawable.tour_arrow_aa);
+				} else if((matches.get(pos).getProphet_home_win() == 1)) {
+					b16_1.setImageResource(R.drawable.tour_arrow_h0);
+				} else if((matches.get(pos).getProphet_away_win() == 1)) {
+					b16_1.setImageResource(R.drawable.tour_arrow_a0);
+				} else if((matches.get(pos+1).getProphet_home_win() == 1)) {
+					b16_1.setImageResource(R.drawable.tour_arrow_0h);
+				} else if((matches.get(pos+1).getProphet_away_win() == 1)) {
+					b16_1.setImageResource(R.drawable.tour_arrow_0a);
+				}
+			} else if(position == 54 || position == 55){
+				int pos = 54;
+				ImageView b16_1 = (ImageView) rootView.findViewById(R.id.bracket_16_4);
+				if((matches.get(pos).getProphet_home_win() == 1) && (matches.get(pos+1).getProphet_home_win() == 1)) {
+					b16_1.setImageResource(R.drawable.tour_arrow_aa);
+				} else if((matches.get(pos).getProphet_home_win() == 1) && (matches.get(pos+1).getProphet_away_win() == 1)) {
+					b16_1.setImageResource(R.drawable.tour_arrow_ha);
+				} else if((matches.get(pos).getProphet_away_win() == 1) && (matches.get(pos+1).getProphet_home_win() == 1)) {
+					b16_1.setImageResource(R.drawable.tour_arrow_ah);
+				} else if((matches.get(pos).getProphet_away_win() == 1) && (matches.get(pos+1).getProphet_away_win() == 1)) {
+					b16_1.setImageResource(R.drawable.tour_arrow_hh);
+				} else if((matches.get(pos).getProphet_home_win() == 1)) {
+					b16_1.setImageResource(R.drawable.tour_arrow_0a);
+				} else if((matches.get(pos).getProphet_away_win() == 1)) {
+					b16_1.setImageResource(R.drawable.tour_arrow_0h);
+				} else if((matches.get(pos+1).getProphet_home_win() == 1)) {
+					b16_1.setImageResource(R.drawable.tour_arrow_a0);
+				} else if((matches.get(pos+1).getProphet_away_win() == 1)) {
+					b16_1.setImageResource(R.drawable.tour_arrow_h0);
+				}
+			}
+		} else if(position > 55 && position < 60) {
+			if(position == 56 || position == 57) {
+				int pos = 56;
+				ImageView b16_1 = (ImageView) rootView.findViewById(R.id.bracket_8_1);
+				if((matches.get(pos).getProphet_home_win() == 1) && (matches.get(pos+1).getProphet_home_win() == 1)) {
+					b16_1.setImageResource(R.drawable.tour_arrow_hh_wide);
+				} else if((matches.get(pos).getProphet_home_win() == 1) && (matches.get(pos+1).getProphet_away_win() == 1)) {
+					b16_1.setImageResource(R.drawable.tour_arrow_ha_wide);
+				} else if((matches.get(pos).getProphet_away_win() == 1) && (matches.get(pos+1).getProphet_home_win() == 1)) {
+					b16_1.setImageResource(R.drawable.tour_arrow_ah_wide);
+				} else if((matches.get(pos).getProphet_away_win() == 1) && (matches.get(pos+1).getProphet_away_win() == 1)) {
+					b16_1.setImageResource(R.drawable.tour_arrow_aa_wide);
+				} else if((matches.get(pos).getProphet_home_win() == 1)) {
+					b16_1.setImageResource(R.drawable.tour_arrow_h0_wide);
+				} else if((matches.get(pos).getProphet_away_win() == 1)) {
+					b16_1.setImageResource(R.drawable.tour_arrow_a0_wide);
+				} else if((matches.get(pos+1).getProphet_home_win() == 1)) {
+					b16_1.setImageResource(R.drawable.tour_arrow_0h_wide);
+				} else if((matches.get(pos+1).getProphet_away_win() == 1)) {
+					b16_1.setImageResource(R.drawable.tour_arrow_0a_wide);
+				}
+			} else if(position == 58 || position == 59) {
+				int pos = 58;
+				ImageView b16_1 = (ImageView) rootView.findViewById(R.id.bracket_8_2);
+				if((matches.get(pos).getProphet_home_win() == 1) && (matches.get(pos+1).getProphet_home_win() == 1)) {
+					b16_1.setImageResource(R.drawable.tour_arrow_aa_wide);
+				} else if((matches.get(pos).getProphet_home_win() == 1) && (matches.get(pos+1).getProphet_away_win() == 1)) {
+					b16_1.setImageResource(R.drawable.tour_arrow_ha_wide);
+				} else if((matches.get(pos).getProphet_away_win() == 1) && (matches.get(pos+1).getProphet_home_win() == 1)) {
+					b16_1.setImageResource(R.drawable.tour_arrow_ah_wide);
+				} else if((matches.get(pos).getProphet_away_win() == 1) && (matches.get(pos+1).getProphet_away_win() == 1)) {
+					b16_1.setImageResource(R.drawable.tour_arrow_hh_wide);
+				} else if((matches.get(pos).getProphet_home_win() == 1)) {
+					b16_1.setImageResource(R.drawable.tour_arrow_0a_wide);
+				} else if((matches.get(pos).getProphet_away_win() == 1)) {
+					b16_1.setImageResource(R.drawable.tour_arrow_0h_wide);
+				} else if((matches.get(pos+1).getProphet_home_win() == 1)) {
+					b16_1.setImageResource(R.drawable.tour_arrow_a0_wide);
+				} else if((matches.get(pos+1).getProphet_away_win() == 1)) {
+					b16_1.setImageResource(R.drawable.tour_arrow_h0_wide);
+				}
+			}
+		} else if(position > 59 && position < 62) {
+			
+		}
 	}
 	
 	private void predictHomeVictory(int position) {
