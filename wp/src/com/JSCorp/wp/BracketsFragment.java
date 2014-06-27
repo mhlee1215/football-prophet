@@ -51,6 +51,8 @@ public class BracketsFragment extends Fragment implements FirstPageFragmentListe
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+		
+		System.out.println("In Fragment 1-1");
 
 		rootView = inflater.inflate(R.layout.activity_dynamic_bracket, container,
 				false);

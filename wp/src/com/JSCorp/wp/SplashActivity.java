@@ -146,8 +146,8 @@ public class SplashActivity extends Activity {
 			// TODO Auto-generated method stub
 			
 			TelephonyManager tManager = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
-			//String deviceId = tManager.getDeviceId();
-			String deviceId = "arsenal1";
+			String deviceId = tManager.getDeviceId();
+			//String deviceId = "arsenal1";
 			System.out.println("device Id :"+deviceId);
 			
 			user = UserService.getUserByDeviceId(deviceId);
