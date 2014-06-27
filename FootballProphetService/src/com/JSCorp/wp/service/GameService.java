@@ -606,7 +606,7 @@ public static boolean updateGameResult(FPGameResult gameResult) {
 		match_id++;
 		GameService.updateGameResult(gameResult);
 		
-		//
+		//21
 		
 		gameResult = new FPGameResult(match_id, "1", 2, 1);
 		match_id++;
@@ -617,10 +617,6 @@ public static boolean updateGameResult(FPGameResult gameResult) {
 		GameService.updateGameResult(gameResult);
 		
 		gameResult = new FPGameResult(match_id, "1", 2, 1);
-		match_id++;
-		GameService.updateGameResult(gameResult);
-		
-		gameResult = new FPGameResult(match_id, "1", 0, 0);
 		match_id++;
 		GameService.updateGameResult(gameResult);
 		
@@ -628,16 +624,26 @@ public static boolean updateGameResult(FPGameResult gameResult) {
 		match_id++;
 		GameService.updateGameResult(gameResult);
 		
-		//
+		//gameResult = new FPGameResult(match_id, "1", 1, 0);
+		//match_id++;
+		//GameService.updateGameResult(gameResult);
+		
+		
 		gameResult = new FPGameResult(match_id, "1", 2, 5);
 		match_id++;
 		GameService.updateGameResult(gameResult);
 		
+		//26
+		
 		gameResult = new FPGameResult(match_id, "1", 2, 1);
 		match_id++;
 		GameService.updateGameResult(gameResult);
 		
 		gameResult = new FPGameResult(match_id, "1", 1, 0);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+		
+		gameResult = new FPGameResult(match_id, "1", 0, 2);
 		match_id++;
 		GameService.updateGameResult(gameResult);
 		
@@ -721,7 +727,15 @@ public static boolean updateGameResult(FPGameResult gameResult) {
 		gameResult = new FPGameResult(match_id, "1", 1, 1);
 		match_id++;
 		GameService.updateGameResult(gameResult);
-		//36
+		
+		
+		//Tournament (dummy rightnow)
+//		match_id = 49;
+//		gameResult = new FPGameResult(match_id, "2", 0, 0);
+//		match_id++;
+//		GameService.updateGameResult(gameResult);
+		
+		
 		
 	}
 	
@@ -778,7 +792,7 @@ public static boolean updateGameResult(FPGameResult gameResult) {
 		//System.out.println(GameService.getGameMatchSchedules(62));
 		//System.out.println(GameService.getGameTeam());
 		//System.out.println(GameService.getAppInfo());
-		GameService.manualDummyUserAdd();
+		//GameService.manualDummyUserAdd();
 		GameService.manualUpdateGameResults();
 		if(1==1) return;
 
