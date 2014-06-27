@@ -155,7 +155,15 @@ public class RankListAdapter extends BaseAdapter {
 		        }
 		    }.setUrl(u.getTwitter())); 
 	    }else{
-	    	dialog.findViewById(R.id.btnTwitter).setVisibility(View.INVISIBLE);
+	    	//dialog.findViewById(R.id.btnTwitter).setVisibility(View.INVISIBLE);
+	    	Button twitterButton = (Button) dialog.findViewById(R.id.btnTwitter);
+		    // if button is clicked, close the custom dialog
+		    twitterButton.setOnClickListener(new View.OnClickListener() {
+		        @Override
+		        public void onClick(View v) {
+		        	//userPredictionInfo(position, target);
+		        }
+		    });
 	    }
 	    
 	    ImageButton dialogButton = (ImageButton) dialog.findViewById(R.id.imageButton1);
@@ -172,9 +180,26 @@ public class RankListAdapter extends BaseAdapter {
 	    dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
 	    dialog.show();
 	}
-	/*
-	public void refreshFragment() {
-		notifyDataSetChanged();
+	
+	public void userPredictionInfo(int position, List<FPUser> target) {
+
+		
+		final Dialog dialog = new Dialog(mContext);
+	    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); 
+	    dialog.setContentView(R.layout.rank_dialog);
+
+	    // set the custom dialog components - text and button
+	    //TextView text = (TextView) dialog.findViewById(R.id.txtDiaTitle);
+	    //TextView image = (TextView) dialog.findViewById(R.id.txtDiaMsg);
+
+	    List<FPUser> t = userRanks;
+	    if(target != null) t = target;
+	    
+	    FPUser u = t.get(position);
+	    
+	    System.out.println(">>U>>"+u);
+	    
+	    dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+	    dialog.show();
 	}
-	*/
 }

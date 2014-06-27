@@ -53,7 +53,7 @@
 			    android:src="@drawable/flag1" />
 
 			<TextView
-			    android:id="@+id/nations_vs"
+			    android:id="@+id/nations_vs_16_1"
 			    android:layout_width="wrap_content"
 			    android:layout_height="wrap_content"
 			    android:layout_weight="1"
@@ -61,6 +61,15 @@
 			    android:minWidth="30dp"
 			    android:text="vs"
 			    android:textSize="10sp" />
+			
+			<ImageView
+			    android:id="@+id/predictionResult_16_1"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_weight="1"
+			    android:gravity="center"
+			    android:minWidth="30dp"
+			    android:src="@drawable/ic_launcher" />
 
 			<ImageView
 			    android:id="@+id/nations_away"
@@ -90,7 +99,7 @@
 			    android:src="@drawable/flag9" />
 
 			<TextView
-			    android:id="@+id/nations_vs"
+			    android:id="@+id/nations_vs_16_2"
 			    android:layout_width="wrap_content"
 			    android:layout_height="wrap_content"
 			    android:layout_weight="1"
@@ -98,6 +107,15 @@
 			    android:minWidth="30dp"
 			    android:text="vs"
 			    android:textSize="10sp" />
+			
+			<ImageView
+			    android:id="@+id/predictionResult_16_2"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_weight="1"
+			    android:gravity="center"
+			    android:minWidth="30dp"
+			    android:src="@drawable/ic_launcher" />
 
 			<ImageView
 			    android:id="@+id/nations_away"
@@ -127,7 +145,7 @@
 			    android:src="@drawable/flag_empty" />
 
 			<TextView
-			    android:id="@+id/nations_vs"
+			    android:id="@+id/nations_vs_16_5"
 			    android:layout_width="wrap_content"
 			    android:layout_height="wrap_content"
 			    android:layout_weight="1"
@@ -135,6 +153,15 @@
 			    android:minWidth="30dp"
 			    android:text="vs"
 			    android:textSize="10sp" />
+			
+			<ImageView
+			    android:id="@+id/predictionResult_16_5"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_weight="1"
+			    android:gravity="center"
+			    android:minWidth="30dp"
+			    android:src="@drawable/ic_launcher" />
 
 			<ImageView
 			    android:id="@+id/nations_away"
@@ -164,7 +191,7 @@
 			    android:src="@drawable/flag_empty" />
 
 			<TextView
-			    android:id="@+id/nations_vs"
+			    android:id="@+id/nations_vs_16_6"
 			    android:layout_width="wrap_content"
 			    android:layout_height="wrap_content"
 			    android:layout_weight="1"
@@ -172,6 +199,15 @@
 			    android:minWidth="30dp"
 			    android:text="vs"
 			    android:textSize="10sp" />
+			
+			<ImageView
+			    android:id="@+id/predictionResult_16_6"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_weight="1"
+			    android:gravity="center"
+			    android:minWidth="30dp"
+			    android:src="@drawable/ic_launcher" />
 
 			<ImageView
 			    android:id="@+id/nations_away"
@@ -186,10 +222,27 @@
 	<LinearLayout
 	    android:layout_width="fill_parent"
 	    android:layout_height="fill_parent"
-	    android:paddingLeft="10dp"
+		android:paddingLeft="10dp"
         android:paddingRight="10dp"
 	    android:layout_weight="1"
 	    android:orientation="horizontal">
+		
+	    <ImageView
+	        android:id="@+id/bracket_16_1"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:layout_weight="1"
+	        android:scaleType="fitXY"
+	        android:src="@drawable/tour_arrow_0" />
+
+	    <ImageView
+	        android:id="@+id/bracket_16_3"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:layout_weight="1"
+	        android:scaleType="fitXY"
+	        android:src="@drawable/tour_arrow_0" />
+	    
 	</LinearLayout>
 	
 	<LinearLayout
@@ -587,6 +640,23 @@
         android:paddingRight="10dp"
 	    android:layout_weight="1"
 	    android:orientation="horizontal">
+		
+	    <ImageView
+	        android:id="@+id/bracket_16_2"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:layout_weight="1"
+	        android:scaleType="fitXY"
+	        android:src="@drawable/tour_arrow_0" />
+
+	    <ImageView
+	        android:id="@+id/bracket_16_4"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:layout_weight="1"
+	        android:scaleType="fitXY"
+	        android:src="@drawable/tour_arrow_0" />
+	    
 	</LinearLayout>
 	
 	<LinearLayout
@@ -616,7 +686,7 @@
 			    android:src="@drawable/flag6" />
 
 			<TextView
-			    android:id="@+id/nations_vs"
+			    android:id="@+id/nations_vs_16_3"
 			    android:layout_width="wrap_content"
 			    android:layout_height="wrap_content"
 			    android:layout_weight="1"
@@ -624,6 +694,15 @@
 			    android:minWidth="30dp"
 			    android:text="vs"
 			    android:textSize="10sp" />
+			
+			<ImageView
+			    android:id="@+id/predictionResult_16_3"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_weight="1"
+			    android:gravity="center"
+			    android:minWidth="30dp"
+			    android:src="@drawable/ic_launcher" />
 
 			<ImageView
 			    android:id="@+id/nations_away"
@@ -653,7 +732,7 @@
 			    android:src="@drawable/flag14" />
 
 			<TextView
-			    android:id="@+id/nations_vs"
+			    android:id="@+id/nations_vs_16_4"
 			    android:layout_width="wrap_content"
 			    android:layout_height="wrap_content"
 			    android:layout_weight="1"
@@ -661,6 +740,15 @@
 			    android:minWidth="30dp"
 			    android:text="vs"
 			    android:textSize="10sp" />
+			
+			<ImageView
+			    android:id="@+id/predictionResult_16_4"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_weight="1"
+			    android:gravity="center"
+			    android:minWidth="30dp"
+			    android:src="@drawable/ic_launcher" />
 
 			<ImageView
 			    android:id="@+id/nations_away"
@@ -690,7 +778,7 @@
 			    android:src="@drawable/flag_empty" />
 
 			<TextView
-			    android:id="@+id/nations_vs"
+			    android:id="@+id/nations_vs_16_7"
 			    android:layout_width="wrap_content"
 			    android:layout_height="wrap_content"
 			    android:layout_weight="1"
@@ -698,6 +786,15 @@
 			    android:minWidth="30dp"
 			    android:text="vs"
 			    android:textSize="10sp" />
+			
+			<ImageView
+			    android:id="@+id/predictionResult_16_7"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_weight="1"
+			    android:gravity="center"
+			    android:minWidth="30dp"
+			    android:src="@drawable/ic_launcher" />
 
 			<ImageView
 			    android:id="@+id/nations_away"
@@ -727,7 +824,7 @@
 			    android:src="@drawable/flag_empty" />
 
 			<TextView
-			    android:id="@+id/nations_vs"
+			    android:id="@+id/nations_vs_16_8"
 			    android:layout_width="wrap_content"
 			    android:layout_height="wrap_content"
 			    android:layout_weight="1"
@@ -735,6 +832,15 @@
 			    android:minWidth="30dp"
 			    android:text="vs"
 			    android:textSize="10sp" />
+			
+			<ImageView
+			    android:id="@+id/predictionResult_16_8"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_weight="1"
+			    android:gravity="center"
+			    android:minWidth="30dp"
+			    android:src="@drawable/ic_launcher" />
 
 			<ImageView
 			    android:id="@+id/nations_away"
