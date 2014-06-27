@@ -39,16 +39,17 @@ android:orientation="vertical">
     	
     	android:orientation="vertical"> 
     	
-    	<TableRow 
-        	android:layout_height="wrap_content" 
-        	android:layout_width="fill_parent" 
-        	android:layout_weight="0.1"
-        	android:gravity="center_horizontal">
+    	<TableRow
+    	    android:id="@+id/matchGroupTableRow"
+    	    android:layout_width="fill_parent"
+    	    android:layout_height="fill_parent"
+    	    android:layout_weight="0.1"
+    	    android:gravity="center_vertical|center_horizontal" >
+
         	<TextView
             android:id="@+id/matchGroup"
-            android:layout_height="fill_parent"
-            android:layout_width="0dp"
-            android:layout_weight="100"
+            android:layout_height="wrap_content"
+
             android:gravity="center"
             android:text="A조 조별매치"
             android:textAppearance="?android:attr/textAppearanceMedium"  />
@@ -82,28 +83,12 @@ android:orientation="vertical">
         	android:layout_height="wrap_content" 
         	android:layout_width="fill_parent" 
         	android:gravity="center_horizontal">
-        	<!--
-        	<TextView
-            android:id="@+id/nationA"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:gravity="center"
-            android:text="잉글랜드" />
-             -->
         	<TextView
             android:id="@+id/matchDate"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:gravity="center"
             android:text="06.18 07:00" />
-        	<!--
-        	<TextView
-            android:id="@+id/nationB"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:gravity="center"
-            android:text="보스니아\n 헤르체고비나" />
-             -->
    		</TableRow>  
    		
 		<TableRow 
