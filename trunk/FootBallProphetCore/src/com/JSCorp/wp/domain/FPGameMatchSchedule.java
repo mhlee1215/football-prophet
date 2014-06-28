@@ -31,6 +31,20 @@ public class FPGameMatchSchedule {
 	
 	int home_team_score = 0;
 	int away_team_score = 0;
+	
+	public boolean isHomeTeamWin(){
+		if( home_team_score > away_team_score)
+			return true;
+		else 
+			return false;
+	}
+	
+	public boolean isAwayTeamWin(){
+		if( home_team_score < away_team_score)
+			return true;
+		else 
+			return false;
+	}
 
 	
 	public String getReference_month() {
