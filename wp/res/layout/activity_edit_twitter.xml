@@ -16,17 +16,32 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Twitter ID를 입력 해주세요." />
 
-    <EditText
-        android:id="@+id/callForTwitter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+
+    
+    <LinearLayout
         android:layout_below="@+id/twitterText"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="5dp"
-        android:ems="10"
-        android:inputType="" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <EditText
+            android:id="@+id/callForTwitter"
+            android:layout_width="194dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="5dp"
+            android:ems="10" >
+
+            <requestFocus />
+        </EditText>
+
+        <Button
+            android:id="@+id/twitter_confirm_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/confirm" />
+    </LinearLayout>
+    
 
     <LinearLayout
     android:layout_width="match_parent"

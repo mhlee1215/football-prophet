@@ -35,28 +35,24 @@ public class EditNicknameActivity extends Activity {
 		// Enabling Up / Back navigation
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 
-		
-		
-		
-
 		if ("Y".equals(GlobalVars.user.getIs_nickname_initialized())) {
 			((TextView) this.findViewById(R.id.callForNickname))
-			.setText(GlobalVars.user.getNickname());
+					.setText(GlobalVars.user.getNickname());
 			// Remove Action bar accept button.
 			((TextView) this.findViewById(R.id.callForNickname))
 					.setEnabled(false);
 			((TextView) this.findViewById(R.id.nicknameText)).setText("내 닉네임:");
-			
+
 			Button confirm_button = (Button) findViewById(R.id.nickname_confirm_button);
 			confirm_button.setVisibility(View.INVISIBLE);
-		}else{
-			//((TextView) this.findViewById(R.id.callForNickname))
-			//.setText("");
+		} else {
+			// ((TextView) this.findViewById(R.id.callForNickname))
+			// .setText("");
 			Bundle b = getIntent().getExtras();
 			String isAfterSplash = b.getString("isAfterSplash");
 
 			System.out.println("isAfterSplash:" + isAfterSplash);
-			
+
 			Button confirm_button = (Button) findViewById(R.id.nickname_confirm_button);
 			confirm_button.setOnClickListener(new OnClickListener() {
 
@@ -65,40 +61,34 @@ public class EditNicknameActivity extends Activity {
 					// TODO Auto-generated method stub
 					checkNickValidation();
 				}
-				
+
 			});
 		}
 
-		
-
 	}
-	
-	public void checkNickValidation(){
+
+	public void checkNickValidation() {
 		String nickname_new = (String) ((TextView) this
-				.findViewById(R.id.callForNickname)).getText()
-				.toString();
+				.findViewById(R.id.callForNickname)).getText().toString();
 
 		if (nickname_new.length() < 4 || nickname_new.length() > 14) {
 			Toast.makeText(getApplicationContext(),
-					"닉네임을 4글자 이상, 14글자 미만으로 입력해주세요.",
-					Toast.LENGTH_SHORT).show();
-		}else{
-			
-			
+					"닉네임을 4글자 이상, 14글자 미만으로 입력해주세요.", Toast.LENGTH_SHORT)
+					.show();
+		} else {
+
 			FPUser user = new FPUser();
 			user.setDevice_id(GlobalVars.user.getDevice_id());
 			user.setNickname(nickname_new);
-			//new SetUserInfo().doInBackground(user, this);
-			//return true;
-			
+			// new SetUserInfo().doInBackground(user, this);
+			// return true;
+
 			new CheckUserInfo().doInBackground(user, this);
 		}
-		
-		
+
 	}
-	
-	
-	public void updateNickname(){
+
+	public void updateNickname() {
 		if ("Y".equals(GlobalVars.user.getIs_nickname_initialized())) {
 			System.out.println("CANNOT edit nick name, already set.");
 			Toast.makeText(getApplicationContext(),
@@ -108,8 +98,7 @@ public class EditNicknameActivity extends Activity {
 		} else if ("N".equals(GlobalVars.user.getIs_nickname_initialized())) {
 
 			String nickname_new = (String) ((TextView) this
-					.findViewById(R.id.callForNickname)).getText()
-					.toString();
+					.findViewById(R.id.callForNickname)).getText().toString();
 
 			FPUser user = new FPUser();
 			user.setDevice_id(GlobalVars.user.getDevice_id());
@@ -151,22 +140,22 @@ public class EditNicknameActivity extends Activity {
 			return super.onOptionsItemSelected(item);
 		}
 	}
-	
-	public void doAfterValidation(boolean isExist){
-		
-		if(isExist){
+
+	public void doAfterValidation(boolean isExist) {
+
+		if (isExist) {
 			Toast.makeText(getApplicationContext(), "이미 존재하는 닉네임 입니다.",
 					Toast.LENGTH_SHORT).show();
-		}else{
+		} else {
 			updateNickname();
-			
-//			Toast.makeText(getApplicationContext(), "존재하지 않는 닉네임 입니다.",
-//					Toast.LENGTH_SHORT).show();
+
+			// Toast.makeText(getApplicationContext(), "존재하지 않는 닉네임 입니다.",
+			// Toast.LENGTH_SHORT).show();
 		}
 	}
 
 	public void doAfterAction() {
-		
+
 		Bundle b = getIntent().getExtras();
 		String isAfterSplash = b.getString("isAfterSplash");
 		if ("Y".equals(isAfterSplash)) {
@@ -192,14 +181,15 @@ public class EditNicknameActivity extends Activity {
 			StrictMode.enableDefaults();
 			System.out.println("CHECK USER EXIST!");
 			// GameService.setGameProphet(gameProphet);
-			
-			boolean isUserExist = UserService.isUserExistByNickname(user.getNickname());
-			
+
+			boolean isUserExist = UserService.isUserExistByNickname(user
+					.getNickname());
+
 			// System.out.println("MATCH SIZE:"+matches.size());
 
-//			Toast.makeText(getApplicationContext(), "닉네임이 수정되었습니다.",
-//					Toast.LENGTH_SHORT).show();
-			
+			// Toast.makeText(getApplicationContext(), "닉네임이 수정되었습니다.",
+			// Toast.LENGTH_SHORT).show();
+
 			context.doAfterValidation(isUserExist);
 			return user;
 		}
@@ -208,10 +198,10 @@ public class EditNicknameActivity extends Activity {
 		protected void onPostExecute(Object result) {
 			// TODO Auto-generated method stub
 			super.onPostExecute(result);
-			//context.doAfterAction();
+			// context.doAfterAction();
 		}
 	}
-	
+
 	public class SetUserInfo extends AsyncTask {
 		EditNicknameActivity context;
 		FPUser user;
@@ -235,7 +225,7 @@ public class EditNicknameActivity extends Activity {
 
 			Toast.makeText(getApplicationContext(), "닉네임이 수정되었습니다.",
 					Toast.LENGTH_SHORT).show();
-			
+
 			context.doAfterAction();
 			return user;
 		}
@@ -244,7 +234,7 @@ public class EditNicknameActivity extends Activity {
 		protected void onPostExecute(Object result) {
 			// TODO Auto-generated method stub
 			super.onPostExecute(result);
-			//context.doAfterAction();
+			// context.doAfterAction();
 		}
 	}
 
