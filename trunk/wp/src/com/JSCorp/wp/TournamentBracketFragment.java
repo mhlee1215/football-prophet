@@ -432,7 +432,7 @@ public class TournamentBracketFragment extends Fragment implements FirstPageFrag
 			((ImageView) layout.findViewById(R.id.nations_away)).setImageResource(resIDAway);
 		}
 		for(int i = 56; i < 60; i++) {
-			if(matches.get(i).getHome_team_id() != 0) {
+			if(matches.get(i).getHome_team_id() != 0 && matches.get(i).getAway_team_id() != 0) {
 				String viewID = "quarter_final" + (i-55);
 			    int resID = getResources().getIdentifier(viewID, "id", context.getPackageName());
 			    LinearLayout layout = (LinearLayout) rootView.findViewById(resID);
@@ -455,7 +455,7 @@ public class TournamentBracketFragment extends Fragment implements FirstPageFrag
 			}
 		}
 		for(int i = 60; i < 62; i++) {
-			if(matches.get(i).getHome_team_id() != 0) {
+			if(matches.get(i).getHome_team_id() != 0 && matches.get(i).getAway_team_id() != 0) {
 				String viewID = "semi_final" + (i-59);
 			    int resID = getResources().getIdentifier(viewID, "id", context.getPackageName());
 			    LinearLayout layout = (LinearLayout) rootView.findViewById(resID);
@@ -477,7 +477,7 @@ public class TournamentBracketFragment extends Fragment implements FirstPageFrag
 			}
 		}
 		for(int i = 62; i < 64; i++) {
-			if(matches.get(i).getHome_team_id() != 0) {
+			if(matches.get(i).getHome_team_id() != 0 && matches.get(i).getAway_team_id() != 0) {
 				String viewID = "final2";
 				if(i == 63) {
 					viewID = "final1";
