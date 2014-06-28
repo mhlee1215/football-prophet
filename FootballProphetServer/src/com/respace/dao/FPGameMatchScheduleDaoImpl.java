@@ -23,6 +23,12 @@ public class FPGameMatchScheduleDaoImpl extends SqlMapClientDaoSupport {
 		List<FPGameMatchSchedule> array = getSqlMapClientTemplate().queryForList("GameMatchScheduleSql.readGameMatchScheduleList", gameMatchSchedule);
 		return array;
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<FPGameMatchSchedule> readGameMatchScheduleGroupResult(FPGameMatchSchedule gameMatchSchedule) {	
+		List<FPGameMatchSchedule> array = getSqlMapClientTemplate().queryForList("GameMatchScheduleSql.readGameMatchScheduleGroupResult", gameMatchSchedule);
+		return array;
+	}
 
 	public FPGameMatchSchedule readGameMatchSchedule(FPGameMatchSchedule gameMatchSchedule) {
 		FPGameMatchSchedule result = (FPGameMatchSchedule)getSqlMapClientTemplate().queryForObject("GameMatchScheduleSql.readGameMatchSchedule", gameMatchSchedule);
