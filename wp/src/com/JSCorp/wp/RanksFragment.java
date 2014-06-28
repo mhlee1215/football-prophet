@@ -163,6 +163,7 @@ public class RanksFragment extends Fragment {
 		myInfo.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				System.out.println(GlobalVars.user.getPosition());
 				listAdapter.detailInfo(GlobalVars.user.getPosition(), userRanks);
 			}
 		});
@@ -194,7 +195,7 @@ public class RanksFragment extends Fragment {
 				tContext.userTopRanks = userRanks;
 				tContext.userRanks = new ArrayList<FPUser>();
 			} else {
-				if(userRanks.get(3).getRank() == 4) {
+				if(userRanks.get(3).getRank() < 4) {
 					tContext.userTopRanks = new ArrayList<FPUser>();
 					tContext.userRanks = userRanks;
 				} else {
