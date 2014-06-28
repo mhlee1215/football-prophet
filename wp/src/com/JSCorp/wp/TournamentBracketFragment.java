@@ -91,6 +91,18 @@ public class TournamentBracketFragment extends Fragment implements FirstPageFrag
         int f_margin = ((width - 80) / 3) - ((width - 80) / 4);
         
         int bracket_margin_16 = qf_margin / 2;
+        
+        ImageView b16_1_pre = (ImageView) rootView.findViewById(R.id.bracket_16_1_pre);
+        b16_1_pre.setPadding(bracket_margin_16, 0, bracket_margin_16, 0);
+//		ImageView b16_2_pre = (ImageView) rootView.findViewById(R.id.bracket_16_2_pre);
+//		b16_2_pre.setPadding(bracket_margin_16, 0, bracket_margin_16, 0);
+//		b16_2_pre.setRotation(180);
+		ImageView b16_3_pre = (ImageView) rootView.findViewById(R.id.bracket_16_3_pre);
+		b16_3_pre.setPadding(bracket_margin_16, 0, bracket_margin_16, 0);
+//		ImageView b16_4_pre = (ImageView) rootView.findViewById(R.id.bracket_16_4_pre);
+//		b16_4_pre.setPadding(bracket_margin_16, 0, bracket_margin_16, 0);
+//		b16_4_pre.setRotation(180);
+        
         ImageView b16_1 = (ImageView) rootView.findViewById(R.id.bracket_16_1);
 		b16_1.setPadding(bracket_margin_16, 0, bracket_margin_16, 0);
 		ImageView b16_2 = (ImageView) rootView.findViewById(R.id.bracket_16_2);
@@ -101,6 +113,9 @@ public class TournamentBracketFragment extends Fragment implements FirstPageFrag
 		ImageView b16_4 = (ImageView) rootView.findViewById(R.id.bracket_16_4);
 		b16_4.setPadding(bracket_margin_16, 0, bracket_margin_16, 0);
 		b16_4.setRotation(180);
+		
+		
+		
 		
 		int bracket_margin_8 = qf_margin + (qf_margin / 2) - 20;
 		ImageView b8_1 = (ImageView) rootView.findViewById(R.id.bracket_8_1);
@@ -449,6 +464,7 @@ public class TournamentBracketFragment extends Fragment implements FirstPageFrag
 			if(position == 48 || position == 49) {
 				int pos = 48;
 				ImageView b16_1 = (ImageView) rootView.findViewById(R.id.bracket_16_1);
+				ImageView b16_1_pre = (ImageView) rootView.findViewById(R.id.bracket_16_1_pre);
 				
 				if("Y".equals(matches.get(pos).getMatch_finished())){
 					if((matches.get(pos).getMatch_home_win() == 1) && (matches.get(pos+1).getMatch_home_win() == 1)) {
@@ -468,25 +484,26 @@ public class TournamentBracketFragment extends Fragment implements FirstPageFrag
 					} else if((matches.get(pos+1).getMatch_away_win() == 1)) {
 						b16_1.setImageResource(R.drawable.tour_arrow_0a);
 					}	
-				}else{
-					if((matches.get(pos).getProphet_home_win() == 1) && (matches.get(pos+1).getProphet_home_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_hh);
-					} else if((matches.get(pos).getProphet_home_win() == 1) && (matches.get(pos+1).getProphet_away_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_ha);
-					} else if((matches.get(pos).getProphet_away_win() == 1) && (matches.get(pos+1).getProphet_home_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_ah);
-					} else if((matches.get(pos).getProphet_away_win() == 1) && (matches.get(pos+1).getProphet_away_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_aa);
-					} else if((matches.get(pos).getProphet_home_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_h0);
-					} else if((matches.get(pos).getProphet_away_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_a0);
-					} else if((matches.get(pos+1).getProphet_home_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_0h);
-					} else if((matches.get(pos+1).getProphet_away_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_0a);
-					}	
 				}
+
+				if((matches.get(pos).getProphet_home_win() == 1) && (matches.get(pos+1).getProphet_home_win() == 1)) {
+					b16_1_pre.setImageResource(R.drawable.tour_arrow_hh_pre);
+				} else if((matches.get(pos).getProphet_home_win() == 1) && (matches.get(pos+1).getProphet_away_win() == 1)) {
+					b16_1_pre.setImageResource(R.drawable.tour_arrow_ha_pre);
+				} else if((matches.get(pos).getProphet_away_win() == 1) && (matches.get(pos+1).getProphet_home_win() == 1)) {
+					b16_1_pre.setImageResource(R.drawable.tour_arrow_ah_pre);
+				} else if((matches.get(pos).getProphet_away_win() == 1) && (matches.get(pos+1).getProphet_away_win() == 1)) {
+					b16_1_pre.setImageResource(R.drawable.tour_arrow_aa_pre);
+				} else if((matches.get(pos).getProphet_home_win() == 1)) {
+					b16_1_pre.setImageResource(R.drawable.tour_arrow_h0_pre);
+				} else if((matches.get(pos).getProphet_away_win() == 1)) {
+					b16_1_pre.setImageResource(R.drawable.tour_arrow_a0_pre);
+				} else if((matches.get(pos+1).getProphet_home_win() == 1)) {
+					b16_1_pre.setImageResource(R.drawable.tour_arrow_0h_pre);
+				} else if((matches.get(pos+1).getProphet_away_win() == 1)) {
+					b16_1_pre.setImageResource(R.drawable.tour_arrow_0a_pre);
+				}	
+
 				
 				
 			} else if(position == 50 || position == 51) {
@@ -534,45 +551,47 @@ public class TournamentBracketFragment extends Fragment implements FirstPageFrag
 				
 			} else if(position == 52 || position == 53) {
 				int pos = 52;
-				ImageView b16_1 = (ImageView) rootView.findViewById(R.id.bracket_16_3);
+				ImageView b16_3 = (ImageView) rootView.findViewById(R.id.bracket_16_3);
+				ImageView b16_3_pre = (ImageView) rootView.findViewById(R.id.bracket_16_3_pre);
 				
 				if("Y".equals(matches.get(pos).getMatch_finished())){
 					if((matches.get(pos).getMatch_home_win() == 1) && (matches.get(pos+1).getMatch_home_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_hh);
+						b16_3.setImageResource(R.drawable.tour_arrow_hh);
 					} else if((matches.get(pos).getMatch_home_win() == 1) && (matches.get(pos+1).getMatch_away_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_ha);
+						b16_3.setImageResource(R.drawable.tour_arrow_ha);
 					} else if((matches.get(pos).getMatch_away_win() == 1) && (matches.get(pos+1).getMatch_home_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_ah);
+						b16_3.setImageResource(R.drawable.tour_arrow_ah);
 					} else if((matches.get(pos).getMatch_away_win() == 1) && (matches.get(pos+1).getMatch_away_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_aa);
+						b16_3.setImageResource(R.drawable.tour_arrow_aa);
 					} else if((matches.get(pos).getMatch_home_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_h0);
+						b16_3.setImageResource(R.drawable.tour_arrow_h0);
 					} else if((matches.get(pos).getMatch_away_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_a0);
+						b16_3.setImageResource(R.drawable.tour_arrow_a0);
 					} else if((matches.get(pos+1).getMatch_home_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_0h);
+						b16_3.setImageResource(R.drawable.tour_arrow_0h);
 					} else if((matches.get(pos+1).getMatch_away_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_0a);
-					}
-				}else{
-					if((matches.get(pos).getProphet_home_win() == 1) && (matches.get(pos+1).getProphet_home_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_hh);
-					} else if((matches.get(pos).getProphet_home_win() == 1) && (matches.get(pos+1).getProphet_away_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_ha);
-					} else if((matches.get(pos).getProphet_away_win() == 1) && (matches.get(pos+1).getProphet_home_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_ah);
-					} else if((matches.get(pos).getProphet_away_win() == 1) && (matches.get(pos+1).getProphet_away_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_aa);
-					} else if((matches.get(pos).getProphet_home_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_h0);
-					} else if((matches.get(pos).getProphet_away_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_a0);
-					} else if((matches.get(pos+1).getProphet_home_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_0h);
-					} else if((matches.get(pos+1).getProphet_away_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_0a);
+						b16_3.setImageResource(R.drawable.tour_arrow_0a);
 					}
 				}
+				
+				if((matches.get(pos).getProphet_home_win() == 1) && (matches.get(pos+1).getProphet_home_win() == 1)) {
+					b16_3_pre.setImageResource(R.drawable.tour_arrow_hh_pre);
+				} else if((matches.get(pos).getProphet_home_win() == 1) && (matches.get(pos+1).getProphet_away_win() == 1)) {
+					b16_3_pre.setImageResource(R.drawable.tour_arrow_ha_pre);
+				} else if((matches.get(pos).getProphet_away_win() == 1) && (matches.get(pos+1).getProphet_home_win() == 1)) {
+					b16_3_pre.setImageResource(R.drawable.tour_arrow_ah_pre);
+				} else if((matches.get(pos).getProphet_away_win() == 1) && (matches.get(pos+1).getProphet_away_win() == 1)) {
+					b16_3_pre.setImageResource(R.drawable.tour_arrow_aa_pre);
+				} else if((matches.get(pos).getProphet_home_win() == 1)) {
+					b16_3_pre.setImageResource(R.drawable.tour_arrow_h0_pre);
+				} else if((matches.get(pos).getProphet_away_win() == 1)) {
+					b16_3_pre.setImageResource(R.drawable.tour_arrow_a0_pre);
+				} else if((matches.get(pos+1).getProphet_home_win() == 1)) {
+					b16_3_pre.setImageResource(R.drawable.tour_arrow_0h_pre);
+				} else if((matches.get(pos+1).getProphet_away_win() == 1)) {
+					b16_3_pre.setImageResource(R.drawable.tour_arrow_0a_pre);
+				}
+				
 				
 				
 			} else if(position == 54 || position == 55){
