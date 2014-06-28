@@ -230,13 +230,13 @@ public class SplashActivity extends Activity {
 			
 			TelephonyManager tManager = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
 			String deviceId = tManager.getDeviceId();
-			//String deviceId = "arsenal12";
+			//deviceId = "arsenal12";
 			//deviceId = "test_device_id2";
 			System.out.println("device Id :"+deviceId);
 			
 			user = UserService.getUserByDeviceIdEx(deviceId);
 			if(GlobalVars.isDebugMode)
-				//System.out.println("user: "+user);
+				System.out.println("user: "+user);
 			
 			if(user == null){
 				//add user

@@ -2,12 +2,11 @@ package com.JSCorp.wp.adapter;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import com.JSCorp.wp.R;
 import com.JSCorp.wp.domain.FPGameMatchSchedule;
 import com.JSCorp.wp.domain.FPUser;
 import com.JSCorp.wp.service.GameService;
-
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -101,9 +100,8 @@ public class RankListAdapter extends BaseAdapter {
 		detailInfo(position, null);
 	}
 	
-	public void detailInfo(int position, List<FPUser> target) {
-
-		
+	@SuppressLint("NewApi")
+	public void detailInfo(FPUser user){
 		Display display = ((WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
 		Point size = new Point();
         display.getSize(size); 
@@ -122,19 +120,16 @@ public class RankListAdapter extends BaseAdapter {
 	    
 	    dialog.getWindow().setAttributes(lp);
 
-	    List<FPUser> t = userRanks;
-	    if(target != null) t = target;
 	    
-	    FPUser u = t.get(position);
 	    
-	    System.out.println(">>U>>"+u);
+	    System.out.println(">>U>>"+user);
 	    
-	    ((TextView) dialog.findViewById(R.id.nickname)).setText(u.getNickname());
-	    ((TextView) dialog.findViewById(R.id.tag1)).setText(u.getTag());
-	    String rate_str = "예언 적중률: " + String.format("%.1f", u.getRight_prophet_ratio() * 100) + "% 예언적중/총예언수: " + String.valueOf(u.getRight_prophet_num()) + "/" + String.valueOf(u.getProphet_num());
+	    ((TextView) dialog.findViewById(R.id.nickname)).setText(user.getNickname());
+	    ((TextView) dialog.findViewById(R.id.tag1)).setText(user.getTag());
+	    String rate_str = "예언 적중률: " + String.format("%.1f", user.getRight_prophet_ratio() * 100) + "% 예언적중/총예언수: " + String.valueOf(user.getRight_prophet_num()) + "/" + String.valueOf(user.getProphet_num());
 	    ((TextView) dialog.findViewById(R.id.rate)).setText(rate_str);
 	    
-	    printUserPredictions(dialog, u.getId());
+	    printUserPredictions(dialog, user.getId());
 	    
 	    
 	    /*
@@ -204,6 +199,15 @@ public class RankListAdapter extends BaseAdapter {
 	    
 	    dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
 	    dialog.show();
+	}
+	
+	@SuppressLint("NewApi")
+	public void detailInfo(int position, List<FPUser> target) {
+		List<FPUser> t = userRanks;
+	    if(target != null) t = target;
+	    FPUser user = t.get(position);
+	    
+	    detailInfo(user);
 	}
 	
 	public void printUserPredictions(Dialog dialog, int userID) {
