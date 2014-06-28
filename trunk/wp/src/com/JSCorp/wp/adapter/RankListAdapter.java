@@ -134,9 +134,6 @@ public class RankListAdapter extends BaseAdapter {
 	    String rate_str = "예언 적중률: " + String.format("%.1f", u.getRight_prophet_ratio() * 100) + "% 예언적중/총예언수: " + String.valueOf(u.getRight_prophet_num()) + "/" + String.valueOf(u.getProphet_num());
 	    ((TextView) dialog.findViewById(R.id.rate)).setText(rate_str);
 	    
-	    //((TextView) dialog.findViewById(R.id.myPrediction)).setText(" - ");
-	    //System.out.println("다른사람 예언: " +GameService.getGameMatchSchedules(u.getId()));
-	    //LinearLayout layout16 = (LinearLayout) dialog.findViewById(resID);
 	    printUserPredictions(dialog, u.getId());
 	    
 	    
@@ -191,6 +188,7 @@ public class RankListAdapter extends BaseAdapter {
 	        	userPredictionInfo(pos, tar);
 	        }
 	    });
+	    */
 	    
 	    ImageButton dialogButton = (ImageButton) dialog.findViewById(R.id.imageButton1);
 	    // if button is clicked, close the custom dialog
@@ -202,7 +200,7 @@ public class RankListAdapter extends BaseAdapter {
 
 	        }
 	    }); 
-	    */
+	    
 	    
 	    dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
 	    dialog.show();
