@@ -412,10 +412,12 @@ public class TournamentBracketFragment extends Fragment implements FirstPageFrag
 		}
 		for(int i = 62; i < 64; i++) {
 			if(matches.get(i).getHome_team_id() != 0) {
-				String viewID = "final" + (i-61);
+				String viewID = "final2";
+				if(i == 63) {
+					viewID = "final1";
+				}
 			    int resID = getResources().getIdentifier(viewID, "id", context.getPackageName());
 			    LinearLayout layout = (LinearLayout) rootView.findViewById(resID);
-			    
 			    String homeImage = "flag" + Integer.toString(matches.get(i).getHome_team_id());
 			    String awayImage = "flag" + Integer.toString(matches.get(i).getAway_team_id());
 			    int resIDHome = getResources().getIdentifier(homeImage, "drawable", context.getPackageName());
