@@ -234,7 +234,7 @@ public class SplashActivity extends Activity {
 			//deviceId = "test_device_id2";
 			System.out.println("device Id :"+deviceId);
 			
-			user = UserService.getUserByDeviceId(deviceId);
+			user = UserService.getUserByDeviceIdEx(deviceId);
 			if(GlobalVars.isDebugMode)
 				//System.out.println("user: "+user);
 			
@@ -255,7 +255,7 @@ public class SplashActivity extends Activity {
 					e.printStackTrace();
 				}
 				
-				user = UserService.getUserByDeviceId(deviceId);
+				user = UserService.getUserByDeviceIdEx(deviceId);
 				GlobalVars.user = user;
 			}else{
 				Log.i(GlobalVars.WP_INFO_TAG, "USER ALREADY EXISTS");
