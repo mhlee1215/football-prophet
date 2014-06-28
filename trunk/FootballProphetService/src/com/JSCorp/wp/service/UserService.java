@@ -187,16 +187,16 @@ public class UserService {
 
 	public static FPUser getUserByDeviceIdEx(String device_id) {
 		FPUser user = getUserByDeviceId(device_id);
-
-		FPUser userParam = new FPUser();
-		userParam.setId(user.getId());
-		List<FPUser> rankUsers = UserService.getRankingUsers(userParam);
-		if(rankUsers.size() == 1){
-			user.setFinished_game_num(rankUsers.get(0).getFinished_game_num());
-			user.setProphet_num(rankUsers.get(0).getProphet_num());
-			user.setRight_prophet_num(rankUsers.get(0).getRight_prophet_num());
-			user.setRight_prophet_ratio(rankUsers.get(0).getRight_prophet_ratio());
-			
+		if(user != null){
+			FPUser userParam = new FPUser();
+			userParam.setId(user.getId());
+			List<FPUser> rankUsers = UserService.getRankingUsers(userParam);
+			if(rankUsers.size() == 1){
+				user.setFinished_game_num(rankUsers.get(0).getFinished_game_num());
+				user.setProphet_num(rankUsers.get(0).getProphet_num());
+				user.setRight_prophet_num(rankUsers.get(0).getRight_prophet_num());
+				user.setRight_prophet_ratio(rankUsers.get(0).getRight_prophet_ratio());	
+			}
 		}
 		
 //		ArrayList<FPGameResult> gameResults = GameService
