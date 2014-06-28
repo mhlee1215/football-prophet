@@ -141,6 +141,8 @@ public class RanksFragment extends Fragment {
 	        }
 		
 		
+		System.out.println("userRanksAll: " +userRanksAll);
+		
 		for(FPUser user : userRanksAll){
 			if(user.getId() == GlobalVars.user.getId()){
 				GlobalVars.user.setRank(user.getRank());
@@ -148,6 +150,8 @@ public class RanksFragment extends Fragment {
 				break;
 			}
 		}
+		
+		System.out.println("GlobalVars.user: "+GlobalVars.user);
 		
 		String rankStr = "-위"; 
 		if(GlobalVars.user.getRank() > 0)
@@ -164,7 +168,7 @@ public class RanksFragment extends Fragment {
 			@Override
 			public void onClick(View v) {
 				System.out.println(GlobalVars.user.getPosition());
-				listAdapter.detailInfo(GlobalVars.user.getPosition(), userRanks);
+				listAdapter.detailInfo(GlobalVars.user);
 			}
 		});
 		
