@@ -231,7 +231,7 @@ public class GameService {
 
 		ArrayList<FPGameProphet> prophets = new ArrayList<FPGameProphet>();
 		try {
-			InputStream in = new URL(Env.url + "api.readGameCorrect.do"
+			InputStream in = new URL(Env.url + "api.readGameProphetCorrect.do"
 					+ "?user_id=" + Integer.toString(user_id)).openStream();
 			JsonReader reader = new JsonReader(new InputStreamReader(in,
 					"UTF-8"));

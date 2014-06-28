@@ -195,6 +195,8 @@ public class UserService {
 		user.setProphet_num(GameService.getGameProphetFinished(user.getId()));
 		user.setRight_prophet_num(GameService.getGameProphetCorrect(user
 				.getId()));
+		
+		System.out.println("user! :"+user);
 
 		return user;
 	}
@@ -544,7 +546,7 @@ public class UserService {
 		// System.out.println(UserService.isUserExistByDeviceId(String.format("%010d",
 		// 100)));
 
-		int test_case = 6;
+		int test_case = 7;
 
 		if (test_case == 1) {
 			// 0000000140
@@ -573,6 +575,8 @@ public class UserService {
 			System.out.println(UserService.getRankingUsers(user));
 		} else if(test_case == 6){
 			System.out.println(UserService.isUserExistByNickname("ㅇㅇㅇㅇ2"));
+		} else if(test_case == 7){
+			System.out.println(GameService.getGameProphetCorrect(119));
 		}
 
 		// UserService.updateUser(userupdate);
