@@ -220,7 +220,7 @@ public class PredictionListAdapter extends BaseAdapter {
 	}
 	
 	public void detailInfo(int position) {
-		
+		System.out.println("매치@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 		final Dialog dialog = new Dialog(mContext);
 	    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); 
 	    dialog.setContentView(R.layout.prediction_dialog);
@@ -298,6 +298,14 @@ public class PredictionListAdapter extends BaseAdapter {
 	    Button predictionButton2 = (Button) dialog.findViewById(R.id.btnPredict2);
 	    Button predictionButton3 = (Button) dialog.findViewById(R.id.btnPredict3);
 	    
+	    System.out.println("매치@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@: " + matches.get(position));
+	    if((matches.get(position).getMatch_finished().equals("Y")) || (matches.get(position).getMatch_finished().equals("NOW"))) {
+	    	System.out.println("매치@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@: " + matches.get(position));
+	    	dialog.findViewById(R.id.btnPredict1).setVisibility(View.GONE);
+	    	dialog.findViewById(R.id.btnPredict2).setVisibility(View.GONE);
+	    	dialog.findViewById(R.id.btnPredict3).setVisibility(View.GONE);
+	    } else {
+	    
 	    predictionButton1.setOnClickListener(new View.OnClickListener() {
 
 	    	int position;
@@ -351,6 +359,8 @@ public class PredictionListAdapter extends BaseAdapter {
 	        	return this;
 	        }
 	    }.init(position)); 
+	    
+	    }
 	    
 	    dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
 	    dialog.show();

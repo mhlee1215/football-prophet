@@ -119,7 +119,7 @@ android:orientation="vertical">
             	android:padding="5dip"
             	android:gravity="center"
             	android:background="@drawable/dialog_button"
-            	android:text="무승부 예언"
+            	android:text="경기종료/n"
             	android:textAppearance="?android:attr/textAppearanceSmall" />
         	<Button
             	android:id="@+id/btnPredict3"

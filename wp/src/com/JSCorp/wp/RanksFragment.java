@@ -22,6 +22,7 @@ import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
@@ -157,6 +158,13 @@ public class RanksFragment extends Fragment {
 		TextView tag = (TextView) rootView.findViewById(R.id.tag);
 		tag.setText(GlobalVars.user.getTag());
 		
+		RelativeLayout myInfo = (RelativeLayout) rootView.findViewById(R.id.myInfo);
+		myInfo.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				listAdapter.detailInfo(GlobalVars.user.getPosition(), userRanks);
+			}
+		});
 		
 		/*
 		if(GlobalVars.dynamicBracketDialog.isShowing())

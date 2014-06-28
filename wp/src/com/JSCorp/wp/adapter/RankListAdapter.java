@@ -254,13 +254,23 @@ public class RankListAdapter extends BaseAdapter {
 				 } else{
 				  	((TextView) layout.findViewById(R.id.myPrediction)).setText("");
 				 }
+				 (layout.findViewById(R.id.matchResult)).setVisibility(View.GONE);
+				 
 				 
 			} else if(userPredictionList.get(position).getMatch_finished().equals("Y")) {
 				(layout.findViewById(R.id.myPrediction)).setVisibility(View.GONE);
 				(layout.findViewById(R.id.predictionResult)).setVisibility(View.VISIBLE);
 				
+				(layout.findViewById(R.id.matchResult)).setVisibility(View.VISIBLE);
+				
 				int homeScore = userPredictionList.get(position).getHome_team_score();
 				int awayScore = userPredictionList.get(position).getAway_team_score();
+				
+				if(homeScore > awayScore) {
+					((TextView) layout.findViewById(R.id.matchResult)).setText((userPredictionList.get(position).getHome_team_name()) + " 승리");
+				} else {
+					
+				}
 				
 				 if(userPredictionList.get(position).getProphet_home_win() == 1) {
 					 if(homeScore > awayScore) {
@@ -283,11 +293,13 @@ public class RankListAdapter extends BaseAdapter {
 				 } else{
 					 (layout.findViewById(R.id.myPrediction)).setVisibility(View.VISIBLE);
 						(layout.findViewById(R.id.predictionResult)).setVisibility(View.GONE);
-						((TextView) layout.findViewById(R.id.myPrediction)).setText(" - ");
+						((TextView) layout.findViewById(R.id.myPrediction)).setText(" 예언 없음 ");
 				 }
 			} else if(userPredictionList.get(position).getMatch_finished().equals("NOW")) {
 				(layout.findViewById(R.id.predictionResult)).setVisibility(View.GONE);
 				(layout.findViewById(R.id.myPrediction)).setVisibility(View.VISIBLE);	
+				
+				(layout.findViewById(R.id.matchResult)).setVisibility(View.GONE);
 				
 				 if(userPredictionList.get(position).getProphet_home_win() == 1) {
 					 ((TextView) layout.findViewById(R.id.myPrediction)).setText((userPredictionList.get(position).getHome_team_name()) + " 승리 예언");
