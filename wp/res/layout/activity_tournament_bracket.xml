@@ -417,7 +417,6 @@
 	    android:layout_weight="1"
 	    android:orientation="horizontal">
 		<LinearLayout
-		    android:id="@+id/final1"
 		    android:layout_width="fill_parent"
 		    android:layout_height="fill_parent"
 		    android:paddingTop="8dp"
