@@ -25,6 +25,10 @@ public class FPGameMatchScheduleServiceImpl{
 	public List<FPGameMatchSchedule> readGameMatchScheduleList(FPGameMatchSchedule gameMatchSchedule) {
 		return gameMatchScheduleDao.readGameMatchScheduleList(gameMatchSchedule);
 	}
+	
+	public List<FPGameMatchSchedule> readGameMatchScheduleGroupResult(FPGameMatchSchedule gameMatchSchedule) {
+		return gameMatchScheduleDao.readGameMatchScheduleGroupResult(gameMatchSchedule);
+	}
 
 	public int createGameMatchSchedule(FPGameMatchSchedule gameMatchSchedule) throws Exception {
 		return gameMatchScheduleDao.createGameMatchSchedule(gameMatchSchedule);
