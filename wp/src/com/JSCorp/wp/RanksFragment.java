@@ -144,6 +144,7 @@ public class RanksFragment extends Fragment {
 		for(FPUser user : userRanksAll){
 			if(user.getId() == GlobalVars.user.getId()){
 				GlobalVars.user.setRank(user.getRank());
+				GlobalVars.user.setPosition(user.getPosition());
 				break;
 			}
 		}
