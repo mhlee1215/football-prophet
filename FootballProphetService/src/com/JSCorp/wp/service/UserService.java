@@ -42,8 +42,10 @@ public class UserService {
 		HttpClient httpclient = new DefaultHttpClient();
 		try {
 
+			String nicknameEncoded = (URLEncoder.encode(nickname, "UTF-8"));
+			
 			HttpGet httpget = new HttpGet(Env.url + "api.isUserExist.do"
-					+ "?nickname=" + nickname);
+					+ "?nickname=" + nicknameEncoded);
 
 			HttpResponse response = httpclient.execute(httpget);
 			HttpEntity entity = response.getEntity();
@@ -541,7 +543,7 @@ public class UserService {
 		// System.out.println(UserService.isUserExistByDeviceId(String.format("%010d",
 		// 100)));
 
-		int test_case = 3;
+		int test_case = 6;
 
 		if (test_case == 1) {
 			// 0000000140
@@ -568,6 +570,8 @@ public class UserService {
 			FPUser user = new FPUser();
 			user.setId(67);
 			System.out.println(UserService.getRankingUsers(user));
+		} else if(test_case == 6){
+			System.out.println(UserService.isUserExistByNickname("ㅇㅇㅇㅇ2"));
 		}
 
 		// UserService.updateUser(userupdate);

@@ -32,6 +32,20 @@ public class FPGameMatchSchedule {
 	int home_team_score = 0;
 	int away_team_score = 0;
 	
+	public int getMatch_home_win(){
+		if( home_team_score > away_team_score)
+			return 1;
+		else 
+			return 0;
+	}
+	
+	public int getMatch_away_win(){
+		if( home_team_score < away_team_score)
+			return 1;
+		else 
+			return 0;
+	}
+	
 	public boolean isHomeTeamWin(){
 		if( home_team_score > away_team_score)
 			return true;
