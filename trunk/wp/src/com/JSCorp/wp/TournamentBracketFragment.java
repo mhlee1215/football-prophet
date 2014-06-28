@@ -432,19 +432,23 @@ public class TournamentBracketFragment extends Fragment implements FirstPageFrag
 			((ImageView) layout.findViewById(R.id.nations_away)).setImageResource(resIDAway);
 		}
 		for(int i = 56; i < 60; i++) {
-			if(matches.get(i).getHome_team_id() != 0 && matches.get(i).getAway_team_id() != 0) {
-				String viewID = "quarter_final" + (i-55);
-			    int resID = getResources().getIdentifier(viewID, "id", context.getPackageName());
-			    LinearLayout layout = (LinearLayout) rootView.findViewById(resID);
-			    
-			    String homeImage = "flag" + Integer.toString(matches.get(i).getHome_team_id());
-			    String awayImage = "flag" + Integer.toString(matches.get(i).getAway_team_id());
-			    int resIDHome = getResources().getIdentifier(homeImage, "drawable", context.getPackageName());
+			String viewID = "quarter_final" + (i-55);
+		    int resID = getResources().getIdentifier(viewID, "id", context.getPackageName());
+		    LinearLayout layout = (LinearLayout) rootView.findViewById(resID);
+		    
+		    if(matches.get(i).getHome_team_id() != 0) {
+		    	String homeImage = "flag" + Integer.toString(matches.get(i).getHome_team_id());
+		    	 int resIDHome = getResources().getIdentifier(homeImage, "drawable", context.getPackageName());
+		    	 ((ImageView) layout.findViewById(R.id.nations_home)).setImageResource(resIDHome);
+		    }
+		    
+		    if(matches.get(i).getAway_team_id() != 0) {
+		    	String awayImage = "flag" + Integer.toString(matches.get(i).getAway_team_id());
 			    int resIDAway = getResources().getIdentifier(awayImage, "drawable", context.getPackageName());
-				((ImageView) layout.findViewById(R.id.nations_home)).setImageResource(resIDHome);
 				((ImageView) layout.findViewById(R.id.nations_away)).setImageResource(resIDAway);
-
-			    
+		    }
+		    
+			if(matches.get(i).getHome_team_id() != 0 && matches.get(i).getAway_team_id() != 0) {
 			    final int position = i;
 			    layout.setOnClickListener(new OnClickListener() {
 	    			@Override
@@ -455,18 +459,24 @@ public class TournamentBracketFragment extends Fragment implements FirstPageFrag
 			}
 		}
 		for(int i = 60; i < 62; i++) {
-			if(matches.get(i).getHome_team_id() != 0 && matches.get(i).getAway_team_id() != 0) {
-				String viewID = "semi_final" + (i-59);
-			    int resID = getResources().getIdentifier(viewID, "id", context.getPackageName());
-			    LinearLayout layout = (LinearLayout) rootView.findViewById(resID);
-			    
-			    String homeImage = "flag" + Integer.toString(matches.get(i).getHome_team_id());
-			    String awayImage = "flag" + Integer.toString(matches.get(i).getAway_team_id());
-			    int resIDHome = getResources().getIdentifier(homeImage, "drawable", context.getPackageName());
+			
+			String viewID = "semi_final" + (i-59);
+		    int resID = getResources().getIdentifier(viewID, "id", context.getPackageName());
+		    LinearLayout layout = (LinearLayout) rootView.findViewById(resID);
+			
+			if(matches.get(i).getHome_team_id() != 0) {
+		    	String homeImage = "flag" + Integer.toString(matches.get(i).getHome_team_id());
+		    	 int resIDHome = getResources().getIdentifier(homeImage, "drawable", context.getPackageName());
+		    	 ((ImageView) layout.findViewById(R.id.nations_home)).setImageResource(resIDHome);
+		    }
+		    
+		    if(matches.get(i).getAway_team_id() != 0) {
+		    	String awayImage = "flag" + Integer.toString(matches.get(i).getAway_team_id());
 			    int resIDAway = getResources().getIdentifier(awayImage, "drawable", context.getPackageName());
-				((ImageView) layout.findViewById(R.id.nations_home)).setImageResource(resIDHome);
 				((ImageView) layout.findViewById(R.id.nations_away)).setImageResource(resIDAway);
-				
+		    }
+			
+			if(matches.get(i).getHome_team_id() != 0 && matches.get(i).getAway_team_id() != 0) {
 				final int position = i;
 			    layout.setOnClickListener(new OnClickListener() {
 	    			@Override
@@ -477,20 +487,27 @@ public class TournamentBracketFragment extends Fragment implements FirstPageFrag
 			}
 		}
 		for(int i = 62; i < 64; i++) {
-			if(matches.get(i).getHome_team_id() != 0 && matches.get(i).getAway_team_id() != 0) {
-				String viewID = "final2";
-				if(i == 63) {
-					viewID = "final1";
-				}
-			    int resID = getResources().getIdentifier(viewID, "id", context.getPackageName());
-			    LinearLayout layout = (LinearLayout) rootView.findViewById(resID);
-			    String homeImage = "flag" + Integer.toString(matches.get(i).getHome_team_id());
-			    String awayImage = "flag" + Integer.toString(matches.get(i).getAway_team_id());
-			    int resIDHome = getResources().getIdentifier(homeImage, "drawable", context.getPackageName());
+			
+			String viewID = "final2";
+			if(i == 63) {
+				viewID = "final1";
+			}
+		    int resID = getResources().getIdentifier(viewID, "id", context.getPackageName());
+		    LinearLayout layout = (LinearLayout) rootView.findViewById(resID);
+			
+			if(matches.get(i).getHome_team_id() != 0) {
+		    	String homeImage = "flag" + Integer.toString(matches.get(i).getHome_team_id());
+		    	 int resIDHome = getResources().getIdentifier(homeImage, "drawable", context.getPackageName());
+		    	 ((ImageView) layout.findViewById(R.id.nations_home)).setImageResource(resIDHome);
+		    }
+		    
+		    if(matches.get(i).getAway_team_id() != 0) {
+		    	String awayImage = "flag" + Integer.toString(matches.get(i).getAway_team_id());
 			    int resIDAway = getResources().getIdentifier(awayImage, "drawable", context.getPackageName());
-				((ImageView) layout.findViewById(R.id.nations_home)).setImageResource(resIDHome);
 				((ImageView) layout.findViewById(R.id.nations_away)).setImageResource(resIDAway);
-				
+		    }
+			
+			if(matches.get(i).getHome_team_id() != 0 && matches.get(i).getAway_team_id() != 0) {
 				final int position = i;
 			    layout.setOnClickListener(new OnClickListener() {
 	    			@Override
