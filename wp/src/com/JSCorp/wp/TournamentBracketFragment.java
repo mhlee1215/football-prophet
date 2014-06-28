@@ -94,14 +94,14 @@ public class TournamentBracketFragment extends Fragment implements FirstPageFrag
         
         ImageView b16_1_pre = (ImageView) rootView.findViewById(R.id.bracket_16_1_pre);
         b16_1_pre.setPadding(bracket_margin_16, 0, bracket_margin_16, 0);
-//		ImageView b16_2_pre = (ImageView) rootView.findViewById(R.id.bracket_16_2_pre);
-//		b16_2_pre.setPadding(bracket_margin_16, 0, bracket_margin_16, 0);
-//		b16_2_pre.setRotation(180);
+		ImageView b16_2_pre = (ImageView) rootView.findViewById(R.id.bracket_16_2_pre);
+		b16_2_pre.setPadding(bracket_margin_16, 0, bracket_margin_16, 0);
+		b16_2_pre.setRotation(180);
 		ImageView b16_3_pre = (ImageView) rootView.findViewById(R.id.bracket_16_3_pre);
 		b16_3_pre.setPadding(bracket_margin_16, 0, bracket_margin_16, 0);
-//		ImageView b16_4_pre = (ImageView) rootView.findViewById(R.id.bracket_16_4_pre);
-//		b16_4_pre.setPadding(bracket_margin_16, 0, bracket_margin_16, 0);
-//		b16_4_pre.setRotation(180);
+		ImageView b16_4_pre = (ImageView) rootView.findViewById(R.id.bracket_16_4_pre);
+		b16_4_pre.setPadding(bracket_margin_16, 0, bracket_margin_16, 0);
+		b16_4_pre.setRotation(180);
         
         ImageView b16_1 = (ImageView) rootView.findViewById(R.id.bracket_16_1);
 		b16_1.setPadding(bracket_margin_16, 0, bracket_margin_16, 0);
@@ -118,14 +118,24 @@ public class TournamentBracketFragment extends Fragment implements FirstPageFrag
 		
 		
 		int bracket_margin_8 = qf_margin + (qf_margin / 2) - 20;
+		ImageView b8_1_pre = (ImageView) rootView.findViewById(R.id.bracket_8_1_pre);
+		b8_1_pre.setPadding(bracket_margin_8, 0, bracket_margin_8, 0);
 		ImageView b8_1 = (ImageView) rootView.findViewById(R.id.bracket_8_1);
 		b8_1.setPadding(bracket_margin_8, 0, bracket_margin_8, 0);
+		
+		ImageView b8_2_pre = (ImageView) rootView.findViewById(R.id.bracket_8_2_pre);
+		b8_2_pre.setPadding(bracket_margin_8, 0, bracket_margin_8, 0);
+		b8_2_pre.setRotation(180);
+		
 		ImageView b8_2 = (ImageView) rootView.findViewById(R.id.bracket_8_2);
 		b8_2.setPadding(bracket_margin_8, 0, bracket_margin_8, 0);
 		b8_2.setRotation(180);
 		
 		ImageView b4_2 = (ImageView) rootView.findViewById(R.id.bracket_4_2);
 		b4_2.setRotation(180);
+		
+		ImageView b4_2_pre = (ImageView) rootView.findViewById(R.id.bracket_4_2_pre);
+		b4_2_pre.setRotation(180);
         
         LinearLayout qf1 = (LinearLayout) rootView.findViewById(R.id.quarter_final1);
         LayoutParams qf_layout1 = (LayoutParams) qf1.getLayoutParams();
@@ -508,45 +518,47 @@ public class TournamentBracketFragment extends Fragment implements FirstPageFrag
 				
 			} else if(position == 50 || position == 51) {
 				int pos = 50;
-				ImageView b16_1 = (ImageView) rootView.findViewById(R.id.bracket_16_2);
+				ImageView b16_2 = (ImageView) rootView.findViewById(R.id.bracket_16_2);
+				ImageView b16_2_pre = (ImageView) rootView.findViewById(R.id.bracket_16_2_pre);
 				
 				if("Y".equals(matches.get(pos).getMatch_finished())){
 					if((matches.get(pos).getMatch_home_win() == 1) && (matches.get(pos+1).getMatch_home_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_aa);
+						b16_2.setImageResource(R.drawable.tour_arrow_aa);
 					} else if((matches.get(pos).getMatch_home_win() == 1) && (matches.get(pos+1).getMatch_away_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_ha);
+						b16_2.setImageResource(R.drawable.tour_arrow_ha);
 					} else if((matches.get(pos).getMatch_away_win() == 1) && (matches.get(pos+1).getMatch_home_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_ah);
+						b16_2.setImageResource(R.drawable.tour_arrow_ah);
 					} else if((matches.get(pos).getMatch_away_win() == 1) && (matches.get(pos+1).getMatch_away_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_hh);
+						b16_2.setImageResource(R.drawable.tour_arrow_hh);
 					} else if((matches.get(pos).getMatch_home_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_0a);
+						b16_2.setImageResource(R.drawable.tour_arrow_0a);
 					} else if((matches.get(pos).getMatch_away_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_0h);
+						b16_2.setImageResource(R.drawable.tour_arrow_0h);
 					} else if((matches.get(pos+1).getMatch_home_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_a0);
+						b16_2.setImageResource(R.drawable.tour_arrow_a0);
 					} else if((matches.get(pos+1).getMatch_away_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_h0);
+						b16_2.setImageResource(R.drawable.tour_arrow_h0);
 					}		
-				}else{
-					if((matches.get(pos).getProphet_home_win() == 1) && (matches.get(pos+1).getProphet_home_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_aa);
-					} else if((matches.get(pos).getProphet_home_win() == 1) && (matches.get(pos+1).getProphet_away_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_ha);
-					} else if((matches.get(pos).getProphet_away_win() == 1) && (matches.get(pos+1).getProphet_home_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_ah);
-					} else if((matches.get(pos).getProphet_away_win() == 1) && (matches.get(pos+1).getProphet_away_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_hh);
-					} else if((matches.get(pos).getProphet_home_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_0a);
-					} else if((matches.get(pos).getProphet_away_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_0h);
-					} else if((matches.get(pos+1).getProphet_home_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_a0);
-					} else if((matches.get(pos+1).getProphet_away_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_h0);
-					}	
 				}
+				
+				if((matches.get(pos).getProphet_home_win() == 1) && (matches.get(pos+1).getProphet_home_win() == 1)) {
+					b16_2_pre.setImageResource(R.drawable.tour_arrow_aa_pre);
+				} else if((matches.get(pos).getProphet_home_win() == 1) && (matches.get(pos+1).getProphet_away_win() == 1)) {
+					b16_2_pre.setImageResource(R.drawable.tour_arrow_ha_pre);
+				} else if((matches.get(pos).getProphet_away_win() == 1) && (matches.get(pos+1).getProphet_home_win() == 1)) {
+					b16_2_pre.setImageResource(R.drawable.tour_arrow_ah_pre);
+				} else if((matches.get(pos).getProphet_away_win() == 1) && (matches.get(pos+1).getProphet_away_win() == 1)) {
+					b16_2_pre.setImageResource(R.drawable.tour_arrow_hh_pre);
+				} else if((matches.get(pos).getProphet_home_win() == 1)) {
+					b16_2_pre.setImageResource(R.drawable.tour_arrow_0a_pre);
+				} else if((matches.get(pos).getProphet_away_win() == 1)) {
+					b16_2_pre.setImageResource(R.drawable.tour_arrow_0h_pre);
+				} else if((matches.get(pos+1).getProphet_home_win() == 1)) {
+					b16_2_pre.setImageResource(R.drawable.tour_arrow_a0_pre);
+				} else if((matches.get(pos+1).getProphet_away_win() == 1)) {
+					b16_2_pre.setImageResource(R.drawable.tour_arrow_h0_pre);
+				}	
+				
 				
 				
 			} else if(position == 52 || position == 53) {
@@ -596,171 +608,180 @@ public class TournamentBracketFragment extends Fragment implements FirstPageFrag
 				
 			} else if(position == 54 || position == 55){
 				int pos = 54;
-				ImageView b16_1 = (ImageView) rootView.findViewById(R.id.bracket_16_4);
+				ImageView b16_4 = (ImageView) rootView.findViewById(R.id.bracket_16_4);
+				ImageView b16_4_pre = (ImageView) rootView.findViewById(R.id.bracket_16_4_pre);
 				
 				if("Y".equals(matches.get(pos).getMatch_finished())){
 					if((matches.get(pos).getMatch_home_win() == 1) && (matches.get(pos+1).getMatch_home_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_aa);
+						b16_4.setImageResource(R.drawable.tour_arrow_aa);
 					} else if((matches.get(pos).getMatch_home_win() == 1) && (matches.get(pos+1).getMatch_away_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_ha);
+						b16_4.setImageResource(R.drawable.tour_arrow_ha);
 					} else if((matches.get(pos).getMatch_away_win() == 1) && (matches.get(pos+1).getMatch_home_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_ah);
+						b16_4.setImageResource(R.drawable.tour_arrow_ah);
 					} else if((matches.get(pos).getMatch_away_win() == 1) && (matches.get(pos+1).getMatch_away_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_hh);
+						b16_4.setImageResource(R.drawable.tour_arrow_hh);
 					} else if((matches.get(pos).getMatch_home_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_0a);
+						b16_4.setImageResource(R.drawable.tour_arrow_0a);
 					} else if((matches.get(pos).getMatch_away_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_0h);
+						b16_4.setImageResource(R.drawable.tour_arrow_0h);
 					} else if((matches.get(pos+1).getMatch_home_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_a0);
+						b16_4.setImageResource(R.drawable.tour_arrow_a0);
 					} else if((matches.get(pos+1).getMatch_away_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_h0);
-					}
-				}else{
-					if((matches.get(pos).getProphet_home_win() == 1) && (matches.get(pos+1).getProphet_home_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_aa);
-					} else if((matches.get(pos).getProphet_home_win() == 1) && (matches.get(pos+1).getProphet_away_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_ha);
-					} else if((matches.get(pos).getProphet_away_win() == 1) && (matches.get(pos+1).getProphet_home_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_ah);
-					} else if((matches.get(pos).getProphet_away_win() == 1) && (matches.get(pos+1).getProphet_away_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_hh);
-					} else if((matches.get(pos).getProphet_home_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_0a);
-					} else if((matches.get(pos).getProphet_away_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_0h);
-					} else if((matches.get(pos+1).getProphet_home_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_a0);
-					} else if((matches.get(pos+1).getProphet_away_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_h0);
+						b16_4.setImageResource(R.drawable.tour_arrow_h0);
 					}
 				}
+				
+				if((matches.get(pos).getProphet_home_win() == 1) && (matches.get(pos+1).getProphet_home_win() == 1)) {
+					b16_4_pre.setImageResource(R.drawable.tour_arrow_aa_pre);
+				} else if((matches.get(pos).getProphet_home_win() == 1) && (matches.get(pos+1).getProphet_away_win() == 1)) {
+					b16_4_pre.setImageResource(R.drawable.tour_arrow_ha_pre);
+				} else if((matches.get(pos).getProphet_away_win() == 1) && (matches.get(pos+1).getProphet_home_win() == 1)) {
+					b16_4_pre.setImageResource(R.drawable.tour_arrow_ah_pre);
+				} else if((matches.get(pos).getProphet_away_win() == 1) && (matches.get(pos+1).getProphet_away_win() == 1)) {
+					b16_4_pre.setImageResource(R.drawable.tour_arrow_hh_pre);
+				} else if((matches.get(pos).getProphet_home_win() == 1)) {
+					b16_4_pre.setImageResource(R.drawable.tour_arrow_0a_pre);
+				} else if((matches.get(pos).getProphet_away_win() == 1)) {
+					b16_4_pre.setImageResource(R.drawable.tour_arrow_0h_pre);
+				} else if((matches.get(pos+1).getProphet_home_win() == 1)) {
+					b16_4_pre.setImageResource(R.drawable.tour_arrow_a0_pre);
+				} else if((matches.get(pos+1).getProphet_away_win() == 1)) {
+					b16_4_pre.setImageResource(R.drawable.tour_arrow_h0_pre);
+				}
+				
 			}
 		} else if(position > 55 && position < 60) {
 			if(position == 56 || position == 57) {
 				int pos = 56;
-				ImageView b16_1 = (ImageView) rootView.findViewById(R.id.bracket_8_1);
+				ImageView b8_1 = (ImageView) rootView.findViewById(R.id.bracket_8_1);
+				ImageView b8_1_pre = (ImageView) rootView.findViewById(R.id.bracket_8_1_pre);
 				
 				if("Y".equals(matches.get(pos).getMatch_finished())){
 					if((matches.get(pos).getMatch_home_win() == 1) && (matches.get(pos+1).getMatch_home_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_hh_wide);
+						b8_1.setImageResource(R.drawable.tour_arrow_hh_wide);
 					} else if((matches.get(pos).getMatch_home_win() == 1) && (matches.get(pos+1).getMatch_away_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_ha_wide);
+						b8_1.setImageResource(R.drawable.tour_arrow_ha_wide);
 					} else if((matches.get(pos).getMatch_away_win() == 1) && (matches.get(pos+1).getMatch_home_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_ah_wide);
+						b8_1.setImageResource(R.drawable.tour_arrow_ah_wide);
 					} else if((matches.get(pos).getMatch_away_win() == 1) && (matches.get(pos+1).getMatch_away_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_aa_wide);
+						b8_1.setImageResource(R.drawable.tour_arrow_aa_wide);
 					} else if((matches.get(pos).getMatch_home_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_h0_wide);
+						b8_1.setImageResource(R.drawable.tour_arrow_h0_wide);
 					} else if((matches.get(pos).getMatch_away_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_a0_wide);
+						b8_1.setImageResource(R.drawable.tour_arrow_a0_wide);
 					} else if((matches.get(pos+1).getMatch_home_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_0h_wide);
+						b8_1.setImageResource(R.drawable.tour_arrow_0h_wide);
 					} else if((matches.get(pos+1).getMatch_away_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_0a_wide);
-					}
-				}else{
-					if((matches.get(pos).getProphet_home_win() == 1) && (matches.get(pos+1).getProphet_home_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_hh_wide);
-					} else if((matches.get(pos).getProphet_home_win() == 1) && (matches.get(pos+1).getProphet_away_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_ha_wide);
-					} else if((matches.get(pos).getProphet_away_win() == 1) && (matches.get(pos+1).getProphet_home_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_ah_wide);
-					} else if((matches.get(pos).getProphet_away_win() == 1) && (matches.get(pos+1).getProphet_away_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_aa_wide);
-					} else if((matches.get(pos).getProphet_home_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_h0_wide);
-					} else if((matches.get(pos).getProphet_away_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_a0_wide);
-					} else if((matches.get(pos+1).getProphet_home_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_0h_wide);
-					} else if((matches.get(pos+1).getProphet_away_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_0a_wide);
+						b8_1.setImageResource(R.drawable.tour_arrow_0a_wide);
 					}
 				}
+				
+				if((matches.get(pos).getProphet_home_win() == 1) && (matches.get(pos+1).getProphet_home_win() == 1)) {
+					b8_1_pre.setImageResource(R.drawable.tour_arrow_hh_wide_pre);
+				} else if((matches.get(pos).getProphet_home_win() == 1) && (matches.get(pos+1).getProphet_away_win() == 1)) {
+					b8_1_pre.setImageResource(R.drawable.tour_arrow_ha_wide_pre);
+				} else if((matches.get(pos).getProphet_away_win() == 1) && (matches.get(pos+1).getProphet_home_win() == 1)) {
+					b8_1_pre.setImageResource(R.drawable.tour_arrow_ah_wide_pre);
+				} else if((matches.get(pos).getProphet_away_win() == 1) && (matches.get(pos+1).getProphet_away_win() == 1)) {
+					b8_1_pre.setImageResource(R.drawable.tour_arrow_aa_wide_pre);
+				} else if((matches.get(pos).getProphet_home_win() == 1)) {
+					b8_1_pre.setImageResource(R.drawable.tour_arrow_h0_wide_pre);
+				} else if((matches.get(pos).getProphet_away_win() == 1)) {
+					b8_1_pre.setImageResource(R.drawable.tour_arrow_a0_wide_pre);
+				} else if((matches.get(pos+1).getProphet_home_win() == 1)) {
+					b8_1_pre.setImageResource(R.drawable.tour_arrow_0h_wide_pre);
+				} else if((matches.get(pos+1).getProphet_away_win() == 1)) {
+					b8_1_pre.setImageResource(R.drawable.tour_arrow_0a_wide_pre);
+				}
+				
 				
 			
 			} else if(position == 58 || position == 59) {
 				int pos = 58;
-				ImageView b16_1 = (ImageView) rootView.findViewById(R.id.bracket_8_2);
+				ImageView b8_2 = (ImageView) rootView.findViewById(R.id.bracket_8_2);
+				ImageView b8_2_pre = (ImageView) rootView.findViewById(R.id.bracket_8_2_pre);
 				
 				if("Y".equals(matches.get(pos).getMatch_finished())){
 					if((matches.get(pos).getMatch_home_win() == 1) && (matches.get(pos+1).getMatch_home_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_aa_wide);
+						b8_2.setImageResource(R.drawable.tour_arrow_aa_wide);
 					} else if((matches.get(pos).getMatch_home_win() == 1) && (matches.get(pos+1).getMatch_away_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_ha_wide);
+						b8_2.setImageResource(R.drawable.tour_arrow_ha_wide);
 					} else if((matches.get(pos).getMatch_away_win() == 1) && (matches.get(pos+1).getMatch_home_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_ah_wide);
+						b8_2.setImageResource(R.drawable.tour_arrow_ah_wide);
 					} else if((matches.get(pos).getMatch_away_win() == 1) && (matches.get(pos+1).getMatch_away_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_hh_wide);
+						b8_2.setImageResource(R.drawable.tour_arrow_hh_wide);
 					} else if((matches.get(pos).getMatch_home_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_0a_wide);
+						b8_2.setImageResource(R.drawable.tour_arrow_0a_wide);
 					} else if((matches.get(pos).getMatch_away_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_0h_wide);
+						b8_2.setImageResource(R.drawable.tour_arrow_0h_wide);
 					} else if((matches.get(pos+1).getMatch_home_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_a0_wide);
+						b8_2.setImageResource(R.drawable.tour_arrow_a0_wide);
 					} else if((matches.get(pos+1).getMatch_away_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_h0_wide);
-					}
-				}else{
-					if((matches.get(pos).getProphet_home_win() == 1) && (matches.get(pos+1).getProphet_home_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_aa_wide);
-					} else if((matches.get(pos).getProphet_home_win() == 1) && (matches.get(pos+1).getProphet_away_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_ha_wide);
-					} else if((matches.get(pos).getProphet_away_win() == 1) && (matches.get(pos+1).getProphet_home_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_ah_wide);
-					} else if((matches.get(pos).getProphet_away_win() == 1) && (matches.get(pos+1).getProphet_away_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_hh_wide);
-					} else if((matches.get(pos).getProphet_home_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_0a_wide);
-					} else if((matches.get(pos).getProphet_away_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_0h_wide);
-					} else if((matches.get(pos+1).getProphet_home_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_a0_wide);
-					} else if((matches.get(pos+1).getProphet_away_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_h0_wide);
+						b8_2.setImageResource(R.drawable.tour_arrow_h0_wide);
 					}
 				}
 				
+				if((matches.get(pos).getProphet_home_win() == 1) && (matches.get(pos+1).getProphet_home_win() == 1)) {
+					b8_2_pre.setImageResource(R.drawable.tour_arrow_aa_wide_pre);
+				} else if((matches.get(pos).getProphet_home_win() == 1) && (matches.get(pos+1).getProphet_away_win() == 1)) {
+					b8_2_pre.setImageResource(R.drawable.tour_arrow_ha_wide_pre);
+				} else if((matches.get(pos).getProphet_away_win() == 1) && (matches.get(pos+1).getProphet_home_win() == 1)) {
+					b8_2_pre.setImageResource(R.drawable.tour_arrow_ah_wide_pre);
+				} else if((matches.get(pos).getProphet_away_win() == 1) && (matches.get(pos+1).getProphet_away_win() == 1)) {
+					b8_2_pre.setImageResource(R.drawable.tour_arrow_hh_wide_pre);
+				} else if((matches.get(pos).getProphet_home_win() == 1)) {
+					b8_2_pre.setImageResource(R.drawable.tour_arrow_0a_wide_pre);
+				} else if((matches.get(pos).getProphet_away_win() == 1)) {
+					b8_2_pre.setImageResource(R.drawable.tour_arrow_0h_wide_pre);
+				} else if((matches.get(pos+1).getProphet_home_win() == 1)) {
+					b8_2_pre.setImageResource(R.drawable.tour_arrow_a0_wide_pre);
+				} else if((matches.get(pos+1).getProphet_away_win() == 1)) {
+					b8_2_pre.setImageResource(R.drawable.tour_arrow_h0_wide_pre);
+				}
+								
 			
 			}
 		} else if(position > 59 && position < 62) {
 			if(position == 60) {
 				int pos = 60;
-				ImageView b16_1 = (ImageView) rootView.findViewById(R.id.bracket_4_1);
+				ImageView b4_1 = (ImageView) rootView.findViewById(R.id.bracket_4_1);
+				ImageView b4_1_pre = (ImageView) rootView.findViewById(R.id.bracket_4_1_pre);
 				
 				if("Y".equals(matches.get(pos).getMatch_finished())){
 					if((matches.get(pos).getMatch_home_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_h_big);
+						b4_1.setImageResource(R.drawable.tour_arrow_h_big);
 					} else if((matches.get(pos).getMatch_away_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_a_big);
-					}
-				}else{
-					if((matches.get(pos).getProphet_home_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_h_big);
-					} else if((matches.get(pos).getProphet_away_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_a_big);
+						b4_1.setImageResource(R.drawable.tour_arrow_a_big);
 					}
 				}
+				
+				if((matches.get(pos).getProphet_home_win() == 1)) {
+					b4_1_pre.setImageResource(R.drawable.tour_arrow_h_big_pre);
+				} else if((matches.get(pos).getProphet_away_win() == 1)) {
+					b4_1_pre.setImageResource(R.drawable.tour_arrow_a_big_pre);
+				}
+				
 				
 				
 			} else {
 				int pos = 61;
-				ImageView b16_1 = (ImageView) rootView.findViewById(R.id.bracket_4_2);
+				ImageView b4_2 = (ImageView) rootView.findViewById(R.id.bracket_4_2);
+				ImageView b4_2_pre = (ImageView) rootView.findViewById(R.id.bracket_4_2_pre);
 				 
 				if("Y".equals(matches.get(pos).getMatch_finished())){
 					if((matches.get(pos).getMatch_home_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_a_big);
+						b4_2.setImageResource(R.drawable.tour_arrow_a_big);
 					} else if((matches.get(pos).getMatch_away_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_h_big);
-					}
-				}else{
-					if((matches.get(pos).getProphet_home_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_a_big);
-					} else if((matches.get(pos).getProphet_away_win() == 1)) {
-						b16_1.setImageResource(R.drawable.tour_arrow_h_big);
+						b4_2.setImageResource(R.drawable.tour_arrow_h_big);
 					}
 				}
+				
+				if((matches.get(pos).getProphet_home_win() == 1)) {
+					b4_2_pre.setImageResource(R.drawable.tour_arrow_a_big_pre);
+				} else if((matches.get(pos).getProphet_away_win() == 1)) {
+					b4_2_pre.setImageResource(R.drawable.tour_arrow_h_big_pre);
+				}
+				
 				
 				
 			}
