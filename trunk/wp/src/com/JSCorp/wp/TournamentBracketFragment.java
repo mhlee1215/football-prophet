@@ -271,6 +271,14 @@ public class TournamentBracketFragment extends Fragment implements FirstPageFrag
 	    
 	    if((matches.get(position).getId() > 47) && (matches.get(position).getId() < 57)) {
 	    	((TextView)dialog.findViewById(R.id.matchGroup)).setText("16강 제 " + (matches.get(position).getId() - 48) + "경기");
+	    } else if((matches.get(position).getId() > 56) && (matches.get(position).getId() < 61)) {
+	    	((TextView)dialog.findViewById(R.id.matchGroup)).setText("8강 제 " + (matches.get(position).getId() - 56) + "경기");
+	    } else if((matches.get(position).getId() > 60) && (matches.get(position).getId() < 63)) {
+	    	((TextView)dialog.findViewById(R.id.matchGroup)).setText("4강 제 " + (matches.get(position).getId() - 60) + "경기");
+	    } else if((matches.get(position).getId() == 63)) {
+	    	((TextView)dialog.findViewById(R.id.matchGroup)).setText("3/4위전");
+	    } else if((matches.get(position).getId() == 64)) {
+	    	((TextView)dialog.findViewById(R.id.matchGroup)).setText("결승전");
 	    }
 	    
 	    String matchTime = (matches.get(position).getMonth()) + "." + (matches.get(position).getDay()) + "." + (matches.get(position).getTime());
@@ -298,6 +306,34 @@ public class TournamentBracketFragment extends Fragment implements FirstPageFrag
 	    Button predictionButton1 = (Button) dialog.findViewById(R.id.btnPredict1);
 	    Button predictionButton2 = (Button) dialog.findViewById(R.id.btnPredict2);
 	    Button predictionButton3 = (Button) dialog.findViewById(R.id.btnPredict3);
+	    
+	    if((matches.get(position).getMatch_finished().equals("Y")) || (matches.get(position).getMatch_finished().equals("NOW"))) {
+	    	
+	    	//dialog.findViewById(R.id.btnPredict1).setVisibility(View.INVISIBLE);
+	    	//dialog.findViewById(R.id.btnPredict2).setVisibility(View.INVISIBLE);
+	    	//dialog.findViewById(R.id.btnPredict3).setVisibility(View.INVISIBLE);
+	    	
+	    	predictionButton1.setText(Integer.toString(matches.get(position).getHome_team_score()));
+	    	predictionButton1.setTextSize(20);
+	    	predictionButton1.setBackgroundColor(android.R.color.transparent);
+	    		
+	    	//predictionButton2.setVisibility(View.VISIBLE);
+	    	if(matches.get(position).getHome_team_score() > matches.get(position).getAway_team_score()) {
+	    		((TextView) dialog.findViewById(R.id.matchDate)).setText(matches.get(position).getHome_team_name() + " 승");
+	    		//predictionButton2.setText(matches.get(position).getHome_team_name() + " 승");
+	    		
+	    	} else {
+	    		((TextView) dialog.findViewById(R.id.matchDate)).setText(matches.get(position).getAway_team_name() + " 승");
+	    		//predictionButton2.setText(matches.get(position).getAway_team_name() + " 승");
+	    	}
+	    	//predictionButton2.setTextSize(14);
+	    	//predictionButton2.setBackgroundColor(android.R.color.transparent);
+
+	    	predictionButton3.setText(Integer.toString(matches.get(position).getAway_team_score()));
+	    	predictionButton3.setTextSize(20);
+	    	predictionButton3.setBackgroundColor(android.R.color.transparent);
+	    	
+	    } else {
 	    
 	    predictionButton1.setOnClickListener(new View.OnClickListener() {
 
@@ -354,8 +390,9 @@ public class TournamentBracketFragment extends Fragment implements FirstPageFrag
 	        	return this;
 	        }
 	    }.init(position)); 
+	    }
 	    
-	    ((Button) dialog.findViewById(R.id.btnPredict2)).setVisibility(View.GONE);
+	    //((Button) dialog.findViewById(R.id.btnPredict2)).setVisibility(View.GONE);
 	    
 	    TableRow tr = (TableRow) dialog.findViewById(R.id.matchGroupTableRow);
 	    tr.setMinimumHeight(tr.getHeight() + 100);

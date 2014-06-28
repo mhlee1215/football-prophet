@@ -19,6 +19,7 @@ android:orientation="vertical">
             	android:layout_marginLeft="5dp"
             	android:background="@android:color/transparent"
             	android:src="@drawable/abc_ic_clear_search_api_disabled_holo_light" />
+        
         <TextView
             android:id="@+id/nickname"
             android:layout_width="fill_parent"
@@ -39,7 +40,6 @@ android:orientation="vertical">
             android:layout_height="wrap_content"
             android:textStyle="bold"
             android:layout_marginLeft="10dp"
-            android:layout_marginBottom="5dp"
             android:text="적중률: "
             android:textAppearance="?android:attr/textAppearanceSmall" />
         
@@ -49,6 +49,7 @@ android:orientation="vertical">
 	        android:layout_marginLeft="10dp"
 	        android:layout_marginBottom="10dp"
 	        android:orientation="vertical">
+        
 			<LinearLayout
 			    android:id="@+id/game16_1"
 			    android:layout_width="match_parent"
@@ -81,10 +82,17 @@ android:orientation="vertical">
 				    android:layout_marginLeft="10dp"
 				    android:src="@drawable/flag_empty" />
 				<TextView
+				    android:id="@+id/matchResult"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="15dp"
+			    	android:textAppearance="?android:attr/textAppearanceSmall"
+			    	android:text="경기 결과\n 3 : 1" />
+				<TextView
 				    android:id="@+id/myPrediction"
 				    android:layout_width="wrap_content"
 			    	android:layout_height="wrap_content"
-			    	android:layout_marginLeft="25dp"
+			    	android:layout_marginLeft="15dp"
 			    	android:text="" />
 				<ImageView
 				    android:id="@+id/predictionResult"
@@ -125,10 +133,17 @@ android:orientation="vertical">
 				    android:layout_marginLeft="10dp"
 				    android:src="@drawable/flag_empty" />
 				<TextView
+				    android:id="@+id/matchResult"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="15dp"
+			    	android:textAppearance="?android:attr/textAppearanceSmall"
+			    	android:text="경기 결과\n 3 : 1" />
+				<TextView
 				    android:id="@+id/myPrediction"
 				    android:layout_width="wrap_content"
 			    	android:layout_height="wrap_content"
-			    	android:layout_marginLeft="25dp"
+			    	android:layout_marginLeft="15dp"
 			    	android:text="" />
 				<ImageView
 				    android:id="@+id/predictionResult"
@@ -169,10 +184,17 @@ android:orientation="vertical">
 				    android:layout_marginLeft="10dp"
 				    android:src="@drawable/flag_empty" />
 				<TextView
+				    android:id="@+id/matchResult"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="15dp"
+			    	android:textAppearance="?android:attr/textAppearanceSmall"
+			    	android:text="경기 결과\n 3 : 1" />
+				<TextView
 				    android:id="@+id/myPrediction"
 				    android:layout_width="wrap_content"
 			    	android:layout_height="wrap_content"
-			    	android:layout_marginLeft="25dp"
+			    	android:layout_marginLeft="15dp"
 			    	android:text="" />
 				<ImageView
 				    android:id="@+id/predictionResult"
@@ -213,10 +235,17 @@ android:orientation="vertical">
 				    android:layout_marginLeft="10dp"
 				    android:src="@drawable/flag_empty" />
 				<TextView
+				    android:id="@+id/matchResult"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="15dp"
+			    	android:textAppearance="?android:attr/textAppearanceSmall"
+			    	android:text="경기 결과\n 3 : 1" />
+				<TextView
 				    android:id="@+id/myPrediction"
 				    android:layout_width="wrap_content"
 			    	android:layout_height="wrap_content"
-			    	android:layout_marginLeft="25dp"
+			    	android:layout_marginLeft="15dp"
 			    	android:text="" />
 				<ImageView
 				    android:id="@+id/predictionResult"
@@ -257,10 +286,17 @@ android:orientation="vertical">
 				    android:layout_marginLeft="10dp"
 				    android:src="@drawable/flag_empty" />
 				<TextView
+				    android:id="@+id/matchResult"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="15dp"
+			    	android:textAppearance="?android:attr/textAppearanceSmall"
+			    	android:text="경기 결과\n 3 : 1" />
+				<TextView
 				    android:id="@+id/myPrediction"
 				    android:layout_width="wrap_content"
 			    	android:layout_height="wrap_content"
-			    	android:layout_marginLeft="25dp"
+			    	android:layout_marginLeft="15dp"
 			    	android:text="" />
 				<ImageView
 				    android:id="@+id/predictionResult"
@@ -301,10 +337,17 @@ android:orientation="vertical">
 				    android:layout_marginLeft="10dp"
 				    android:src="@drawable/flag_empty" />
 				<TextView
+				    android:id="@+id/matchResult"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="15dp"
+			    	android:textAppearance="?android:attr/textAppearanceSmall"
+			    	android:text="경기 결과\n 3 : 1" />
+				<TextView
 				    android:id="@+id/myPrediction"
 				    android:layout_width="wrap_content"
 			    	android:layout_height="wrap_content"
-			    	android:layout_marginLeft="25dp"
+			    	android:layout_marginLeft="15dp"
 			    	android:text="" />
 				<ImageView
 				    android:id="@+id/predictionResult"
@@ -345,10 +388,17 @@ android:orientation="vertical">
 				    android:layout_marginLeft="10dp"
 				    android:src="@drawable/flag_empty" />
 				<TextView
+				    android:id="@+id/matchResult"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="15dp"
+			    	android:textAppearance="?android:attr/textAppearanceSmall"
+			    	android:text="경기 결과\n 3 : 1" />
+				<TextView
 				    android:id="@+id/myPrediction"
 				    android:layout_width="wrap_content"
 			    	android:layout_height="wrap_content"
-			    	android:layout_marginLeft="25dp"
+			    	android:layout_marginLeft="15dp"
 			    	android:text="" />
 				<ImageView
 				    android:id="@+id/predictionResult"
@@ -389,10 +439,17 @@ android:orientation="vertical">
 				    android:layout_marginLeft="10dp"
 				    android:src="@drawable/flag_empty" />
 				<TextView
+				    android:id="@+id/matchResult"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="15dp"
+			    	android:textAppearance="?android:attr/textAppearanceSmall"
+			    	android:text="경기 결과\n 3 : 1" />
+				<TextView
 				    android:id="@+id/myPrediction"
 				    android:layout_width="wrap_content"
 			    	android:layout_height="wrap_content"
-			    	android:layout_marginLeft="25dp"
+			    	android:layout_marginLeft="15dp"
 			    	android:text="" />
 				<ImageView
 				    android:id="@+id/predictionResult"
@@ -435,10 +492,17 @@ android:orientation="vertical">
 				    android:layout_marginLeft="10dp"
 				    android:src="@drawable/flag_empty" />
 				<TextView
+				    android:id="@+id/matchResult"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="15dp"
+			    	android:textAppearance="?android:attr/textAppearanceSmall"
+			    	android:text="경기 결과\n 3 : 1" />
+				<TextView
 				    android:id="@+id/myPrediction"
 				    android:layout_width="wrap_content"
 			    	android:layout_height="wrap_content"
-			    	android:layout_marginLeft="25dp"
+			    	android:layout_marginLeft="15dp"
 			    	android:text="" />
 				<ImageView
 				    android:id="@+id/predictionResult"
@@ -479,10 +543,17 @@ android:orientation="vertical">
 				    android:layout_marginLeft="10dp"
 				    android:src="@drawable/flag_empty" />
 				<TextView
+				    android:id="@+id/matchResult"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="15dp"
+			    	android:textAppearance="?android:attr/textAppearanceSmall"
+			    	android:text="경기 결과\n 3 : 1" />
+				<TextView
 				    android:id="@+id/myPrediction"
 				    android:layout_width="wrap_content"
 			    	android:layout_height="wrap_content"
-			    	android:layout_marginLeft="25dp"
+			    	android:layout_marginLeft="15dp"
 			    	android:text="" />
 				<ImageView
 				    android:id="@+id/predictionResult"
@@ -523,10 +594,17 @@ android:orientation="vertical">
 				    android:layout_marginLeft="10dp"
 				    android:src="@drawable/flag_empty" />
 				<TextView
+				    android:id="@+id/matchResult"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="15dp"
+			    	android:textAppearance="?android:attr/textAppearanceSmall"
+			    	android:text="경기 결과\n 3 : 1" />
+				<TextView
 				    android:id="@+id/myPrediction"
 				    android:layout_width="wrap_content"
 			    	android:layout_height="wrap_content"
-			    	android:layout_marginLeft="25dp"
+			    	android:layout_marginLeft="15dp"
 			    	android:text="" />
 				<ImageView
 				    android:id="@+id/predictionResult"
@@ -567,10 +645,17 @@ android:orientation="vertical">
 				    android:layout_marginLeft="10dp"
 				    android:src="@drawable/flag_empty" />
 				<TextView
+				    android:id="@+id/matchResult"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="15dp"
+			    	android:textAppearance="?android:attr/textAppearanceSmall"
+			    	android:text="경기 결과\n 3 : 1" />
+				<TextView
 				    android:id="@+id/myPrediction"
 				    android:layout_width="wrap_content"
 			    	android:layout_height="wrap_content"
-			    	android:layout_marginLeft="25dp"
+			    	android:layout_marginLeft="15dp"
 			    	android:text="" />
 				<ImageView
 				    android:id="@+id/predictionResult"
@@ -613,10 +698,17 @@ android:orientation="vertical">
 				    android:layout_marginLeft="10dp"
 				    android:src="@drawable/flag_empty" />
 				<TextView
+				    android:id="@+id/matchResult"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="15dp"
+			    	android:textAppearance="?android:attr/textAppearanceSmall"
+			    	android:text="경기 결과\n 3 : 1" />
+				<TextView
 				    android:id="@+id/myPrediction"
 				    android:layout_width="wrap_content"
 			    	android:layout_height="wrap_content"
-			    	android:layout_marginLeft="25dp"
+			    	android:layout_marginLeft="15dp"
 			    	android:text="" />
 				<ImageView
 				    android:id="@+id/predictionResult"
@@ -657,10 +749,17 @@ android:orientation="vertical">
 				    android:layout_marginLeft="10dp"
 				    android:src="@drawable/flag_empty" />
 				<TextView
+				    android:id="@+id/matchResult"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="15dp"
+			    	android:textAppearance="?android:attr/textAppearanceSmall"
+			    	android:text="경기 결과\n 3 : 1" />
+				<TextView
 				    android:id="@+id/myPrediction"
 				    android:layout_width="wrap_content"
 			    	android:layout_height="wrap_content"
-			    	android:layout_marginLeft="25dp"
+			    	android:layout_marginLeft="15dp"
 			    	android:text="" />
 				<ImageView
 				    android:id="@+id/predictionResult"
@@ -703,10 +802,17 @@ android:orientation="vertical">
 				    android:layout_marginLeft="10dp"
 				    android:src="@drawable/flag_empty" />
 				<TextView
+				    android:id="@+id/matchResult"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="15dp"
+			    	android:textAppearance="?android:attr/textAppearanceSmall"
+			    	android:text="경기 결과\n 3 : 1" />
+				<TextView
 				    android:id="@+id/myPrediction"
 				    android:layout_width="wrap_content"
 			    	android:layout_height="wrap_content"
-			    	android:layout_marginLeft="25dp"
+			    	android:layout_marginLeft="15dp"
 			    	android:text="" />
 				<ImageView
 				    android:id="@+id/predictionResult"
@@ -747,10 +853,17 @@ android:orientation="vertical">
 				    android:layout_marginLeft="10dp"
 				    android:src="@drawable/flag_empty" />
 				<TextView
+				    android:id="@+id/matchResult"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="15dp"
+			    	android:textAppearance="?android:attr/textAppearanceSmall"
+			    	android:text="경기 결과\n 3 : 1" />
+				<TextView
 				    android:id="@+id/myPrediction"
 				    android:layout_width="wrap_content"
 			    	android:layout_height="wrap_content"
-			    	android:layout_marginLeft="25dp"
+			    	android:layout_marginLeft="15dp"
 			    	android:text="" />
 				<ImageView
 				    android:id="@+id/predictionResult"
