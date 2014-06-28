@@ -1,21 +1,29 @@
 package com.JSCorp.wp.adapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.JSCorp.wp.R;
+import com.JSCorp.wp.domain.FPGameMatchSchedule;
 import com.JSCorp.wp.domain.FPUser;
+import com.JSCorp.wp.service.GameService;
 
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Point;
 import android.net.Uri;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class RankListAdapter extends BaseAdapter {
@@ -96,13 +104,23 @@ public class RankListAdapter extends BaseAdapter {
 	public void detailInfo(int position, List<FPUser> target) {
 
 		
+		Display display = ((WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
+		Point size = new Point();
+        display.getSize(size); 
+        int width = size.x;
+        int height = size.y;
+		WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+		
 		final Dialog dialog = new Dialog(mContext);
 	    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); 
 	    dialog.setContentView(R.layout.rank_dialog);
-
-	    // set the custom dialog components - text and button
-	    //TextView text = (TextView) dialog.findViewById(R.id.txtDiaTitle);
-	    //TextView image = (TextView) dialog.findViewById(R.id.txtDiaMsg);
+	    
+	    lp.copyFrom(dialog.getWindow().getAttributes());
+	    lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+	    lp.height = height - (height / 4);
+	    System.out.println("height: " + lp.height);
+	    
+	    dialog.getWindow().setAttributes(lp);
 
 	    List<FPUser> t = userRanks;
 	    if(target != null) t = target;
@@ -116,8 +134,13 @@ public class RankListAdapter extends BaseAdapter {
 	    String rate_str = "예언 적중률: " + String.format("%.1f", u.getRight_prophet_ratio() * 100) + "% 예언적중/총예언수: " + String.valueOf(u.getRight_prophet_num()) + "/" + String.valueOf(u.getProphet_num());
 	    ((TextView) dialog.findViewById(R.id.rate)).setText(rate_str);
 	    
+	    //((TextView) dialog.findViewById(R.id.myPrediction)).setText(" - ");
+	    //System.out.println("다른사람 예언: " +GameService.getGameMatchSchedules(u.getId()));
+	    //LinearLayout layout16 = (LinearLayout) dialog.findViewById(resID);
+	    printUserPredictions(dialog, u.getId());
 	    
 	    
+	    /*
 	    if("1".equals(u.getIs_facebook_visible()) || "Y".equals(u.getIs_facebook_visible())){
 	    	Button facebookButton = (Button) dialog.findViewById(R.id.btnFacebook);
 		    // if button is clicked, close the custom dialog
@@ -155,16 +178,19 @@ public class RankListAdapter extends BaseAdapter {
 		        }
 		    }.setUrl(u.getTwitter())); 
 	    }else{
-	    	//dialog.findViewById(R.id.btnTwitter).setVisibility(View.INVISIBLE);
-	    	Button twitterButton = (Button) dialog.findViewById(R.id.btnTwitter);
-		    // if button is clicked, close the custom dialog
-		    twitterButton.setOnClickListener(new View.OnClickListener() {
-		        @Override
-		        public void onClick(View v) {
-		        	//userPredictionInfo(position, target);
-		        }
-		    });
+	    	dialog.findViewById(R.id.btnTwitter).setVisibility(View.INVISIBLE);
 	    }
+	    
+	    Button userPredictionListButton = (Button) dialog.findViewById(R.id.btnPredictionList);
+	    // if button is clicked, close the custom dialog
+    	final int pos = position;
+    	final List<FPUser> tar = target;
+    	userPredictionListButton.setOnClickListener(new View.OnClickListener() {
+	        @Override
+	        public void onClick(View v) {
+	        	userPredictionInfo(pos, tar);
+	        }
+	    });
 	    
 	    ImageButton dialogButton = (ImageButton) dialog.findViewById(R.id.imageButton1);
 	    // if button is clicked, close the custom dialog
@@ -176,30 +202,105 @@ public class RankListAdapter extends BaseAdapter {
 
 	        }
 	    }); 
+	    */
 	    
 	    dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
 	    dialog.show();
 	}
 	
-	public void userPredictionInfo(int position, List<FPUser> target) {
-
+	public void printUserPredictions(Dialog dialog, int userID) {
+		ArrayList<FPGameMatchSchedule> userPredictionList = GameService.getGameMatchSchedules(userID);
 		
-		final Dialog dialog = new Dialog(mContext);
-	    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); 
-	    dialog.setContentView(R.layout.rank_dialog);
+		//System.out.println(userPredictionList.get());
+		String gameID = "game16_";
+		for(int i = 0; i < 16; i++) {
 
-	    // set the custom dialog components - text and button
-	    //TextView text = (TextView) dialog.findViewById(R.id.txtDiaTitle);
-	    //TextView image = (TextView) dialog.findViewById(R.id.txtDiaMsg);
-
-	    List<FPUser> t = userRanks;
-	    if(target != null) t = target;
-	    
-	    FPUser u = t.get(position);
-	    
-	    System.out.println(">>U>>"+u);
-	    
-	    dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
-	    dialog.show();
+			gameID = "game16_" + (i + 1);
+			
+			if(i > 7) {
+				gameID = "game8_" + (i - 7);
+			}
+			if(i > 11) {
+				gameID = "game4_" + (i - 11);
+			}
+			if(i == 14) {
+				gameID = "game34";
+			}
+			if(i == 15) {
+				gameID = "gameFinal";
+			} 
+			int position = 48 + i;
+			
+			int resID = mContext.getResources().getIdentifier(gameID, "id", mContext.getPackageName());
+		    LinearLayout layout = (LinearLayout) dialog.findViewById(resID);
+		    System.out.println("Layout: " +gameID);
+			String homeImage = "flag" + Integer.toString(userPredictionList.get(position).getHome_team_id());
+		    String awayImage = "flag" + Integer.toString(userPredictionList.get(position).getAway_team_id());
+		    int resIDHome = mContext.getResources().getIdentifier(homeImage, "drawable", mContext.getPackageName());
+		    int resIDAway = mContext.getResources().getIdentifier(awayImage, "drawable", mContext.getPackageName());
+			((ImageView) layout.findViewById(R.id.nations_home)).setImageResource(resIDHome);
+			((ImageView) layout.findViewById(R.id.nations_away)).setImageResource(resIDAway);
+			
+			((TextView) layout.findViewById(R.id.matchType)).setVisibility(View.GONE);
+			
+			if(userPredictionList.get(position).getMatch_finished().equals("N")) {
+				(layout.findViewById(R.id.predictionResult)).setVisibility(View.GONE);
+				(layout.findViewById(R.id.myPrediction)).setVisibility(View.VISIBLE);
+				
+				 if(userPredictionList.get(position).getProphet_home_win() == 1) {
+					 ((TextView) layout.findViewById(R.id.myPrediction)).setText((userPredictionList.get(position).getHome_team_name()) + " 승리 예언");
+				 } else if(userPredictionList.get(position).getProphet_draw() == 1) {
+				   	((TextView) layout.findViewById(R.id.myPrediction)).setText("무승부 예언");
+				 } else if(userPredictionList.get(position).getProphet_away_win() == 1) {
+				   	((TextView) layout.findViewById(R.id.myPrediction)).setText((userPredictionList.get(position).getAway_team_name()) + " 승리 예언");
+				 } else{
+				  	((TextView) layout.findViewById(R.id.myPrediction)).setText("");
+				 }
+				 
+			} else if(userPredictionList.get(position).getMatch_finished().equals("Y")) {
+				(layout.findViewById(R.id.myPrediction)).setVisibility(View.GONE);
+				(layout.findViewById(R.id.predictionResult)).setVisibility(View.VISIBLE);
+				
+				int homeScore = userPredictionList.get(position).getHome_team_score();
+				int awayScore = userPredictionList.get(position).getAway_team_score();
+				
+				 if(userPredictionList.get(position).getProphet_home_win() == 1) {
+					 if(homeScore > awayScore) {
+						 ((ImageView) layout.findViewById(R.id.predictionResult)).setImageResource(R.drawable.hit55);
+					 } else {
+						 ((ImageView) layout.findViewById(R.id.predictionResult)).setImageResource(R.drawable.miss55);
+					 }
+				 } else if(userPredictionList.get(position).getProphet_draw() == 1) {
+					 if(homeScore == awayScore) {
+						 ((ImageView) layout.findViewById(R.id.predictionResult)).setImageResource(R.drawable.hit55);
+					 } else {
+						 ((ImageView) layout.findViewById(R.id.predictionResult)).setImageResource(R.drawable.miss55);
+					 }
+				 } else if(userPredictionList.get(position).getProphet_away_win() == 1) {
+					 if(homeScore < awayScore) {
+						 ((ImageView) layout.findViewById(R.id.predictionResult)).setImageResource(R.drawable.hit55);
+					 } else {
+						 ((ImageView) layout.findViewById(R.id.predictionResult)).setImageResource(R.drawable.miss55);
+					 }
+				 } else{
+					 (layout.findViewById(R.id.myPrediction)).setVisibility(View.VISIBLE);
+						(layout.findViewById(R.id.predictionResult)).setVisibility(View.GONE);
+						((TextView) layout.findViewById(R.id.myPrediction)).setText(" - ");
+				 }
+			} else if(userPredictionList.get(position).getMatch_finished().equals("NOW")) {
+				(layout.findViewById(R.id.predictionResult)).setVisibility(View.GONE);
+				(layout.findViewById(R.id.myPrediction)).setVisibility(View.VISIBLE);	
+				
+				 if(userPredictionList.get(position).getProphet_home_win() == 1) {
+					 ((TextView) layout.findViewById(R.id.myPrediction)).setText((userPredictionList.get(position).getHome_team_name()) + " 승리 예언");
+				 } else if(userPredictionList.get(position).getProphet_draw() == 1) {
+				   	((TextView) layout.findViewById(R.id.myPrediction)).setText("무승부 예언");
+				 } else if(userPredictionList.get(position).getProphet_away_win() == 1) {
+				   	((TextView) layout.findViewById(R.id.myPrediction)).setText((userPredictionList.get(position).getAway_team_name()) + " 승리 예언");
+				 } else{
+				  	((TextView) layout.findViewById(R.id.myPrediction)).setText("");
+				 }
+			}
+		}
 	}
 }

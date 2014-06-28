@@ -3,16 +3,12 @@ android:layout_width="fill_parent"
 android:layout_height="fill_parent"
 android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="0.4"
-        android:orientation="vertical"/>
+
     
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_weight="0.6"
+
         android:background="@drawable/prediction_main"
         android:orientation="vertical">
         <ImageButton
@@ -41,36 +37,726 @@ android:orientation="vertical">
             android:layout_height="wrap_content"
             android:textStyle="bold"
             android:layout_marginLeft="10dp"
+            android:layout_marginBottom="5dp"
             android:text="적중률: "
             android:textAppearance="?android:attr/textAppearanceSmall" />
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="horizontal">
-        	<Button
-            	android:id="@+id/btnFacebook"
-            	android:layout_width="wrap_content"
-            	android:layout_height="wrap_content"
-				android:layout_marginTop="10dp"
-    			android:layout_marginLeft="10dp"
-    			android:layout_marginRight="5dp"
-    			android:layout_marginBottom="10dp"
-            	android:layout_weight="1"
-            	android:gravity="center"
-            	android:background="@drawable/dialog_selected_button"
-            	android:text="Facebook" />
-        	<Button
-            	android:id="@+id/btnTwitter"
-            	android:layout_width="wrap_content"
-            	android:layout_height="wrap_content"
-				android:layout_marginTop="10dp"
-    			android:layout_marginLeft="5dp"
-    			android:layout_marginRight="10dp"
-    			android:layout_marginBottom="10dp"
-            	android:layout_weight="1"
-            	android:gravity="center"
-            	android:background="@drawable/dialog_selected_button"
-            	android:text="Twitter" />
+        
+        <LinearLayout
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:layout_marginLeft="10dp"
+	        android:layout_marginBottom="10dp"
+	        android:orientation="vertical">
+			<LinearLayout
+			    android:id="@+id/game16_1"
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_marginBottom="2dp"
+			    android:layout_weight="1"
+			    android:orientation="horizontal">
+			    <TextView
+				    android:id="@+id/matchType"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="10dp"
+			    	android:text="16강"/>
+			    <ImageView
+				    android:id="@+id/nations_home"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginLeft="10dp"
+				    android:src="@drawable/flag_empty" />
+				<TextView
+				    android:id="@+id/nations_vs"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="10dp"
+			    	android:text="vs"/>
+				<ImageView
+				    android:id="@+id/nations_away"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginLeft="10dp"
+				    android:src="@drawable/flag_empty" />
+				<TextView
+				    android:id="@+id/myPrediction"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="25dp"
+			    	android:text="" />
+				<ImageView
+				    android:id="@+id/predictionResult"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginLeft="25dp"
+				    android:src="@drawable/ic_launcher" />
+			</LinearLayout>
+			<LinearLayout
+			    android:id="@+id/game16_2"
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_marginBottom="2dp"
+			    android:layout_weight="1"
+			    android:orientation="horizontal">
+				<TextView
+				    android:id="@+id/matchType"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="10dp"
+			    	android:text="16강"/>
+			    <ImageView
+				    android:id="@+id/nations_home"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginLeft="10dp"
+				    android:src="@drawable/flag_empty" />
+				<TextView
+				    android:id="@+id/nations_vs"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="10dp"
+			    	android:text="vs"/>
+				<ImageView
+				    android:id="@+id/nations_away"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginLeft="10dp"
+				    android:src="@drawable/flag_empty" />
+				<TextView
+				    android:id="@+id/myPrediction"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="25dp"
+			    	android:text="" />
+				<ImageView
+				    android:id="@+id/predictionResult"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginLeft="25dp"
+				    android:src="@drawable/ic_launcher" />
+			</LinearLayout>
+			<LinearLayout
+			    android:id="@+id/game16_3"
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_marginBottom="2dp"
+			    android:layout_weight="1"
+			    android:orientation="horizontal">
+				<TextView
+				    android:id="@+id/matchType"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="10dp"
+			    	android:text="16강"/>
+			    <ImageView
+				    android:id="@+id/nations_home"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginLeft="10dp"
+				    android:src="@drawable/flag_empty" />
+				<TextView
+				    android:id="@+id/nations_vs"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="10dp"
+			    	android:text="vs"/>
+				<ImageView
+				    android:id="@+id/nations_away"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginLeft="10dp"
+				    android:src="@drawable/flag_empty" />
+				<TextView
+				    android:id="@+id/myPrediction"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="25dp"
+			    	android:text="" />
+				<ImageView
+				    android:id="@+id/predictionResult"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginLeft="25dp"
+				    android:src="@drawable/ic_launcher" />
+			</LinearLayout>
+			<LinearLayout
+			    android:id="@+id/game16_4"
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_marginBottom="2dp"
+			    android:layout_weight="1"
+			    android:orientation="horizontal">
+				<TextView
+				    android:id="@+id/matchType"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="10dp"
+			    	android:text="16강"/>
+			    <ImageView
+				    android:id="@+id/nations_home"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginLeft="10dp"
+				    android:src="@drawable/flag_empty" />
+				<TextView
+				    android:id="@+id/nations_vs"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="10dp"
+			    	android:text="vs"/>
+				<ImageView
+				    android:id="@+id/nations_away"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginLeft="10dp"
+				    android:src="@drawable/flag_empty" />
+				<TextView
+				    android:id="@+id/myPrediction"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="25dp"
+			    	android:text="" />
+				<ImageView
+				    android:id="@+id/predictionResult"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginLeft="25dp"
+				    android:src="@drawable/ic_launcher" />
+			</LinearLayout>
+			<LinearLayout
+			    android:id="@+id/game16_5"
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_marginBottom="2dp"
+			    android:layout_weight="1"
+			    android:orientation="horizontal">
+				<TextView
+				    android:id="@+id/matchType"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="10dp"
+			    	android:text="16강"/>
+			    <ImageView
+				    android:id="@+id/nations_home"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginLeft="10dp"
+				    android:src="@drawable/flag_empty" />
+				<TextView
+				    android:id="@+id/nations_vs"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="10dp"
+			    	android:text="vs"/>
+				<ImageView
+				    android:id="@+id/nations_away"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginLeft="10dp"
+				    android:src="@drawable/flag_empty" />
+				<TextView
+				    android:id="@+id/myPrediction"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="25dp"
+			    	android:text="" />
+				<ImageView
+				    android:id="@+id/predictionResult"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginLeft="25dp"
+				    android:src="@drawable/ic_launcher" />
+			</LinearLayout>
+			<LinearLayout
+			    android:id="@+id/game16_6"
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_marginBottom="2dp"
+			    android:layout_weight="1"
+			    android:orientation="horizontal">
+				<TextView
+				    android:id="@+id/matchType"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="10dp"
+			    	android:text="16강"/>
+			    <ImageView
+				    android:id="@+id/nations_home"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginLeft="10dp"
+				    android:src="@drawable/flag_empty" />
+				<TextView
+				    android:id="@+id/nations_vs"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="10dp"
+			    	android:text="vs"/>
+				<ImageView
+				    android:id="@+id/nations_away"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginLeft="10dp"
+				    android:src="@drawable/flag_empty" />
+				<TextView
+				    android:id="@+id/myPrediction"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="25dp"
+			    	android:text="" />
+				<ImageView
+				    android:id="@+id/predictionResult"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginLeft="25dp"
+				    android:src="@drawable/ic_launcher" />
+			</LinearLayout>
+			<LinearLayout
+			    android:id="@+id/game16_7"
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_marginBottom="2dp"
+			    android:layout_weight="1"
+			    android:orientation="horizontal">
+				<TextView
+				    android:id="@+id/matchType"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="10dp"
+			    	android:text="16강"/>
+			    <ImageView
+				    android:id="@+id/nations_home"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginLeft="10dp"
+				    android:src="@drawable/flag_empty" />
+				<TextView
+				    android:id="@+id/nations_vs"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="10dp"
+			    	android:text="vs"/>
+				<ImageView
+				    android:id="@+id/nations_away"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginLeft="10dp"
+				    android:src="@drawable/flag_empty" />
+				<TextView
+				    android:id="@+id/myPrediction"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="25dp"
+			    	android:text="" />
+				<ImageView
+				    android:id="@+id/predictionResult"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginLeft="25dp"
+				    android:src="@drawable/ic_launcher" />
+			</LinearLayout>
+			<LinearLayout
+			    android:id="@+id/game16_8"
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_marginBottom="2dp"
+			    android:layout_weight="1"
+			    android:orientation="horizontal">
+				<TextView
+				    android:id="@+id/matchType"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="10dp"
+			    	android:text="16강"/>
+			    <ImageView
+				    android:id="@+id/nations_home"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginLeft="10dp"
+				    android:src="@drawable/flag_empty" />
+				<TextView
+				    android:id="@+id/nations_vs"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="10dp"
+			    	android:text="vs"/>
+				<ImageView
+				    android:id="@+id/nations_away"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginLeft="10dp"
+				    android:src="@drawable/flag_empty" />
+				<TextView
+				    android:id="@+id/myPrediction"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="25dp"
+			    	android:text="" />
+				<ImageView
+				    android:id="@+id/predictionResult"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginLeft="25dp"
+				    android:src="@drawable/ic_launcher" />
+			</LinearLayout>
+			
+			
+			<LinearLayout
+			    android:id="@+id/game8_1"
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_marginBottom="2dp"
+			    android:layout_weight="1"
+			    android:orientation="horizontal">
+				<TextView
+				    android:id="@+id/matchType"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="10dp"
+			    	android:text="  8강"/>
+			    <ImageView
+				    android:id="@+id/nations_home"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginLeft="10dp"
+				    android:src="@drawable/flag_empty" />
+				<TextView
+				    android:id="@+id/nations_vs"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="10dp"
+			    	android:text="vs"/>
+				<ImageView
+				    android:id="@+id/nations_away"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginLeft="10dp"
+				    android:src="@drawable/flag_empty" />
+				<TextView
+				    android:id="@+id/myPrediction"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="25dp"
+			    	android:text="" />
+				<ImageView
+				    android:id="@+id/predictionResult"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginLeft="25dp"
+				    android:src="@drawable/ic_launcher" />
+			</LinearLayout>
+			<LinearLayout
+			    android:id="@+id/game8_2"
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_marginBottom="2dp"
+			    android:layout_weight="1"
+			    android:orientation="horizontal">
+				<TextView
+				    android:id="@+id/matchType"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="10dp"
+			    	android:text="8강"/>
+			    <ImageView
+				    android:id="@+id/nations_home"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginLeft="10dp"
+				    android:src="@drawable/flag_empty" />
+				<TextView
+				    android:id="@+id/nations_vs"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="10dp"
+			    	android:text="vs"/>
+				<ImageView
+				    android:id="@+id/nations_away"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginLeft="10dp"
+				    android:src="@drawable/flag_empty" />
+				<TextView
+				    android:id="@+id/myPrediction"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="25dp"
+			    	android:text="" />
+				<ImageView
+				    android:id="@+id/predictionResult"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginLeft="25dp"
+				    android:src="@drawable/ic_launcher" />
+			</LinearLayout>
+			<LinearLayout
+			    android:id="@+id/game8_3"
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_marginBottom="2dp"
+			    android:layout_weight="1"
+			    android:orientation="horizontal">
+				<TextView
+				    android:id="@+id/matchType"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="10dp"
+			    	android:text="8강"/>
+			    <ImageView
+				    android:id="@+id/nations_home"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginLeft="10dp"
+				    android:src="@drawable/flag_empty" />
+				<TextView
+				    android:id="@+id/nations_vs"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="10dp"
+			    	android:text="vs"/>
+				<ImageView
+				    android:id="@+id/nations_away"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginLeft="10dp"
+				    android:src="@drawable/flag_empty" />
+				<TextView
+				    android:id="@+id/myPrediction"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="25dp"
+			    	android:text="" />
+				<ImageView
+				    android:id="@+id/predictionResult"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginLeft="25dp"
+				    android:src="@drawable/ic_launcher" />
+			</LinearLayout>
+			<LinearLayout
+			    android:id="@+id/game8_4"
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_marginBottom="2dp"
+			    android:layout_weight="1"
+			    android:orientation="horizontal">
+				<TextView
+				    android:id="@+id/matchType"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="10dp"
+			    	android:text="8강"/>
+			    <ImageView
+				    android:id="@+id/nations_home"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginLeft="10dp"
+				    android:src="@drawable/flag_empty" />
+				<TextView
+				    android:id="@+id/nations_vs"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="10dp"
+			    	android:text="vs"/>
+				<ImageView
+				    android:id="@+id/nations_away"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginLeft="10dp"
+				    android:src="@drawable/flag_empty" />
+				<TextView
+				    android:id="@+id/myPrediction"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="25dp"
+			    	android:text="" />
+				<ImageView
+				    android:id="@+id/predictionResult"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginLeft="25dp"
+				    android:src="@drawable/ic_launcher" />
+			</LinearLayout>
+			
+			
+			<LinearLayout
+			    android:id="@+id/game4_1"
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_marginBottom="2dp"
+			    android:layout_weight="1"
+			    android:orientation="horizontal">
+				<TextView
+				    android:id="@+id/matchType"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="10dp"
+			    	android:text="4강"/>
+			    <ImageView
+				    android:id="@+id/nations_home"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginLeft="10dp"
+				    android:src="@drawable/flag_empty" />
+				<TextView
+				    android:id="@+id/nations_vs"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="10dp"
+			    	android:text="vs"/>
+				<ImageView
+				    android:id="@+id/nations_away"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginLeft="10dp"
+				    android:src="@drawable/flag_empty" />
+				<TextView
+				    android:id="@+id/myPrediction"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="25dp"
+			    	android:text="" />
+				<ImageView
+				    android:id="@+id/predictionResult"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginLeft="25dp"
+				    android:src="@drawable/ic_launcher" />
+			</LinearLayout>
+			<LinearLayout
+			    android:id="@+id/game4_2"
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_marginBottom="2dp"
+			    android:layout_weight="1"
+			    android:orientation="horizontal">
+				<TextView
+				    android:id="@+id/matchType"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="10dp"
+			    	android:text=" 4강"/>
+			    <ImageView
+				    android:id="@+id/nations_home"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginLeft="10dp"
+				    android:src="@drawable/flag_empty" />
+				<TextView
+				    android:id="@+id/nations_vs"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="10dp"
+			    	android:text="vs"/>
+				<ImageView
+				    android:id="@+id/nations_away"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginLeft="10dp"
+				    android:src="@drawable/flag_empty" />
+				<TextView
+				    android:id="@+id/myPrediction"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="25dp"
+			    	android:text="" />
+				<ImageView
+				    android:id="@+id/predictionResult"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginLeft="25dp"
+				    android:src="@drawable/ic_launcher" />
+			</LinearLayout>
+			
+			
+			<LinearLayout
+			    android:id="@+id/game34"
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_marginBottom="2dp"
+			    android:layout_weight="1"
+			    android:orientation="horizontal">
+				<TextView
+				    android:id="@+id/matchType"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="10dp"
+			    	android:text="3/4위전"/>
+			    <ImageView
+				    android:id="@+id/nations_home"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginLeft="10dp"
+				    android:src="@drawable/flag_empty" />
+				<TextView
+				    android:id="@+id/nations_vs"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="10dp"
+			    	android:text="vs"/>
+				<ImageView
+				    android:id="@+id/nations_away"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginLeft="10dp"
+				    android:src="@drawable/flag_empty" />
+				<TextView
+				    android:id="@+id/myPrediction"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="25dp"
+			    	android:text="" />
+				<ImageView
+				    android:id="@+id/predictionResult"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginLeft="25dp"
+				    android:src="@drawable/ic_launcher" />
+			</LinearLayout>
+			<LinearLayout
+			    android:id="@+id/gameFinal"
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_marginBottom="2dp"
+			    android:layout_weight="1"
+			    android:orientation="horizontal">
+				<TextView
+				    android:id="@+id/matchType"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="10dp"
+			    	android:text="결승전"/>
+			    <ImageView
+				    android:id="@+id/nations_home"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginLeft="10dp"
+				    android:src="@drawable/flag_empty" />
+				<TextView
+				    android:id="@+id/nations_vs"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="10dp"
+			    	android:text="vs"/>
+				<ImageView
+				    android:id="@+id/nations_away"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginLeft="10dp"
+				    android:src="@drawable/flag_empty" />
+				<TextView
+				    android:id="@+id/myPrediction"
+				    android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:layout_marginLeft="25dp"
+			    	android:text="" />
+				<ImageView
+				    android:id="@+id/predictionResult"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginLeft="25dp"
+				    android:src="@drawable/ic_launcher" />
+			</LinearLayout>
+	    </LinearLayout>
 	</LinearLayout>
-</LinearLayout>
 </LinearLayout>
