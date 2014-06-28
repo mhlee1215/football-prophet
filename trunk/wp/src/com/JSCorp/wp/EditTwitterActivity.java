@@ -16,6 +16,9 @@ import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,6 +43,17 @@ public class EditTwitterActivity extends Activity {
         	toggle.setChecked(false);
         }
         
+        Button confirm_button = (Button) findViewById(R.id.twitter_confirm_button);
+		confirm_button.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				updateTwitter();
+			}
+			
+		});
+        
         
         toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -62,6 +76,23 @@ public class EditTwitterActivity extends Activity {
         });
 	}
 	
+	public void updateTwitter(){
+		Toast.makeText(getApplicationContext(),
+  		      "트위터 정보가 저장 되었습니다.", Toast.LENGTH_SHORT).show();
+  	
+		String twitter_new = (String) ((TextView) this.findViewById(R.id.callForTwitter)).getText().toString();
+  	
+  	FPUser user = new FPUser();
+    	user.setDevice_id(GlobalVars.user.getDevice_id());
+    	user.setTwitter(twitter_new);
+    	new SetUserTagInfo().doInBackground(user);
+    	
+    	System.out.println("Set new Twitter"); 
+		GlobalVars.user.setTwitter(twitter_new);
+  	
+  	super.onBackPressed();
+	}
+	
 	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -80,20 +111,7 @@ public class EditTwitterActivity extends Activity {
         case R.id.action_accept:
             //save user decisions to DB.
         	//go back to game list view.
-        	Toast.makeText(getApplicationContext(),
-        		      "Need to Implement Data Save", Toast.LENGTH_SHORT).show();
-        	
-    		String twitter_new = (String) ((TextView) this.findViewById(R.id.callForTwitter)).getText().toString();
-        	
-        	FPUser user = new FPUser();
-          	user.setDevice_id(GlobalVars.user.getDevice_id());
-          	user.setTwitter(twitter_new);
-          	new SetUserTagInfo().doInBackground(user);
-          	
-          	System.out.println("Set new Twitter"); 
-  			GlobalVars.user.setTwitter(twitter_new);
-        	
-        	super.onBackPressed();
+        	updateTwitter();
             return true;
         default:
             return super.onOptionsItemSelected(item);
