@@ -185,8 +185,13 @@ public class RanksFragment extends Fragment {
 				tContext.userTopRanks = userRanks;
 				tContext.userRanks = new ArrayList<FPUser>();
 			} else {
-				tContext.userTopRanks = userRanks.subList(0, 3);
-				tContext.userRanks = userRanks.subList(3, userRanks.size());
+				if(userRanks.get(3).getRank() == 4) {
+					tContext.userTopRanks = new ArrayList<FPUser>();
+					tContext.userRanks = userRanks;
+				} else {
+					tContext.userTopRanks = userRanks.subList(0, 3);
+					tContext.userRanks = userRanks.subList(3, userRanks.size());
+				}
 			}
 			//tContext.userRanks = userRanks;
 			tContext.doPrint();
