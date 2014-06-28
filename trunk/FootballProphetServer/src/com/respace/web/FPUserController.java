@@ -100,7 +100,7 @@ private Logger logger = Logger.getLogger(getClass());
 		int rank = 1;
 		for(int i = 0 ; i < userList.size() ; i++){
 			FPUser u = userList.get(i);
-			u.setRank(rank);
+			
 			u.setPosition(i+1);
 			
 			if(i > 0){
@@ -108,6 +108,9 @@ private Logger logger = Logger.getLogger(getClass());
 				if(u.getRight_prophet_num() == u_prev.getRight_prophet_num() && u.getProphet_num() == u_prev.getProphet_num())
 					rank--;
 			}
+			
+			u.setRank(rank);
+			
 			
 			rank++;
 		}
