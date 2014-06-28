@@ -11,16 +11,24 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.graphics.Point;
 import android.telephony.TelephonyManager;
 import android.util.Log;
+import android.view.Display;
 import android.view.Menu;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Toast;
  
 public class SplashActivity extends Activity {
@@ -103,7 +111,8 @@ public class SplashActivity extends Activity {
        background.start();
     }
     
-    public void doVersionCheck(FPAppInfo appInfo){
+    @SuppressLint("NewApi")
+	public void doVersionCheck(FPAppInfo appInfo){
     	
     	
     	PackageInfo pInfo = null;
@@ -123,11 +132,53 @@ public class SplashActivity extends Activity {
 			
 			if(!version.equalsIgnoreCase(appInfo.getVersion_name())){
 				//Do update!
-				String appPackageName = "com.JSCorp.wc";
-				String url = "https://play.google.com/store/apps/details?id=" + appPackageName;
-				Intent intent = new Intent(Intent.ACTION_VIEW);
-				intent.setData(Uri.parse(url));
-				startActivity(intent);
+				
+				Display display = ((WindowManager) this.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
+				Point size = new Point();
+		        display.getSize(size); 
+		        int width = size.x;
+		        int height = size.y;
+				WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+				
+				final Dialog dialog = new Dialog(this);
+			    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); 
+			    dialog.setContentView(R.layout.update_notification_dialog);
+			     
+			    lp.copyFrom(dialog.getWindow().getAttributes());
+			    lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+			    lp.height = 400;//height - (height / 3);
+			    lp.y = 0;//height/2;// - lp.height/2;
+			    System.out.println("height: " + lp.height);
+			    
+			    dialog.getWindow().setAttributes(lp);
+			    
+			    LinearLayout layout = (LinearLayout) dialog.findViewById(R.id.update_linearlayout);
+			    
+			    Button updateConfirmButton = (Button) layout.findViewById(R.id.btnUpdateConfirm);
+			    
+			    updateConfirmButton.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View arg0) {
+						// TODO Auto-generated method stub
+						String appPackageName = "com.JSCorp.wp";
+						String url = "https://play.google.com/store/apps/details?id=" + appPackageName;
+						Intent intent = new Intent(Intent.ACTION_VIEW);
+						intent.setData(Uri.parse(url));
+						startActivity(intent);
+					}
+				});
+			    
+			    
+				
+			    dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+			    dialog.show();
+			    
+//				String appPackageName = "com.JSCorp.wc";
+//				String url = "https://play.google.com/store/apps/details?id=" + appPackageName;
+//				Intent intent = new Intent(Intent.ACTION_VIEW);
+//				intent.setData(Uri.parse(url));
+//				startActivity(intent);
 				//Toast.makeText(getApplicationContext(), "Need to update!!!", Toast.LENGTH_SHORT).show();
 			}else{
 				goMainActivity();
