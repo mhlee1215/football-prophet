@@ -410,6 +410,7 @@ public class UserService {
 						return null;
 
 					user.setRank(Integer.parseInt((String) o2.get("rank")));
+					user.setPosition(Integer.parseInt((String) o2.get("position")));
 					user.setRight_prophet_num(Integer.parseInt((String) o2
 							.get("right_prophet_num")));
 					user.setRight_prophet_ratio(Float.parseFloat((String) o2
