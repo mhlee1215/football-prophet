@@ -97,9 +97,19 @@ private Logger logger = Logger.getLogger(getClass());
 		//event.setQuery_number(query_number);
 		List<FPUser> userList = userService.readUserRankingList(user);
 		
+		int rank = 1;
 		for(int i = 0 ; i < userList.size() ; i++){
 			FPUser u = userList.get(i);
-			u.setRank(i+1);
+			u.setRank(rank);
+			u.setPosition(i+1);
+			
+			if(i > 0){
+				FPUser u_prev = userList.get(i-1);
+				if(u.getRight_prophet_num() == u_prev.getRight_prophet_num() && u.getProphet_num() == u_prev.getProphet_num())
+					rank--;
+			}
+			
+			rank++;
 		}
  
 		HttpHeaders responseHeaders = new HttpHeaders();
@@ -108,10 +118,12 @@ private Logger logger = Logger.getLogger(getClass());
     }
 	
 	@RequestMapping(value="/api.isUserExist.do")
-    public @ResponseBody String isUserExist(HttpServletRequest request, HttpServletResponse response) {
+    public @ResponseBody String isUserExist(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
 		Integer id = ServletRequestUtils.getIntParameter(request, "id", 0);
 		String nickname = ServletRequestUtils.getStringParameter(request, "nickname", "");
 		String device_id = ServletRequestUtils.getStringParameter(request, "device_id", "");
+		
+		nickname = URLDecoder.decode(nickname, "UTF-8");
 		
 		int count_event = userService.countUser(new FPUser());
 		System.out.println("count_event :"+count_event);
