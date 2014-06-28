@@ -542,212 +542,214 @@ public class GameService {
 		int match_id = 1;
 
 		// 1
-//		gameResult = new FPGameResult(match_id, "1", 3, 1);
-//		match_id++;
-//		GameService.updateGameResult(gameResult);
-//
-//		gameResult = new FPGameResult(match_id, "1", 1, 0);
-//		match_id++;
-//		GameService.updateGameResult(gameResult);
-//
-//		gameResult = new FPGameResult(match_id, "1", 1, 5);
-//		match_id++;
-//		GameService.updateGameResult(gameResult);
-//
-//		gameResult = new FPGameResult(match_id, "1", 3, 1);
-//		match_id++;
-//		GameService.updateGameResult(gameResult);
-//
-//		gameResult = new FPGameResult(match_id, "1", 3, 0);
-//		match_id++;
-//		GameService.updateGameResult(gameResult);
-//
-//		// 6
-//		gameResult = new FPGameResult(match_id, "1", 2, 1);
-//		match_id++;
-//		GameService.updateGameResult(gameResult);
-//
-//		gameResult = new FPGameResult(match_id, "1", 1, 3);
-//		match_id++;
-//		GameService.updateGameResult(gameResult);
-//
-//		gameResult = new FPGameResult(match_id, "1", 1, 2);
-//		match_id++;
-//		GameService.updateGameResult(gameResult);
-//
-//		gameResult = new FPGameResult(match_id, "1", 2, 1);
-//		match_id++;
-//		GameService.updateGameResult(gameResult);
-//
-//		gameResult = new FPGameResult(match_id, "1", 3, 0);
-//		match_id++;
-//		GameService.updateGameResult(gameResult);
-//
-//		// 11
-//
-//		gameResult = new FPGameResult(match_id, "1", 2, 1);
-//		match_id++;
-//		GameService.updateGameResult(gameResult);
-//
-//		gameResult = new FPGameResult(match_id, "1", 0, 0);
-//		match_id++;
-//		GameService.updateGameResult(gameResult);
-//
-//		gameResult = new FPGameResult(match_id, "1", 4, 0);
-//		match_id++;
-//		GameService.updateGameResult(gameResult);
-//
-//		gameResult = new FPGameResult(match_id, "1", 1, 2);
-//		match_id++;
-//		GameService.updateGameResult(gameResult);
-//
-//		gameResult = new FPGameResult(match_id, "1", 2, 1);
-//		match_id++;
-//		GameService.updateGameResult(gameResult);
-//
-//		// 16
-//
-//		gameResult = new FPGameResult(match_id, "1", 1, 1);
-//		match_id++;
-//		GameService.updateGameResult(gameResult);
-//
-//		gameResult = new FPGameResult(match_id, "1", 0, 0);
-//		match_id++;
-//		GameService.updateGameResult(gameResult);
-//
-//		gameResult = new FPGameResult(match_id, "1", 4, 0);
-//		match_id++;
-//		GameService.updateGameResult(gameResult);
-//
-//		gameResult = new FPGameResult(match_id, "1", 0, 2);
-//		match_id++;
-//		GameService.updateGameResult(gameResult);
-//
-//		gameResult = new FPGameResult(match_id, "1", 3, 2);
-//		match_id++;
-//		GameService.updateGameResult(gameResult);
-//
-//		// 21
-//
-//		gameResult = new FPGameResult(match_id, "1", 2, 1);
-//		match_id++;
-//		GameService.updateGameResult(gameResult);
-//
-//		gameResult = new FPGameResult(match_id, "1", 0, 0);
-//		match_id++;
-//		GameService.updateGameResult(gameResult);
-//
-//		gameResult = new FPGameResult(match_id, "1", 2, 1);
-//		match_id++;
-//		GameService.updateGameResult(gameResult);
-//
-//		gameResult = new FPGameResult(match_id, "1", 1, 0);
-//		match_id++;
-//		GameService.updateGameResult(gameResult);
-//
-//		// gameResult = new FPGameResult(match_id, "1", 1, 0);
-//		// match_id++;
-//		// GameService.updateGameResult(gameResult);
-//
-//		gameResult = new FPGameResult(match_id, "1", 2, 5);
-//		match_id++;
-//		GameService.updateGameResult(gameResult);
-//
-//		// 26
-//
-//		gameResult = new FPGameResult(match_id, "1", 2, 1);
-//		match_id++;
-//		GameService.updateGameResult(gameResult);
-//
-//		gameResult = new FPGameResult(match_id, "1", 1, 0);
-//		match_id++;
-//		GameService.updateGameResult(gameResult);
-//
-//		gameResult = new FPGameResult(match_id, "1", 0, 2);
-//		match_id++;
-//		GameService.updateGameResult(gameResult);
-//
-//		gameResult = new FPGameResult(match_id, "1", 2, 2);
-//		match_id++;
-//		GameService.updateGameResult(gameResult);
-//
-//		gameResult = new FPGameResult(match_id, "1", 2, 2);
-//		match_id++;
-//		GameService.updateGameResult(gameResult);
-//
-//		// 31
-//		gameResult = new FPGameResult(match_id, "1", 1, 0);
-//		match_id++;
-//		GameService.updateGameResult(gameResult);
-//
-//		gameResult = new FPGameResult(match_id, "1", 4, 2);
-//		match_id++;
-//		GameService.updateGameResult(gameResult);
-//
-//		gameResult = new FPGameResult(match_id, "1", 4, 1);
-//		match_id++;
-//		GameService.updateGameResult(gameResult);
-//
-//		gameResult = new FPGameResult(match_id, "1", 1, 3);
-//		match_id++;
-//		GameService.updateGameResult(gameResult);
-//
-//		gameResult = new FPGameResult(match_id, "1", 3, 0);
-//		match_id++;
-//		GameService.updateGameResult(gameResult);
-//
-//		gameResult = new FPGameResult(match_id, "1", 2, 0);
-//		match_id++;
-//		GameService.updateGameResult(gameResult);
-//
-//		gameResult = new FPGameResult(match_id, "1", 4, 1);
-//		match_id++;
-//		GameService.updateGameResult(gameResult);
-//
-//		gameResult = new FPGameResult(match_id, "1", 2, 1);
-//		match_id++;
-//		GameService.updateGameResult(gameResult);
-//
-//		gameResult = new FPGameResult(match_id, "1", 1, 0);
-//		match_id++;
-//		GameService.updateGameResult(gameResult);
-//
-//		gameResult = new FPGameResult(match_id, "1", 0, 0);
-//		match_id++;
-//		GameService.updateGameResult(gameResult);
-//
-//		gameResult = new FPGameResult(match_id, "1", 3, 0);
-//		match_id++;
-//		GameService.updateGameResult(gameResult);
-//
-//		gameResult = new FPGameResult(match_id, "1", 0, 0);
-//		match_id++;
-//		GameService.updateGameResult(gameResult);
-//
-//		gameResult = new FPGameResult(match_id, "1", 3, 2);
-//		match_id++;
-//		GameService.updateGameResult(gameResult);
-//
-//		gameResult = new FPGameResult(match_id, "1", 3, 1);
-//		match_id++;
-//		GameService.updateGameResult(gameResult);
-//
-//		gameResult = new FPGameResult(match_id, "1", 1, 0);
-//		match_id++;
-//		GameService.updateGameResult(gameResult);
-//
-//		gameResult = new FPGameResult(match_id, "1", 2, 1);
-//		match_id++;
-//		GameService.updateGameResult(gameResult);
-//
-//		gameResult = new FPGameResult(match_id, "1", 1, 0);
-//		match_id++;
-//		GameService.updateGameResult(gameResult);
-//
-//		gameResult = new FPGameResult(match_id, "1", 1, 1);
-//		match_id++;
-//		GameService.updateGameResult(gameResult);
+		gameResult = new FPGameResult(match_id, "1", 3, 1);
+		match_id++;
+		GameService.updateGameResult(gameResult);
 
+		gameResult = new FPGameResult(match_id, "1", 1, 0);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+
+		gameResult = new FPGameResult(match_id, "1", 1, 5);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+
+		gameResult = new FPGameResult(match_id, "1", 3, 1);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+
+		gameResult = new FPGameResult(match_id, "1", 3, 0);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+
+		// 6
+		gameResult = new FPGameResult(match_id, "1", 2, 1);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+
+		gameResult = new FPGameResult(match_id, "1", 1, 3);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+
+		gameResult = new FPGameResult(match_id, "1", 1, 2);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+
+		gameResult = new FPGameResult(match_id, "1", 2, 1);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+
+		gameResult = new FPGameResult(match_id, "1", 3, 0);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+
+		// 11
+
+		gameResult = new FPGameResult(match_id, "1", 2, 1);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+
+		gameResult = new FPGameResult(match_id, "1", 0, 0);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+
+		gameResult = new FPGameResult(match_id, "1", 4, 0);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+
+		gameResult = new FPGameResult(match_id, "1", 1, 2);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+
+		gameResult = new FPGameResult(match_id, "1", 2, 1);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+
+		// 16
+
+		gameResult = new FPGameResult(match_id, "1", 1, 1);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+
+		gameResult = new FPGameResult(match_id, "1", 0, 0);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+
+		gameResult = new FPGameResult(match_id, "1", 4, 0);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+
+		gameResult = new FPGameResult(match_id, "1", 0, 2);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+
+		gameResult = new FPGameResult(match_id, "1", 3, 2);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+
+		// 21
+
+		gameResult = new FPGameResult(match_id, "1", 2, 1);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+
+		gameResult = new FPGameResult(match_id, "1", 0, 0);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+
+		gameResult = new FPGameResult(match_id, "1", 2, 1);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+
+		gameResult = new FPGameResult(match_id, "1", 1, 0);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+
+		// gameResult = new FPGameResult(match_id, "1", 1, 0);
+		// match_id++;
+		// GameService.updateGameResult(gameResult);
+
+		gameResult = new FPGameResult(match_id, "1", 2, 5);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+
+		// 26
+
+		gameResult = new FPGameResult(match_id, "1", 2, 1);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+
+		gameResult = new FPGameResult(match_id, "1", 1, 0);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+
+		gameResult = new FPGameResult(match_id, "1", 0, 2);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+
+		gameResult = new FPGameResult(match_id, "1", 2, 2);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+
+		gameResult = new FPGameResult(match_id, "1", 2, 2);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+
+		// 31
+		gameResult = new FPGameResult(match_id, "1", 1, 0);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+
+		gameResult = new FPGameResult(match_id, "1", 4, 2);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+
+		gameResult = new FPGameResult(match_id, "1", 4, 1);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+
+		gameResult = new FPGameResult(match_id, "1", 1, 3);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+
+		gameResult = new FPGameResult(match_id, "1", 3, 0);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+
+		gameResult = new FPGameResult(match_id, "1", 2, 0);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+
+		gameResult = new FPGameResult(match_id, "1", 4, 1);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+
+		gameResult = new FPGameResult(match_id, "1", 2, 1);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+
+		gameResult = new FPGameResult(match_id, "1", 1, 0);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+
+		gameResult = new FPGameResult(match_id, "1", 0, 0);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+
+		gameResult = new FPGameResult(match_id, "1", 3, 0);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+
+		gameResult = new FPGameResult(match_id, "1", 0, 0);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+
+		gameResult = new FPGameResult(match_id, "1", 3, 2);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+
+		gameResult = new FPGameResult(match_id, "1", 3, 1);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+
+		gameResult = new FPGameResult(match_id, "1", 1, 0);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+
+		gameResult = new FPGameResult(match_id, "1", 2, 1);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+
+		gameResult = new FPGameResult(match_id, "1", 1, 0);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+
+		gameResult = new FPGameResult(match_id, "1", 1, 1);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+
+		if(1==1) return;
+		
 		// Tournament (dummy rightnow)
 		//16rkd
 		match_id = 49;
