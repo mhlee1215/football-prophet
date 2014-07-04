@@ -269,11 +269,12 @@ public class RankListAdapter extends BaseAdapter {
 				
 				int homeScore = userPredictionList.get(position).getHome_team_score();
 				int awayScore = userPredictionList.get(position).getAway_team_score();
-				
+				System.out.println("Layout: " +homeScore);
+				System.out.println("Layout: " +awayScore);
 				if(homeScore > awayScore) {
 					((TextView) layout.findViewById(R.id.matchResult)).setText((userPredictionList.get(position).getHome_team_name()) + " 승리");
 				} else {
-					
+					((TextView) layout.findViewById(R.id.matchResult)).setText((userPredictionList.get(position).getAway_team_name()) + " 승리");
 				}
 				
 				 if(userPredictionList.get(position).getProphet_home_win() == 1) {

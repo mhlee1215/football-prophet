@@ -230,7 +230,7 @@ public class SplashActivity extends Activity {
 			
 			TelephonyManager tManager = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
 			String deviceId = tManager.getDeviceId();
-			//deviceId = "arsenal12";
+			//deviceId = "arsenal1234"; //"arsenal1_9"
 			//deviceId = "test_device_id2";
 			System.out.println("device Id :"+deviceId);
 			

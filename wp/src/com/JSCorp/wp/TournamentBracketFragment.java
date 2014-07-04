@@ -312,26 +312,32 @@ public class TournamentBracketFragment extends Fragment implements FirstPageFrag
 	    	//dialog.findViewById(R.id.btnPredict1).setVisibility(View.INVISIBLE);
 	    	//dialog.findViewById(R.id.btnPredict2).setVisibility(View.INVISIBLE);
 	    	//dialog.findViewById(R.id.btnPredict3).setVisibility(View.INVISIBLE);
-	    	
-	    	predictionButton1.setText(Integer.toString(matches.get(position).getHome_team_score()));
-	    	predictionButton1.setTextSize(20);
-	    	predictionButton1.setBackgroundColor(android.R.color.transparent);
-	    		
-	    	//predictionButton2.setVisibility(View.VISIBLE);
-	    	if(matches.get(position).getHome_team_score() > matches.get(position).getAway_team_score()) {
-	    		((TextView) dialog.findViewById(R.id.matchDate)).setText(matches.get(position).getHome_team_name() + " 승");
-	    		//predictionButton2.setText(matches.get(position).getHome_team_name() + " 승");
-	    		
+	    	if((matches.get(position).getMatch_finished().equals("NOW"))) {
+	    		((TextView) dialog.findViewById(R.id.matchDate)).setText("경기중");
+	    		dialog.findViewById(R.id.btnPredict1).setVisibility(View.INVISIBLE);
+		    	dialog.findViewById(R.id.btnPredict2).setVisibility(View.INVISIBLE);
+		    	dialog.findViewById(R.id.btnPredict3).setVisibility(View.INVISIBLE);
 	    	} else {
-	    		((TextView) dialog.findViewById(R.id.matchDate)).setText(matches.get(position).getAway_team_name() + " 승");
-	    		//predictionButton2.setText(matches.get(position).getAway_team_name() + " 승");
+		    	predictionButton1.setText(Integer.toString(matches.get(position).getHome_team_score()));
+		    	predictionButton1.setTextSize(20);
+		    	predictionButton1.setBackgroundColor(android.R.color.transparent);
+		    		
+		    	//predictionButton2.setVisibility(View.VISIBLE);
+		    	if(matches.get(position).getHome_team_score() > matches.get(position).getAway_team_score()) {
+		    		((TextView) dialog.findViewById(R.id.matchDate)).setText(matches.get(position).getHome_team_name() + " 승");
+		    		//predictionButton2.setText(matches.get(position).getHome_team_name() + " 승");
+		    		
+		    	} else {
+		    		((TextView) dialog.findViewById(R.id.matchDate)).setText(matches.get(position).getAway_team_name() + " 승");
+		    		//predictionButton2.setText(matches.get(position).getAway_team_name() + " 승");
+		    	}
+		    	//predictionButton2.setTextSize(14);
+		    	//predictionButton2.setBackgroundColor(android.R.color.transparent);
+	
+		    	predictionButton3.setText(Integer.toString(matches.get(position).getAway_team_score()));
+		    	predictionButton3.setTextSize(20);
+		    	predictionButton3.setBackgroundColor(android.R.color.transparent);
 	    	}
-	    	//predictionButton2.setTextSize(14);
-	    	//predictionButton2.setBackgroundColor(android.R.color.transparent);
-
-	    	predictionButton3.setText(Integer.toString(matches.get(position).getAway_team_score()));
-	    	predictionButton3.setTextSize(20);
-	    	predictionButton3.setBackgroundColor(android.R.color.transparent);
 	    	
 	    } else {
 	    
@@ -710,7 +716,7 @@ public class TournamentBracketFragment extends Fragment implements FirstPageFrag
 				ImageView b8_1 = (ImageView) rootView.findViewById(R.id.bracket_8_1);
 				ImageView b8_1_pre = (ImageView) rootView.findViewById(R.id.bracket_8_1_pre);
 				
-				if("Y".equals(matches.get(pos).getMatch_finished())){
+				if("Y".equals(matches.get(pos+1).getMatch_finished())){
 					if((matches.get(pos).getMatch_home_win() == 1) && (matches.get(pos+1).getMatch_home_win() == 1)) {
 						b8_1.setImageResource(R.drawable.tour_arrow_hh_wide);
 					} else if((matches.get(pos).getMatch_home_win() == 1) && (matches.get(pos+1).getMatch_away_win() == 1)) {
@@ -755,7 +761,7 @@ public class TournamentBracketFragment extends Fragment implements FirstPageFrag
 				ImageView b8_2 = (ImageView) rootView.findViewById(R.id.bracket_8_2);
 				ImageView b8_2_pre = (ImageView) rootView.findViewById(R.id.bracket_8_2_pre);
 				
-				if("Y".equals(matches.get(pos).getMatch_finished())){
+				if("Y".equals(matches.get(pos+1).getMatch_finished())){
 					if((matches.get(pos).getMatch_home_win() == 1) && (matches.get(pos+1).getMatch_home_win() == 1)) {
 						b8_2.setImageResource(R.drawable.tour_arrow_aa_wide);
 					} else if((matches.get(pos).getMatch_home_win() == 1) && (matches.get(pos+1).getMatch_away_win() == 1)) {
