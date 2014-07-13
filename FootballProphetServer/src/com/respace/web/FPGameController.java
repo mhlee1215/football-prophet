@@ -606,6 +606,7 @@ private Logger logger = Logger.getLogger(getClass());
 		
 		
 		FPTournamentSchedule nextSchedule = tourScheduleMap.get(s.getMatch_id());
+		if(nextSchedule == null) return;
 		
 		if(s.getHome_team_score() > s.getAway_team_score()){
 			if(nextSchedule.getWinnerGoesMatchId() != 0){
