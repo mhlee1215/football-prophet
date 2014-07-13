@@ -748,12 +748,32 @@ public class GameService {
 		match_id++;
 		GameService.updateGameResult(gameResult);
 
-		if(1==1) return;
+		
 		
 		// Tournament (dummy rightnow)
 		//16rkd
 		match_id = 49;
-		gameResult = new FPGameResult(match_id, "2", 1, 0);
+		gameResult = new FPGameResult(match_id, "2", 4, 3);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+		
+		gameResult = new FPGameResult(match_id, "2", 2, 0);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+		
+		gameResult = new FPGameResult(match_id, "2", 2, 1);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+		
+		gameResult = new FPGameResult(match_id, "2", 6, 4);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+		
+		gameResult = new FPGameResult(match_id, "2", 2, 0);
+		match_id++;
+		GameService.updateGameResult(gameResult);
+		
+		gameResult = new FPGameResult(match_id, "2", 2, 1);
 		match_id++;
 		GameService.updateGameResult(gameResult);
 		
@@ -761,40 +781,22 @@ public class GameService {
 		match_id++;
 		GameService.updateGameResult(gameResult);
 		
-		gameResult = new FPGameResult(match_id, "2", 1, 0);
+		
+		gameResult = new FPGameResult(match_id, "2", 2, 1);
 		match_id++;
 		GameService.updateGameResult(gameResult);
 		
-		gameResult = new FPGameResult(match_id, "2", 1, 0);
-		match_id++;
-		GameService.updateGameResult(gameResult);
-		
-		gameResult = new FPGameResult(match_id, "2", 1, 0);
-		match_id++;
-		GameService.updateGameResult(gameResult);
-		
-		gameResult = new FPGameResult(match_id, "2", 1, 0);
-		match_id++;
-		GameService.updateGameResult(gameResult);
-		
-		gameResult = new FPGameResult(match_id, "2", 1, 0);
-		match_id++;
-		GameService.updateGameResult(gameResult);
-		
-		gameResult = new FPGameResult(match_id, "2", 1, 0);
-		match_id++;
-		GameService.updateGameResult(gameResult);
 		
 		//4강
-		gameResult = new FPGameResult(match_id, "2", 1, 0);
+		gameResult = new FPGameResult(match_id, "2", 2, 1);
 		match_id++;
 		GameService.updateGameResult(gameResult);
 		
-		gameResult = new FPGameResult(match_id, "2", 1, 0);
+		gameResult = new FPGameResult(match_id, "2", 0, 1);
 		match_id++;
 		GameService.updateGameResult(gameResult);
 		
-		gameResult = new FPGameResult(match_id, "2", 1, 0);
+		gameResult = new FPGameResult(match_id, "2", 4, 3);
 		match_id++;
 		GameService.updateGameResult(gameResult);
 		
@@ -803,16 +805,21 @@ public class GameService {
 		GameService.updateGameResult(gameResult);
 		
 		//준결승
-		gameResult = new FPGameResult(match_id, "2", 1, 0);
+		gameResult = new FPGameResult(match_id, "2", 1, 7);
 		match_id++;
 		GameService.updateGameResult(gameResult);
-//		
-		gameResult = new FPGameResult(match_id, "2", 1, 0);
+		
+		
+		gameResult = new FPGameResult(match_id, "2", 2, 4);
 		match_id++;
 		GameService.updateGameResult(gameResult);
 		
 		//34위전
+		gameResult = new FPGameResult(match_id, "2", 0, 3);
+		match_id++;
+		GameService.updateGameResult(gameResult);
 		
+		if(1==1) return;
 		
 		//결승
 
